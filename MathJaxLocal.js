@@ -6,7 +6,7 @@ MathJax.Hub.Config({
     processEscapes: true,
     skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
   },
-  messageStyle: "none",
+  messageStyle: "simple",
   "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] },
   TeX: {
     equationNumbers: { autoNumber: "AMS" },
@@ -55,4 +55,4 @@ MathJax.Hub.Config({
   }
 });
 
-MathJax.Ajax.loadComplete("https://vincenttam.github.io/javascripts/MathJaxLocal.js");
+MathJax.Ajax.loadComplete("https://kerwinxu.github.io/MathJaxLocal.js");
