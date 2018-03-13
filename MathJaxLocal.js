@@ -11,7 +11,7 @@ MathJax.Hub.Config({
   TeX: {
     equationNumbers: { autoNumber: "AMS" },
     extensions: ["AMSmath.js", "AMSsymbols.js","AMScd.js"],
-    TagSide: "left",
+    TagSide: "right",
     Macros: {
       field: ['\\mathbb{#1}', 1],
       C: ['\\field{C}'],
