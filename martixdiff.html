@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>矩阵向量求导方法 &#8211; 徐恒晓学习</title>
+<script type="text/javascript" charset="utf-8" src="
+https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,
+https://kerwinxu.github.io/MathJaxLocal.js"></script>
+</head>
+<body>
+
+	<h1>开端的例子</h1>
+我们从一元线性方程开始 $$\begin{equation} f(x)=ax \label{1} \end{equation}$$
+
+这个方程是连续的，我们写如下的偏导数 \begin{equation}\frac{\partial f}{\partial x}=a \label{2} \end{equation}
+
+将这个一元线性方程推广到多元方程，我们有 \begin{equation}f(x)= \sum\limits_{i} a_{i}x_{i}=\mathbf{a}^{T}\mathbf{x}\end{equation}
+
+这里有 $latex \mathbf{a}=\big[a_1,a_2,\cdots,a_n\big]^T , \mathbf{x}=\big[x_1,x_2,\cdots,x_n\big]^T$ ,我们先计算直接偏导数。
+
+\begin{equation}\frac{\partial f}{\partial x_k}=\frac{\partial\big(\sum_{i}a_{i}x_{i}\big)}{\partial x_{k}}=a_{k} \end{equation}
+
+这个$latex \mathbf{k}=1,2,\cdots,n$ ,我们将n个偏导组成如下的形式
+
+\begin{equation}\frac{\partial f}{\partial x}=\left[\begin{array}{c}\frac{\partial f}{\partial x_1}\\\frac{\partial f}{\partial x_2}\\\vdots\\\frac{\partial f}{\partial x_n}\end{array}\right]=\left[\begin{array}{c}a_1\\a_2\\\vdots\\a_n\end{array}\right]=a\label{5}\end{equation}
+
+公式$latex (\ref{5})和(\ref{2})$类似，除了变量从标量变成向量，我们想要 $latex (\ref{5})$的结果，而不想要中间的过程（是对每个x求偏导）。
+<h1 id="推导过程">推导过程</h1>
+<h2 id="组织的元素">组织的元素</h2>
+\[\mathbf{Definition 1}.\label{Definition 1}\tag{Definition 1}\] ，对于标量值函数$latex f(x)$,我们设$latex \frac{\partial f}{\partial x}$的结果与$latex x$ 同大小尺寸
+
+<span style="color: #0000ff;">\begin{equation}\frac{\partial y}{\partial x}=\left[\begin{array}{cccc}\frac{\partial y}{\partial x_{11}}&amp;\frac{\partial y}{\partial x_{12}}&amp;\cdots&amp;\frac{\partial y}{\partial x_{1n}}\\\frac{\partial y}{\partial x_{21}}&amp;\frac{\partial y}{\partial x_{22}}&amp;\cdots&amp;\frac{\partial y}{\partial x_{2n}}\\\vdots&amp;\vdots&amp;\vdots&amp;\vdots\\\frac{\partial y}{\partial x_{m1}}&amp;\frac{\partial y}{\partial x_{m2}}&amp;\cdots&amp;\frac{\partial y}{\partial x_{mn}}\end{array}\right]\label{6}\end{equation}</span>
+<ul>
+ 	<li>在公式 $latex (\ref{2}) ,x是 1\times 1 矩阵，微分\frac{\partial y}{\partial x}=a 也是 1\times 1 矩阵$</li>
+ 	<li>在公式 $latex (\ref{5}),\mathbf{x}是列向量(m\times 1 矩阵) , 微分\frac{\partial y}{\partial\mathbf{x}}=\mathbf{a} 也是跟向量 \mathbf{x}同型。$</li>
+</ul>
+$latex \mathbf{Example 1}\label{Example 1}\tag{Example 1}$：根据这个定义，我们可以得到  \begin{equation}\frac{\partial y}{\partial \mathbf{x}^T}=\big(\frac{\partial f}{\partial \mathbf{x}}\big)^T=\mathbf{a}^T\label{7}\end{equation}
+<h2 id="处理内积">处理内积</h2>
+$latex \mathbf{Theorem 1}.如果有一个多变量标量函数 f(x)=a^{T}x,微分是 \frac{\partial y}{\partial x}=a$
+<ul>
+ 	<li>$latex f(x)=a^Tx=a_1x_1+a_2x_2+\cdots+a_nx_n =a\cdot x$
+<ul>
+ 	<li>$latex f(x)=a\cdot x$ , 那么对x的偏导就是 a啦</li>
+</ul>
+</li>
+</ul>
+<span style="color: #3366ff;">$latex 如果有一个多变量标量函数 f(x)=Tr[a^Tx],得到微分 \frac{\partial f}{\partial x}=a\label{Proposition 2}\tag{Proposition 2}$</span>
+<ul>
+ 	<li>解释，Tr是方阵的对角线元素求和。</li>
+ 	<li>矩阵AB相乘，是矩阵A的第i行和矩阵B的第j列对应元素分别相乘后求和。这2个矩阵相乘后如果是个方阵，那么矩阵的迹就是对角线元素相加，而每个对角线元素的来源是 i=j 的时候，即A的第i行和B的第i行对应元素相加求和，这里AB是2个向量，综合起来就是，向量a和x对应元素相乘后求和。这个对矩阵也是一样的。2个同等大小的矩阵的点积等于2个矩阵的乘积（一个转置）的迹。</li>
+</ul>
+<h2 id="矩阵的迹的性质">矩阵的迹的性质</h2>
+<span style="color: #3366ff;">$latex 方阵的迹定义 Tr[A]=\sum_i A_{ii}   \label{Definition 2}\tag{Definition 2}$</span>
+<h3>Example 2.</h3>
+\begin{equation} \frac{\partial Tr[A]}{\partial A}=I \end{equation}
+<ul>
+ 	<li>根据 $latex (\ref{Definition 1},\ref{Definition 2})$推导</li>
+</ul>
+$latex \label{Theorem 3}\tag{Theorem 3}$
+
+假设矩阵A和B都是合适大小的矩阵，c为一个标量，矩阵的迹有如下性质。
+<ul>
+ 	<li id="Theorem 3-1"><span style="color: #0000ff;">\begin{multline}Tr[A+B]=Tr[A]+Tr[B]\label{Theorem 3.1}\tag{Theorem 3.1}\end{multline}</span>
+<ul>
+ 	<li>证明 ： 因为是线性的。</li>
+</ul>
+</li>
+ 	<li id="Theorem 3-2"><span style="color: #0000ff;">\begin{multline}Tr[cA]=cTr[A]\label{Theorem 3.2}\tag{Theorem 3.2}\end{multline}</span>
+<ul>
+ 	<li>证明 ： 因为是线性的。</li>
+</ul>
+</li>
+ 	<li id="Theorem-3-3"><span style="color: #0000ff;">\begin{multline}Tr[AB]=Tr[BA]\label{Theorem 3.3}\tag{Theorem 3.3}\end{multline}</span>
+<ul>
+ 	<li>注意：
+<ul>
+ 	<li><strong>这公式成立前提是AB矩阵的大小互为转置，比如一个是m*n大小，而另一个是n*m大小，这个才成立。</strong></li>
+ 	<li>$latex Tr(AB)=\sum\limits_{i=1}^{n}(AB)_{ii}=\sum\limits_{i=1}^{n}\sum\limits_{j=1}^{m}A_{ij}B_{ji}=\sum\limits_{j=1}^{m}\sum\limits_{i=1}^{n}B_{ji}A_{ij}=\sum\limits_{j=1}^{m} (AB)_{jj}=Tr(BA)$</li>
+ 	<li>我看到有人搞出 $latex Tr[ABC]=Tr[ACB]=Tr[CAB]$之类的，我认为是不严谨的
+<ul>
+ 	<li>很简单的反例，比如$latex A:(m\times p) , B:(p\times n ) ,C(n \times m)$,这时候ABC是可以相乘的，反倒是其他的ACB？就属于不能确定能用矩阵乘法的了。</li>
+ 	<li>对于想要交换位置的，我是用如下的公式 $latex Tr[AB]=Tr[B^TA^T]，B^T和A^T肯定能够相乘$，对于上式ABC例子， $latex Tr[ABC]=Tr[C^TB^TA^T]$</li>
+</ul>
+</li>
+ 	<li>作者有注明 ： "where A, B are matrices with proper sizes, and c is a scalar value."</li>
+</ul>
+</li>
+</ul>
+</li>
+ 	<li id="Theorem 3-4"><span style="color: #0000ff;">\begin{multline}Tr[A_1A_2\cdots A_n]=Tr[A_nA_1\cdots A_{n-1}]\label{Theorem 3.4}\tag{Theorem 3.4}\end{multline}</span>
+<ul>
+ 	<li>根据如上证明，将前面的看成一个整体。</li>
+ 	<li>注意：
+<ul>
+ 	<li>我个人认为这个是不严谨的，跟如上公式以上，是有前提条件的。</li>
+ 	<li>我看到这个作者后边有写一句话 "where A, B are matrices with proper sizes, and c is a scalar value."</li>
+</ul>
+</li>
+</ul>
+</li>
+ 	<li id="Theorem 3-5"><span style="color: #0000ff;">\begin{multline}Tr[A^TB]=\sum_i\sum_j A_{ij}B_{ij}\label{Theorem 3.5}\tag{Theorem 3.5}\end{multline}</span>
+<ul>
+ 	<li>显示了用矩阵乘积的迹表示对应元素的和，这个类似向量内积，作者称这个为广义内积。</li>
+ 	<li>我觉得另一种理解就是 $latex Tr[A^TB]=A\cdot B$ , 矩阵相乘写成矩阵点积的形式比较好理解。</li>
+</ul>
+</li>
+ 	<li id="Theorem 3-6"><span style="color: #0000ff;">\begin{multline}Tr[A]=Tr[A^T]\label{Theorem 3.6}\tag{Theorem 3.6}\end{multline}</span>
+<ul>
+ 	<li>矩阵的转置并没有更改对角线的数据。</li>
+ 	<li>注意，
+<ul>
+ 	<li>$latex Tr[AB]=Tr[B^TA^T]$
+<ul>
+ 	<li>转置后顺序颠倒</li>
+ 	<li>原因：
+<ul>
+ 	<li>比如A为m*p大小的矩阵，B为p*n大小的矩阵，相乘的出来的是m*n大小的矩阵。</li>
+ 	<li>矩阵乘法能成立的前提是被乘数的列数等于乘数的行数。</li>
+ 	<li>转置后要能相乘，就得是$latex B^T(n\times p 大小)$在前面，而$latex A^T(p\times m 大小)$在后边，这样被乘数的列数就等于成树的行数了。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2>处理广义内积</h2>
+<span style="color: #3366ff;">\begin{multline} 设多元标量函数  f(x) = Tr[A^Tx],其微分 \frac{\partial f}{\partial x}=A , A和x可以是矩阵 \label{Theorem 4}\tag{Theorem 4}\end{multline}</span>
+<ul>
+ 	<li>证明：
+<ul>
+ 	<li>矩阵的迹性质 $latex \ref{Theorem 3.5}$ 可以得到 \begin{equation} f(x)=Tr[A^Tx]=\sum\limits_{ij}A_{ij}x_{ij}\label{9}\end{equation}</li>
+ 	<li>然后 \begin{equation}\frac{\partial f}{\partial x_{ij}}=\frac{\partial\big(\sum_{ij}A_{ij}x_{ij}\big)}{\partial x_{ij}}=A_{ij}\end{equation}</li>
+ 	<li>最后根据 $latex (\ref{Definition 1})$ , 标量函数对矩阵的微分等于标量函数对矩阵的每项的微分。</li>
+</ul>
+</li>
+</ul>
+$latex \mathbf{Example 3}$
+
+有向量a,x和函数 $latex f(x)=a^Tx$
+
+\[\begin{align} &amp;\frac{\partial f}{\partial x^T}\\&amp;=\frac{\partial(a^Tx)}{\partial x^T}\\
+&amp;=\frac{\partial\left(Tr[a^Tx]\right)}{\partial x^T}&amp;f是标量\\
+&amp;=\frac{\partial\left(Tr[xa^T]\right)}{\partial x^T}&amp;\ref{Theorem 3.3}\\
+&amp;=\frac{\partial\left(Tr[ax^T]\right)}{\partial x^T}&amp;\ref{Theorem 3.6}\\
+&amp;=\frac{\partial\left(Tr[(a^T)^Tx^T]\right)}{\partial x^T}&amp;颠倒再颠倒\\
+&amp;=a^T&amp;\ref{Theorem 4}\end{align}\]
+
+和$latex \ref{Example 1}$ 结果相同。
+<h3>小结：</h3>
+我感觉这个用矩阵的迹的方式来求导的方式，矩阵的乘法是矩阵A的行和矩阵B的列对应元素分别相乘，而矩阵的迹（也就是矩阵AB相乘的结果）其实就是矩阵A和矩阵B的内积乘法（矩阵A的行和矩阵B的行对应元素分别相乘），这里边是有几个问题的
+<ul>
+ 	<li>要使得矩阵相乘的结果是一个标量，只有一种情况才能实现，就是矩阵A只有1行，矩阵B只有1列，且大小是一致的，</li>
+ 	<li>矩阵的迹等是方阵的，也就是说AB矩阵相乘的结果是方阵，这个只有在矩阵A的转置矩阵和B同型的时候才可以。</li>
+ 	<li>当然，作者举例是多元方程，而多元方程是可以理解成，对每一项而言，行列为转置，且大小是一致的。 $latex y=f(x)=a^Tx=a_1x_2+a_2x_2+\cdots+a_nx_n=a\cdot x$ ,a和x都是向量，矩阵乘法、矩阵内积（点积）可以这么看。</li>
+</ul>
+<h2>定义矩阵微分</h2>
+$latex 定义矩阵微分 \label{Definition 3}\tag{Definition 3}$
+
+\begin{align}\mathrm{d}A=\left[\begin{array}{cccc}\mathrm{d}A_{11}&amp;\mathrm{d}A_{12}&amp;\cdots&amp;\mathrm{d}A_{1n}\\\mathrm{d}A_{21}&amp;\mathrm{d}A_{22}&amp;\cdots&amp;\mathrm{d}A_{2n}\\\vdots&amp;\vdots&amp;\vdots&amp;\vdots\\\mathrm{d}A_{m1}&amp;\mathrm{d}A_{m2}&amp;\cdots&amp;\mathrm{d}A_{mn}\end{array}\right]\end{align}
+
+<span style="color: #0000ff;">$latex \mathrm{d}Tr[A]=Tr[\mathrm{d}A]\label{Theorem 5}\tag{Theorem 5}$</span>
+<ul>
+ 	<li>证明：
+<ul>
+ 	<li>\begin{align}LHS&amp;=\mathrm{d}Tr[A]&amp;=&amp;\mathrm{d}\left(\sum_i A_{ii}\right)=\sum_i\mathrm{d}A_{ii}\\RHS&amp;=
+Tr[\mathrm{d}A]&amp;=&amp;Tr\left[\begin{array}{cccc}\mathrm{d}A_{11}&amp;\mathrm{d}A_{12}&amp;\cdots&amp;\mathrm{d}A_{1n}\\
+\mathrm{d}A_{21}&amp;\mathrm{d}A_{22}&amp;\cdots&amp;\mathrm{d}A_{2n}\\\vdots&amp;\vdots&amp;\vdots&amp;\vdots\\\mathrm{d}A_{m1}&amp;\mathrm{d}A_{m2}&amp;\cdots&amp;\mathrm{d}A_{mn}\end{array}\right]\\&amp;&amp;=&amp;\sum_i\mathrm{d}A_{ii}=\mathrm{d}Tr[A]\end{align}
+<ul>
+ 	<li>$latex A_{ii}$ 就是对角线上的元素，</li>
+</ul>
+</li>
+</ul>
+</li>
+ 	<li>总结就是，
+<ul>
+ 	<li>一个是先将矩阵的主对角线上元素找出来，然后分别求导。</li>
+ 	<li>一个是将将矩阵的所有元素求导，然后把主对角线上的元素找出来。</li>
+</ul>
+</li>
+</ul>
+标量版本的导数和微分是如下形式
+
+\begin{align}\mathrm{d}f=\frac{\partial f}{\partial x}\mathrm{d}x\label{22}\end{align}
+
+我们要根据这个标量版本的搞定矩阵版本的，
+<ul>
+ 	<li>首先，$latex f$还是是标量函数，</li>
+ 	<li>矩阵版本的，这个$latex x $肯定是矩阵啦。</li>
+ 	<li>然后 $latex \frac{\partial f}{\partial x}和\mathrm{d}x $也是矩阵啦。</li>
+ 	<li>然后要这个等式成立，我们必须找出一种方法让 RHS 的结果为标量，也就是关于$latex \frac{\partial f}{\partial x}和\mathrm{d}x $的运算结果是个标量，而不是个矩阵。</li>
+ 	<li>这个作者找到矩阵的迹符合这个要求。</li>
+</ul>
+然后就如下的
+
+<span style="color: #ff0000;">$latex \label{Theorem 6}\tag{Theorem 6}$</span>
+
+<span style="color: #ff0000;">\begin{align}\mathrm{d}f=Tr\left[\left(\frac{\partial f}{\partial x}\right)^T\mathrm{d}x\right]\end{align}</span>
+<ul>
+ 	<li>证明 \begin{align}LHS &amp; = \mathrm{d}f\\
+矩阵微分定义,对每项求导再组合 &amp; = \sum\limits_{ij}\frac{\partial f}{\partial x_{ij}}\mathrm{d}x_{ij}\\
+RHS &amp; =Tr\left[\left(\frac{\partial f}{\partial x}\right)^T\mathrm{d}x\right] \\
+矩阵的迹就是对应项目相乘求和\ref{Theorem 3.5} &amp; = \sum\limits_{ij}\left(\frac{\partial f}{\partial x}\right)_{ij}(\mathrm{d}x)_{ij}\\
+矩阵微分定义\ref{Definition 3} &amp; =  \sum\limits_{ij}\left(\frac{\partial f}{\partial x}\right)_{ij}\mathrm{d}x_{ij}\\
+\ref{Definition 1} &amp; = \sum\limits_{ij}\frac{\partial f}{\partial x_{ij}}\mathrm{d}x_{ij}\\
+&amp; = LHS\end{align}</li>
+ 	<li>这个定理在矩阵导数和矩阵微分间建立桥梁。我们写成这个形式，就可以直接写出矩阵的导数了。</li>
+</ul>
+<h3>小结：</h3>
+<ul>
+ 	<li>作者没说套上这个矩阵的迹为什么可以啊。</li>
+ 	<li>只是说这样就可以了。</li>
+ 	<li>我看看是我是否能搞明白吧，原版30页，我才看到第7页啊。</li>
+ 	<li>折磨历程：
+<ul>
+ 	<li>对于微分，我们一般是这样子求的 $latex \frac{\partial y}{\partial x}=\frac{y(x+\Delta x)-y(x)}{x-\Delta x}=\frac{\mathrm{d}f}{\mathrm{d}x}$
+<ul>
+ 	<li>可以写成 $latex \mathrm{d}f=\frac{\partial f}{\partial x}\mathrm{d}x$</li>
+</ul>
+</li>
+ 	<li>然后这个y是多元标量函数（向量函数吧）的话， $latex f(x)=a^Tx$
+<ul>
+ 	<li>全微分形式可以表示成 $latex \mathrm{d}f=\frac{\partial f}{\partial x}\mathrm{d}x$</li>
+ 	<li>其实这里的全微分形式都已经是近似了。 $latex \Delta z=f_x'()\Delta x+f_y'()\Delta y+o(\rho)$</li>
+</ul>
+</li>
+ 	<li>我觉得吧，到这里，对标量函数和向量函数，其全微分都是这种形式，都是类似点积内积的那种对应项目相乘，他把矩阵的也看成对应项目相乘了。
+<ul>
+ 	<li>应为对矩阵的求导本身就是对矩阵的每个元素进行求导啊。</li>
+</ul>
+</li>
+</ul>
+</li>
+ 	<li>我觉得可以用矩阵的迹是因为，一个标量对矩阵求导，等于这个标量对这个矩阵中的每一项分别求导，这个可以用多元函数的全微分形式来表示
+<ul>
+ 	<li><a href="http://127.0.0.1/?p=1207" target="_blank" rel="noopener">多元函数全微分</a>
+<ul>
+ 	<li>$$ u=f(x_1,x_2,\cdots,c_n),\mathrm{d}u=f_{x_1}’\mathrm{d}x_1+f_{x_2}’\mathrm{d}x_2+\cdots+f_{x_n}’\mathrm{d}x_n$$</li>
+</ul>
+</li>
+ 	<li>而这个<a href="http://127.0.0.1/?p=1207" target="_blank" rel="noopener">多元函数的全微分</a>可以表示为：
+<ul>
+ 	<li>$latex \mathrm{d}f=\sum\limits_i \frac{\partial f}{\partial x_i}\mathrm{d}x_i$
+<ul>
+ 	<li>这里是 $latex \sum\limits_i $ 表示一个向量，但是也是可以用$latex \sum\limits_{ij} $来表示一个矩阵啊。</li>
+</ul>
+</li>
+</ul>
+</li>
+ 	<li>恰巧<a href="http://127.0.0.1/?p=1229" target="_blank" rel="noopener">矩阵的迹</a>也可以表示对应项目相乘并求和，矩阵的迹有个性质是 ：$latex Tr[A^TB]=\sum\limits_{ij} A_{ij}B_{ij}$</li>
+</ul>
+</li>
+ 	<li>至于为什么可以用这种分别求导的方式，我觉得可以参考<a href="http://127.0.0.1/?p=1207" target="_blank" rel="noopener">多元函数全微分</a>。</li>
+ 	<li>小结的总结：
+<ul>
+ 	<li>因为多元函数全微分可以表示为 $latex u=f(x_1,x_2,\cdots,c_n),\mathrm{d}u=f_{x_1}’\mathrm{d}x_1+f_{x_2}’\mathrm{d}x_2+\cdots+f_{x_n}’\mathrm{d}x_n=\sum\limits_i \frac{\partial f}{\partial x_i}\mathrm{d}x_i$</li>
+ 	<li>所以标量对矩阵的求导定义为标量对矩阵的每项求导。$latex \ref{Definition 1}$</li>
+ 	<li>标量的变化值等于每项的导数乘以每项的变化量。</li>
+ 	<li>标量对矩阵的每项求导，破坏了矩阵的整体，我们还是希望运用矩阵来运算。</li>
+ 	<li>这时候矩阵的迹出来了，矩阵的迹有个性质是 $latex Tr[A^TB]=\sum\limits_{ij} A_{ij}B_{ij}$，结果是一样的 ，这样标量对矩阵的求导可以表示成，$$\mathrm{d}f=\sum\limits_i \frac{\partial f}{\partial x_i}\mathrm{d}x_i=Tr\left[\left(\frac{\partial f}{\partial x}\right)^T\mathrm{d}x\right]$$</li>
+</ul>
+</li>
+</ul>
+<h2>矩阵微分的性质</h2>
+$latex \label{Theorem 7}\tag{Theorem 7}$
+
+矩阵微分拥有如下性质
+<ul>
+ 	<li><span style="color: #0000ff;">$latex \mathrm{d}(cA)=c\mathrm{d}(A)$</span></li>
+ 	<li><span style="color: #0000ff;">$latex \mathrm{d}(A+B)=\mathrm{d}A+\mathrm{d}B$</span></li>
+ 	<li><span style="color: #0000ff;">$latex \mathrm{d}(AB)=\mathrm{d}AB+A\mathrm{d}B$</span>
+<ul>
+ 	<li>证明
+<ul>
+ 	<li>\begin{align} LHS_{ij} &amp; = \mathrm{d}\big(\sum\limits_k A_{ik}B_{kj}\big) &amp; 矩阵乘法，第i行，第k列，对应元素相乘求和\\&amp; = \sum\limits_k \mathrm{d}\left(A_{ik}B_{kj}\right)&amp;微分加法\\&amp; = \sum\limits_k \big(\mathrm{d}A_{ik}B_{kj}+A_{ik}\mathrm{d}B_{kj}&amp;其中A_{ik}和B_{kj}都是矩阵中的元素，用微分乘法\\RHS_{ij} &amp; = (\mathrm{d}AB)_{ij}+(A\mathrm{d}B)_{ij}\\&amp; = \sum\limits_k\mathrm{d}A_{ik}B_{kj}+\sum\limits_kA_{ik}\mathrm{d}B_{kj}&amp;\mathrm{d}AB是矩阵乘法，取ij项\\&amp; = LHS_{ij}\end{align}</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+$latex \mathbf{Example 4}\label{Example 4}\tag{Example 4}$：
+
+给函数 $latex f(x)=x^TAx$,A为方阵，x是一个列向量，求导
+
+\begin{align}\mathrm{d}f &amp; =\mathrm{d}Tr\left[x^TAx\right]\\&amp; =Tr\left[\mathrm{d}\left(x^TAx\right)\right]\\
+&amp; = Tr\left[\mathrm{d}x^TAx+x^T\mathrm{d}(Ax)\right]\\
+&amp; = Tr\left[\mathrm{d}x^TAx+x^T\mathrm{d}Ax+x^TA\mathrm{d}x\right]\\
+A是常数 &amp; = Tr\left[\mathrm{d}x^TAx+x^TA\mathrm{d}x\right]\\
+&amp;=Tr\left[\mathrm{d}x^TAx\right]+Tr\left[x^TA\mathrm{d}x\right]\\
+&amp;=Tr\left[x^TA^T\mathrm{d}x\right]+Tr\left[x^TA\mathrm{d}x\right]\\
+&amp;=Tr\left[x^TA^T\mathrm{d}x + x^TA\mathrm{d}x\right]\\
+&amp;=Tr\left[(x^TA^T + x^TA)\mathrm{d}x\right]\end{align}
+
+然后我们用 $latex \ref{Theorem 6}$ ,得到
+
+$$\frac{\partial f}{\partial x}=(x^TA^T + x^TA)^T=Ax+A^Tx$$
+
+特别的，当A为对阵矩阵的时候
+
+\begin{multline}\frac{\partial f}{\partial x}=2Ax\end{multline}
+
+当A=I的时候
+
+\begin{multline}\frac{\partial x^Tx}{\partial x}=2x\end{multline}
+
+$latex \mathbf{Example 5}\label{Example 5}\tag{Example 5}$：
+
+对于非奇异方阵X，我们有 $latex XX^{-1}=I$
+
+两边取矩阵微分
+
+\begin{align}0=\mathrm{d}I=\mathrm{d}(XX^{-1})=\mathrm{d}(X)X^{-1}+X\mathrm{d}(X^{-1})\end{align}
+
+重新整理关系
+
+\begin{align}\mathrm{d}(X^{-1})=-X^{-1}\mathrm{d}(X)X^{-1}\end{align}
+<h2>标量函数的求导模式</h2>
+上边的示例已经演示了通用模式，在这里，我们总结结论过程。
+<ol>
+ 	<li>$latex \mathrm{d}f=\mathrm{d}Tr[f]=Tr[\mathrm{d}f]$ 标量函数的迹就是本身。$latex f(x)=Tr[f(x)]$</li>
+ 	<li>应用 矩阵的迹定理 $latex \ref{Theorem 3}$ 以及 矩阵微分属性 $latex \ref{Theorem 7}$ ,将函数转化成如下形式 \begin{align}\mathrm{d}f=Tr[A^T\mathrm{d}x]\end{align}</li>
+ 	<li>应用$latex \ref{Theorem 6}$ ，A就是导数啦。 \begin{align}\frac{\partial f}{\partial x}=A\end{align}</li>
+ 	<li>如下贴上公式
+<ol>
+ 	<li>如下贴上矩阵的迹定理 ，详细的请参考 $latex \ref{Theorem 3}$
+<ul>
+ 	<li>$latex Tr[A+B]=Tr[A]+Tr[B]$</li>
+ 	<li>$latex Tr[cA]=cTr[A]$</li>
+ 	<li>$latex Tr[AB]=Tr[BA]$ : <strong>慎用这个</strong></li>
+ 	<li>$latex Tr[A_1A_2\cdots A_n]=Tr[A_nA_1\cdots A_{n-1}]$ : <strong>慎用这个</strong></li>
+ 	<li>$latex Tr[A^TB]=\sum_i\sum_j A_{ij}B_{ij}$</li>
+ 	<li>$latex Tr[A]=Tr[A^T]$</li>
+</ul>
+</li>
+ 	<li>如下贴上矩阵微分属性，详细的请参考 $latex \ref{Theorem 7}$
+<ul>
+ 	<li>$latex \mathrm{d}(cA)=c\mathrm{d}(A)$</li>
+ 	<li>$latex \mathrm{d}(A+B)=\mathrm{d}A+\mathrm{d}B$</li>
+ 	<li>$latex \mathrm{d}(AB)=\mathrm{d}AB+A\mathrm{d}B$</li>
+</ul>
+</li>
+ 	<li>$latex \ref{Theorem 6}$
+<ul>
+ 	<li>$latex \mathrm{d}f=Tr\left[\left(\frac{\partial f}{\partial x}\right)^T\mathrm{d}x\right]$</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h2>行列式</h2>
+$latex \label{Theorem 8}\tag{Theorem 8}$
+
+设A为方阵
+<ul>
+ 	<li>$latex 余子式 ： M_{ij}是矩阵A移除第i行第j列后的的(n-1)大小的矩阵的行列式的值$</li>
+ 	<li>$latex 代数余子式定义: C_{ij}=(-1)^{i+j}M_{ij}$</li>
+ 	<li>如果我们对第i行展开行列式，$latex det(A)=\sum_j A_{ij}C_{ij}$</li>
+ 	<li>A的伴随矩阵定义 $latex adj(A)_{ij}=(-1)^{i+j}M_{ji}=C_{ji} ，所以 adj(A)=C^T$</li>
+ 	<li>对于非奇异矩阵A，我们得到 $latex A^{-1}=\frac{adj(A)}{det(A)}=\frac{C^T}{det(A)}$</li>
+</ul>
+请注意行列式的结果是个标量，如上讨论的标量对矩阵求导计数都适应。我们先用对每个元素求导，
+
+\begin{align}\frac{\partial det(A)}{\partial A_{ij}}=\frac{\partial \left(\sum_j A_{ij} C_{ij}\right)}{\partial A_{ij}}=C_{ij}\end{align}
+
+<span style="color: #0000ff;">\begin{align}\frac{\partial det(A)}{\partial A}=C=adj(A)^T\end{align}</span>
+
+也就是说，行列式的导数等于代数余子式，也等于伴随矩阵的转置。，
+
+如果A为非奇异矩阵，则
+
+\begin{align}\frac{\partial det(A)}{\partial A}=\left(det(A)A^{-1}\right)^T=det(A)(A^{-1})^T\end{align}
+
+应用 $latex \ref{Theorem 6}$ , 行列式的结果是标量
+
+\begin{align}\mathrm{d}  det(A) &amp; = Tr\left[\left(\frac{\partial det(A)}{\partial A}\right)^T\mathrm{d}A\right]\\
+&amp;= Tr\left[\left(det(A)(A^{-1})^T\right)^T\mathrm{d}A\right]\\
+&amp;=Tr\left[det(A)A^{-1}\mathrm{d}A\right]\end{align}
+
+在很多应用中，对数行列式得到更广泛的应用
+
+<span style="color: #0000ff;">\begin{align}\frac{\partial \ln det(A)}{\partial A}=\frac{1}{det(A)}\frac{\partial det(A)}{\partial A}=(A^{-1})^T\end{align}</span>
+<ul>
+ 	<li>菜鸟啊，如上可以这么理解，对数行列式 $latex (\ln \det(A))'$</li>
+ 	<li>加上这个公式就比较好理解了吧。$latex \lbrack ln(y) \rbrack’ = \frac{1}{y} y’ $</li>
+ 	<li>如上的公式是说，对数行列式等于逆矩阵的转置。</li>
+</ul>
+微分如下：
+
+\begin{align}\mathrm{d}\ln det(A)=Tr\left[A^{-1}\mathrm{d}A\right]\end{align}
+
+&nbsp;
+<h2>向量函数和向量变量</h2>
+上边的章节展示了如何处理标量函数，为了处理向量函数，我们应该把注意力几种在向量变量上，
+
+我们借用雅可比矩阵和海森矩阵做出如下定义。
+
+\begin{align} H(f)=\left[\begin{array}{cccc}\frac{\partial^2f}{\partial x_1 \partial x_1}&amp;\frac{\partial^2f}{\partial x_1 \partial x_2}&amp;\cdots&amp;\frac{\partial^2f}{\partial x_1 \partial x_n}\\\frac{\partial^2f}{\partial x_2 \partial x_1}&amp;\frac{\partial^2f}{\partial x_2 \partial x_2}&amp;\cdots&amp;\frac{\partial^2f}{\partial x_2 \partial x_n}\\\vdots&amp;\vdots&amp;\vdots&amp;\vdots\\\frac{\partial^2f}{\partial x_n \partial x_1}&amp;\frac{\partial^2f}{\partial x_n \partial x_2}&amp;\cdots&amp;\frac{\partial^2f}{\partial x_n \partial x_n}\end{array}\right]\end{align}
+
+\begin{align}J=\left[\begin{array}{ccc}\frac{\partial y_1}{\partial x_1}&amp;\cdots&amp;\frac{\partial y_1}{\partial x_n}\\\vdots&amp;\vdots&amp;\vdots\\\frac{\partial y_m}{\partial x_1}&amp;\cdots&amp;\frac{\partial y_m}{\partial x_n}\end{array}\right]\end{align}
+<ul>
+ 	<li>上边的$latex \frac{\partial^2f}{\partial x_1 \partial x_2} 相当于先对x_1求导，然后对x_2求导。\frac{\partial}{\partial x_2}\left(\frac{\partial f}{\partial x_1}\right)$</li>
+ 	<li>海森矩阵可以看作显示计算 $latex \frac{\partial y}{\partial x} $ , 然后这个结果是个向量，就再对向量求导。</li>
+</ul>
+$latex \label{Definition 4}\tag{Definition 4}$
+
+<span style="color: #0000ff;">有向量函数 $latex f=[f_1,f_2,\cdots,f_n]^T ,  f_i=f_i(x) , x=[x_1,x_2,\cdots,x_m]^T ，我们做出如下定义$</span>
+
+<span style="color: #0000ff;">\begin{align}\frac{\partial f}{\partial x}=\left[\begin{array}{cccc}\frac{\partial f_1}{\partial x_1}&amp;\frac{\partial f_2}{\partial x_1}&amp;\cdots&amp;\frac{\partial f_n}{\partial x_1}\\\frac{\partial f_1}{\partial x_2}&amp;\frac{\partial f_2}{\partial x_2}&amp;\cdots&amp;\frac{\partial f_n}{\partial x_2}\\\vdots&amp;\vdots&amp;\vdots&amp;\vdots\\\frac{\partial f_1}{\partial x_m}&amp;\frac{\partial f_2}{\partial x_m}&amp;\cdots&amp;\frac{\partial f_n}{\partial x_m}\end{array}\right]\end{align}</span>
+<ul>
+ 	<li>相当于分母布局吧，Denominator layout ：根据$latex y^T$（也就是与y相反）与x进行布局</li>
+ 	<li>雅可比矩阵相当于分子布局吧，y不变，x转置，</li>
+</ul>
+根据如上的定义，我们重新考虑海森矩阵的定义。
+
+\begin{align}H(f)=\frac{\partial}{\partial x}\left(\frac{\partial f}{\partial x^T}\right)\end{align}
+
+&nbsp;
+<h2>向量函数微分</h2>
+$latex \label{Theorem 9}\tag{Theorem 9}$
+
+根据 $latex \ref{Definition 4}$ , 我们可以得到 $latex \mathrm{d}f=\left(\frac{\partial f}{\partial x}\right)^T\mathrm{d}x$
+<ul>
+ 	<li>注意
+<ul>
+ 	<li>矩阵乘法中，是前面的行和后边的列对应元素相乘，已知 $latex x=[x_1,x_2,\cdots,x_m]^T $ , 那么$latex \frac{\partial f}{\partial x}$需要转置后相乘，也只有这样，才能，比如 $latex \frac{\partial f_1}{\partial x_2}\mathrm{d}x_2$，对应的相乘啊。</li>
+</ul>
+</li>
+ 	<li> 证明
+<ul>
+ 	<li>显然 $latex \mathrm{d}f$ 是有n项的，我们可以拿每个元素来证明，y有n项，x有m项。</li>
+ 	<li>\begin{align}LHS_j &amp;= \mathrm{d}f_j \\ &amp;= \sum\limits_{i=1}^{m} \frac{\partial f_i}{\partial x_i} \mathrm{d}x_i \\RHS_j &amp;=\left((\frac{\partial f}{\partial x})^Tx\right)_j \\
+&amp;=\sum\limits_{i=1}^{m}(\frac{\partial f}{\partial x})_{ji}^Tx_i\\
+&amp;=\sum\limits_{i=1}^{m}(\frac{\partial f}{\partial x})_{ij}x_i\\
+&amp;=\sum\limits_{i=1}^{m}(\frac{\partial y_j}{\partial x_i})x_i\\&amp;=LHS_j\end{align}</li>
+</ul>
+</li>
+</ul>
+跟 $latex \ref{Theorem 6}$ 相比，没有用矩阵的迹操作符了。
+
+$latex \mathbf{Example 7}\label{Example 7}\tag{Example 7}$：
+
+函数 $latex x=\sigma\Lambda^{-0.5}W^T\xi$,计算雅可比行列式的绝对值。
+<ul>
+ 	<li>$latex \sigma$为实数</li>
+ 	<li>$latex \Lambda$为满秩对角矩阵</li>
+ 	<li>$latex W 是正交方阵，即 WW^T=W^TW=I$</li>
+</ul>
+计算
+<ul>
+ 	<li>首先我们计算  $latex \frac{\partial x}{\partial \xi}$
+<ul>
+ 	<li>\begin{align} \mathrm{d}x=(\sigma\Lambda^{-0.5}W^T)\mathrm{d}\xi\end{align}</li>
+ 	<li>应用 $latex \ref{Theorem 9}$ ，\begin{align}\frac{\partial x}{\partial \xi}=(\sigma\Lambda^{-0.5}W^T)^T\end{align}</li>
+</ul>
+</li>
+ 	<li>雅可比矩阵就是这个导数的转置  \begin{align} J_m=(\frac{\partial x}{\partial \xi})^T=((\sigma\Lambda^{-0.5}W^T)^T)^T=(\sigma\Lambda^{-0.5}W^T)\end{align}</li>
+ 	<li>下面就是计算雅可比矩阵的行列式的绝对值了。</li>
+ 	<li>\begin{align}|J|&amp;=|det(J_m)|\\&amp;=\sqrt{|det(J_m)||det(J_m)|}&amp;平方然后求平方根，绝对值啊\\
+&amp;=\sqrt{|det(J_m^T)||det(J_m)|}&amp;行列式转置\\
+&amp;=\sqrt{|det(J_m^TJ-M)|}&amp;矩阵乘以矩阵转置相当于每个元素的平方\\
+&amp;=\sqrt{|det(J-MJ_m^T)|}&amp;因为这个互为转置矩阵，所以可以这么搞\\
+&amp;=\sqrt{|det(W\Lambda^{-0.5}\sigma\sigma\Lambda^{-0.5}W^T)|}&amp;将值代入\\
+&amp;=\sqrt{|det(\sigma^2W\Lambda^{-1}W^T)|}&amp;\sigma是实数，可以挪到任何地方\end{align}</li>
+</ul>
+如下的部分看不懂。没写上来
+
+&nbsp;
+
+$latex \label{Theorem 10}\tag{Theorem 10}$
+
+当f和x的尺寸相同，根据 $latex \ref{Definition 4}$
+
+\begin{align} (\frac{\partial f}{\partial x})^{-1}=\frac{\partial x}{\partial y}\end{align}
+<ul>
+ 	<li>证明
+<ul>
+ 	<li>\begin{align}\mathrm{d}f&amp;=(\frac{\partial f}{\partial x})^T\mathrm{d}x\\
+((\frac{\partial f}{\partial x})^T)^{-1}\mathrm{d}f&amp;=\mathrm{d}x\\
+\mathrm{d}x&amp;=((\frac{\partial f}{\partial x})^T)^{-1}\mathrm{d}f\\
+\mathrm{d}x&amp;=((\frac{\partial f}{\partial x})^{-1})^{T}\mathrm{d}f\end{align}</li>
+ 	<li>应用 $latex \ref{Theorem 9}$ 就得到 \begin{align}\frac{\partial x}{\partial y}=(\frac{\partial f}{\partial x})^{-1}\end{align}</li>
+</ul>
+</li>
+</ul>
+&nbsp;
+<h2>链式法则</h2>
+矩阵求导也有链式法则，只是要注意矩阵是有维度的。
+
+$latex \label{Theorem 11}\tag{Theorem 11}$
+<ul>
+ 	<li>前提条件
+<ul>
+ 	<li>假设我们有n个列向量 $latex x^{(1)},x^{(2)},\cdots,x^{(n)} $,
+<ul>
+ 	<li>每个列向量的长度为 $latex l_1,l_2,\cdots,l_n$</li>
+</ul>
+</li>
+ 	<li>我们知道 $latex x^{(n)}是x^{(n-1)}的函数,i=2,3,\cdots,n$</li>
+</ul>
+</li>
+ 	<li>公式 <span style="color: #0000ff;">\begin{align}\frac{\partial x^{(n)}}{\partial x^{(1)}}=\frac{\partial x^{(2)}}{\partial x^{(1)}}\frac{\partial x^{(3)}}{\partial x^{(2)}}\cdots \frac{\partial x^{(n)}}{\partial x^{(n-1)}}\end{align}</span></li>
+ 	<li>证明
+<ul>
+ 	<li>根据 $latex \ref{Theorem 9}$,我们可以写出如下信息
+\begin{align}&amp;\mathrm{d}x^{(2)}=\left(\frac{\partial x^{(2)}}{\partial x^{(1)}}\right)^T\mathrm{d}x^{(1)}\\
+&amp;\mathrm{d}x^{(3)}=\left(\frac{\partial x^{(3)}}{\partial x^{(2)}}\right)^T\mathrm{d}x^{(2)}\\
+&amp;\mathrm{d}x^{(4)}=\left(\frac{\partial x^{(4)}}{\partial x^{(3)}}\right)^T\mathrm{d}x^{(3)}\\
+&amp;\cdots\\
+&amp;\mathrm{d}x^{(n)}=\left(\frac{\partial x^{(n)}}{\partial x^{(n-1)}}\right)^T\mathrm{d}x^{(n-1)}\end{align}</li>
+ 	<li>如上的组成一个公式，
+\begin{align}\mathrm{d}x^{(n)}&amp;=\left(\frac{\partial x^{(n)}}{\partial x^{(n-1)}}\right)^T\cdots\left(\frac{\partial x^{(4)}}{\partial x^{(3)}}\right)^T\left(\frac{\partial x^{(3)}}{\partial x^{(2)}}\right)^T\left(\frac{\partial x^{(2)}}{\partial x^{(1)}}\right)^T\mathrm{d}x^{(1)}\\
+&amp;=\left(\frac{\partial x^{(2)}}{\partial x^{(1)}}\frac{\partial x^{(3)}}{\partial x^{(2)}}\frac{\partial x^{(4)}}{\partial x^{(3)}}\cdots\frac{\partial x^{(n)}}{\partial x^{(n-1)}}\right)^T\mathrm{d}x^{(1)}\end{align}
+<ul>
+ 	<li>如上有公式 $latex (AB)^T=B^TA^T$</li>
+</ul>
+</li>
+ 	<li>根据 $latex \ref{Theorem 9}$
+\begin{align}\frac{\partial x^{(n)}}{\partial x^{(1)}}=\frac{\partial x^{(2)}}{\partial x^{(1)}}\frac{\partial x^{(3)}}{\partial x^{(2)}}\cdots \frac{\partial x^{(n)}}{\partial x^{(n-1)}}\\\end{align}</li>
+</ul>
+</li>
+</ul>
+$latex \label{Theorem 12}\tag{Theorem 12}$
+<ul>
+ 	<li>前提
+<ul>
+ 	<li>考虑这么一个链</li>
+ 	<li>数据类型
+<ul>
+ 	<li>x是一个标量</li>
+ 	<li>y是一个列向量</li>
+ 	<li>z是一个标量</li>
+</ul>
+</li>
+ 	<li>数据关系
+<ul>
+ 	<li>$latex z=z(y)$</li>
+ 	<li>$latex y_i=y_i(x) , i = 1,2,\cdots,n$</li>
+</ul>
+</li>
+</ul>
+</li>
+ 	<li>公式
+\begin{align}\frac{\partial z}{\partial x}=\frac{\partial y}{\partial x}\frac{\partial z}{\partial y}=\sum\limits_{i=1}^{n}\frac{\partial y_i}{\partial x}\frac{\partial z}{\partial y_i}\end{align}</li>
+ 	<li>解释
+<ul>
+ 	<li>链子 $latex x\rightarrow y_i \rightarrow z$</li>
+</ul>
+</li>
+</ul>
+$latex \mathbf{Example 8}\label{Example 8}\tag{Example 8}$
+<ul>
+ 	<li>求 $latex (x-\mu)^T\sum^{-1}(x-\mu) 对 \mu$的导数。
+<ul>
+ 	<li>$latex \sum^{-1}$为对称矩阵。</li>
+</ul>
+</li>
+ 	<li>解：
+<ul>
+ 	<li>\begin{align}&amp;\frac{\partial\big[(x-\mu)^T\sum^{-1}(x-\mu)\big]}{\partial \mu}\\
+将(x-\mu)看作一个整体&amp;=\frac{\partial\big[x-\mu\big]}{\partial \mu}\frac{\partial\big[(x-\mu)^T\sum^{-1}(x-\mu)\big]}{\partial\big[x-\mu\big]}\\
+\ref{Example 4}&amp;=\frac{\partial\big[x-\mu\big]}{\partial \mu}2\sum^{-1}(x-\mu)\\
+(\mathrm{d}[x-\mu])=-I\mathrm{\mu})&amp;=-I\sum^{-1}(x-\mu)\\
+&amp;=-\sum^{-1}(x-\mu)\end{align}</li>
+</ul>
+</li>
+</ul>
+<h1>应用</h1>
+<h2>最小二乘法</h2>
+这个例子简单，
+
+\begin{align}f(x)&amp;=||y-Ax||^2\\&amp;=||y-Ax||^T||y-Ax||&amp;相当于每个元素相乘了\\
+\mathrm{d}f&amp;=\mathrm{d}Tr[(y-Ax)^T(y-Ax)]&amp;差值平方后求和，最后是个标量\\
+&amp;=Tr[\mathrm{d}(y-Ax)^T(y-Ax)+(y-Ax)^T\mathrm{d}(y-Ax)]&amp;微分乘法\\
+&amp;=Tr[(\mathrm{d}y-\mathrm{d}(Ax))^T(y-Ax)+(y-Ax)^T(\mathrm{d}y-\mathrm{d}(Ax))]\\
+&amp;=Tr[(-\mathrm{d}(Ax))^T(y-Ax)+(y-Ax)^T(-\mathrm{d}(Ax))]&amp;\mathrm{d}y=0,标量微分当然等于0\\
+&amp;=Tr[(-(A\mathrm{d}x))^T(y-Ax)+(y-Ax)^T(-A\mathrm{d}(x))]&amp;A为标量，所以\mathrm{d}(Ax)=A\mathrm{d}x\\
+&amp;=-Tr[((A\mathrm{d}x))^T(y-Ax)+(y-Ax)^TA\mathrm{d}(x)]&amp;这步只是把负号提取出来\\
+&amp;=-Tr[(y-Ax)^TA\mathrm{d}x+(y-Ax)^TA\mathrm{d}x]&amp;Tr[AB]=Tr[B^TA^T]\\
+&amp;=-2Tr[(y-Ax)^TA\mathrm{d}x]\\
+&amp;=Tr[(-2A^T(y-Ax))^TA\mathrm{d}x]&amp;自创的矩阵乘法公式 AB=(B^TA^T)^T\end{align}
+
+这样就求出导数 $$\frac{\partial y}{\partial x}=-2A^T(y-Ax)$$
+
+设导数=0，也就是说
+
+\begin{align}0&amp;=2A^T(y-Ax)\\
+A^Ty&amp;=A^TAx\\
+x&amp;=(A^TA)^{-1}A^Ty\end{align}
+
+因为矩阵乘法 $latex AB\ne BA$，所以要注意左右，这里要消除等号右边的 $latex A^TA$,那么可以等号两边都在左边乘以 $latex (A^TA)^{-1}$，就得到如上的形式了。
+<h1>总结</h1>
+<h2>定义</h2>
+<ul>
+ 	<li>标量f对矩阵x的求导 \begin{align}\frac{\partial f}{\partial x}=\left[\begin{array}{cccc}\frac{\partial f}{\partial x_{11}}&amp;\frac{\partial f}{\partial x_{12}}&amp;\cdots&amp;\frac{\partial f}{\partial x_{1n}}\\\frac{\partial f}{\partial x_{21}}&amp;\frac{\partial f}{\partial x_{22}}&amp;\cdots&amp;\frac{\partial f}{\partial x_{2n}}\\\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\\frac{\partial f}{\partial x_{m1}}&amp;\frac{\partial f}{\partial x_{m2}}&amp;\cdots&amp;\frac{\partial f}{\partial x_{mn}}\end{array}\right]\end{align}</li>
+ 	<li>列向量f对列向量x求导  \begin{align}\frac{\partial f}{\partial x}=\left[\begin{array}{cccc}\frac{\partial f_1}{\partial x_{1}}&amp;\frac{\partial f_2}{\partial x_{1}}&amp;\cdots&amp;\frac{\partial f_n}{\partial x_{1}}\\\frac{\partial f_1}{\partial x_{2}}&amp;\frac{\partial f_2}{\partial x_{2}}&amp;\cdots&amp;\frac{\partial f_n}{\partial x_{2}}\\\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\\frac{\partial f_1}{\partial x_{m}}&amp;\frac{\partial f_2}{\partial x_{m}}&amp;\cdots&amp;\frac{\partial f_n}{\partial x_{m}}\end{array}\right]\end{align}</li>
+ 	<li>对于 $latex m\times n $的矩阵A，其微分如下： \begin{align}\mathrm{d}A=\left[\begin{array}{cccc}\mathrm{d}A_{11}&amp;\mathrm{d}A_{12}&amp;\cdots&amp;\mathrm{d}A_{1n}\\\mathrm{d}A_{21}&amp;\mathrm{d}A_{22}&amp;\cdots&amp;\mathrm{d}A_{2n}\\\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\\mathrm{d}A_{m1}&amp;\mathrm{d}A_{m2}&amp;\cdots&amp;\mathrm{d}A_{mn}\end{array}\right]\end{align}</li>
+</ul>
+<h2>标量函数的求导模式</h2>
+<ol>
+ 	<li>$latex \mathrm{d}f=\mathrm{d}Tr[f]=Tr[\mathrm{d}f]$ 标量函数的迹就是本身。$latex f(x)=Tr[f(x)]$</li>
+ 	<li>应用 矩阵的迹定理 $latex \ref{Theorem 3}$ 以及 矩阵微分属性 $latex \ref{Theorem 7}$ ,将函数转化成如下形式 \begin{align}\mathrm{d}f=Tr[A^T\mathrm{d}x]\end{align}</li>
+ 	<li>应用$latex \ref{Theorem 6}$ ，A就是导数啦。 \begin{align}\frac{\partial f}{\partial x}=A\end{align}</li>
+</ol>
+<h2>向量函数的求导模式</h2>
+<ol>
+ 	<li>应用矩阵的迹的性质 $latex \ref{Theorem 3}$和矩阵微分性质 $latex \ref{Theorem 7}$，把公式转换称如下格式$$\mathrm{d}f=A^T\mathrm{d}x$$</li>
+ 	<li>应用 $latex \ref{Theorem 9}$ ,得到 导数就是 $$\frac{\partial f}{\partial x}=A$$</li>
+</ol>
+<h2>贴上公式</h2>
+<ol>
+ 	<li>如下贴上矩阵的迹定理 ，详细的请参考 $latex \ref{Theorem 3}$
+<ul>
+ 	<li><span style="color: #0000ff;">$latex Tr[A+B]=Tr[A]+Tr[B]$</span></li>
+ 	<li><span style="color: #993366;">$latex Tr[cA]=cTr[A]$</span></li>
+ 	<li><span style="color: #0000ff;">$latex Tr[AB]=Tr[BA]$ : <strong>慎用这个</strong></span></li>
+ 	<li><span style="color: #993366;">$latex Tr[A_1A_2\cdots A_n]=Tr[A_nA_1\cdots A_{n-1}]$ : <strong>慎用这个</strong></span></li>
+ 	<li><span style="color: #0000ff;">$latex Tr[A^TB]=\sum_i\sum_j A_{ij}B_{ij}$</span></li>
+ 	<li><span style="color: #993366;">$latex Tr[A]=Tr[A^T]$</span></li>
+</ul>
+</li>
+ 	<li>如下贴上矩阵微分属性，详细的请参考 $latex \ref{Theorem 7}$
+<ul>
+ 	<li><span style="color: #0000ff;">$latex \mathrm{d}(cA)=c\mathrm{d}(A)$</span></li>
+ 	<li><span style="color: #993300;">$latex \mathrm{d}(A+B)=\mathrm{d}A+\mathrm{d}B$</span></li>
+ 	<li><span style="color: #0000ff;">$latex \mathrm{d}(AB)=\mathrm{d}AB+A\mathrm{d}B$</span></li>
+</ul>
+</li>
+ 	<li>$latex \ref{Theorem 6}$
+<ul>
+ 	<li><span style="color: #0000ff;">$latex \mathrm{d}f=Tr\left[\left(\frac{\partial f}{\partial x}\right)^T\mathrm{d}x\right]$</span></li>
+</ul>
+</li>
+ 	<li>$latex \ref{Theorem 9}$
+<ul>
+ 	<li>$latex \mathrm{d}f=\left(\frac{\partial f}{\partial x}\right)^T\mathrm{d}x$</li>
+</ul>
+</li>
+</ol>
+<h2>常用的公式</h2>
+<ul>
+ 	<li>对于矩阵A，列向量x
+<ul>
+ 	<li><span style="font-size: 12pt; color: #0000ff;">$latex \frac{\partial Tr[A]}{\partial A}=I$</span></li>
+ 	<li><span style="font-size: 12pt; color: #800080;">$latex \frac{\partial x^TAx}{\partial x}=Ax+A^Tx$</span></li>
+ 	<li><span style="font-size: 12pt; color: #0000ff;">$latex \frac{\partial x^Tx}{\partial x}=2x$</span></li>
+ 	<li><span style="font-size: 12pt; color: #800080;">$latex \frac{\partial Ax}{\partial x}=A^T$</span></li>
+ 	<li><span style="font-size: 12pt; color: #0000ff;">$latex \frac{\partial x^TAx}{\partial xx^T}=\frac{\partial }{\partial x}(\frac{\partial x^TAx}{\partial x})=A^T+A$</span></li>
+ 	<li><span style="font-size: 12pt; color: #800080;">$latex \mathrm{d}Tr[A]=Tr[I\mathrm{d}A]$</span></li>
+ 	<li><span style="font-size: 12pt; color: #0000ff;">$latex Tr[\mathrm{d}(x^TAx)]=Tr[(x^TA^T+x^TA)\mathrm{d}x]$</span></li>
+ 	<li><span style="font-size: 12pt; color: #800080;">$latex Tr[\mathrm{d}(x^Tx)]=Tr[2x^T\mathrm{d}x]$</span></li>
+</ul>
+</li>
+ 	<li>行列式系列，非奇异矩阵A
+<ul>
+ 	<li><span style="color: #0000ff;">$latex \frac{\partial  det(A)}{\partial A}=C (C是代数余子式)$</span></li>
+ 	<li><span style="color: #800080;">$latex \frac{\partial  det(A)}{\partial A}=(adj(A))^T (adj(A)为伴随矩阵)$</span></li>
+ 	<li><span style="color: #0000ff;">$latex \frac{\partial  det(A)}{\partial A}=(det(A)A^{-1})^T=det(A)(A^{-1})^T$</span></li>
+ 	<li><span style="color: #800080;">$latex \frac{\partial \ln det(A)}{\partial A}=(A^{-1})^T$</span></li>
+ 	<li><span style="color: #0000ff;">$latex \mathrm{d}det(A)=Tr[det(A)A^{-1}\mathrm{d}A]$</span></li>
+ 	<li><span style="color: #800080;">$latex \mathrm{d}\ln det(A)=Tr[A^{-1}\mathrm{d}A]$</span></li>
+</ul>
+</li>
+ 	<li>链式法则
+<ul>
+ 	<li><span style="color: #0000ff;">\begin{align}\frac{\partial x^{(n)}}{\partial x^{(1)}}=\frac{\partial x^{(2)}}{\partial x^{(1)}}\frac{\partial x^{(3)}}{\partial x^{(2)}}\cdots \frac{\partial x^{(n)}}{\partial x^{(n-1)}}\end{align}</span>
+<ul>
+ 	<li>请注意顺序。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1>参考：</h1>
+<ul>
+ 	<li> <a href="http://project.hupili.net/tutorial/hu2012-matrix-calculus/hu2012matrix-calculus.pdf" target="_blank" rel="noopener">http://project.hupili.net/tutorial/hu2012-matrix-calculus/hu2012matrix-calculus.pdf </a></li>
+ 	<li><a href="https://zhuanlan.zhihu.com/p/25063314" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/25063314</a></li>
+ 	<li><a href="https://zhuanlan.zhihu.com/p/24709748" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/24709748</a></li>
+ 	<li><a href="http://www.junnanzhu.com/?p=141" target="_blank" rel="noopener">http://www.junnanzhu.com/?p=141</a></li>
+</ul>
+</body>
+</html>
+
