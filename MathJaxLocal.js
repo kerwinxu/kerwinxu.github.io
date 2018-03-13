@@ -1,7 +1,7 @@
 MathJax.Hub.Config({
   jax: ["input/TeX", "output/HTML-CSS"],
   tex2jax: {
-    inlineMath: [['$', '$']],
+    inlineMath: [['$', '$'],['$latex','$']],
     displayMath: [['$$', '$$'],['\\[','\\]']],
     processEscapes: true,
     skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
