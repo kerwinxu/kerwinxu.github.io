@@ -1,0 +1,1789 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>矩阵向量求导方法 &#8211; 徐恒晓学习</title>
+<script type="text/javascript" charset="utf-8" src="
+https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,
+https://kerwinxu.github.io/MathJaxLocal.js"></script>
+</head>
+<body>
+<h1>线性支持向量机</h1>
+支持向量机（support Vector Machine SVM)是一种二元分类算法，支持线性分类和非线性分类。
+<h2>回顾感知机模型</h2>
+<ul>
+ 	<li>已知： 。
+<ul>
+ 	<li>有一堆二元数据
+<ul>
+ 	<li>$latex (x_1^{(1)},x_2^{(1)},\cdots,x_n^{(1)},y_1),(x_1^{(2)},x_2^{(2)},\cdots,x_n^{(2)},y_2),\cdots,(x_1^{(m)},x_2^{(m)},\cdots,x_n^{(m)},y_m)$</li>
+</ul>
+</li>
+</ul>
+</li>
+ 	<li>求 ：尝试找到一个超平面$latex \theta_0+\theta_1x_1+\cdots+\theta_nx_n=0$，能够把二元数据隔开.</li>
+ 	<li>可以看出这样的超平面不止一个，但哪个最好？
+<ul>
+ 	<li>损失函数：
+<ul>
+ 	<li>$latex -\frac{y^{(i)}\theta\cdot x^{(i)}}{||\theta||_2}$
+<ul>
+ 	<li>所有误分类的点到超平面的距离和最小。</li>
+</ul>
+</li>
+ 	<li>因为损失函数的分子分母呈现比例关系，所以感知机模型中是采取的是固定分母=1，求分子最小。</li>
+ 	<li>最终损失函数 $$ J(\theta)=-\sum\limits_{x_i\in M}y^{(i)}\theta\cdot x^{(i)}$$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2>函数间隔与几何间隔</h2>
+在分离超平面固定为 $latex w^Tx+b=0$的时候，$latex |w^Tx+b|$表示点到超平面的距离（注意实际距离应该还有个分母，为L2范式的），通过观察 $latex |w^Tx+b|$与$latex y$是否同号，我们判断分类是否正确，这里我们引入函数间隔概念 ，定义函数间隔 $latex \gamma'$
+
+$$\gamma'=y(w^Tx+b)$$
+
+可以看到，他就是感知机模型里误分类到超平面距离的分子，对应训练集m个样本点对应的m个函数间隔的最小值，就是整个训练集的函数间隔。
+
+在感知机模型中我们也提到，当分子成比例增大时，分母也成比例增大，为了统一度量，我们加上约束条件，这样我们就得到几何间隔$latex \gamma$，
+
+$$\gamma=\frac{y(w^T+b)}{||w||_2}=\frac{\gamma'}{||w||^2}$$
+
+几何间隔才是点到超平面的真正距离，感知机模型中的距离就是几何距离，只是，因为分子分母成比例关系，所以假设分母为1，只是求分子（函数间隔）。
+<h2>支持向量</h2>
+在感知机模型中，我们可以找到多个超平面将数据隔开，并且优化时希望所有的点都离超平面很远（经我计算，得到的超平面几乎正好能隔开二元数据），但实际上，离超平面很远的点已经被正确分类，我们让他离超平面很远没有意义，反而我们更关心那些离超平面很近的点，这些店容易被误分类，如果我们能够让离超平面近的点尽可能的远离超平面，那么我们的分类效果会更好些。
+
+如下图，分离超平面为$latex w^Tx+b=0$,如果所有的样本不光可以被超平面分开，还和超平面保持一定的函数距离（下图函数距离为1），那么这样的超平面是比感知器模型优的，可以证明，这样的超平面只有一个，和超平面平行的保持一定函数距离的这两个超平面对应的向量，我们定义为支持向量，如下图虚线表示。
+
+<a href="http://127.0.0.1/wp-content/uploads/2018/03/1042406-20161124144326487-1331861308.jpg"><img class="wp-image-1434 alignnone" src="http://127.0.0.1/wp-content/uploads/2018/03/1042406-20161124144326487-1331861308.jpg" alt="" width="528" height="379" /></a>
+
+支持向量到超平面的距离为$latex \frac{1}{||w||_2}$,
+<h2>SVM模型目标函数与优化</h2>
+svm模型是让所有点到超平面的距离都大于一定的距离，也就是所有的分类点要在各自类别的支持向量两边，用数学表示为
+
+$$ max\ \  \gamma =\frac{y(w^Tx+b)}{||w||_2}  {\color{red}{s.t }}y_i(w^Tx_i+b)=\gamma^{'(i)}\ge\gamma'(i=1,2,\cdots,m)$$
+
+一般我们都取函数间隔$latex \gamma'$为1，那我们的优化函数可以定义为
+
+$$ max\ \  \gamma =\frac{1}{||w||_2}  {\color{red}{s.t }}y_i(w^Tx_i+b)=\gamma^{'(i)}\ge 1(i=1,2,\cdots,m)$$
+
+也就是说我们要在约束条件$latex y_i(w^Tx_i+b)=\gamma^{'(i)}\ge\gamma'(i=1,2,\cdots,m)$下，最大化 $latex \frac{1}{||w||_2|}$，可以看出，感知机模型是固定分母优化分子，而SVM是固定分子优化分母，同时加上支持向量限制。
+
+由于$latex \frac{1}{||w||_2|}$最大化等于 $latex \frac{1}{2}||w||_2^2$的最小化(前面分母最小的时候是最大值，后边是分子最小的时候是最小值)，这样SVM模型等价于
+
+$$ min\ \  \frac{1}{2}||w||_2^2 {\color{red}{s.t }}y_i(w^Tx_i+b)=\gamma^{'(i)}\ge 1(i=1,2,\cdots,m)$$
+
+由于目标函数 $latex \frac{1}{2}||w||_2^2$是凸函数，同时约束条件不等式是仿射的，根据凸优化理论，我们可以通过<a href="http://127.0.0.1/?p=1437">拉格朗日函数</a>将我们的优化目标转化成无约束的优化函数，
+
+$$L(w,b,a)=\frac{1}{2}||w||_2^2-\sum\limits_{i=1}^{m}a_i\left[y_i(w^Tx+b)-1\right] 满足a_i\ge 0$$
+<ul>
+ 	<li>为什么这个是减号，因为KKT条件中的不等式约束条件是小于等于0，这里添加一个减号就能从原先的大于等于0变成小于等于0啦。。</li>
+</ul>
+由于引入了拉格朗日乘子，我们的优化目标变成
+
+$$\underbrace{min}\limits_{w,b}\underbrace{max}\limits_{a\ge 0}L(w,b,a)$$
+
+同最大熵模型一样，我们的这个优化函数满足KKT条件。也就是说，我们可以通过拉格朗日对偶将我们的优化问题转化成对偶的优化问题来求解，也就是说，我们要求的是
+
+$$\underbrace{max}\limits_{a\ge 0}\underbrace{min}\limits_{w,b}L(w,b,a)$$
+
+我们可以先求优化函数对wb的极少值，然后再求拉格朗日乘子a的最大值
+
+先求w和b的最小值即 $latex \underbrace{min}\limits_{w,b}L(w,b,a)$，这个值可以通过分别对w和b求偏导得到。
+
+L2范数就是$latex ||A||2=\sqrt{\sum\limits_{ij}|A_{ij}|^2}=\sqrt{Tr(AA^T)}$，而这个对A的偏导就是2A
+
+求导
+
+$latex \frac{\partial L}{\partial w}=0\Rightarrow w=\sum\limits_{i=1}^{m}a_iy_ix_i$
+
+$latex \frac{\partial L}{\partial b}=0\Rightarrow \sum\limits_{i=1}^{m}a_iy_i=0$
+
+从上两式可以看出，我们已经求得w和a的关系，只要我们后边接着能够求出优化函数极大化对应的a，就可以求出我们的w了，至于b，由于上式中没有b，所以我们最后的b可以有多个。
+
+好了，既然我们已经求出w和a的关系，就可以代入优化函数$latex L(w,b,a)消去w$了。，我们定义
+
+$$ \psi(a)=\underbrace{min}\limits_{w,b}L(w,b,a)$$
+
+现在我们来看将w替换成a表达式以后的优化函数的表达式
+
+\begin{align}\psi(a)&amp;=\frac{1}{2}||w||_2^2-\sum\limits_{i=1}^{m}a_i\left[y_i(w^Tx_i+b)-1\right]&amp;原公式\\
+&amp;=\frac{1}{2}w^Tw-\sum\limits_{i=1}^{m}a_iy_iw^Tx_i-\sum\limits_{i=1}^{m}a_iy_ib+\sum\limits_{i=1}^{m}a_i&amp;l2范数就是w^Tw\\
+&amp;=\frac{1}{2}w^T\sum\limits_{i=1}^{m}a_iy_ix_i-w^T\sum\limits_{i=1}^{m}a_iy_ix_i-\sum\limits_{i=1}^{m}a_iy_ib+\sum\limits_{i=1}^{m}a_i&amp;将w代入\\
+&amp;=-\frac{1}{2}w^T\sum\limits_{i=1}^{m}a_iy_ix_i-\sum\limits_{i=1}^{m}a_iy_ib+\sum\limits_{i=1}^{m}a_i&amp;\frac{1}{2}-1=-\frac{1}{2}\\
+&amp;=-\frac{1}{2}w^T\sum\limits_{i=1}^{m}a_iy_ix_i-b\sum\limits_{i=1}^{m}a_iy_i+\sum\limits_{i=1}^{m}a_i&amp;b为乘数，可以移出来\\
+&amp;=-\frac{1}{2}\left(\sum\limits_{i=1}^{m}a_iy_ix_i\right)^T\sum\limits_{i=1}^{m}a_iy_ix_i-b\sum\limits_{i=1}^{m}a_iy_i+\sum\limits_{i=1}^{m}a_i&amp;将w^T中的w代入\\
+&amp;=-\frac{1}{2}\sum\limits_{i=1}^{m}a_iy_ix_i^T\sum\limits_{i=1}^{m}a_iy_ix_i-b\sum\limits_{i=1}^{m}a_iy_i+\sum\limits_{i=1}^{m}a_i&amp;a_iy_i都是标量，x_i为向量\\
+&amp;=-\frac{1}{2}\sum\limits_{i=1}^{m}a_iy_ix_i^T\sum\limits_{i=1}^{m}a_iy_ix_i+\sum\limits_{i=1}^{m}a_i&amp;对b求偏导的结果\\
+&amp;=-\frac{1}{2}\sum\limits_{i=1,j=1}^{m}a_iy_ix_i^Ta_iy_ix_i+\sum\limits_{i=1}^{m}a_i&amp;\\
+&amp;=\sum\limits_{i=1}^{m}a_i-\frac{1}{2}\sum\limits_{i=1,j=1}^{m}a_iy_ix_i^Ta_iy_ix_i \end{align}
+
+从上边可以看出，通过对w和b极小化以后，我们的优化函数 $latex \psi(a)$中仅仅有a向量做参数，只要我们能够极大化这个，就可以求出此时对应的a，进而求出w和b
+
+\begin{align}\underbrace{max}\limits_{a} -\frac{1}{2}\sum\limits_{i=1}^{m}\sum\limits_{j=1}^{m}a_ia_jy_iy_j(x_i\cdot x_j)+\sum\limits_{i=1}^{m}a_i\\s.t. \sum\limits_{i=1}^{m}a_iy_i=0\\a_i\ge 0 (i=1,2,\cdots,m)\end{align}
+
+可以去掉负号，转化成极小化问题
+
+\begin{align}\underbrace{min}\limits_{a} \frac{1}{2}\sum\limits_{i=1}^{m}\sum\limits_{j=1}^{m}a_ia_jy_iy_j(x_i\cdot x_j)-\sum\limits_{i=1}^{m}a_i\\s.t. \sum\limits_{i=1}^{m}a_iy_i=0\\a_i\ge 0 (i=1,2,\cdots,m)\end{align}
+
+只要我们求出上式极小化时对应的a，就可以求w和b了，得用SMO算法来求，这里假设我们已经求出a的值$latex a^*$，那么
+
+$$ w^*=\sum\limits_{i=1}^{m}a_i^*y_ix_i$$
+
+求b ，对于任意向量$latex (x_x,y_s)$,都有
+
+$$y_s(w^Tx_s+b)=y_s(\sum\limits_{i=1}^{m}a_iy_ix_i^Tx_s+b)=1$$
+
+假设我们有s个支持向量，最对应我们可以求出s个$latex b^*$，理论上这些都可以作为最终的结果，但是我们一般采用更健壮的方法，即求出所有支持向量所对应的 $latex b_s^*$,然后将平均值作为最后的结果。
+
+怎么得到支持向量呢？根据KKT条件中的对偶互补条件 $latex a_i^*(y_i(w^Tx_i+b)-1)=0$,如果$latex a_i&gt;0$则有 $latex (y_i(w^Tx_i+b)-1)=0$,即点在支持向量上，否则$latex a_i=0$,则有则有 $latex y_i(w^Tx_i+b)\ge 1 $,即样本在支持向量上或者被正确分类。
+<h2>线性可分SVM的算法过程</h2>
+<ul>
+ 	<li>输入数据
+<ul>
+ 	<li>线性可分的m个样本，$latex (x_1,y_1),(x_2,y_2),\cdots,(x_m,y_m)$,
+<ul>
+ 	<li>其中x为n维特征向量，</li>
+ 	<li>y为二元输出，值为1或者-1</li>
+</ul>
+</li>
+</ul>
+</li>
+ 	<li>输出
+<ul>
+ 	<li>分类超平面的函数参数 $latex x^*和b^*$和分类决策函数</li>
+</ul>
+</li>
+ 	<li>算法过程
+<ol>
+ 	<li>构造约束优化问题
+\begin{align}\underbrace{min}\limits_{a} \frac{1}{2}\sum\limits_{i=1}^{m}\sum\limits_{j=1}^{m}a_ia_jy_iy_j(x_i\cdot x_j)-\sum\limits_{i=1}^{m}a_i\\s.t. \sum\limits_{i=1}^{m}a_iy_i=0\\a_i\ge 0 (i=1,2,\cdots,m)\end{align}</li>
+ 	<li>用SMO算法求出上市最小化时对应的a向量值 $latex a^*$向量。</li>
+ 	<li>计算$latex w^*=\sum\limits_{i=1}^{m}a_i^*y_ix_i$</li>
+ 	<li>找出所有的s个支持向量，即满足$latex a_s&gt;0$对应的样本$latex (x_s,y_s)$,通过$latex y_s(\sum\limits_{i=1}^{m}a_iy_ix_i^Tx_s+b)=1$，计算每个支持向量$latex (x_s,y_s)$对应的$latex b_s^*$,，计算出 $latex b_s^*=y_s-\sum\limits_{i=1}^{m}a_iy_ix_i^Tx_s$，所有的$latex b_s^*$对应的平均值即是最终的 $latex b^*=\frac{1}{s}\sum\limits_{i=1}^{s}b_s^*$</li>
+ 	<li>最终的分类超平面 $latex w^*\cdot x+b^*=0$，最终的分类决策函数为 $latex f(x)=sign(w^*\cdot x+b^*)$</li>
+</ol>
+</li>
+</ul>
+<h1>线性分类的问题</h1>
+<h2>线性分类SVM面临的问题</h2>
+比如下图，因为有个橙色和蓝色的异常点，导致线性不可分。
+
+<a href="http://127.0.0.1/wp-content/uploads/2018/03/1042406-20161125104106409-1177897648.png"><img class="alignnone size-full wp-image-1468" src="http://127.0.0.1/wp-content/uploads/2018/03/1042406-20161125104106409-1177897648.png" alt="" width="300" height="245" /></a>
+
+另外一种没有糟糕到不可分，但是会严重影响模型的泛化效果，如下图，本来可以是红色的线表示的，但因为有个蓝色的异常点，导致成虚线的了。
+
+<a href="http://127.0.0.1/wp-content/uploads/2018/03/1042406-20161125104737206-364720074.png"><img class="alignnone size-full wp-image-1469" src="http://127.0.0.1/wp-content/uploads/2018/03/1042406-20161125104737206-364720074.png" alt="" width="391" height="384" /></a>
+<h2>线性分类SVM的软间隔最大化</h2>
+所谓的软间隔，是相对于硬间隔来说的。
+
+回顾一下硬间隔最大化条件
+
+$$min\ \ \frac{1}{2}||w||_2^2\ \ \ s.t. y_i(w^Tx_i+b)\ge 1 \ (i=1,2,\cdots,m)$$
+
+接着看我们怎样软件个最大化
+
+SVM对训练集里面的每个样本 $latex (x_i,y_i)$引入一个松弛变量，$latex \xi_i\ge 0$,使得函数间隔加上松弛变量大于等于1，也就是
+
+$$y_i(w\cdot x+b)+\xi_i \ge 1，也就是y_i(w\cdot x+b)\ge 1-\xi_i$$
+
+对比硬间隔最大化，软间隔的要求放松了很多，之前一定要大于等于1，现在只需要加上一个大于等于0的松弛变量能大于等于1就可以了，当然，松弛变量不能白加，这是有成本的，每个松弛变量$latex \xi_i$，对应一个代价$latex \xi_i$,这样就得到了软间隔最大化SVM学习条件如下
+
+\begin{align} min\hspace{0.5cm}\frac{1}{2}||w||_2^2+C\sum\limits_{i=1}^{m}\xi_i\\
+s.t. \hspace{0.5cm}y_i(w^Tx_i+b)\ge 1-\xi_i\hspace{0.5cm}(i=1,2,\cdots,m)\\
+\xi_i\ge 0\hspace{0.5cm}(i=1,2,\cdots,m)\end{align}
+<ul>
+ 	<li>在这里C为乘法参数，C越大，对误分类的惩罚越大，C越小，对误分类的惩罚越小。</li>
+ 	<li>也就是说，我们希望 $latex \frac{1}{2}||w||_2^2$尽量小，误分类的点尽量的少，C是协调两者关系的正则化惩罚参数，在实际应用中，需要调参来选择。</li>
+</ul>
+<h2>线性分类SVM的软间隔最大化目标函数的优化</h2>
+函数如下
+
+\begin{align} min\hspace{0.5cm}\frac{1}{2}||w||_2^2+C\sum\limits_{i=1}^{m}\xi_i\\
+s.t. \hspace{0.5cm}y_i(w^Tx_i+b)\ge 1-\xi_i\hspace{0.5cm}(i=1,2,\cdots,m)\\
+\xi_i\ge 0\hspace{0.5cm}(i=1,2,\cdots,m)\end{align}
+
+首先用KKT条件转化成无约束的问题，2个约束条件都是大于等于一个数，而KKT条件是小于等于的，这时候前面加一个负号就可以了。
+
+$$L(w,b,\xi,a,\mu)=\frac{1}{2}||w||_2^2+C\sum\limits_{i=1}^{m}\xi_i-\sum\limits_{i=1}^{m}a_i\left[y_i(w^Tx_i+b)-1+\xi_i\right]-\sum\limits_{i=1}^{m}\mu_i\xi_i$$
+<ul>
+ 	<li>朗格朗日系数
+<ul>
+ 	<li>$latex \mu_i\ge 0$</li>
+ 	<li>$latex a_i\ge 0$</li>
+</ul>
+</li>
+</ul>
+也就是说，我们要优化的目标函数为
+
+$$\underbrace{min}_{(w,b,\xi)}\underbrace{max}_{(a_i\ge 0,\mu_i\ge 0)}L(w,b,\xi,a,\mu)$$
+
+这个优化也满足KKT条件，也就是说，也就是说，我们可以通过拉格朗日对偶将我们的优化问题转化成等价的对偶问题来求解。
+
+$$\underbrace{max}_{(a_i\ge 0,\mu_i\ge 0)}\underbrace{min}_{(w,b,\xi)}L(w,b,\xi,a,\mu)$$
+
+首先我们来求优化函数对于$latex w,b,\xi$的极少值，这个可以通过求偏导得到
+
+\begin{align}\frac{\partial L}{\partial w} = 0 \;\Rightarrow w = \sum\limits_{i=1}^{m}\alpha_iy_ix_i\\
+\frac{\partial L}{\partial b} = 0 \;\Rightarrow \sum\limits_{i=1}^{m}\alpha_iy_i = 0\\
+\frac{\partial L}{\partial \xi} = 0 \;\Rightarrow C- \alpha_i - \mu_i = 0\end{align}
+
+利用如上三个公式来消除w和b
+
+\begin{align} L(w,b,\xi,\alpha,\mu) &amp; = \frac{1}{2}||w||_2^2 +C\sum\limits_{i=1}^{m}\xi_i - \sum\limits_{i=1}^{m}\alpha_i[y_i(w^Tx_i + b) - 1 + \xi_i] - \sum\limits_{i=1}^{m}\mu_i\xi_i 　\\&amp;= \frac{1}{2}||w||_2^2 - \sum\limits_{i=1}^{m}\alpha_i[y_i(w^Tx_i + b) - 1 + \xi_i] + \sum\limits_{i=1}^{m}\alpha_i\xi_i \\&amp; = \frac{1}{2}||w||_2^2 - \sum\limits_{i=1}^{m}\alpha_i[y_i(w^Tx_i + b) - 1] \\&amp; = \frac{1}{2}w^Tw-\sum\limits_{i=1}^{m}\alpha_iy_iw^Tx_i - \sum\limits_{i=1}^{m}\alpha_iy_ib + \sum\limits_{i=1}^{m}\alpha_i \\&amp; = \frac{1}{2}w^T\sum\limits_{i=1}^{m}\alpha_iy_ix_i -\sum\limits_{i=1}^{m}\alpha_iy_iw^Tx_i - \sum\limits_{i=1}^{m}\alpha_iy_ib + \sum\limits_{i=1}^{m}\alpha_i \\&amp; = \frac{1}{2}w^T\sum\limits_{i=1}^{m}\alpha_iy_ix_i - w^T\sum\limits_{i=1}^{m}\alpha_iy_ix_i - \sum\limits_{i=1}^{m}\alpha_iy_ib + \sum\limits_{i=1}^{m}\alpha_i \\&amp; = - \frac{1}{2}w^T\sum\limits_{i=1}^{m}\alpha_iy_ix_i - \sum\limits_{i=1}^{m}\alpha_iy_ib + \sum\limits_{i=1}^{m}\alpha_i \\&amp; = - \frac{1}{2}w^T\sum\limits_{i=1}^{m}\alpha_iy_ix_i - b\sum\limits_{i=1}^{m}\alpha_iy_i + \sum\limits_{i=1}^{m}\alpha_i \\&amp; = -\frac{1}{2}(\sum\limits_{i=1}^{m}\alpha_iy_ix_i)^T(\sum\limits_{i=1}^{m}\alpha_iy_ix_i) - b\sum\limits_{i=1}^{m}\alpha_iy_i + \sum\limits_{i=1}^{m}\alpha_i \\&amp; = -\frac{1}{2}\sum\limits_{i=1}^{m}\alpha_iy_ix_i^T\sum\limits_{i=1}^{m}\alpha_iy_ix_i - b\sum\limits_{i=1}^{m}\alpha_iy_i + \sum\limits_{i=1}^{m}\alpha_i \\&amp; = -\frac{1}{2}\sum\limits_{i=1}^{m}\alpha_iy_ix_i^T\sum\limits_{i=1}^{m}\alpha_iy_ix_i + \sum\limits_{i=1}^{m}\alpha_i \\&amp; = -\frac{1}{2}\sum\limits_{i=1,j=1}^{m}\alpha_iy_ix_i^T\alpha_jy_jx_j + \sum\limits_{i=1}^{m}\alpha_i \\&amp; = \sum\limits_{i=1}^{m}\alpha_i - \frac{1}{2}\sum\limits_{i=1,j=1}^{m}\alpha_i\alpha_jy_iy_jx_i^Tx_j \end{align}
+
+这个公式跟我们上边的线性可分的SVM的公式是一样的，唯一不同的是约束条件。
+
+$$\underbrace{ max }_{\alpha} \sum\limits_{i=1}^{m}\alpha_i - \frac{1}{2}\sum\limits_{i=1,j=1}^{m}\alpha_i\alpha_jy_iy_jx_i^Tx_j$$
+
+$$s.t. \; \sum\limits_{i=1}^{m}\alpha_iy_i = 0$$
+
+$$C- \alpha_i - \mu_i = 0$$
+
+$$\alpha_i \geq 0 \;(i =1,2,...,m)$$
+
+$$\mu_i \geq 0 \;(i =1,2,...,m)$$
+
+对于后边3个公式，我们可以消去$latex \mu_i$(当这个为0)，只保留$latex a_i$，也就是说$latex 0 \leq \alpha_i \leq C$,同时将优化函数目标变负号，求极少值。
+
+$$\underbrace{ min }_{\alpha} \frac{1}{2}\sum\limits_{i=1,j=1}^{m}\alpha_i\alpha_jy_iy_jx_i^Tx_j - \sum\limits_{i=1}^{m}\alpha_i$$
+
+$$s.t. \; \sum\limits_{i=1}^{m}\alpha_iy_i = 0$$
+
+$$0 \leq \alpha_i \leq C$$
+
+和硬间隔的最大化线性可分SVM相比，我们仅仅是多了一个约束条件$latex 0 \leq \alpha_i \leq C$
+<h2>软间隔最大化时的支持向量</h2>
+硬间隔最大化时求支持向量比较简单，
+<ul>
+ 	<li>就是满足$latex y_i(w^Tx_i + b) -1 =0$就可以了
+<ul>
+ 	<li>$latex \alpha_{i}^{*}(y_i(w^Tx_i + b) - 1) = 0$对偶互补条件
+<ul>
+ 	<li>如果有 $latex a_i^*&gt;0 则有y_i(w^Tx_i+b)=1$,即点在支持向量上。</li>
+ 	<li>如果有 $latex a_i^*=0 则有y_i(w^Tx_i+b)\ge 1$,即样本在支持向量上或者已经被正确分类</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+软间隔最大化，因为引入了一个松弛变量，我们从下图来研究软间隔最大化时支持向量的情况。
+
+<a href="http://127.0.0.1/wp-content/uploads/2018/03/1042406-20161125133202346-307657619.jpg"><img class="alignnone size-full wp-image-1470" src="http://127.0.0.1/wp-content/uploads/2018/03/1042406-20161125133202346-307657619.jpg" alt="" width="400" height="275" /></a>
+<ul>
+ 	<li>第i个点对应类别支持向量的距离为$latex \frac{\xi_i}{||w||_2}$,根据软间隔最大化时KKT条件中的对偶互补条件 $latex \alpha_{i}^{*}(y_i(w^Tx_i + b) - 1 + \xi_i^{*}) = 0$,我们有
+<ul>
+ 	<li>如果a=0，那么$latex y_i(w^Tx+b)-1\ge 0$,即样本在支持向量上或者已经被正确分类。</li>
+ 	<li>如果 $latex 0 &lt; a &lt; C ,那么 \xi_i=0 ,y_i(w^Tx+b)-1=0$，即点在支持向量上，如图中虚线支持向量上的点。</li>
+ 	<li>如果a=C，说明这个是一个比较异常的点，需要检查 $latex \xi_i$.
+<ul>
+ 	<li>如果 $latex 0\le \xi_i \1$,说明点被正确分类，但却在超平面和自己类别的支持向量中间，如图中的2和4</li>
+ 	<li>如果 $latex \xi_i=1$,那么这个点在超平面上。</li>
+ 	<li>如果 $latex \xi_i&gt;1$，那么点在超平面的另一侧，也就是说，这个点不能被正确分类，如图中的1和3.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2>思路历程</h2>
+让我们来做一个小结，这东西太深奥了，
+<ul>
+ 	<li>输入：
+<ul>
+ 	<li>线性可分的样本$latex (x_1,y_1),(x_2,y_2),\cdots,(x_m,y_m)$
+<ul>
+ 	<li>x为n维特征向量。</li>
+ 	<li>y为一元输出，值为1或者-1</li>
+</ul>
+</li>
+</ul>
+</li>
+ 	<li>输出：
+<ul>
+ 	<li>分类超平面的参数$latex w^*和b^*$</li>
+ 	<li>分类决策函数</li>
+</ul>
+</li>
+ 	<li>思考过程：
+<ul>
+ 	<li>因为存在异常点，所以这里加上一个松弛变量，之前的函数间隔是一定要大于等于1，而现在只要加上这个松弛变量大于等于1就可以了。 $$y_i(w\bullet x_i +b) \geq 1- \xi_i$$
+<ul>
+ 	<li>这里$latex w,b,\xi$都要尽量少，最好只是等于1就可以了，但这个等于1的，在硬间隔中，就表示支持向量。</li>
+</ul>
+</li>
+ 	<li>但松弛变量不能白加啊，这个要有成本的，这里在原先的损失函数上再加上一个代价函数。 \begin{align} min\hspace{0.5cm}\frac{1}{2}||w||_2^2+C\sum\limits_{i=1}^{m}\xi_i&amp;：松弛变量也是有代价的\\
+s.t. \hspace{0.5cm}y_i(w^Tx_i+b)\ge 1-\xi_i\hspace{0.5cm}(i=1,2,\cdots,m)&amp;：原函数间隔加上松弛变量大于等于1\\
+\xi_i\ge 0\hspace{0.5cm}(i=1,2,\cdots,m)&amp;：松弛变量大于等于0\end{align}</li>
+ 	<li>如上的条件约束求极值，我们可以用拉格朗日函数转化成无约束的求极值 $$L(w,b,\xi,\alpha,\mu) = \frac{1}{2}||w||_2^2 +C\sum\limits_{i=1}^{m}\xi_i - \sum\limits_{i=1}^{m}\alpha_i[y_i(w^Tx_i + b) - 1 + \xi_i] - \sum\limits_{i=1}^{m}\mu_i\xi_i$$
+<ul>
+ 	<li>$latex \mu_i\ge 0 , a_i \ge 0$均为拉格朗日系数。</li>
+</ul>
+</li>
+ 	<li>也就是说，我们要优化的目标函数为 $$\underbrace{min}_{w,b,\xi}\; \underbrace{max}_{\alpha_i \geq 0, \mu_i \geq 0,} L(w,b,\alpha, \xi,\mu)$$</li>
+ 	<li>这个优化函数可以转化成如下的形式 $$\underbrace{max}_{\alpha_i \geq 0, \mu_i \geq 0,} \; \underbrace{min}_{w,b,\xi}\; L(w,b,\alpha, \xi,\mu)$$</li>
+ 	<li>我们可以先求优化函数对$latex w,b,\xi$的最小值，然后再求拉格朗日系数$latex a,\mu$的最大值。
+<ul>
+ 	<li>求$latex w,b,\xi$最小值，
+<ul>
+ 	<li>对这三个变量分别求偏导。 \begin{align}\frac{\partial L}{\partial w} = 0 \;\Rightarrow w = \sum\limits_{i=1}^{m}\alpha_iy_ix_i\\\frac{\partial L}{\partial b} = 0 \;\Rightarrow \sum\limits_{i=1}^{m}\alpha_iy_i = 0\\\frac{\partial L}{\partial \xi} = 0 \;\Rightarrow C- \alpha_i - \mu_i = 0\end{align}</li>
+ 	<li>利用如上3个公式去消除w和b  \begin{align} L(w,b,\xi,\alpha,\mu) &amp; = \frac{1}{2}||w||_2^2 +C\sum\limits_{i=1}^{m}\xi_i - \sum\limits_{i=1}^{m}\alpha_i[y_i(w^Tx_i + b) - 1 + \xi_i] - \sum\limits_{i=1}^{m}\mu_i\xi_i 　\\&amp;= \frac{1}{2}||w||_2^2 - \sum\limits_{i=1}^{m}\alpha_i[y_i(w^Tx_i + b) - 1 + \xi_i] + \sum\limits_{i=1}^{m}\alpha_i\xi_i \\&amp; = \frac{1}{2}||w||_2^2 - \sum\limits_{i=1}^{m}\alpha_i[y_i(w^Tx_i + b) - 1] \\&amp; = \frac{1}{2}w^Tw-\sum\limits_{i=1}^{m}\alpha_iy_iw^Tx_i - \sum\limits_{i=1}^{m}\alpha_iy_ib + \sum\limits_{i=1}^{m}\alpha_i \\&amp; = \frac{1}{2}w^T\sum\limits_{i=1}^{m}\alpha_iy_ix_i -\sum\limits_{i=1}^{m}\alpha_iy_iw^Tx_i - \sum\limits_{i=1}^{m}\alpha_iy_ib + \sum\limits_{i=1}^{m}\alpha_i \\&amp; = \frac{1}{2}w^T\sum\limits_{i=1}^{m}\alpha_iy_ix_i - w^T\sum\limits_{i=1}^{m}\alpha_iy_ix_i - \sum\limits_{i=1}^{m}\alpha_iy_ib + \sum\limits_{i=1}^{m}\alpha_i \\&amp; = - \frac{1}{2}w^T\sum\limits_{i=1}^{m}\alpha_iy_ix_i - \sum\limits_{i=1}^{m}\alpha_iy_ib + \sum\limits_{i=1}^{m}\alpha_i \\&amp; = - \frac{1}{2}w^T\sum\limits_{i=1}^{m}\alpha_iy_ix_i - b\sum\limits_{i=1}^{m}\alpha_iy_i + \sum\limits_{i=1}^{m}\alpha_i \\&amp; = -\frac{1}{2}(\sum\limits_{i=1}^{m}\alpha_iy_ix_i)^T(\sum\limits_{i=1}^{m}\alpha_iy_ix_i) - b\sum\limits_{i=1}^{m}\alpha_iy_i + \sum\limits_{i=1}^{m}\alpha_i \\&amp; = -\frac{1}{2}\sum\limits_{i=1}^{m}\alpha_iy_ix_i^T\sum\limits_{i=1}^{m}\alpha_iy_ix_i - b\sum\limits_{i=1}^{m}\alpha_iy_i + \sum\limits_{i=1}^{m}\alpha_i \\&amp; = -\frac{1}{2}\sum\limits_{i=1}^{m}\alpha_iy_ix_i^T\sum\limits_{i=1}^{m}\alpha_iy_ix_i + \sum\limits_{i=1}^{m}\alpha_i \\&amp; = -\frac{1}{2}\sum\limits_{i=1,j=1}^{m}\alpha_iy_ix_i^T\alpha_jy_jx_j + \sum\limits_{i=1}^{m}\alpha_i \\&amp; = \sum\limits_{i=1}^{m}\alpha_i - \frac{1}{2}\sum\limits_{i=1,j=1}^{m}\alpha_i\alpha_jy_iy_jx_i^Tx_j \end{align}</li>
+</ul>
+</li>
+ 	<li>整理出来的结果是 $$L(w,b,\xi,\alpha,\mu) =\sum\limits_{i=1}^{m}\alpha_i - \frac{1}{2}\sum\limits_{i=1,j=1}^{m}\alpha_i\alpha_jy_iy_jx_i^Tx_j $$
+<ul>
+ 	<li>这个跟上边硬间隔中线性可分的SVM得到的公式是一样的，唯一不同的是约束条件。</li>
+</ul>
+</li>
+ 	<li>优化目标完整公式1 \begin{align}\underbrace{ max }_{\alpha} \sum\limits_{i=1}^{m}\alpha_i - \frac{1}{2}\sum\limits_{i=1,j=1}^{m}\alpha_i\alpha_jy_iy_jx_i^Tx_j\\s.t. \; \sum\limits_{i=1}^{m}\alpha_iy_i = 0\\C- \alpha_i - \mu_i = 0\\\alpha_i \geq 0 \;(i =1,2,...,m)\\\mu_i \geq 0 \;(i =1,2,...,m)\end{align}
+<ul>
+ 	<li>这里的a是要求最大值，所以有 $latex \underbrace{max}_a$</li>
+ 	<li>对于后边3个公式，因为第一个公式只有 a,y,x，所以我们可以消去 $latex \mu_i$，也就是 $latex 0 \leq \alpha_i \leq C$</li>
+</ul>
+</li>
+ 	<li>优化目标完整公式2 \begin{align}\underbrace{ min }_{\alpha}  \frac{1}{2}\sum\limits_{i=1,j=1}^{m}\alpha_i\alpha_jy_iy_jx_i^Tx_j - \sum\limits_{i=1}^{m}\alpha_i\\s.t. \; \sum\limits_{i=1}^{m}\alpha_iy_i = 0\\0 \leq \alpha_i \leq C\end{align}
+<ul>
+ 	<li>跟硬间隔SVM相比，多了一个约束条件。</li>
+ 	<li>如上的未知变量只有a了，我们求出a后，就可以求出w和b了，</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2>软间隔最大化的线性可分SVM的算法过程</h2>
+<ul>
+ 	<li>输入：
+<ul>
+ 	<li>线性可分的样本$latex (x_1,y_1),(x_2,y_2),\cdots,(x_m,y_m)$
+<ul>
+ 	<li>x为n维特征向量。</li>
+ 	<li>y为一元输出，值为1或者-1</li>
+</ul>
+</li>
+</ul>
+</li>
+ 	<li>输出：
+<ul>
+ 	<li>分类超平面的参数$latex w^*和b^*$</li>
+ 	<li>分类决策函数</li>
+</ul>
+</li>
+ 	<li>算法过程如下：
+<ul>
+ 	<li>选择一个惩罚系数C，构造约束优化问题 \begin{align}\underbrace{ min }_{\alpha}  \frac{1}{2}\sum\limits_{i=1,j=1}^{m}\alpha_i\alpha_jy_iy_jx_i^Tx_j - \sum\limits_{i=1}^{m}\alpha_i\\s.t. \; \sum\limits_{i=1}^{m}\alpha_iy_i = 0\\0 \leq \alpha_i \leq C\end{align}</li>
+ 	<li>用SMO算法求出上式最小时对应的a向量的值 $latex \alpha^*$向量。</li>
+ 	<li>计算 $latex w^{*} = \sum\limits_{i=1}^{m}\alpha_i^{*}y_ix_i$</li>
+ 	<li>找出所有的S个支持向量，即满足$latex 0 &lt; \alpha_s &lt; C$对应的样本$latex (x_s,y_s)$,通过 $latex y_s(\sum\limits_{i=1}^{S}\alpha_iy_ix_i^Tx_s+b) = 1$计算出每个支持向量$latex (x_s,y_s)$对应的 $latex b^*$,用 $latex b_s^{*} = y_s - \sum\limits_{i=1}^{S}\alpha_iy_ix_i^Tx_s$，所有的平均值即为最终的 $latex b^{*} = \frac{1}{S}\sum\limits_{i=1}^{S}b_s^{*}$</li>
+ 	<li>最终结果
+<ul>
+ 	<li>分类超平面 \( w^{*} \bullet x + b^{*} = 0\)</li>
+ 	<li>分类决策函数 \( f(x) = sign(w^{*} \bullet x + b^{*})\)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1>线性不可分的支持向量机和核函数</h1>
+这里说一下SVM在处理线性不可分数据中的作用
+<h2>回顾多项式回归</h2>
+比如只有2个特征的p次多项式模型，$$h_\theta(x_1, x_2) = \theta_0 + \theta_{1}x_1 + \theta_{2}x_{2} + \theta_{3}x_1^{2} + \theta_{4}x_2^{2} + \theta_{5}x_{1}x_2$$
+
+我们令 $latex x_0 = 1, x_1 = x_1, x_2 = x_2, x_3 =x_1^{2}, x_4 = x_2^{2}, x_5 = x_{1}x_2$，就得到下式
+
+$$h_\theta(x_1, x_2) = \theta_0 + \theta_{1}x_1 + \theta_{2}x_{2} + \theta_{3}x_3 + \theta_{4}x_4 + \theta_{5}x_5$$
+
+可以发现，我们重新回到了线性回归，这个是一个5元线性回归，可以用线性回归的方法，对于一个二元样本特征，我们得到一个5元样本特征，通过这个5元的样本特征，我们重新把不是线性回归的函数变成线性回归。
+
+对于低维度不可分的数据，可以映射到高维度，就变成线性可分了。
+<h2>核函数的引入</h2>
+低纬度可以映射到高维度，只是，二维的映射到5维，三维的映射到19维，如果更高维度，那基本没办法计算。这里就用到核函数。
+
+假设$latex \phi$是一个低维输入空间$latex \chi$(欧式空间的子集或者离散集合），到高维的希尔伯特空间的$latex \mathcal{H}$，那么如果存在函数 $latex K(x,z)$,对于任意的 $latex x,z \in \chi$，都有
+
+$$K(x,z)=\chi(x)\cdot\chi(z)$$
+
+则称$latex K(x,z)$为核函数，$latex \chi(x)$为映射函数，比如原始函数的内积为 &lt;x,z&gt;，映射后为$latex &lt;\chi(x),\chi(z)&gt;$.
+<h1>SMO算法原理</h1>
+在SVM中，我们优化的目标函数最终都是关于a向量的函数，现在我们就要看看怎么求出这个最小值。
+<h2>回顾SVM优化目标函数</h2>
+\begin{align}\underbrace{ min }_{\alpha}  \frac{1}{2}\sum\limits_{i=1,j=1}^{m}\alpha_i\alpha_jy_iy_jx_i^Tx_j - \sum\limits_{i=1}^{m}\alpha_i\\s.t. \; \sum\limits_{i=1}^{m}\alpha_iy_i = 0\\0 \leq \alpha_i \leq C\end{align}
+
+我们要了解KKT条件的对偶互补条件为（约束函数乘以约束系数等于0）
+
+$$ \alpha_{i}^{*}(y_i(w^Tx_i + b) - 1 + \xi_i^{*}) = 0$$
+<ul>
+ 	<li>意味着 $latex \alpha_i^*和(y_i(w^Tx_i + b) - 1 + \xi_i^{*})$中至少一个等于0</li>
+ 	<li>我们将后边的写成如下形式
+<ul>
+ 	<li>$latex (y_i(w^*\cdot\phi(x_i)+b+\xi_i^*))$</li>
+</ul>
+</li>
+</ul>
+根据这个条件,必有至少有一个等于0，还有根据我们以前的条件，这些都要符合的，
+
+\begin{array}{|c|c|c|c|}\hline 已知&amp;\alpha_i^*=0&amp;0&lt;\alpha_i^*&lt;C&amp;a_i^*=C\\\hline
+\frac{\partial L}{\partial \xi}=C-\alpha_i-\mu_i=0&amp;\mu_i=C\ge 0&amp;\mu&gt;0&amp;\mu_i=0\\\hline
+L(w,b,\xi,\alpha,\mu)=\cdots-\sum\limits_{i=1}^m\mu_i\xi_i;中\mu_i\xi_i=0&amp;\xi_i\ge 0&amp;\xi=0&amp;\xi_i\ge 0\\\hline\alpha_{i}^{*}(y_i(w^*\cdot\phi(x_i)+b+\xi_i^*) = 0;&amp;y_i((w^*\cdot\phi(x_i)+b)\ge 1&amp;y_i(w^*\cdot\phi(x_i)+b)=1&amp;y_i(w^*\cdot\phi(x_i)+b)\le1\\\hline\\设g(x)=w^*\cdot\phi(x)+b&amp;y_ig(x_i)\ge 1&amp;y_ig(x_i)=1&amp;y_ig(x_i)\le 1\\\hline\\说明&amp;点是支持向量或被正确分类&amp;点在支持向量上&amp;异常的点\\\hline\end{array}
+
+&nbsp;
+
+由于 $latex \frac{\partial L}{\partial w} = 0 \;\Rightarrow w = \sum\limits_{i=1}^{m}\alpha_iy_ix_i$
+
+$latex w^*=\sum\limits_{j=1}^{m}a_j^*y_i\phi(x_j)$
+
+g(x)中消去w
+
+$latex g(x)=w^*\cdot\phi(x)+b=\sum\limits_{j=1}^{m}a_j^*y_j\phi(x_j)\cdot\phi(x)+b$
+<h2>SMO算法基本思想</h2>
+SMO算法采用了一种启发式算法，他每次只优化2个变量，将其他的变量视为常数，由于$latex \sum\limits_{i=1}^{m}a_iy_i=0$，假设我们将 $latex a_3,a_4,\cdots,a_m$固定，那么 $latex a_1,a_2$之间的关系也确定了，这样SMO将一个复杂的优化算法转化成一个比较简单的两变量优化问题。
+
+为了以后表示方便我们定义 $latex K_{ij}=\phi(x_i)\phi(x_j)$
+
+由于 $latex a_3,a_4,\cdots,a_m$是常量，常量都从我们的目标函数去除，
+
+先看我们上节的目标优化函数
+
+\[\underbrace{ min }_{\alpha} \frac{1}{2}\sum\limits_{i=1,j=1}^{m}\alpha_i\alpha_jy_iy_jx_i^Tx_j – \sum\limits_{i=1}^{m}\alpha_i\\s.t. \; \sum\limits_{i=1}^{m}\alpha_iy_i = 0\\0 \leq \alpha_i \leq C\]
+
+这样我们上一节的目标优化函数要变一下。
+
+\begin{align}&amp;\underbrace{ min }_{\alpha_{1},\alpha_{2}} \frac{1}{2}\sum\limits_{i=1,j=1}^{m}\alpha_{i}\alpha_{j}y_{i}y_{j}x_{i}^Tx_{j} -–\sum\limits_{i=1}^{m}\alpha_{i}\\
+&amp;这个i和j都分成3部分，(1,2,3到m）\\
+&amp;=\underbrace{ min }_{\alpha,\alpha_{2}} \frac{1}{2}(\alpha_{1}\alpha_{1}y_{1}y_{1}K_{11}+\alpha_{1}\alpha_{2}y_{1}y_{2}k_{12}+\alpha_{1}y_{1}\sum\limits_{i=3}^{m}a_{i}y_{i}k_{1i}+\alpha_{2}\alpha_{1}y_{2}y_{1}K_{21}+\alpha_{2}\alpha_{2}y_{2}y_{2}k_{22}+\alpha_{2}y_{2}\sum\limits_{i=3}^{m}a_{i}y_{i}k_{2i}+\sum\limits_{i=3}^{m}a_{i}y_{i}k_{1i}\alpha_{1}y_{1}+\sum\limits_{i=3}^{m}a_{i}y_{i}k_{2i}\alpha_{2}y_{2})-(\alpha_{1}+\alpha_{2}+\sum\limits_{i=3}^{m}a_{i})\\&amp;{\color{blue}{(\alpha_{1}\alpha_{2}=\alpha_{2}\alpha_{1};K_{12}=K_{21})}}\\&amp;=\underbrace{ min }_{\alpha_{1},\alpha_{2}} \frac{1}{2}(\alpha_{1}\alpha_{1}y_{1}y_{1}K_{11}+2\alpha_{1}\alpha_{2}y_{1}y_{2}k_{12}+2\alpha_{1}y_{1}\sum\limits_{i=3}^{m}a_{i}y_{i}k_{1i}+\alpha_{2}\alpha_{2}y_{2}y_{2}k_{22}+2\alpha_{2}y_{2}\sum\limits_{i=3}^{m}a_{i}y_{i}k_{2i})-(\alpha_{1}+\alpha_{2}+\sum\limits_{i=3}^{m}a_{i})\\
+&amp;{\color{blue}{因为y只有2个值，1和-1，然后同样的y相乘，就等于1啦,即y_{1}y_{1}=y_{2}y_{2}=1，继续精简}}\\
+&amp;=\underbrace{ min }_{\alpha_{1},\alpha_{2}} \frac{1}{2}(\alpha_{1}\alpha_{1}K_{11}+2\alpha_{1}\alpha_{2}y_{1}y_{2}k_{12}+2\alpha_{1}y_{1}\sum\limits_{i=3}^{m}a_{i}y_{i}k_{1i}+\alpha_{2}\alpha_{2}k_{22}+2\alpha_{2}y_{2}\sum\limits_{i=3}^{m}a_{i}y_{i}k_{2i})-(\alpha_{1}+\alpha_{2}+\sum\limits_{i=3}^{m}a_{i})\\
+&amp;{\color{blue}{平方形式好看点}}\\
+&amp;=\underbrace{ min }_{\alpha_{1},\alpha_{2}} \frac{1}{2}(\alpha_{1}^2K_{11}+2\alpha_{1}\alpha_{2}y_{1}y_{2}k_{12}+2\alpha_{1}y_{1}\sum\limits_{i=3}^{m}a_{i}y_{i}k_{1i}+\alpha_{2}^2k_{22}+2\alpha_{2}y_{2}\sum\limits_{i=3}^{m}a_{i}y_{i}k_{2i})-(\alpha_{1}+\alpha_{2}+\sum\limits_{i=3}^{m}a_{i})\\
+&amp;{\color{blue}{破开括号以及消去最后一个常量}}\\
+&amp;=\underbrace{ min }_{\alpha_{1},\alpha_{2}} \frac{1}{2}\alpha_{1}^2K_{11}+\frac{1}{2}\alpha_{2}^2k_{22}+\alpha_{1}\alpha_{2}y_{1}y_{2}k_{12}+\alpha_{1}y_{1}\sum\limits_{i=3}^{m}a_{i}y_{i}k_{1i}+\alpha_{2}y_{2}\sum\limits_{i=3}^{m}a_{i}y_{i}k_{2i})-(\alpha_{1}+\alpha_{2})\end{align}
+
+所以是如下
+
+<span style="color: #0000ff;">\[\underbrace{ min }_{\alpha_{1},\alpha_{2}} \frac{1}{2}\alpha_{1}^2K_{11}+\frac{1}{2}\alpha_{2}^2k_{22}+\alpha_{1}\alpha_{2}y_{1}y_{2}k_{12}+\alpha_{1}y_{1}\sum\limits_{i=3}^{m}a_{i}y_{i}k_{1i}+\alpha_{2}y_{2}\sum\limits_{i=3}^{m}a_{i}y_{i}k_{2i})-(\alpha_{1}+\alpha_{2})\\s.t. \alpha_1y_1+\alpha_2y_2=-\sum\limits_{i=3}^{m}y_i\alpha_i=\varsigma\\0\le \alpha_i\le C;i=1,2\]</span>
+<h2>SMO目标算法的优化</h2>
+<ul>
+ 	<li>$latex a_1y_1+a_2y_2=\varsigma ; 0\le a_i\le C;i=1,2$</li>
+ 	<li>由于$latex y_1,y_2$只能取值1或者-1</li>
+ 	<li>综上所述，方程无非是
+<ul>
+ 	<li>$latex a_1+a_2=\varsigma$</li>
+ 	<li>$latex a_1-a_2=\varsigma$</li>
+ 	<li>这样$latex a_1,a_2$都在同一个线段上，斜率为1或者-1（求偏导）。</li>
+ 	<li>这样 $latex a_1,a_2$在[0,C]和[C,0]形成的盒子里边，并且两者之间的关系直线的斜率只能是1或者-1.也就是i说$latex a_1,a_2$的关系直线平行于[0,C]和[C,0]形成的盒子的对角线。</li>
+</ul>
+</li>
+</ul>
+<a href="http://127.0.0.1/wp-content/uploads/2018/03/1042406-20161128221540099-1580490663.png"><img class="alignnone size-full wp-image-1500" src="http://127.0.0.1/wp-content/uploads/2018/03/1042406-20161128221540099-1580490663.png" alt="" width="696" height="299" /></a>
+
+因为 $latex \alpha_1,\alpha_2$在一条线段上，所以2个变量的优化问题实际仅仅是一条变量的优化问题，这里我们不放最终假设是$latex \alpha_2$的优化问题，由于我们采取的是启发式的迭代法，
+<ul>
+ 	<li>假设我们上一轮迭代得到的解是 $latex \alpha_1^{old},\alpha_2^{old}$，</li>
+ 	<li>假设沿着约束方向 $latex \alpha_2$未经剪辑的解是 $latex \alpha_2^{new,unc}$</li>
+ 	<li>本轮迭代完成的解是 $latex \alpha_1^{new},\alpha_2^{new}$</li>
+</ul>
+由于$latex \alpha_2^{new}$必须满足上图中的线段约束，假设L和H分别是上图中$latex \alpha_2^{new}$所在线段的边界，那么我们很显然有
+
+$$L\le \alpha_2^{new}\le H$$
+
+而对于L和H，我们也有限制
+<ul>
+ 	<li>对左边图而言，$latex y_1 \ne y_2 \Rightarrow \alpha_1-\alpha_2$
+<ul>
+ 	<li>$latex L=max(0,a_2^{old}-a_1^{old})$</li>
+ 	<li>$latex H=min(C,C+a_2^{old}-a_1^{old})$</li>
+</ul>
+</li>
+ 	<li>对有边图而言，$latex y_1 = y_2 \Rightarrow \alpha_1+\alpha_2$
+<ul>
+ 	<li>$latex L=max(0,a_2^{old}+a_1^{old}-C)$</li>
+ 	<li>$latex H=min(C,a_2^{old}+a_1^{old})$</li>
+</ul>
+</li>
+</ul>
+如上的其实很好理解。
+<ul>
+ 	<li>我们这里假设$latex y_{1}\ne y_{2}$
+<ul>
+ 	<li>那么就有 $latex \alpha_{1}^{old}-\alpha_{2}^{old}=\alpha_{1}^{new}-\alpha_{2}^{new}$</li>
+ 	<li>然后继续 $latex a_{2}^{new}=\alpha_{1}^{new}+(\alpha_{2}^{old}-\alpha_{1}^{old})$</li>
+ 	<li>$latex \alpha_1和\alpha_2$都要&gt;=0,&lt;=C</li>
+ 	<li>将$latex \alpha_{1}^{new}$分别代入0和C</li>
+ 	<li>$latex \alpha_{2}^{old}-\alpha_{1}^{old}\le\alpha_2^{new}\le C+(\alpha_{2}^{old}-\alpha_{1}^{old})$</li>
+</ul>
+</li>
+</ul>
+也就是说，假设我们通过求导得到 $latex \alpha_2^{new,unc}$，则最终的$latex a_2^{new}$应该为
+
+$$\alpha_2^{new}\left\{\begin{align}&amp;H&amp;\alpha_2^{new,unc}&gt;H\\&amp;\alpha_2^{new,unc}&amp;L\le\alpha_2^{new,unc}\le H\\&amp;L&amp;\alpha_2^{new,unc}&lt;L\end{align}\right. $$
+
+现在我们求 $latex \alpha_2^{new,unc}$，将目标函数对$latex \alpha_2$求偏导。
+
+先写出目标函数。
+
+$latex W(\alpha_1,\alpha_2)=\underbrace{ min }_{\alpha_1,\alpha_2} \frac{1}{2}a_1^2K_{11}+\frac{1}{2}a_2^2k_{22}+a_1a_2y_1y_2k_{12}+\frac{1}{2}a_1y_1\sum\limits_{i=3}^{m}a_iy_ik_{1i}+\frac{1}{2}a_2y_2\sum\limits_{i=3}^{m}a_iy_ik_{2i}-(\alpha_1+\alpha_2)$
+
+&nbsp;
+
+为了简化，设
+
+$$E_i=g(x_i)-y_i=\sum\limits_{j=1}^{m}\alpha_jy_jK(x,x_j)+b-y_i$$
+<ul>
+ 	<li>$latex g(x)=w^*\cdot\phi(x)+b=\sum\limits_{j=1}^{m}\alpha_j^*y_iK(x,x_j)+b^*$</li>
+</ul>
+我们令
+
+$$v_i=\sum\limits_{j=3}^{m}y_{j}\alpha_{j}K(x_{i},x_{j})=g(x_i)-\sum\limits_{j=1}^{2}y_j\alpha_{j}K(x_i,x_j)-b$$
+
+&nbsp;
+
+这样我们的优化目标函数进一步简化为
+
+$latex W(\alpha_1,\alpha_2)=\underbrace{ min }_{\alpha_1,\alpha_2} \frac{1}{2}a_1^2K_{11}+\frac{1}{2}a_2^2k_{22}+a_1a_2y_1y_2k_{12}+a_1y_1v_1+a_2y_2v_2-(\alpha_1+\alpha_2)$
+
+由于约束条件是$latex \alpha_1y_1+\alpha_2y_2=\varsigma，并且 y_i^2=1$，可以得到 $latex \alpha_1用\alpha_2$表达的式子
+
+$$\alpha_1=y_1(\varsigma-\alpha_2y_2)$$
+
+\begin{align}\alpha_{1}&amp;=y_{1}(\varsigma-\alpha_{2}y_{2})\\
+W(\alpha_{1},\alpha_{2})&amp;=\underbrace{ min }_{\alpha_{1},\alpha_{2}} \frac{1}{2}a_{1}^{2}K_{11}+\frac{1}{2}a_{2}^{2}K_{22}+a_{1}a_{2}y_{1}y_{2}K_{12}+a_{1}y_{1}v_{1}+a_{2}y_{2}v_{2}-(\alpha_{1}+\alpha_{2})\\
+&amp;=\frac{1}{2}(y_{1}(\varsigma-\alpha_{2}y_{2}))^{2}K_{11}+\frac{1}{2}\alpha_{2}^{2}K_{22}+(y_{1}(\varsigma-\alpha_{2}y_{2}))\alpha_{2}y_{1}y_{2}K_{12}+{y_{1}(\varsigma-\alpha_{2}y_{2})}y_{1}v_{1}+\alpha_{2}y_{2}v_{2}-(y_{1}(\varsigma-\alpha_{2}y_{2})-\alpha_{2})\\
+&amp;=\frac{1}{2}y_{1}^{2}(\varsigma-\alpha_{2}y_{2})^{2}K_{11}+\frac{1}{2}\alpha_{2}^{2}K_{22}+y_{1}\varsigma\alpha_{2}y_{1}y_{2}K_{12}-y_{1}\alpha_{2}y_{2}\alpha_{2}y_{1}y_{2}K_{12}+(y_{1}\varsigma y_{1}v_{1}-y_{1}\alpha_{2}y_{2}y_{1}v_{1})+\alpha_{2}y_{2}v_{2}-(y_{1}\varsigma-y_{1}\alpha_{2}y_{2}-\alpha_{2})\\
+&amp;because \hspace{1cm}y_{1}^{2}=y_{2}^{2}=1\\
+&amp;=\frac{1}{2}(\varsigma-\alpha_{2}y_{2})^{2}K_{11}+\frac{1}{2}\alpha_{2}^{2}K_{22}+\varsigma\alpha_{2}y_{2}K_{12}-\alpha_{2}^{2}K_{12}+(\varsigma v_{1}-\alpha_{2}y_{2}v_{1})+\alpha_{2}y_{2}v_{2}-(y_{1}\varsigma-y_{1}\alpha_{2}y_{2}-\alpha_{2})
+\end{align}
+\begin{align}
+\frac{\partial W}{\partial \alpha_{2}}&amp;=(\varsigma-\alpha_{2}y_{2})K_{11}(-y_{2})+K_{22}\alpha_{2}+\varsigma y_{2}K_{12}-2\alpha_{2}K_{12}-y_{2}v_{1}+y_{2}v_{2}+y_{1}y_{2}-1\\
+&amp;=\alpha_{2}y_{2}^{2}K_{11}-\varsigma K_{11}y_{2}+K_{22}\alpha_{2}+\varsigma y_{2}K_{12}-2\alpha_{2}K_{12}-y_{2}v_{1}+y_{2}v_{2}+y_{1}y_{2}-1\\
+&amp;=K_{11}\alpha_{2}+K_{22}\alpha_{2}-2K_{12}\alpha_{2}-\varsigma K_{11}y_{2}+\varsigma y_{2}K_{12}-y_{2}v_{1}+y_{2}v_{2}+y_{1}y_{2}-1=0\\
+\end{align}
+
+设导数为0，
+\begin{align}
+&amp;K_{11}\alpha_{2}+K_{22}\alpha_{2}-2K_{12}\alpha_{2}-\varsigma K_{11}y_{2}+\varsigma y_{2}K_{12}-y_{2}v_{1}+y_{2}v_{2}+y_{1}y_{2}-1=0\\
+&amp;(K_{11}+K_{22}-2K_{12})\alpha_{2}=\varsigma K_{11}y_{2}-\varsigma y_{2}K_{12}+y_{2}v_{1}-y_{2}v_{2}-y_{1}y_{2}+1\\
+&amp;(K_{11}+K_{22}-2K_{12})\alpha_{2}=y_{2}(\varsigma K_{11}-\varsigma K_{12}+v_{1}-v_{2}-y_{1}+y_{2})\\
+&amp;because:v_{i}=\sum\limits_{j=3}^{m}y_{j}\alpha_{j}K(x_{i},x_{j})=g(x_{i})-\sum\limits_{j=1}^{2}y_{j}\alpha_{j}K(x_{i},x_{j})-b\\
+&amp;=y_{2}(\varsigma K_{11}-\varsigma K_{12}+(g(x_{1})-\sum\limits_{j=1}^{2}y_{j}\alpha_{j}K(x_{1},x_{j})-b)-(g(x_{2})-\sum\limits_{j=1}^{2}y_{j}\alpha_{j}K(x_{2},x_{j})-b)-y_{1}+y_{2})\\
+&amp;=y_{2}(\varsigma K_{11}-\varsigma K_{12}+(g(x_{1})-\alpha_{1}y_{1}K_{11}-\alpha_{2}y_{2}K_{12}-b)-(g(x_{2})-\alpha_{1}y_{1}K_{21}-\alpha_{2}y_{2}K_{22}-b)-y_{1}+y_{2})\\
+&amp;=y_{2}(\varsigma K_{11}-\varsigma K_{12}+g(x_{1})-\alpha_{1}y_{1}K_{11}-\alpha_{2}y_{2}K_{12}-b-g(x_{2})+\alpha_{1}y_{1}K_{21}+\alpha_{2}y_{2}K_{22}+b-y_{1}+y_{2})\\
+&amp;=y_{2}(\varsigma K_{11}-\varsigma K_{12}+g(x_{1})-\alpha_{1}y_{1}K_{11}-\alpha_{2}y_{2}K_{12}-g(x_{2})+\alpha_{1}y_{1}K_{21}+\alpha_{2}y_{2}K_{22}-y_{1}+y_{2})\\
+&amp;because:\varsigma = \alpha_{1}y_{1} + \alpha_{2}y_{2}\\
+&amp;=y_{2}(\alpha_{1}y_{1}K_{11}+\alpha_{2}y_{2}K_{11}-\alpha_{1}y_{1}K_{12}-\alpha_{2}y_{2}K_{12}+g(x_{1})-\alpha_{1}y_{1}K_{11}-\alpha_{2}y_{2}K_{12}-g(x_{2})+\alpha_{1}y_{1}K_{21}+\alpha_{2}y_{2}K_{22}-y_{1}+y_{2})\\
+&amp;=y_{2}(\alpha_{2}y_{2}K_{11}-2\alpha_{2}y_{2}K_{12}+g(x_{1})-g(x_{2})+\alpha_{2}y_{2}K_{22}-y_{1}+y_{2})\\
+&amp;=y_{2}y_{2}\alpha_{2}(K_{11}-2K_{12}+K_{22})+y_{2}(g(x_{1})-g(x_{2})-y_{1}+y_{2})\\
+&amp;=\alpha_{2}(K_{11}-2K_{12}+K_{22})+y_{2}((g(x_{1})-y_{1})-(g(x_{2})-y_{2}))\\
+&amp;=\alpha_{2}(K_{11}-2K_{12}+K_{22})+y_{2}(E_{1}-E_{2})\\
+\end{align}
+\begin{align}
+&amp;然后就得到\\
+&amp;(K_{11}+K_{22}-2K_{12})\alpha_{2}^{new unc}=\alpha_{2}(K_{11}-2K_{12}+K_{22})+y_{2}(E_{1}-E_{2})\\
+&amp;\alpha_{2}^{new unc}=\alpha_{2}^{old}+\frac{y_{2}(E_{1}-E_{2})}{K_{11}-2K_{12}+K_{22}}
+\end{align}
+<h2>小结</h2>
+先总结一下公式
+<ul>
+ 	<li>软间隔函数最大化目标函数
+\begin{align} min\hspace{0.5cm}\frac{1}{2}||w||_2^2+C\sum\limits_{i=1}^{m}\xi_i\\
+s.t. \hspace{0.5cm}y_i(w^Tx_i+b)\ge 1-\xi_i\hspace{0.5cm}(i=1,2,\cdots,m)\\
+\xi_i\ge 0\hspace{0.5cm}(i=1,2,\cdots,m)\end{align}</li>
+ 	<li>KKT条件转化成无约束的目标函数 $$L(w,b,\xi,a,\mu)=\frac{1}{2}||w||_2^2+C\sum\limits_{i=1}^{m}\xi_i-\sum\limits_{i=1}^{m}a_i\left[y_i(w^Tx_i+b)-1+\xi_i\right]-\sum\limits_{i=1}^{m}\mu_i\xi_i$$</li>
+ 	<li>优化目标是 $$\underbrace{max}_{\alpha_i \geq 0, \mu_i \geq 0,} \; \underbrace{min}_{w,b,\xi}\; L(w,b,\alpha, \xi,\mu)$$</li>
+ 	<li>求 $latex w,b,\xi$最小值，对这三个变量求偏导 ，得到 \begin{align}\frac{\partial L}{\partial w} = 0 \;\Rightarrow w = \sum\limits_{i=1}^{m}\alpha_iy_ix_i\\\frac{\partial L}{\partial b} = 0 \;\Rightarrow \sum\limits_{i=1}^{m}\alpha_iy_i = 0\\\frac{\partial L}{\partial \xi} = 0 \;\Rightarrow C- \alpha_i – \mu_i = 0\end{align}</li>
+ 	<li>用如上3个式子消去w和d，就得到 $$L(w,b,\xi,\alpha,\mu) =\sum\limits_{i=1}^{m}\alpha_i – \frac{1}{2}\sum\limits_{i=1,j=1}^{m}\alpha_i\alpha_jy_iy_jx_i^Tx_j$$</li>
+ 	<li>完整的优化目标函数1，\begin{align}\underbrace{ max }_{\alpha} \sum\limits_{i=1}^{m}\alpha_i – \frac{1}{2}\sum\limits_{i=1,j=1}^{m}\alpha_i\alpha_jy_iy_jx_i^Tx_j\\s.t. \; \sum\limits_{i=1}^{m}\alpha_iy_i = 0\\C- \alpha_i – \mu_i = 0\\\alpha_i \geq 0 \;(i =1,2,…,m)\\\mu_i \geq 0 \;(i =1,2,…,m)\end{align}</li>
+ 	<li>完整的优化目标函数2，\begin{align}\underbrace{ min }_{\alpha} \frac{1}{2}\sum\limits_{i=1,j=1}^{m}\alpha_i\alpha_jy_iy_jx_i^Tx_j – \sum\limits_{i=1}^{m}\alpha_i\\s.t. \; \sum\limits_{i=1}^{m}\alpha_iy_i = 0\\0 \leq \alpha_i \leq C\end{align}
+<ul>
+ 	<li>参考 $latex L(w,b,\xi,a,\mu)=\frac{1}{2}||w||_2^2+C\sum\limits_{i=1}^{m}\xi_i-\sum\limits_{i=1}^{m}a_i\left[y_i(w^Tx_i+b)-1+\xi_i\right]-\sum\limits_{i=1}^{m}\mu_i\xi_i$</li>
+ 	<li>这里的$latex \alpha_{i}$一开始是定义 这个距离的约束系数。</li>
+ 	<li>$latex \alpha_{i}^{*}(y_i(w^Tx_i + b) – 1 + \xi_i^{*}) = 0$</li>
+ 	<li>\begin{array}{|c|c|c|c|}\hline 已知&amp;\alpha_i^*=0&amp;0&lt;\alpha_i^*&lt;C&amp;a_i^*=C\\\hline
+\frac{\partial L}{\partial \xi}=C-\alpha_i-\mu_i=0&amp;\mu_i=C\ge 0&amp;\mu&gt;0&amp;\mu_i=0\\\hline
+L(w,b,\xi,\alpha,\mu)=\cdots-\sum\limits_{i=1}^m\mu_i\xi_i;中\mu_i\xi_i=0&amp;\xi_i\ge 0&amp;\xi=0&amp;\xi_i\ge 0\\\hline\alpha_{i}^{*}(y_i(w^*\cdot\phi(x_i)+b+\xi_i^*) = 0;&amp;y_i((w^*\cdot\phi(x_i)+b)\ge 1&amp;y_i(w^*\cdot\phi(x_i)+b)=1&amp;y_i(w^*\cdot\phi(x_i)+b)\le1\\\hline\\设g(x)=w^*\cdot\phi(x)+b&amp;y_ig(x_i)\ge 1&amp;y_ig(x_i)=1&amp;y_ig(x_i)\le 1\\\hline\\说明&amp;点是支持向量或被正确分类&amp;点在支持向量上&amp;异常的点\\\hline\end{array}</li>
+</ul>
+</li>
+ 	<li>设 $latex g(x)=w^*\cdot\phi(x)+b=\sum\limits_{j=1}^{m}a_j^*y_j\phi(x_j)\cdot\phi(x)+b$</li>
+ 	<li>SMO算法基本思想是先优化2个变量，设其他的为常量，我们先设置 $latex \alpha_1,\alpha_2$为变量，那么更新优化函数 $$\underbrace{ min }_{\alpha_{1},\alpha_{2}} \frac{1}{2}\alpha_{1}^2K_{11}+\frac{1}{2}\alpha_{2}^2k_{22}+\alpha_{1}\alpha_{2}y_{1}y_{2}k_{12}+\alpha_{1}y_{1}\sum\limits_{i=3}^{m}a_{i}y_{i}k_{1i}+\alpha_{2}y_{2}\sum\limits_{i=3}^{m}a_{i}y_{i}k_{2i})-(\alpha_{1}+\alpha_{2})\\s.t. \alpha_1y_1+\alpha_2y_2=-\sum\limits_{i=3}^{m}y_i\alpha_i=\varsigma\\0\le \alpha_i\le C;i=1,2$$</li>
+ 	<li>假设我们通过求导得到 $latex \alpha_2^{new,unc}$，则最终的$latex a_2^{new}$应该为$$\alpha_2^{new}\left\{\begin{align}&amp;H&amp;\alpha_2^{new,unc}&gt;H\\&amp;\alpha_2^{new,unc}&amp;L\le\alpha_2^{new,unc}\le H\\&amp;L&amp;\alpha_2^{new,unc}&lt;L\end{align}\right. $$</li>
+ 	<li>设置一些变量
+<ul>
+ 	<li>设$latex E_i=g(x_i)-y_i=\sum\limits_{j=1}^{m}\alpha_jy_jK(x,x_j)+b-y_i$</li>
+ 	<li>设$latex v_i=\sum\limits_{j=3}^{m}y_{j}\alpha_{j}K(x_{i},x_{j})=g(x_i)-\sum\limits_{j=1}^{2}y_j\alpha_{j}K(x_i,x_j)-b$</li>
+</ul>
+</li>
+ 	<li>$latex \alpha_1=y_1(\varsigma-\alpha_2y_2)$</li>
+ 	<li>得到只含2个变量的函数
+$latex W(\alpha_{1},\alpha_{2})=\frac{1}{2}(\varsigma-\alpha_{2}y_{2})^{2}K_{11}+\frac{1}{2}\alpha_{2}^{2}K_{22}+\varsigma\alpha_{2}y_{2}K_{12}-\alpha_{2}^{2}K_{12}+(\varsigma v_{1}-\alpha_{2}y_{2}v_{1})+\alpha_{2}y_{2}v_{2}-(y_{1}\varsigma-y_{1}\alpha_{2}y_{2}-\alpha_{2})$</li>
+ 	<li>求导，$latex \frac{\partial W}{\partial \alpha_{2}}=K_{11}\alpha_{2}+K_{22}\alpha_{2}-2K_{12}\alpha_{2}-\varsigma K_{11}y_{2}+\varsigma y_{2}K_{12}-y_{2}v_{1}+y_{2}v_{2}+y_{1}y_{2}-1$</li>
+ 	<li>设导数=0 得到，$$(K_{11}+K_{22}-2K_{12})\alpha_{2}=\alpha_{2}(K_{11}-2K_{12}+K_{22})+y_{2}(E_{1}-E_{2})$$</li>
+ 	<li>$latex \alpha_{2}^{new unc}=\alpha_{2}^{old}+\frac{y_{2}(E_{1}-E_{2})}{K_{11}-2K_{12}+K_{22}}$</li>
+</ul>
+<h2>SMO算法2个变量的选择</h2>
+<h3>第一个变量的选择</h3>
+SMO算法称选择第一个变量为外层循环，这个变量需要选择在训练集中严重违反KKT条件最严重的点，对于每个样本，要满足KKT条件如下
+
+\[\alpha_{i}^{*}=0\Rightarrow y_{i}g(x_{i})\ge 1\\0&lt;\alpha_{i}^{*}&lt;C\Rightarrow y_{i}g(x_{i})=1\\\alpha_{i}^{*}=C\Rightarrow y_{i}g(x_{i})\le 1\]
+
+一般来说，我们首先选择违反 $latex 0\le \alpha_{i}^{*}\le C\Rightarrow y_{i}g(x_{i})=1$,如果这些支持向量都满足KKT条件，再选择违反其他2个条件的点。
+<h3>第二个变量的选择</h3>
+SMO算法称选择第二个变量为内层循环，假设我们已经在外层循环中找到了$latex \alpha_{1}$,第二个变量 $latex \alpha_{2}$的选择标准是 $latex |E1-E2|$有足够大的变化，
+
+如果内层循环找到的点不能让目标函数有足够的下降，可以采用遍历向量点来做 $latex \alpha_{2}$，直到目标函数有足够的下降，所有的支持向量做 $latex \alpha_{2}$都不能让目标函数有足够的下降，可以跳出循环，重新选择 $latex \alpha_{1}$
+<h3>计算阀值b和差值$latex E_{i}$</h3>
+在每次完成2个遍历的优化知后，需要重新计算阀值b，当 $latex 0 \le \alpha_{1}^{new}\le C$时，我们有
+
+$$ y_{1}-\sum\limits_{i=1}^{m}\alpha_{i}y_{i}K_{i1}-b_{1}=0$$
+<ul>
+ 	<li>我觉得这个是由 $latex y_{1}g(x_{1})=1$的来的。</li>
+</ul>
+于是新的$latex b_{1}^{new}=y_{1}-\sum\limits_{i=3}^{m}\alpha_{i}y_{i}K_{i1}-\alpha_{1}^{new}y_{1}K_{11}-\alpha_{2}^{new}y_{2}K_{21}$
+
+计算出$latex E_{1}$
+
+$$E_{1}=g(x_{1})-y_1== \sum\limits_{i=3}^{m}\alpha_iy_iK_{i1} + \alpha_{1}^{old}y_1K_{11} + \alpha_{2}^{old}y_2K_{21} + b^{old} -y_1$$
+
+两边都有$latex y_1 - \sum\limits_{i=3}^{m}\alpha_iy_iK_{i1}$，因此
+
+$$b_1^{new} = -E_1 -y_1K_{11}(\alpha_{1}^{new} - \alpha_{1}^{old}) -y_2K_{21}(\alpha_{2}^{new} - \alpha_{2}^{old}) + b^{old}$$
+
+同理 $latex 0 \leq \alpha_{2}^{new} \leq C$，那么
+
+$$b_2^{new} = -E_2 -y_1K_{12}(\alpha_{1}^{new} - \alpha_{1}^{old}) -y_2K_{22}(\alpha_{2}^{new} - \alpha_{2}^{old}) + b^{old}$$
+
+最终的$latex b^{new}$为
+
+$$b^{new} = \frac{b_1^{new} + b_2^{new}}{2}$$
+
+得到$latex b^{new}$后我们需要更新 $latex E_{i}$
+
+$$E_i = \sum\limits_{S}y_j\alpha_jK(x_i,x_j) + b^{new} -y_i$$
+<ul>
+ 	<li>S为所有支持向量$latex x_{j}$的几何。</li>
+</ul>
+<h4>计算阀值b之我的推导</h4>
+如下是我的推导
+
+\begin{align}
+y_{i}g(x_{i})=1\\
+y_{i}g(x_{i})-1=0\\
+y_{i}(g(x_{i})-y_{i})=0\\
+g(x_{i})-y_{i}=0\\
+\sum\limits_{j=1}^{m}\alpha_{j}y_{j}K_{ij}+b-y_{i}=0\\
+b=y_{i}-\sum\limits_{j=1}^{m}\alpha_{j}y_{j}K_{ij}\\
+When : i=1\\
+b_{1}^{new}=y_{1}-\sum\limits_{j=1}^{m}\alpha_{j}^{new}y_{j}K_{1j}\\
+b_{1}^{new}=y_{1}-\alpha_{1}^{new}y_{1}K_{11}-\alpha_{2}^{new}y_{2}K_{12}-\sum\limits_{j=3}^{m}\alpha_{j}^{new}y_{j}K_{1j}\\
+E_{1}=g(x_{1})-y_{1}=\sum\limits_{j=1}^{m}\alpha_{j}^{old}y_{j}K_{1j}+b_{1}^{old}-y_{1}\\
+=\alpha_{1}^{old}y_{1}K_{11}+\alpha_{2}^{old}y_{2}K_{12}+\sum\limits_{j=3}^{m}\alpha_{j}^{old}y_{j}K_{1j}+b_{1}^{old}-y_{1}\\
+我觉得上边的b_{1}^{new}是计算要符合KKT条件的b_{1}^{new}\\
+而如上的E_{1}是用的旧的b,即 b_{1}^{old}\\
+同时因为这个SMO算法是假设 \alpha_{3}以上的全部是常量,也就是说类似 \alpha_{3}^{old}=\alpha_{3}^{new}\\
+\end{align}
+\[\left(\begin{array}{l}
+b_{1}^{new}=y_{1}-\alpha_{1}^{new}y_{1}K_{11}-\alpha_{2}^{new}y_{2}K_{12}-\sum\limits_{j=3}^{m}\alpha_{j}^{new}y_{j}K_{1j}\\E_{1}=\alpha_{1}^{old}y_{1}K_{11}+\alpha_{2}^{old}y_{2}K_{12}+\sum\limits_{j=3}^{m}\alpha_{j}^{old}y_{j}K_{1j}+b_{1}^{old}-y_{1}
+\end{array} \right)\]
+如上公式都有 $latex y_{1}-\sum\limits_{j=3}^{m}\alpha_{j}y_{j}K_{1j}$，2个公式合并求b
+\begin{align}
+b_{1}^{new}&amp;=\alpha_{1}^{old}y_{1}K_{11}+\alpha_{2}^{old}y_{2}K_{12}-\alpha_{1}^{new}y_{1}K_{11}-\alpha_{2}^{new}y_{2}K_{12}+b_{1}^{old}-E_{1}\\
+&amp;=y_{1}K_{11}(\alpha_{1}^{old}-\alpha_{1}^{new})+y_{2}K_{12}(\alpha_{2}^{old}-\alpha_{2}^{new})+b_{1}^{old}-E_{1}\\
+&amp;=b_{1}^{old}-E_{1}-y_{1}K_{11}(\alpha_{1}^{new}-\alpha_{1}^{old})-y_{2}K_{12}(\alpha_{2}^{new}-\alpha_{2}^{old})
+\end{align}
+<h2>SMO算法总结</h2>
+<ul>
+ 	<li>输入 ：
+<ul>
+ 	<li>m个样本$latex (x_{1},y_{1}),(x_{2},y_{2}),\cdots,(x_{m},y_{m})$
+<ul>
+ 	<li>其中x为n维特征向量</li>
+ 	<li>y为二元输出，值为或者-。</li>
+</ul>
+</li>
+ 	<li>精度e</li>
+</ul>
+</li>
+ 	<li>输出是近似解</li>
+ 	<li>算法：
+<ol>
+ 	<li>取初值 $latex \alpha^{0}=0,k=0$</li>
+ 	<li>选择 $latex \alpha_{1}^{k}$
+<ul>
+ 	<li>选择违反KKT条件的点 \[\alpha_{i}^{*}=0\Rightarrow y_{i}g(x_{i})\ge 1\\0&lt;\alpha_{i}^{*}&lt;C\Rightarrow y_{i}g(x_{i})=1\\\alpha_{i}^{*}=C\Rightarrow y_{i}g(x_{i})\le 1\]</li>
+</ul>
+</li>
+ 	<li>接着选择$latex \alpha_{2}^{k}$
+<ul>
+ 	<li>选择标准是 $latex |E1-E2|$最大的点。</li>
+</ul>
+</li>
+ 	<li>求出新的 $$\alpha_2^{new,unc} = \alpha_2^{k} + \frac{y_2(E_1-E_2)}{K_{11} +K_{22}-2K_{12})}$$</li>
+ 	<li>按照下式求 $$\alpha_2^{k+1}= \begin{cases} H&amp; {\alpha_2^{new,unc} &gt; H}\\ \alpha_2^{new,unc}&amp; {L \leq \alpha_2^{new,unc} \leq H}\\ L&amp; {\alpha_2^{new,unc} &lt; L} \end{cases}$$</li>
+ 	<li>求 $latex \alpha_{1}^{k+1}$
+<ol>
+ 	<li>$latex \alpha_{1}^{k}y_{1}+\alpha_{2}^{k}y_{2}=\alpha_{1}^{k+1}y_{1}+\alpha_{2}^{k+1}y_{2}$</li>
+</ol>
+</li>
+ 	<li>求 $latex b^{k+1}$
+<ul>
+ 	<li>$latex b_1^{new} = -E_1 -y_1K_{11}(\alpha_{1}^{new} – \alpha_{1}^{old}) -y_2K_{21}(\alpha_{2}^{new} – \alpha_{2}^{old}) + b^{old}$</li>
+ 	<li>$latex b_2^{new} = -E_2 -y_1K_{12}(\alpha_{1}^{new} – \alpha_{1}^{old}) -y_2K_{22}(\alpha_{2}^{new} – \alpha_{2}^{old}) + b^{old}$</li>
+ 	<li>$latex b^{new} = \frac{b_1^{new} + b_2^{new}}{2}$</li>
+</ul>
+</li>
+ 	<li>更新 $latex E_{i}$
+<ul>
+ 	<li>$latex E_i = \sum\limits_{S}y_j\alpha_jK(x_i,x_j) + b^{new} -y_i$
+<ul>
+ 	<li>S为所有的支持向量</li>
+</ul>
+</li>
+</ul>
+</li>
+ 	<li>在精度e内检查是否满足如下终止条件
+\[\sum\limits_{i=1}^{m}\alpha_iy_i = 0\\0 \leq \alpha_i \leq C, i =1,2...m\\\alpha_{i}^{k+1} = 0 \Rightarrow y_ig(x_i) \geq 1\\0 &lt;\alpha_{i}^{k+1} &lt; C \Rightarrow y_ig(x_i) = 1\\\alpha_{i}^{k+1}= C \Rightarrow y_ig(x_i) \leq 1\]</li>
+ 	<li>如果条件满足，返回$latex \alpha^{k+1}$，否则进入步骤2.</li>
+</ol>
+</li>
+</ul>
+<h1>线性支持回归</h1>
+我这个是抄录的，还没有细看。
+<h2>SVM回归模型的损失函数度量</h2>
+如上的是分类的，现在将回归的。
+
+先简短的回顾一下分类：
+<ul>
+ 	<li>在SVM分类模型中，
+<ul>
+ 	<li>在硬间隔中
+<ul>
+ 	<li>我们的目标函数是让 $latex \frac{1}{2}||w||_{2}^{2}$最小。</li>
+ 	<li>同时让各个训练集中的点尽量远离自己类别一遍的支持向量
+<ul>
+ 	<li>$latex y_{i}(w\cdot\phi(x_{i})+b)\ge 1$</li>
+</ul>
+</li>
+</ul>
+</li>
+ 	<li>如果是软间隔，就加入一个松弛变量，$latex \xi_{i}\ge 0$
+<ul>
+ 	<li>目标函数是 $latex \frac{1}{2}||w||_{2}^{2} +C\sum\limits_{i=1}^{m}\xi_{i}$</li>
+ 	<li>对应的约束条件变成
+<ul>
+ 	<li>$latex y_{i}(w\cdot\phi(x_{i})+b)\ge 1-\xi_{i}$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+回归模型中没有类别，而是对于每个点 $latex (x_{i},y_{i})$，尽量拟合到一个线性模型 $latex y_{i}=w\cdot\phi(x_{i})+b$
+
+SVM线性回归的损失函数是先定义一个常量 $latex \epsilon &gt;0$ ，对于 $latex (x_{i},y_{i})$
+<ul>
+ 	<li>如果 $latex |y_{i}-w\cdot\phi(x_{i})-b|\le\epsilon $
+<ul>
+ 	<li>则认为没有损失，这不就是软间隔中的边界内吗？
+<ul>
+ 	<li>和均方差不同，均方差在这个边界内也是算进损失的。</li>
+</ul>
+</li>
+</ul>
+</li>
+ 	<li>如果 $latex |y_{i}-w\cdot\phi(x_{i})-b|&gt;\epsilon $
+<ul>
+ 	<li>则损失为 $latex |y_{i}-w\cdot\phi(x_{i})-b|-\epsilon $</li>
+</ul>
+</li>
+</ul>
+总结下，损失函数为 $$err(x_i,y_i) = \begin{cases} 0 &amp; {|y_i - w \bullet \phi(x_i ) -b| \leq \epsilon}\\ |y_i - w \bullet \phi(x_i ) +b| - \epsilon &amp; {|y_i - w \bullet \phi(x_i ) -b| &gt; \epsilon} \end{cases}$$
+<h2>SVM回归模型的目标函数的原始形式</h2>
+根据上面的，我们先定义目标函数的原始形式
+
+$$min\ \ \frac{1}{2}||w||_{2}^{2}\ \ \ s.t.\ |y_{i}-w\cdot\phi(x_{i})-b|\le\epsilon\ \ (i=1,2,\cdots,m)$$
+
+类似软间隔中加入松弛变量。但由于是绝对值，实际上2个不等式，也就是2边都需要松弛变量（我认为可以理解成上下边界），我们定义2个松弛变量。$latex \xi_i^{\lor}, \xi_i^{\land}$，则我们的SVM回归模型在加入松弛变量后变为
+
+\begin{align}
+min\ \ \frac{1}{2}||w||_{2}^{2}+C\sum\limits_{i=1}^{m}(\xi_{i}^{\lor}+\xi_{i}^{\land})\\
+s.t. \ \ -\epsilon-\xi_{i}^{\lor}\le y_{i}-w\cdot\phi(x_{i})-b\le\epsilon+\xi_{i}^{\land}\\
+\xi_{i}^{\lor}\ge 0,\xi_{i}^{\land}\ge 0 ,(i=1,2,\cdots,m)
+\end{align}
+
+根据拉格朗日函数写成无约束版本的
+
+$$L(w,b,\alpha^{\lor}, \alpha^{\land}, \xi_i^{\lor}, \xi_i^{\land}, \mu^{\lor}, \mu^{\land}) = \frac{1}{2}||w||_2^2 + C\sum\limits_{i=1}^{m}(\xi_i^{\lor}+ \xi_i^{\land}) + \sum\limits_{i=1}^{m}\alpha^{\lor}(-\epsilon - \xi_i^{\lor} -y_i + w \bullet \phi(x_i) + b) + \sum\limits_{i=1}^{m}\alpha^{\land}(y_i - w \bullet \phi(x_i ) - b -\epsilon - \xi_i^{\land}) - \sum\limits_{i=1}^{m}\mu^{\lor}\xi_i^{\lor} - \sum\limits_{i=1}^{m}\mu^{\land}\xi_i^{\land}$$
+
+其中 $latex \mu^{\lor} \geq 0, \mu^{\land} \geq 0, \alpha_i^{\lor} \geq 0, \alpha_i^{\land} \geq 0$均为拉格朗日系数。
+<h2>SVM回归模型的目标函数的对偶形式</h2>
+$$\underbrace{min}_{w,b,\xi_i^{\lor}, \xi_i^{\land}}\; \;\;\;\;\;\;\;\;\underbrace{max}_{\mu^{\lor} \geq 0, \mu^{\land} \geq 0, \alpha_i^{\lor} \geq 0, \alpha_i^{\land} \geq 0}\;L(w,b,\alpha^{\lor}, \alpha^{\land}, \xi_i^{\lor}, \xi_i^{\land}, \mu^{\lor}, \mu^{\land})$$
+
+这个优化条件也符合KKT条件
+
+$$\underbrace{max}_{\mu^{\lor} \geq 0, \mu^{\land} \geq 0, \alpha_i^{\lor} \geq 0, \alpha_i^{\land} \geq 0}\; \;\;\;\;\;\;\;\;\underbrace{min}_{w,b,\xi_i^{\lor}, \xi_i^{\land}}\;L(w,b,\alpha^{\lor}, \alpha^{\land}, \xi_i^{\lor}, \xi_i^{\land}, \mu^{\lor}, \mu^{\land})$$
+
+我么可以先求极少值，然后再求极大值。
+
+对于极少值，用求偏导的方式，
+
+\begin{align}\frac{\partial L}{\partial w} = 0 \;\Rightarrow w = \sum\limits_{i=1}^{m}(\alpha_i^{\land} - \alpha_i^{\lor})\phi(x_i)\\\frac{\partial L}{\partial b} = 0 \;\Rightarrow \sum\limits_{i=1}^{m}(\alpha_i^{\land} - \alpha_i^{\lor}) = 0\\\frac{\partial L}{\partial \xi_i^{\lor}} = 0 \;\Rightarrow C-\alpha^{\lor}-\mu^{\lor} = 0\\\frac{\partial L}{\partial \xi_i^{\land}} = 0 \;\Rightarrow C-\alpha^{\land}-\mu^{\land} = 0\end{align}
+
+得到如下形式
+
+\begin{align}\underbrace{ max }_{\alpha^{\lor}, \alpha^{\land}}\; -\sum\limits_{i=1}^{m}(\epsilon-y_i)\alpha_i^{\land}+ (\epsilon+y_i)\alpha_i^{\lor}) - \frac{1}{2}\sum\limits_{i=1,j=1}^{m}(\alpha_i^{\land} - \alpha_i^{\lor})(\alpha_j^{\land} - \alpha_j^{\lor})K_{ij}\\s.t. \; \sum\limits_{i=1}^{m}(\alpha_i^{\land} - \alpha_i^{\lor}) = 0\\0 &lt; \alpha_i^{\lor} &lt; C \; (i =1,2,...m)\\0 &lt; \alpha_i^{\land} &lt; C \; (i =1,2,...m)\end{align}
+
+转化
+
+\begin{align}\underbrace{ min}_{\alpha^{\lor}, \alpha^{\land}}\; \frac{1}{2}\sum\limits_{i=1,j=1}^{m}(\alpha_i^{\land} - \alpha_i^{\lor})(\alpha_j^{\land} - \alpha_j^{\lor})K_{ij} + \sum\limits_{i=1}^{m}(\epsilon-y_i)\alpha_i^{\land}+ (\epsilon+y_i)\alpha_i^{\lor}\\s.t. \; \sum\limits_{i=1}^{m}(\alpha_i^{\land} - \alpha_i^{\lor}) = 0\\0 &lt; \alpha_i^{\lor} &lt; C \; (i =1,2,...m)\\0 &lt; \alpha_i^{\land} &lt; C \; (i =1,2,...m)\end{align}
+
+用smo算法求 $latex \alpha^{\lor}, \alpha^{\land}$
+
+&nbsp;
+<h2>SVM回归模型系数的稀疏性</h2>
+在SVM分类模型中，KKT条件的对偶互补条件为 $latex \alpha_{i}^{*}(y_i(w \bullet \phi(x_i) + b) - 1+\xi_i^{*}) = 0$，而在回归模型中，对偶互补条件类似如下
+
+\begin{align}\alpha_i^{\lor}(\epsilon + \xi_i^{\lor} + y_i - w \bullet \phi(x_i ) - b ) = 0\\\alpha_i^{\land}(\epsilon + \xi_i^{\land} - y_i + w \bullet \phi(x_i ) + b ) = 0\end{align}
+
+&nbsp;
+
+根据松弛变量定义条件，如果$latex |y_i - w \bullet \phi(x_i ) -b| &lt; \epsilon$，我们有$latex \xi_i^{\lor} = 0, \xi_i^{\land}= 0$，此时$latex \epsilon + \xi_i^{\lor} + y_i - w \bullet \phi(x_i ) - b \neq 0, \epsilon + \xi_i^{\land} - y_i + w \bullet \phi(x_i ) + b \neq 0$这样要满足对偶互补条件，只有$latex \alpha_i^{\lor} = 0, \alpha_i^{\land} = 0$。
+
+我们定义样本系数系数$$\beta_i =\alpha_i^{\land}-\alpha_i^{\lor} $$
+
+根据上面$latex w$的计算式$latex w = \sum\limits_{i=1}^{m}(\alpha_i^{\land} - \alpha_i^{\lor})\phi(x_i) $，我们发现此时$latex \beta_i = 0$,也就是说$w$不受这些在误差范围内的点的影响。对于在边界上或者在边界外的点，$latex \alpha_i^{\lor} \neq 0, \alpha_i^{\land} \neq 0$，此时$latex \beta_i \neq 0$。
+<h1>用python实现的SVM线性分类</h1>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3">
+<pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt"></div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="我的版本1">我的版本1</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [4]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3">
+<pre><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">"""@File Name: svm_my_1.py</span>
+<span class="sd">@Author:  kerwin.cn@gmail.com</span>
+<span class="sd">@Created Time:2018-03-21 23:08:09</span>
+<span class="sd">@Last Change: 2018-03-21 23:08:09</span>
+<span class="sd">@Description : 这个是我实现的svm。</span>
+<span class="sd">"""</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">,</span>
+                    <span class="nb">format</span><span class="o">=</span><span class="s1">'</span><span class="si">%(asctime)s</span> <span class="si">%(filename)s</span><span class="s1">[line:</span><span class="si">%(lineno)d</span><span class="s1">] </span><span class="si">%(levelname)s</span> <span class="si">%(message)s</span><span class="s1">'</span><span class="p">,</span>
+                    <span class="n">datefmt</span><span class="o">=</span><span class="s1">'%a, </span><span class="si">%d</span><span class="s1"> %b %Y %H:%M:%S'</span><span class="p">,</span>
+                    <span class="c1"># filename='mylog.log',</span>
+                    <span class="n">filemode</span><span class="o">=</span><span class="s1">'w'</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">SVM_Kerwin</span><span class="p">():</span>
+    <span class="sd">"""</span>
+<span class="sd">    这个是我实现的svm类</span>
+<span class="sd">    Attributes	:</span>
+<span class="sd">    functions	:</span>
+
+<span class="sd">    """</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># 设置默认的精度</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_precision</span><span class="p">(</span><span class="mf">0.00001</span><span class="p">)</span>
+        <span class="c1"># 设置默认的C</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_C</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">load_data_from_csv</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">csv_file</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">'</span><span class="se">\t</span><span class="s1">'</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">"""</span>
+<span class="sd">            Description : 从csv文件中读取相关数据</span>
+<span class="sd">            Arg :</span>
+<span class="sd">            Returns :</span>
+<span class="sd">            Raises	 :</span>
+<span class="sd">        """</span>
+        <span class="c1"># 从csv文件中读取</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">csv_file</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="n">sep</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="n">header</span><span class="p">)</span>
+        <span class="c1"># 选择列数，我这里只是假设最后一列就是y，其他为x</span>
+        <span class="n">column_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_x</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="n">column_count</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_y</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">column_count</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:])</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"已经加载完毕x和y"</span><span class="p">)</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">set_x</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="sd">"""</span>
+<span class="sd">            Description : 加载x数据，x为n维特征向量。</span>
+<span class="sd">            Arg :</span>
+<span class="sd">            Returns :</span>
+<span class="sd">            Raises	 :</span>
+<span class="sd">        """</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+
+    <span class="k">def</span> <span class="nf">set_y</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="sd">"""</span>
+<span class="sd">            Description : 加载y数据，二元输出，值为1或者-1</span>
+<span class="sd">            Arg :</span>
+<span class="sd">            Returns :</span>
+<span class="sd">            Raises	 :</span>
+<span class="sd">        """</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+
+    <span class="k">def</span> <span class="nf">set_precision</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">precision</span><span class="p">):</span>
+        <span class="sd">"""</span>
+<span class="sd">            Description : 设置精度</span>
+<span class="sd">            Arg :</span>
+<span class="sd">            Returns :</span>
+<span class="sd">            Raises	 :</span>
+<span class="sd">        """</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">precision</span> <span class="o">=</span> <span class="n">precision</span>
+
+    <span class="k">def</span> <span class="nf">set_C</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">C</span><span class="p">):</span>
+        <span class="sd">"""</span>
+<span class="sd">            Description : 设置C</span>
+<span class="sd">            Arg :</span>
+<span class="sd">            Returns :</span>
+<span class="sd">            Raises	 :</span>
+<span class="sd">        """</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">C</span> <span class="o">=</span> <span class="n">C</span>
+
+    <span class="k">def</span> <span class="nf">init_var</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">"""</span>
+<span class="sd">            Description : 初始化某些变量</span>
+<span class="sd">            Arg :</span>
+<span class="sd">            Returns :</span>
+<span class="sd">            Raises	 :</span>
+<span class="sd">        """</span>
+        <span class="c1"># 初始化a变量，这个变量是（函数间隔 + 松弛变量）的约束系数</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mat</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">),</span> <span class="mi">1</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># 截距</span>
+        <span class="c1"># 如果用户设置了C</span>
+        <span class="k">if</span> <span class="n">C</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">set_C</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+        <span class="c1"># 如果用户设置了精度</span>
+        <span class="k">if</span> <span class="n">precision</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">set_precision</span><span class="p">(</span><span class="n">precision</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kernelTrac</span><span class="p">()</span>   <span class="c1"># 先计算出核函数的。</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">get_fx</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">"""</span>
+<span class="sd">            Description : 返回函数，实际返回的是w和b</span>
+<span class="sd">            Arg :</span>
+<span class="sd">            Returns :</span>
+<span class="sd">                @w</span>
+<span class="sd">                @b</span>
+<span class="sd">            Raises	 :</span>
+<span class="sd">        """</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">init_var</span><span class="p">()</span>
+        <span class="c1"># 根据smo算法求出alpha</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">smo</span><span class="p">()</span>
+        <span class="c1"># 求出w</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">calcW</span><span class="p">()</span>
+        <span class="c1"># 然后求出b</span>
+        <span class="c1"># 这里直接用在smo中的b吧。</span>
+        <span class="c1"># b1 = self.get_b()</span>
+
+        <span class="k">return</span> <span class="n">w</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span>
+
+    <span class="k">def</span> <span class="nf">get_b</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">"""</span>
+<span class="sd">            Description : 求系数b</span>
+<span class="sd">            Arg :</span>
+<span class="sd">            Returns :</span>
+<span class="sd">            Raises	 :</span>
+<span class="sd">        """</span>
+        <span class="c1"># b = yi - sum aj * yj * K(ij)</span>
+        <span class="c1"># 这里只是在支持向量中求</span>
+        <span class="n">lst_s_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">intersect1d</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)[</span>
+            <span class="mi">0</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">C</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"取得支持向量的序号：</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">lst_s_index</span><span class="p">))</span>
+        <span class="n">lst_b</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">lst_s_index</span><span class="p">:</span>
+            <span class="c1"># 要对每个支持向量分别求</span>
+            <span class="n">yi</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">b_tmp</span> <span class="o">=</span> <span class="n">yi</span> <span class="o">-</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kernel_matrix</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">lst_s_index</span><span class="p">]</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="p">[</span><span class="n">lst_s_index</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="n">lst_s_index</span><span class="p">])))</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"序号：</span><span class="si">{}</span><span class="s2">,x:</span><span class="si">{}</span><span class="s2">,yi:</span><span class="si">{}</span><span class="s2">,b:</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">i</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">yi</span><span class="p">,</span> <span class="n">b_tmp</span><span class="p">))</span>
+            <span class="n">lst_b</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">b_tmp</span><span class="p">)</span>
+        <span class="c1"># 然后计算啦。</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">lst_b</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">lst_b</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">youhua</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a1_index</span><span class="p">,</span> <span class="n">a2_index</span><span class="p">):</span>
+        <span class="sd">"""</span>
+<span class="sd">            Description : 选择a1,a2进行优化。</span>
+<span class="sd">            Arg :</span>
+<span class="sd">                @a2_index : 违反KKT的点</span>
+<span class="sd">                @a1_index : 另一个点。</span>
+<span class="sd">            Returns :</span>
+<span class="sd">                0 : 没有优化</span>
+<span class="sd">                1 ： 有优化</span>
+<span class="sd">            Raises	 :</span>
+<span class="sd">        """</span>
+        <span class="c1"># 先初始化几个变量</span>
+        <span class="n">_a1_old</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="o">.</span><span class="n">A</span><span class="p">[</span><span class="n">a1_index</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">_a2_old</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="o">.</span><span class="n">A</span><span class="p">[</span><span class="n">a2_index</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">y1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="n">a1_index</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">y2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="n">a2_index</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">E1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">calcEi</span><span class="p">(</span><span class="n">a1_index</span><span class="p">)</span>
+        <span class="n">E2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">calcEi</span><span class="p">(</span><span class="n">a2_index</span><span class="p">)</span>
+        <span class="n">K11</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">kernel_matrix</span><span class="p">[</span><span class="n">a1_index</span><span class="p">][</span><span class="n">a1_index</span><span class="p">]</span>
+        <span class="n">K12</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">kernel_matrix</span><span class="p">[</span><span class="n">a1_index</span><span class="p">][</span><span class="n">a2_index</span><span class="p">]</span>
+        <span class="n">K22</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">kernel_matrix</span><span class="p">[</span><span class="n">a2_index</span><span class="p">][</span><span class="n">a2_index</span><span class="p">]</span>
+        <span class="c1"># 然后计算a2_new</span>
+        <span class="n">eta</span> <span class="o">=</span> <span class="n">K11</span> <span class="o">+</span> <span class="n">K22</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">K12</span>
+        <span class="k">if</span> <span class="n">eta</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># 不考虑这种情况吧。</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"eta &lt; 0"</span><span class="p">)</span>
+            <span class="k">return</span> <span class="mi">0</span>
+        <span class="n">a2_new</span> <span class="o">=</span> <span class="n">_a2_old</span> <span class="o">+</span> <span class="n">y2</span> <span class="o">*</span> <span class="p">(</span><span class="n">E1</span> <span class="o">-</span> <span class="n">E2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">eta</span><span class="p">)</span>
+        <span class="c1"># 但因为这个a2是有约束条件的，下边是判断约束条件的</span>
+        <span class="n">L</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">H</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="n">y1</span> <span class="o">!=</span> <span class="n">y2</span><span class="p">:</span>
+            <span class="n">L</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">_a2_old</span> <span class="o">-</span> <span class="n">_a1_old</span><span class="p">)</span>
+            <span class="n">H</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">C</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">C</span> <span class="o">+</span> <span class="n">_a2_old</span> <span class="o">-</span> <span class="n">_a1_old</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">L</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">_a2_old</span> <span class="o">+</span> <span class="n">_a1_old</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">C</span><span class="p">)</span>
+            <span class="n">H</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">C</span><span class="p">,</span> <span class="n">_a2_old</span> <span class="o">+</span> <span class="n">_a1_old</span><span class="p">)</span>
+        <span class="c1"># 值不符合。</span>
+        <span class="k">if</span> <span class="n">L</span> <span class="o">==</span> <span class="n">H</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"L=H"</span><span class="p">)</span>
+            <span class="k">return</span> <span class="mi">0</span>
+        <span class="c1"># 然后判断约束条件</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">a2_new</span> <span class="o">&gt;</span> <span class="n">H</span><span class="p">):</span>
+            <span class="n">a2_new</span> <span class="o">=</span> <span class="n">H</span>
+        <span class="k">elif</span><span class="p">(</span><span class="n">a2_new</span> <span class="o">&lt;</span> <span class="n">L</span><span class="p">):</span>
+            <span class="n">a2_new</span> <span class="o">=</span> <span class="n">L</span>
+
+        <span class="c1"># 我看到在 文章 http://www.cnblogs.com/pursued-deer/p/7892342.html 会判断a2_new和_a2_old的差值。</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">a2_new</span> <span class="o">-</span> <span class="n">_a2_old</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.001</span><span class="p">):</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"a2的更新不足0.001，所以取消"</span><span class="p">)</span>
+            <span class="k">return</span> <span class="mi">0</span>
+        <span class="c1"># 其他情况就是a2_new不变啦。</span>
+        <span class="c1"># 接下来求a1_new</span>
+        <span class="c1"># a1_new * y1 + a2_new * y2 = _a1_old * y1 + _a2_old * y2 = 常数</span>
+        <span class="c1"># 两边同时乘以y1</span>
+        <span class="n">a1_new</span> <span class="o">=</span> <span class="n">_a1_old</span> <span class="o">+</span> <span class="n">y1</span> <span class="o">*</span> <span class="n">y2</span> <span class="o">*</span> <span class="p">(</span><span class="n">_a2_old</span> <span class="o">-</span> <span class="n">a2_new</span><span class="p">)</span>
+        <span class="c1"># 这个a1_new同样得有个范围吧</span>
+        <span class="c1"># if(a1_new &lt; 0 or a1_new &gt; self.C):</span>
+        <span class="c1"># logging.info("a1&lt;0 或者 a1&gt;C")</span>
+        <span class="c1"># return 0</span>
+        <span class="c1"># 然后求解b</span>
+        <span class="n">b1</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">-</span> <span class="n">E1</span> <span class="o">-</span> <span class="n">y1</span> <span class="o">*</span> <span class="n">K11</span> <span class="o">*</span> \
+            <span class="p">(</span><span class="n">a1_new</span> <span class="o">-</span> <span class="n">_a1_old</span><span class="p">)</span> <span class="o">-</span> <span class="n">y2</span> <span class="o">*</span> <span class="n">K12</span> <span class="o">*</span> \
+            <span class="p">(</span><span class="n">a2_new</span> <span class="o">-</span> <span class="n">_a2_old</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span>
+        <span class="n">b2</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">-</span> <span class="n">E2</span> <span class="o">-</span> <span class="n">y1</span> <span class="o">*</span> <span class="n">K12</span> <span class="o">*</span> \
+            <span class="p">(</span><span class="n">a1_new</span> <span class="o">-</span> <span class="n">_a1_old</span><span class="p">)</span> <span class="o">-</span> <span class="n">y2</span> <span class="o">*</span> <span class="n">K22</span> <span class="o">*</span> \
+            <span class="p">(</span><span class="n">a2_new</span> <span class="o">-</span> <span class="n">_a2_old</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span>
+        <span class="c1"># 我这里只是用b的平均值吧。</span>
+        <span class="c1"># if(a1_new &gt; 0 and a1_new &lt; self.C):</span>
+        <span class="c1"># self.b = b1</span>
+        <span class="c1"># elif(a2_new &gt; 0 and a2_new &lt; self.C):</span>
+        <span class="c1"># self.b = b2</span>
+        <span class="c1"># else:</span>
+        <span class="c1"># self.b = (b1 + b2) / 2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="n">b1</span> <span class="o">+</span> <span class="n">b2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+        <span class="c1"># 更新alpha</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="p">[</span><span class="n">a1_index</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">a1_new</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="p">[</span><span class="n">a2_index</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">a2_new</span>
+        <span class="c1"># 到这里的都是有优化的。</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"优化：a1:</span><span class="si">{}</span><span class="s2">:</span><span class="si">{}</span><span class="s2">:,a2:</span><span class="si">{}</span><span class="s2">:</span><span class="si">{}</span><span class="s2">,b:</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">a1_index</span><span class="p">,</span> <span class="n">a1_new</span><span class="p">,</span> <span class="n">a2_index</span><span class="p">,</span> <span class="n">a2_new</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">))</span>
+        <span class="k">return</span> <span class="mi">1</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">smo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">maxIter</span><span class="o">=</span><span class="mi">200000</span><span class="p">):</span>
+        <span class="sd">"""</span>
+<span class="sd">            Description : 根据smo求a值和b值。</span>
+<span class="sd">            Arg :</span>
+<span class="sd">                @maxIter : 最大迭代次数。</span>
+<span class="sd">            Returns :</span>
+<span class="sd">            Raises	 :</span>
+<span class="sd">        """</span>
+        <span class="c1"># 在教程中，我们看到有终止条件，</span>
+        <span class="c1"># 但我们实际运行的时候，要有个最大运行次数啊，</span>
+        <span class="c1"># 以防止程序不断运行</span>
+        <span class="c1"># 有个可以记录运行次数的变量</span>
+        <span class="n">iner</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c1"># 下边是一个循环。</span>
+        <span class="c1"># 退出条件有如下</span>
+        <span class="c1">#   达到最大运行次数</span>
+        <span class="c1">#   所有的点都符合KKT条件</span>
+        <span class="c1"># 我这里用youhua函数的返回来表示是否有优化，</span>
+        <span class="c1"># 当运行一遍后，发现没有可以优化的，就表示完结了。</span>
+        <span class="c1"># 并且我看到作者是说，当0&lt;ai&lt;C的时候，是最容易有优化的，</span>
+        <span class="c1"># 而在0或者C上是不容易优化的，所以这里有2个变量</span>
+        <span class="c1">#   一个是显示优化次数</span>
+        <span class="c1">#   一个是显示强制全样本优化的。</span>
+        <span class="c1"># 当经过全样本优化后，且优化次数等于0了，就表示全部样本都符合KKT条件了。</span>
+        <span class="n">is_all_sample</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">youhua_count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">while</span><span class="p">(</span><span class="n">iner</span> <span class="o">&lt;</span> <span class="n">maxIter</span> <span class="ow">and</span> <span class="p">((</span><span class="n">is_all_sample</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">youhua_count</span> <span class="o">==</span> <span class="mi">0</span><span class="p">))):</span>
+            <span class="n">iner</span> <span class="o">=</span> <span class="n">iner</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="c1"># 这里用启发式寻找a2</span>
+            <span class="c1"># 首先是全部样本中寻找不符合KKT条件的，并进行优化</span>
+            <span class="c1"># 然后在0&lt;ai&lt;c的样本中寻找不符合KKT条件的，并进行优化。</span>
+            <span class="n">youhua_count</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">if</span> <span class="n">is_all_sample</span><span class="p">:</span>
+                <span class="c1"># 在全部样本中寻找不符合KKT条件。</span>
+                <span class="k">for</span> <span class="n">a2_index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">)):</span>
+                    <span class="c1"># 判断这个点是否符合KKT条件。</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_alhpa_2</span><span class="p">(</span><span class="n">a2_index</span><span class="p">):</span>
+                        <span class="c1"># 先寻找 |e1-e2|最大的点</span>
+                        <span class="n">a1_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_alpha_1</span><span class="p">(</span><span class="n">a2_index</span><span class="p">)</span>
+                        <span class="n">tmp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">youhua</span><span class="p">(</span><span class="n">a1_index</span><span class="p">,</span> <span class="n">a2_index</span><span class="p">)</span>
+                        <span class="k">if</span><span class="p">(</span><span class="n">tmp</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+                            <span class="c1"># 所有点参与优化</span>
+                            <span class="k">for</span> <span class="n">a1_index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">)):</span>
+                                <span class="c1"># 同一个值就不用优化啦</span>
+                                <span class="k">if</span><span class="p">(</span><span class="n">a1_index</span> <span class="o">==</span> <span class="n">a2_index</span><span class="p">):</span>
+                                    <span class="k">continue</span>
+                                <span class="n">youhua_count</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">youhua</span><span class="p">(</span><span class="n">a1_index</span><span class="p">,</span> <span class="n">a2_index</span><span class="p">)</span>
+                                <span class="n">iner</span> <span class="o">+=</span> <span class="mi">1</span>
+                            <span class="k">pass</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="c1"># 优化次数加上</span>
+                            <span class="n">youhua_count</span> <span class="o">+=</span> <span class="n">tmp</span>
+                            <span class="n">iner</span> <span class="o">+=</span> <span class="mi">1</span>
+                        <span class="k">pass</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># 在0&lt;ai&lt;c的样本中寻找不符合KKT条件的。</span>
+                <span class="c1"># 首先取得0&lt;ai&lt;c的样本吧。</span>
+                <span class="c1"># 感谢python，感谢numpy，这个会容易。</span>
+                <span class="n">nonBound_alpha</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span>
+                    <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="o">.</span><span class="n">A</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="o">.</span><span class="n">A</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">C</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="k">for</span> <span class="n">a2_index</span> <span class="ow">in</span> <span class="n">nonBound_alpha</span><span class="p">:</span>
+                    <span class="c1"># 判断这个点是否符合KKT条件。</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_alhpa_2</span><span class="p">(</span><span class="n">a2_index</span><span class="p">):</span>
+                        <span class="c1"># 先寻找 |e1-e2|最大的点</span>
+                        <span class="n">a1_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_alpha_1</span><span class="p">(</span><span class="n">a2_index</span><span class="p">)</span>
+                        <span class="n">tmp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">youhua</span><span class="p">(</span><span class="n">a1_index</span><span class="p">,</span> <span class="n">a2_index</span><span class="p">)</span>
+                        <span class="k">if</span><span class="p">(</span><span class="n">tmp</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+                            <span class="c1"># 所有点参与优化</span>
+                            <span class="k">for</span> <span class="n">a1_index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">)):</span>
+                                <span class="c1"># 同一个值就不用优化啦</span>
+                                <span class="k">if</span><span class="p">(</span><span class="n">a1_index</span> <span class="o">==</span> <span class="n">a2_index</span><span class="p">):</span>
+                                    <span class="k">continue</span>
+                                <span class="n">youhua_count</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">youhua</span><span class="p">(</span><span class="n">a1_index</span><span class="p">,</span> <span class="n">a2_index</span><span class="p">)</span>
+                                <span class="n">iner</span> <span class="o">+=</span> <span class="mi">1</span>
+                            <span class="k">pass</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="c1"># 优化次数加上</span>
+                            <span class="n">youhua_count</span> <span class="o">+=</span> <span class="n">tmp</span>
+                            <span class="n">iner</span> <span class="o">+=</span> <span class="mi">1</span>
+                        <span class="c1"># 如果这点不能够有优化，就选择所有的点当a1</span>
+
+                <span class="k">pass</span>
+            <span class="c1"># 判断如果已经这次在全部样本中寻找不符合KKT，</span>
+            <span class="c1">#   那么下次就在边界内的样本寻找不符合KKT的点。</span>
+            <span class="c1"># 而如果这次就是在边界内寻找不符合的点，</span>
+            <span class="c1">#   那么就判断优化次数是否等于0，如果等于0，</span>
+            <span class="c1">#       表示边界内没有需要优化的点了，</span>
+            <span class="c1">#       那么就强制转到全部样本去寻找需要优化的点。</span>
+            <span class="c1"># 这个退出条件就是is_all_sample=False并且youhua_count=0</span>
+            <span class="k">if</span> <span class="n">is_all_sample</span><span class="p">:</span>
+                <span class="n">is_all_sample</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">elif</span> <span class="p">(</span><span class="n">youhua_count</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+                <span class="n">is_all_sample</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="c1"># 如下就表示要退出了，我这里注明一下吧</span>
+            <span class="k">if</span><span class="p">(</span><span class="ow">not</span> <span class="n">is_all_sample</span> <span class="ow">and</span> <span class="p">(</span><span class="n">youhua_count</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)):</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"没有不符合KKT的点了，用的步骤:</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">iner</span><span class="p">))</span>
+
+        <span class="c1"># 返回这2个值啦。</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span>
+
+    <span class="k">def</span> <span class="nf">is_alhpa_2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+        <span class="sd">"""</span>
+<span class="sd">            Description : 判断是否是a2的，判断依据是违反KKT条件</span>
+<span class="sd">            Arg :</span>
+<span class="sd">            Returns :</span>
+<span class="sd">            Raises	 :</span>
+<span class="sd">        """</span>
+        <span class="c1"># 就是这个函数，已经做了这个功能了</span>
+        <span class="k">return</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_conform_KKT</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">get_err</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">"""</span>
+<span class="sd">            Description : 取得所有的差值，平方和。</span>
+<span class="sd">            Arg :</span>
+<span class="sd">            Returns :</span>
+<span class="sd">            Raises	 :</span>
+<span class="sd">        """</span>
+        <span class="c1"># 得到 alpha &gt; 0 和 alpha &lt; C 的 mask</span>
+        <span class="n">con1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">&gt;</span> <span class="mi">0</span>
+        <span class="n">con2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">C</span>
+        <span class="n">con1</span> <span class="o">=</span> <span class="n">con1</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">con1</span><span class="p">)))</span>
+        <span class="n">con2</span> <span class="o">=</span> <span class="n">con2</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">con2</span><span class="p">)))</span>
+        <span class="c1"># 算出“差异向量”并拷贝成三份</span>
+        <span class="n">err1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)))</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">err1</span><span class="p">)):</span>
+            <span class="n">err1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">err1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">calcEi</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">err2</span> <span class="o">=</span> <span class="n">err1</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">err3</span> <span class="o">=</span> <span class="n">err1</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="c1"># 依次根据三个 KKT 条件，将差异向量的某些位置设为 0</span>
+        <span class="c1"># 不难看出为了直观、我做了不少重复的运算，所以这一步是可以优化的</span>
+        <span class="n">err1</span><span class="p">[(</span><span class="n">con1</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">err1</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">))</span> <span class="o">|</span> <span class="p">(</span><span class="o">~</span><span class="n">con1</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">err1</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">))]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">err2</span><span class="p">[((</span><span class="o">~</span><span class="n">con1</span> <span class="o">|</span> <span class="o">~</span><span class="n">con2</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">err2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">))</span> <span class="o">|</span>
+             <span class="p">((</span><span class="n">con1</span> <span class="o">&amp;</span> <span class="n">con2</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">err2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">))]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">err3</span><span class="p">[(</span><span class="n">con2</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">err3</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">))</span> <span class="o">|</span> <span class="p">(</span><span class="o">~</span><span class="n">con2</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">err3</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">))]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c1"># 算出平方和并取出使得“损失”最大的 idx</span>
+        <span class="n">err</span> <span class="o">=</span> <span class="n">err1</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">err2</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">err3</span> <span class="o">**</span> <span class="mi">2</span>
+        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">err</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+
+    <span class="k">def</span> <span class="nf">get_alpha_2</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">"""</span>
+<span class="sd">            Description : 这个是取得a2的，</span>
+<span class="sd">            Arg :</span>
+<span class="sd">            Returns :</span>
+<span class="sd">            Raises	 :</span>
+<span class="sd">        """</span>
+        <span class="c1"># 得到 alpha &gt; 0 和 alpha &lt; C 的 mask</span>
+        <span class="n">con1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">&gt;</span> <span class="mi">0</span>
+        <span class="n">con2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">C</span>
+        <span class="n">con1</span> <span class="o">=</span> <span class="n">con1</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">con1</span><span class="p">)))</span>
+        <span class="n">con2</span> <span class="o">=</span> <span class="n">con2</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">con2</span><span class="p">)))</span>
+        <span class="c1"># 算出“差异向量”并拷贝成三份</span>
+        <span class="n">err1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)))</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">err1</span><span class="p">)):</span>
+            <span class="n">err1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">err1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">calcEi</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">err2</span> <span class="o">=</span> <span class="n">err1</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">err3</span> <span class="o">=</span> <span class="n">err1</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="c1"># 依次根据三个 KKT 条件，将差异向量的某些位置设为 0</span>
+        <span class="c1"># 不难看出为了直观、我做了不少重复的运算，所以这一步是可以优化的</span>
+        <span class="n">err1</span><span class="p">[(</span><span class="n">con1</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">err1</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">))</span> <span class="o">|</span> <span class="p">(</span><span class="o">~</span><span class="n">con1</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">err1</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">))]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">err2</span><span class="p">[((</span><span class="o">~</span><span class="n">con1</span> <span class="o">|</span> <span class="o">~</span><span class="n">con2</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">err2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">))</span> <span class="o">|</span>
+             <span class="p">((</span><span class="n">con1</span> <span class="o">&amp;</span> <span class="n">con2</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">err2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">))]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">err3</span><span class="p">[(</span><span class="n">con2</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">err3</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">))</span> <span class="o">|</span> <span class="p">(</span><span class="o">~</span><span class="n">con2</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">err3</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">))]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c1"># 算出平方和并取出使得“损失”最大的 idx</span>
+        <span class="n">err</span> <span class="o">=</span> <span class="n">err1</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">err2</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">err3</span> <span class="o">**</span> <span class="mi">2</span>
+        <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">idx</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">get_alpha_1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+        <span class="sd">"""</span>
+<span class="sd">            Description : 已知a2了，寻找a1，我这里直接选择|E1 - E2|最大值的点。</span>
+<span class="sd">            Arg :</span>
+<span class="sd">                @i ： a1的下标。</span>
+<span class="sd">            Returns : 选择的a2的下标</span>
+<span class="sd">            Raises	 :</span>
+<span class="sd">        """</span>
+        <span class="c1"># 先求e1</span>
+        <span class="n">e1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">calcEi</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">_max_e1_e2</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># 记录最大值</span>
+        <span class="n">_alpha_2_index</span> <span class="o">=</span> <span class="kc">None</span>   <span class="c1"># 最大值所在的下标，返回的就是这个。</span>
+        <span class="c1"># 遍历所有的样本集，找到最大值的点</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">)):</span>
+            <span class="c1"># 计算E2</span>
+            <span class="n">e2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">calcEi</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+            <span class="c1"># 计算e1和E2的差值的绝对值</span>
+            <span class="n">_e1_e2</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">e1</span> <span class="o">-</span> <span class="n">e2</span><span class="p">)</span>
+            <span class="c1"># 判断这个差值是否是最大的</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">_e1_e2</span> <span class="o">&gt;</span> <span class="n">_max_e1_e2</span><span class="p">):</span>
+                <span class="c1"># 更新</span>
+                <span class="n">_max_e1_e2</span> <span class="o">=</span> <span class="n">_e1_e2</span>
+                <span class="n">_alpha_2_index</span> <span class="o">=</span> <span class="n">j</span>
+        <span class="c1"># 如果有找到</span>
+        <span class="k">if</span> <span class="n">_alpha_2_index</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">_alpha_2_index</span>
+        <span class="c1"># 如果没有找到就随机返回一个数吧</span>
+        <span class="k">return</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">is_conform_KKT</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+        <span class="sd">"""</span>
+<span class="sd">            Description : 判断某个样本是否符合KKT条件</span>
+<span class="sd">            Arg :</span>
+<span class="sd">            Returns :</span>
+<span class="sd">            Raises	 :</span>
+<span class="sd">        """</span>
+        <span class="c1"># 先保存这3个变量</span>
+        <span class="n">ai</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">yi</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">ei</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">calcEi</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="c1"># 如下得判断是否是软间隔还是硬间隔</span>
+        <span class="c1"># 判断条件2</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">ai</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">ai</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">C</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="c1"># 如下是判断345项，因为ai只能在3种情况之一，所以用这种判断。</span>
+        <span class="c1"># 判断第3项</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">ai</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="p">(</span><span class="n">yi</span> <span class="o">*</span> <span class="n">ei</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">precision</span><span class="p">)):</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="c1"># 判断第4项</span>
+        <span class="k">elif</span><span class="p">(</span><span class="n">ai</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">ai</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">C</span> <span class="ow">and</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">yi</span> <span class="o">*</span> <span class="n">ei</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">precision</span><span class="p">)):</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="c1"># 判断第5项</span>
+        <span class="k">elif</span><span class="p">(</span><span class="n">ai</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">C</span> <span class="ow">and</span> <span class="p">(</span><span class="n">yi</span> <span class="o">*</span> <span class="n">ei</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">precision</span><span class="p">)):</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">def</span> <span class="nf">is_alpha_finish</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">"""</span>
+<span class="sd">            Description : 这个是在SMO算法中谈终止条件的。</span>
+<span class="sd">            Arg :</span>
+<span class="sd">            Returns :</span>
+<span class="sd">            Raises	 :</span>
+<span class="sd">        """</span>
+        <span class="c1"># 终止条件有5个，分别是如下</span>
+        <span class="c1"># 1 ai * yi 的和= 0</span>
+        <span class="c1"># 2 0 &lt;= ai  &lt;= C</span>
+        <span class="c1"># 3 ai = 0  =&gt; yi * g(xi) &gt;= 1</span>
+        <span class="c1"># 4 0 &lt; ai &lt; c  =&gt; yi * g(xi)=1</span>
+        <span class="c1"># 5 ai = C  =&gt; yi * g(xi) &lt;= 1</span>
+        <span class="c1"># 由于后边三项都是判断 yi * g(xi)和1之间的关系的</span>
+        <span class="c1"># 这里做一下转换。</span>
+        <span class="c1"># yi*g(xi)-1=yi*(g(xi)-yi)=yi*Ei</span>
+        <span class="c1"># 先判断第一个条件，很简单</span>
+        <span class="c1"># 2个向量 内积的和。</span>
+        <span class="k">if</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="o">.</span><span class="n">A</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">precision</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="c1"># 下边的是原先的实现。</span>
+        <span class="c1"># 然后就是判断每个ai了</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="p">)):</span>
+            <span class="c1"># 判断第2项，就是取值范围啦，</span>
+            <span class="c1"># 判断第345项，我都是用这个函数来判断的。</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_conform_KKT</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+                <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">def</span> <span class="nf">kernelTrac</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kernel_style</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">"""</span>
+<span class="sd">            Description : 核函数转化，暂时只支持不转化的。</span>
+<span class="sd">            Arg :</span>
+<span class="sd">            Returns :</span>
+<span class="sd">            Raises	 :</span>
+<span class="sd">        """</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kernel_matrix</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">calcEi</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+        <span class="sd">"""</span>
+<span class="sd">            Description : 计算Ei的值，</span>
+<span class="sd">                Ei = g(xi) - yi</span>
+<span class="sd">                g(xi)=aj*yj*K(xi, xj) + b ;j取值是所有样本。</span>
+<span class="sd">            Arg :</span>
+<span class="sd">            Returns :</span>
+<span class="sd">            Raises	 :</span>
+<span class="sd">        """</span>
+        <span class="c1"># 我打算的算法是矩阵算法</span>
+        <span class="c1"># 已知 self.kernel_matrix是存放的是矩阵</span>
+        <span class="c1"># 我需要的是这个矩阵的第i行，一共有m个元素。</span>
+        <span class="c1"># 然后aj * yj也是有某个m个元素。</span>
+        <span class="c1"># 矩阵相乘就可以了，</span>
+        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kernel_matrix</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">))</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">)</span> <span class="o">-</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">calcW</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">"""</span>
+<span class="sd">            Description : 计算w系数</span>
+<span class="sd">            Arg :</span>
+<span class="sd">            Returns :</span>
+<span class="sd">            Raises	 :</span>
+<span class="sd">        """</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="c1"># w的计算是ai * yi * xi，在所有样品集合种，我这里先整理一下数据</span>
+        <span class="n">ai</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span>
+        <span class="n">yi</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span>
+        <span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+            <span class="n">w</span> <span class="o">=</span> <span class="n">w</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">ai</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span>
+                                      <span class="n">yi</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">mat</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:])</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">w</span>
+        <span class="k">pass</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [6]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3">
+<pre><span class="k">def</span> <span class="nf">test_1</span><span class="p">():</span>
+
+    <span class="n">svm</span> <span class="o">=</span> <span class="n">SVM_Kerwin</span><span class="p">()</span>
+    <span class="c1"># 如下的数据是从感知机模型中抄的，肯定线性可分啦。</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+        <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+                  <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="mi">1</span><span class="p">))</span>  <span class="c1"># 行向量转化成列向量</span>
+    <span class="n">svm</span><span class="o">.</span><span class="n">set_x</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">svm</span><span class="o">.</span><span class="n">set_y</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+    <span class="n">svm</span><span class="o">.</span><span class="n">set_C</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">w</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">get_fx</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">[(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">))[</span><span class="mi">0</span><span class="p">]]:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s1">'x'</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">[(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">y</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">))[</span><span class="mi">0</span><span class="p">]]:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s1">'o'</span><span class="p">)</span>
+    <span class="c1"># 因为如上的数据是一个二维平面的，</span>
+    <span class="c1"># 我做出的的数据是wx+b，其中w是2个数据，所以这里要转化一下</span>
+    <span class="c1"># 转化成一条直线啦，具体就是x*w1+y*w2+b =0</span>
+    <span class="c1"># 我们的y = (-x*w1-b)/w2, 请注意我这里下标是1、2，程序中得用0，1</span>
+    <span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">x</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">w1</span> <span class="o">=</span> <span class="n">w</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">w2</span> <span class="o">=</span> <span class="n">w</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">b0</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+    <span class="n">y2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span> <span class="o">-</span> <span class="n">x2</span> <span class="o">*</span> <span class="n">w1</span> <span class="o">-</span> <span class="n">b0</span><span class="p">)</span> <span class="o">/</span> <span class="n">w2</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">)</span>
+    <span class="c1"># 这里同时显示超平面吧。用数学表示就是w*x + b = 1和w*x + b  = -1</span>
+    <span class="n">y3</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">x2</span> <span class="o">*</span> <span class="n">w1</span> <span class="o">-</span> <span class="n">b0</span><span class="p">)</span> <span class="o">/</span> <span class="n">w2</span>
+    <span class="n">y4</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">-</span> <span class="n">x2</span> <span class="o">*</span> <span class="n">w1</span> <span class="o">-</span> <span class="n">b0</span><span class="p">)</span> <span class="o">/</span> <span class="n">w2</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">y3</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">y4</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+
+<span class="n">test_1</span><span class="p">()</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:229] INFO 优化：a1:3:0.017094017094017096:,a2:0:0.017094017094017096,b:-1.358974358974359
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:229] INFO 优化：a1:18:0.045128205128205125:,a2:1:0.045128205128205125,b:-2.144615384615385
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:229] INFO 优化：a1:0:0.0:,a2:2:0.017094017094017096,b:-1.9603418803418804
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:229] INFO 优化：a1:1:0.06222222222222222:,a2:2:0,b:-2.1049572649572648
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:192] INFO L=H
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:192] INFO L=H
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:192] INFO L=H
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:192] INFO L=H
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:192] INFO L=H
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:192] INFO L=H
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:229] INFO 优化：a1:18:0.04651930445033892:,a2:2:0.0013910993221338014,b:-2.1147892720306514
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:229] INFO 优化：a1:1:0.045128205128205125:,a2:3:0,b:-1.766342469790745
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:192] INFO L=H
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:229] INFO 优化：a1:6:0.012413125802846044:,a2:3:0.012413125802846044,b:-2.948943496321505
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:229] INFO 优化：a1:8:0.012413125802846044:,a2:3:0,b:-2.1016060813328212
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:192] INFO L=H
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:192] INFO L=H
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:192] INFO L=H
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:192] INFO L=H
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:192] INFO L=H
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:192] INFO L=H
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:229] INFO 优化：a1:17:0.0025317842800333633:,a2:3:0.0025317842800333633,b:-2.695469755090866
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:229] INFO 优化：a1:18:0.04905108873037228:,a2:3:0,b:-1.8585735631856795
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:229] INFO 优化：a1:18:0.45755031659161177:,a2:6:0.4209123536640855,b:-5.27376741237509
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:192] INFO L=H
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:229] INFO 优化：a1:1:0.0:,a2:7:0.045128205128205125,b:-4.095345244649084
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:229] INFO 优化：a1:2:2.8189256484623115e-18:,a2:7:0.04651930445033892,b:-4.473895867741022
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:229] INFO 优化：a1:6:0.2863877997823425:,a2:7:0.18104385833208192,b:-5.642967619238277
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:229] INFO 优化：a1:8:6.938893903907228e-18:,a2:7:0.16863073252923588,b:-5.768577215020937
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:229] INFO 优化：a1:12:0.10293505496888766:,a2:7:0.06569567756034822,b:-5.345052599969971
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:229] INFO 优化：a1:18:0.531671371593864:,a2:7:0.13981673256260047,b:-6.234505259996999
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:229] INFO 优化：a1:6:0.32293727378264303:,a2:12:0.06638558096858713,b:-6.451757889995497
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:229] INFO 优化：a1:7:0.09438541681263807:,a2:12:0.11181689671854952,b:-6.088307363995799
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:229] INFO 优化：a1:18:0.5370763562116039:,a2:12:0.11722188133628933,b:-6.099117333231279
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:229] INFO 优化：a1:6:0.3254690580626764:,a2:17:0,b:-6.516204282826859
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:229] INFO 优化：a1:7:0.08699623997045464:,a2:17:0.007389176842183431,b:-6.143040042288543
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:202] INFO a2的更新不足0.001，所以取消
+Mon, 26 Mar 2018 19:46:28 &lt;ipython-input-4-f1f9fda6dc78&gt;[line:229] INFO 优化：a1:18:0.5450052433384702:,a2:17:0.01531806396904973,b:-6.190613365049744
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[[0.66666667 0.64288001]]
+-6.190613365049744
+[[0.00000000e+00]
+ [0.00000000e+00]
+ [2.81892565e-18]
+ [0.00000000e+00]
+ [0.00000000e+00]
+ [0.00000000e+00]
+ [3.25469058e-01]
+ [8.69962400e-02]
+ [6.93889390e-18]
+ [0.00000000e+00]
+ [0.00000000e+00]
+ [0.00000000e+00]
+ [1.17221881e-01]
+ [0.00000000e+00]
+ [0.00000000e+00]
+ [0.00000000e+00]
+ [0.00000000e+00]
+ [1.53180640e-02]
+ [5.45005243e-01]]
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_png output_subarea "><img src="data:image/png;base64,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" /></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt"></div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="sklearn版本">sklearn版本</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [7]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3">
+<pre><span class="kn">from</span> <span class="nn">sklearn</span> <span class="k">import</span> <span class="n">svm</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [12]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3">
+<pre><span class="n">clf</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s1">'linear'</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mf">1e3</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+        <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+                  <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> 
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[12]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>SVC(C=1000.0, cache_size=200, class_weight=None, coef0=0.0,
+  decision_function_shape='ovr', degree=3, gamma='auto', kernel='linear',
+  max_iter=-1, probability=False, random_state=None, shrinking=True,
+  tol=0.001, verbose=False)</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [13]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3">
+<pre><span class="c1"># 回归系数</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">coef_</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[13]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[0.66666667, 0.5       ]])</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [14]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3">
+<pre><span class="c1"># 截距</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">intercept_</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[14]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>array([-6.])</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [15]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3">
+<pre><span class="n">y_g_0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">[(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">))[</span><span class="mi">0</span><span class="p">]]:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s1">'x'</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">[(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">y</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">))[</span><span class="mi">0</span><span class="p">]]:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s1">'o'</span><span class="p">)</span>
+
+<span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">x</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="n">w1</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">w2</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">b0</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span> <span class="o">-</span> <span class="n">x2</span> <span class="o">*</span> <span class="n">w1</span> <span class="o">-</span> <span class="n">b0</span><span class="p">)</span> <span class="o">/</span> <span class="n">w2</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">)</span>
+<span class="c1"># 这里同时显示超平面吧。用数学表示就是w*x + b = 1和w*x + b  = -1</span>
+<span class="n">y3</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">x2</span> <span class="o">*</span> <span class="n">w1</span> <span class="o">-</span> <span class="n">b0</span><span class="p">)</span> <span class="o">/</span> <span class="n">w2</span>
+<span class="n">y4</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">-</span> <span class="n">x2</span> <span class="o">*</span> <span class="n">w1</span> <span class="o">-</span> <span class="n">b0</span><span class="p">)</span> <span class="o">/</span> <span class="n">w2</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">y3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">y4</span><span class="p">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[15]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>[&lt;matplotlib.lines.Line2D at 0x165cd290518&gt;]</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_png output_subarea "><img src="data:image/png;base64,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" /></div>
+</div>
+</div>
+</div>
+</div>
+&nbsp;
+
+参考：
+<ul>
+ 	<li><a href="http://www.cnblogs.com/pursued-deer/p/7857306.html" target="_blank" rel="noopener">http://www.cnblogs.com/pinard/p/6097604.html ：本文章主要参考这篇文章，并且得到作者的多次帮助。</a></li>
+ 	<li><a href="https://www.ibm.com/developerworks/cn/analytics/library/machine-learning-hands-on1-svn/index.html">https://www.ibm.com/developerworks/cn/analytics/library/machine-learning-hands-on1-svn/index.html</a></li>
+ 	<li><a href="http://www.cnblogs.com/pursued-deer/p/7857306.html">http://www.cnblogs.com/pursued-deer/p/7857306.html 代码部分，参考了这篇文章</a></li>
+</ul>
+
+</body>
+</html>
