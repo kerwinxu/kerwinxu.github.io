@@ -1,16 +1,16 @@
 MathJax.Hub.Config({
   jax: ["input/TeX", "output/HTML-CSS"],
   tex2jax: {
-    inlineMath: [['$', '$'],['$latex','$']],
-    displayMath: [['$$', '$$'],['\\[','\\]']],
+    inlineMath: [['$', '$'], ['$latex', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']],
     processEscapes: true,
     skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
   },
   messageStyle: "simple",
-  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] },
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX", "TeX"] },
   TeX: {
     equationNumbers: { autoNumber: "AMS" },
-    extensions: ["AMSmath.js", "AMSsymbols.js","AMScd.js"],
+    extensions: ["AMSmath.js", "AMSsymbols.js", "AMScd.js"],
     TagSide: "right",
     Macros: {
       field: ['\\mathbb{#1}', 1],
@@ -24,9 +24,9 @@ MathJax.Hub.Config({
       zeros: ['\\mathbf{0}'],
       ud: ['\\,\\mathrm{d}'],
 
-      vect:['\\boldsymbol{\\mathbf{#1}}',1],
+      vect: ['\\boldsymbol{\\mathbf{#1}}', 1],
       abs: ['\\lvert#1\\rvert', 1],
-      abslr:['\\left\\lvert#1\\right\\rvert', 1],
+      abslr: ['\\left\\lvert#1\\right\\rvert', 1],
       norm: ['\\lVert#1\\rVert', 1],
       normlr: ['\\left\\lVert#1\\right\\rVert', 1],
 
