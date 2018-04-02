@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+# !/usr/bin/env python3
 # -*- coding:utf-8 -*-
 ###
 # File: e:\Program\blog\kerwinxu.github.io\auto_insert_or_update_article.py
@@ -75,7 +75,8 @@ def main():
     if page_number is None:
         logging.error("没有页面ID")
         sys.exit()
-    article_url_local = "http://127.0.0.1/?p={}".format(page_number)
+    article_url_local = "http://127.0.0.1/index.php/archives/{}".format(
+        page_number)
     # 然后就是下载啦
     # 我自己的页面，utf-8，省略判断编码了
     # 用一个超长的来表示吧。简单点
