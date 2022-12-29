@@ -1,0 +1,14 @@
+---
+# the default layout is 'page'
+icon: fas fa-info-circle
+order: 5
+---
+
+我擅长如下语言：  
+   - X86汇编
+   - c/c++
+   - c#
+   - python
+   - java
+
+我认同一句话，高手的代码是当新手也看得懂，找我做，没错的。
