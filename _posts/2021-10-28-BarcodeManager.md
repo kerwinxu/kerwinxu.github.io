@@ -22,7 +22,7 @@ tag:
      
 # 下载
 
-[最新下载](/assets/software/BarcodeManager.zip)
+[最新下载](https://github.com/kerwinxu/barcodeManager/releases)
 
 
 # 简单步骤
