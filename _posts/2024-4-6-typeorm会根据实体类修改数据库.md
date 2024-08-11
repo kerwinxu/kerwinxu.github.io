@@ -2,7 +2,7 @@
 lang: zh
 author: Kerwin
 layout: post
-categorie["ORM"]
+categories: ["ORM"]
 title:  typeorm会根据实体类修改数据库
 date:   2024-4-6 15:43:00 +0800
 excerpt: 模typeorm会根据实体类修改数据库
