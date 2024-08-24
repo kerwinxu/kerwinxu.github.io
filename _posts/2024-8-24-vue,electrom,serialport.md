@@ -39,7 +39,6 @@ yarn add serialport
 ```
 5. 我这里仅仅显示是否能够调用"serialport",在App.vue中添加  
 ```import {SerialPort} from 'serialport'
-
 SerialPort.list().then(
 	(ports)=>{console.log(ports);}
 )
