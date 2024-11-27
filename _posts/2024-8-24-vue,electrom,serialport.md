@@ -11,46 +11,56 @@ tag: [JS,vue3,electron,serialport]
 
 我看了很多资料，但没有一篇是让我这个新手看懂的，我这里的步骤很简洁，  
 
-1. 生成vue项目
 ```
-vue create demo
-```
-2. 添加electron支持,这里用 "electron-builder",这个会选择electron的版本，选择最大的那个。
-```
-cd demo
-vue add electron-builder
-```
-3. 修改 vue.config.js
-```
-const { defineConfig } = require('@vue/cli-service')
-module.exports = defineConfig({
-	transpileDependencies: false,
-	pluginOptions: {
-		electronBuilder: {
-			nodeIntegration: true,
-			externals: ['serialport'], 
-		}
-	}
-})
-```
-4. 添加serialport，运行完如果是有错误的，不管它。
-```
+yarn create @quick-start/electron
+...
+cd ...
+yarn add --dev @electron/rebuild
 yarn add serialport
-```
-5. 我这里仅仅显示是否能够调用"serialport",在App.vue中添加  
-```
-import {SerialPort} from 'serialport'
-SerialPort.list().then(
-	(ports)=>{console.log(ports);}
-)
-```
-6. 测试效果
-```
-yarn run electron:serve
-```
-可以在控制台看到输出了相关的端口信息。
 
-请注意，这个serialport是node原生模块，这个serialport可以被electron打包成本地的，但却不能"yarn run serve"运行,可能原因是electron做了很多配置，但我没找对方法,如果有人知道方法，麻烦告诉我。
+```
+
+Main Thread : src/main
+```
+// 我在主线程中操作窗口，这里这仅仅是作为一个演示,返回串口的。
+ipcMain.handle('listSerialportNames', async () => await SerialPort.list())
+
+createWindow()
+
+```
+Preload Thread : src/preload
+```
+// Use `contextBridge` APIs to expose Electron APIs to
+// renderer only if context isolation is enabled, otherwise
+// just add to the DOM global.
+if (process.contextIsolated) {
+  try {
+    contextBridge.exposeInMainWorld('electron', electronAPI)
+    contextBridge.exposeInMainWorld('api', api)
+    contextBridge.exposeInMainWorld('serialport', {            // 我将串口的操作都放在这里边。
+      list: () => ipcRenderer.invoke('listSerialportNames')    // 显示有几个端口的，发送消息的，主进程中处理，渲染进程中调用。
+    })
+  } catch (error) {
+    console.error(error)
+  }
+} else {
+  window.electron = electronAPI
+  window.api = api
+//   window.serialport = SerialPort.SerialPort
+}
+```
+Renderer Thread : 
+```
+<script setup>
+import Versions from './components/Versions.vue'
+
+const ipcHandle = () => window.electron.ipcRenderer.send('ping')
+window.serialport.list().then((ports)=>console.log(ports))
+
+
+</script>
+```
+
 
 
 
