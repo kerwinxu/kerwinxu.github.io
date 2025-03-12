@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "安卓手势检测 GestureDetector"
 date: "2020-02-29"
 categories: 

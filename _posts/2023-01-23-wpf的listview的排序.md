@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "wpf的ListView的排序"
 date: "2023-01-23"
 categories: 

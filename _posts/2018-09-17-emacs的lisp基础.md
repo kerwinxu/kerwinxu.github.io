@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "Emacs的lisp基础"
 date: "2018-09-17"
 categories: 

@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "jupyter修改kernel"
 date: "2022-07-16"
 categories: 

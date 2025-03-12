@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "QQA: Python 中的 str 与 repr"
 date: "2019-01-27"
 categories: 

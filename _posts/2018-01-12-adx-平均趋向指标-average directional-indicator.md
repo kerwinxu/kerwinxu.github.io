@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "ADX: 平均趋向指标 average directional indicator"
 date: "2018-01-12"
 categories: 

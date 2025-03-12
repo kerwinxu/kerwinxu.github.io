@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "Linux shell 之 提取文件名和目录名的一些方法"
 date: "2017-06-01"
 categories: 

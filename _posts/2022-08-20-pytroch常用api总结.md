@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "PyTroch常用API总结"
 date: "2022-08-20"
 categories: 
@@ -267,7 +268,7 @@ CLASStorch.nn.Linear(in_features, out_features, bias=True, device=None, dtype=No
 
 ## nn.Sigmoid
 
-[![](images/Sigmoid.png)](http://127.0.0.1/?attachment_id=4707)
+[![](/assets/image/default/Sigmoid.png)](http://127.0.0.1/?attachment_id=4707)
 
 - Input: (\*)(∗), where \*∗ means any number of dimensions.
 - Output: (\*)(∗), same shape as the input.
@@ -282,15 +283,15 @@ output = m(input)
 
  
 
-[![](images/ReLU.png)](http://127.0.0.1/?attachment_id=4706)
+[![](/assets/image/default/ReLU.png)](http://127.0.0.1/?attachment_id=4706)
 
 ## nn.tanh
 
-[![](images/Tanh.png)](http://127.0.0.1/?attachment_id=4708)
+[![](/assets/image/default/Tanh.png)](http://127.0.0.1/?attachment_id=4708)
 
 ## nn.Sigmoid nn.tanh 区别
 
-[![](images/v2-f190fdedc174f080f2e4bdd56ed504a1_720w.jpg)](http://127.0.0.1/?attachment_id=4709)
+[![](/assets/image/default/v2-f190fdedc174f080f2e4bdd56ed504a1_720w.jpg)](http://127.0.0.1/?attachment_id=4709)
 
  
 

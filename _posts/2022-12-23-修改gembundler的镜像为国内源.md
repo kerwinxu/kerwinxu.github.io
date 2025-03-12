@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "修改Gem,Bundler的镜像为国内源"
 date: "2022-12-23"
 categories: 

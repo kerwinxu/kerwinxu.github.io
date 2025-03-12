@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "backtrader之多品种交易"
 date: "2018-01-08"
 categories: 

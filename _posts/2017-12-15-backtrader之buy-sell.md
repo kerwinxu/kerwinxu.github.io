@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "BackTrader之buy/sell"
 date: "2017-12-15"
 categories: 

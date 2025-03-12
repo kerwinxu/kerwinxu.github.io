@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "backtrader总览"
 date: "2017-11-11"
 categories: 

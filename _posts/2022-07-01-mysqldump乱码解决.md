@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "mysqldump乱码解决"
 date: "2022-07-01"
 categories: 

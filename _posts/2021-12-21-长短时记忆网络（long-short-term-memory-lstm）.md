@@ -1,11 +1,12 @@
 ---
+layout: post
 title: "长短时记忆网络（Long Short-Term Memory, LSTM）"
 date: "2021-12-21"
 categories: 
   - "python"
 ---
 
-[![](images/v2-eea014e13f85d5e3efced3639337b584_720w.jpg)](http://127.0.0.1/?attachment_id=4293)
+[![](/assets/image/default/v2-eea014e13f85d5e3efced3639337b584_720w.jpg)](http://127.0.0.1/?attachment_id=4293)
 
 LSTM既能记忆长期状态，也能记忆短期状态，分别用$latex c\_t $ 和$latex h\_t $ 表示，对于一个LSTM单元来说，输入为$latex c\_{t-1}, h\_{t-1}, x\_t $ , 输出是$latex c\_{t}, h\_{t}, y\_t $.
 

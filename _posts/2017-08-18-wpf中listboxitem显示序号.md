@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "wpf中listboxItem显示序号"
 date: "2017-08-18"
 categories: 

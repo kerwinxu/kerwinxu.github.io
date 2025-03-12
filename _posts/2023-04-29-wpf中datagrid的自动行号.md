@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "wpf中DataGrid的自动行号"
 date: "2023-04-29"
 categories: 

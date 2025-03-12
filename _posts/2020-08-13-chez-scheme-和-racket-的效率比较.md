@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "chez scheme 和 racket 的效率比较"
 date: "2020-08-13"
 categories: 

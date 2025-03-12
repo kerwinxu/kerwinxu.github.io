@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "用powershell来批量重命名"
 date: "2017-11-14"
 categories: 

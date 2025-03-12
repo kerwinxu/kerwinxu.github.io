@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "plotformio使用stm32cubemx的配置"
 date: "2025-01-24"
 categories: 

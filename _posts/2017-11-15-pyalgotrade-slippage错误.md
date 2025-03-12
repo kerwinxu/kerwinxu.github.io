@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "pyalgotrade在python3上安装"
 date: "2017-11-15"
 categories: 

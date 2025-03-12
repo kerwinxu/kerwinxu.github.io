@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "WinAppDriver操作总结"
 date: "2020-11-16"
 categories: 

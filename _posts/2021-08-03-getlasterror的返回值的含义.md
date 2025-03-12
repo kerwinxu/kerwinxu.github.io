@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "GetLastError的返回值的含义"
 date: "2021-08-03"
 categories: 

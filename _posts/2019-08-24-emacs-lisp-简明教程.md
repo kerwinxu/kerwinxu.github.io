@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "Emacs Lisp 简明教程"
 date: "2019-08-24"
 categories: 

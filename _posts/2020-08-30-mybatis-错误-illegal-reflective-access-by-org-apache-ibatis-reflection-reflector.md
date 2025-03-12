@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "mybatis 错误 : Illegal reflective access by org.apache.ibatis.reflection.Reflector"
 date: "2020-08-30"
 categories: 

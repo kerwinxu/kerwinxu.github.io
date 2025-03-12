@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "mysqldump: unknown option '--no-beep'"
 date: "2018-11-23"
 categories: 

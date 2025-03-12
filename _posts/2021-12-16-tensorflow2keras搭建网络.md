@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "tensorflow2keras搭建网络"
 date: "2021-12-16"
 categories: 

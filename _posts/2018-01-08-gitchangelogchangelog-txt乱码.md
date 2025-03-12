@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "gitchangelog>changelog.txt乱码"
 date: "2018-01-08"
 categories: 

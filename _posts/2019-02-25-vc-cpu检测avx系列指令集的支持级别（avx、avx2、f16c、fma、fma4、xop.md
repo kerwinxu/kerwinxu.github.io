@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "[VC] cpu检测AVX系列指令集的支持级别（AVX、AVX2、F16C、FMA、FMA4、XOP）"
 date: "2019-02-25"
 categories: 

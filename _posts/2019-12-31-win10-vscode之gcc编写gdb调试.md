@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "win10-vscode之gcc编写gdb调试"
 date: "2019-12-31"
 categories: 

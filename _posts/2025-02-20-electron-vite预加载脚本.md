@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "electron-vite预加载脚本"
 date: "2025-02-20"
 categories: 

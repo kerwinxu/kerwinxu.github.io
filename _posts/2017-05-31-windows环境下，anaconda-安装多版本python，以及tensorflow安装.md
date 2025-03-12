@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "Windows环境下，Anaconda 安装多版本python，以及TensorFlow安装"
 date: "2017-05-31"
 categories: 

@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "pandas 的stack堆叠和unstack不要堆叠"
 date: "2020-07-15"
 categories: 
@@ -11,7 +12,7 @@ categories:
 
 常见的数据的层次化结构有两种，一种是表格，一种是“花括号”，即下面这样的l两种形式：
 
-[![](images/1153897-20171013213916309-1610254152.png)](http://127.0.0.1/?attachment_id=4307)
+[![](/assets/image/default/1153897-20171013213916309-1610254152.png)](http://127.0.0.1/?attachment_id=4307)
 
 <table style="border-collapse: collapse; width: 36.2217%; height: 69px;"><tbody><tr style="height: 23px;"><td style="width: 25%; height: 23px;"></td><td style="width: 25%; height: 23px;">store1</td><td style="width: 25%; height: 23px;">store2</td><td style="width: 25%; height: 23px;">store3</td></tr><tr style="height: 23px;"><td style="width: 25%; height: 23px;">street1</td><td style="width: 25%; height: 23px;">1</td><td style="width: 25%; height: 23px;">2</td><td style="width: 25%; height: 23px;">3</td></tr><tr style="height: 23px;"><td style="width: 25%; height: 23px;">street2</td><td style="width: 25%; height: 23px;">4</td><td style="width: 25%; height: 23px;">5</td><td style="width: 25%; height: 23px;">6</td></tr></tbody></table>
 
@@ -35,4 +36,4 @@ print(data3)
 
 ·打印结果如下：使用stack函数，将data的行索引\['one','two','three’\]转变成列索引（第二层），便得到了一个层次化的Series（data2），使用unstack函数，将data2的第二层列索引转变成行索引（默认的，可以改变），便又得到了DataFrame（data3）。
 
-[![](images/1153897-20171012213543402-1226924570.png)](http://127.0.0.1/?attachment_id=4308)
+[![](/assets/image/default/1153897-20171012213543402-1226924570.png)](http://127.0.0.1/?attachment_id=4308)

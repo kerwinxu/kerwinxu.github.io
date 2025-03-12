@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "Normal Equation推导"
 date: "2018-02-23"
 categories: 

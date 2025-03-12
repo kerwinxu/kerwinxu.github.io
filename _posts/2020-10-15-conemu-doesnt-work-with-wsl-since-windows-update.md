@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "Conemu doesn't work with wsl since windows update"
 date: "2020-10-15"
 categories: 

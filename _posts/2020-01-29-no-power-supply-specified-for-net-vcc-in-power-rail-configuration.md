@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "no power supply specified for net VCC in power rail configuration"
 date: "2020-01-29"
 categories: 

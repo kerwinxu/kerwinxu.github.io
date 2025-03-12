@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "eclipse maven spring 打包"
 date: "2020-08-25"
 categories: 

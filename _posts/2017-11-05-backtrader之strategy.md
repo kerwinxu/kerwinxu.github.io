@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "BackTrader之Strategy"
 date: "2017-11-05"
 categories: 

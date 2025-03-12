@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "使用MyBatis Generator逆向工程报错：元素类型为 \"context\" 的内容必须匹配"
 date: "2020-08-27"
 categories: 

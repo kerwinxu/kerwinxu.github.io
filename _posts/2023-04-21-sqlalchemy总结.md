@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "SQLAlchemy总结"
 date: "2023-04-21"
 categories: 

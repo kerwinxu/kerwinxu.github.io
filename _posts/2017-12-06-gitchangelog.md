@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "gitchangelog -> 将git log变成更美观的输出"
 date: "2017-12-06"
 categories: 

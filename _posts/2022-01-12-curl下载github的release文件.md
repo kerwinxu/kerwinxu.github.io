@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "curl下载github的release文件"
 date: "2022-01-12"
 categories: 

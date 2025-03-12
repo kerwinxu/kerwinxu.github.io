@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "Python Async/Await入门指南"
 date: "2020-11-26"
 categories: 

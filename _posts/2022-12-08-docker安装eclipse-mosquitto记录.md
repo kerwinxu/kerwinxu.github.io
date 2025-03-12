@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "docker安装eclipse-mosquitto记录"
 date: "2022-12-08"
 categories: 

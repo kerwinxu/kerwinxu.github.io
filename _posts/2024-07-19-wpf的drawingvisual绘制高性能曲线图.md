@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "WPF的DrawingVisual绘制高性能曲线图"
 date: "2024-07-19"
 categories: 

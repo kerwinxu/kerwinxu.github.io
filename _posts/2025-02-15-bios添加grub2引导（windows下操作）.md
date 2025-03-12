@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "BIOS添加Grub2引导（Windows下操作）"
 date: "2025-02-15"
 categories: 

@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "WPF基础之Application"
 date: "2017-08-10"
 categories: 

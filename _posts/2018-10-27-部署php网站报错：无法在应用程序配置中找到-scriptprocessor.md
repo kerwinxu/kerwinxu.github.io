@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "部署PHP网站报错：无法在<fastCGI>应用程序配置中找到<handler> scriptProcessor"
 date: "2018-10-27"
 categories: 

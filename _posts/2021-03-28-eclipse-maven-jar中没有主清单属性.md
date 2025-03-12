@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "eclipse maven jar中没有主清单属性"
 date: "2021-03-28"
 categories: 

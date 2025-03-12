@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "标准分数(standard scroe)"
 date: "2018-05-09"
 categories: 

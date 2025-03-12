@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "log4net中引发“System.Transactions.Diagnostics.DiagnosticTrace”的类型初始值设定项引发异常。"
 date: "2017-07-05"
 categories: 

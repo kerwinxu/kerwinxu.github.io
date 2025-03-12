@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "通讯协议ModBus的c#NModbus库"
 date: "2021-10-24"
 categories: 

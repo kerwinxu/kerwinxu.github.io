@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "C# Winform 跨线程更新UI控件常用方法汇总"
 date: "2019-04-23"
 categories: 

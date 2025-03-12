@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "DbNavigator中的添加不识别sqlite的自增主键 autoincroment"
 date: "2024-11-19"
 categories: 

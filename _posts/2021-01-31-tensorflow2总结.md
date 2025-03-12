@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "tensorflow2总结"
 date: "2021-01-31"
 categories: 

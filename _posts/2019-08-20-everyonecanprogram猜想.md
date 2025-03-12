@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "EveryoneCanProgram猜想"
 date: "2019-08-20"
 categories: 

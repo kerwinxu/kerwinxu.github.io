@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "wsl中gnucash的工具栏只显示文字，不显示图片问题解决"
 date: "2023-10-27"
 categories: 

@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "The HDF5 header files used to compile this application do not match the version used by the HDF5 library to which this application is linked."
 date: "2018-10-20"
 categories: 

@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "python3 序列化模块（json、pickle、shelve）"
 date: "2018-01-15"
 categories: 
@@ -15,7 +16,7 @@ categories:
 
 3、使程序更具维护性。
 
-![](images/1299958-20180111214142613-819446603.png)
+![](/assets/image/default/1299958-20180111214142613-819446603.png)
 
 ## 1.json
 
@@ -23,7 +24,7 @@ Json模块提供了四个功能：dumps、dump、loads、load
 
  
 
-![复制代码](images/copycode.gif)
+![复制代码](/assets/image/default/copycode.gif)
 
 ```
 import json
@@ -104,11 +105,11 @@ print(json_dic2)
 }'''
 ```
 
-![复制代码](images/copycode.gif)
+![复制代码](/assets/image/default/copycode.gif)
 
 ## 2.pickle
 
-![复制代码](images/copycode.gif)
+![复制代码](/assets/image/default/copycode.gif)
 
 ```
 json和pickle的区别
@@ -120,9 +121,9 @@ json和pickle的区别
 pickle模块提供了四个功能：dumps、dump(序列化，存）、loads（反序列化，读）、load  （不仅可以序列化字典，列表...可以把python中任意的数据类型序列化）
 ```
 
-![复制代码](images/copycode.gif)
+![复制代码](/assets/image/default/copycode.gif)
 
-![复制代码](images/copycode.gif)
+![复制代码](/assets/image/default/copycode.gif)
 
 ```
 import pickle
@@ -156,11 +157,11 @@ struct_time2 = pickle.load(f)   #load反序列化方法，将文件中的序列�
 print(struct_time2.tm_year)
 ```
 
-![复制代码](images/copycode.gif)
+![复制代码](/assets/image/default/copycode.gif)
 
 ## 3.shelve
 
-![复制代码](images/copycode.gif)
+![复制代码](/assets/image/default/copycode.gif)
 
 ```
 # shelve也是python提供给我们的序列化工具，比pickle用起来更简单一些。
@@ -179,4 +180,4 @@ f1.close()
 print(existing)
 ```
 
-![复制代码](images/copycode.gif)
+![复制代码](/assets/image/default/copycode.gif)

@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "sqlalchemy笔记"
 date: "2018-04-03"
 categories: 

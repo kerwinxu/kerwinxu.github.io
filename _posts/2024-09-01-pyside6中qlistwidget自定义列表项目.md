@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "PySide6中QListWidget自定义列表项目"
 date: "2024-09-01"
 categories: 

@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "powershell中的Cmdlet的参数输入输出"
 date: "2019-08-30"
 categories: 

@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "python打包之Nuitka"
 date: "2023-02-27"
 categories: 

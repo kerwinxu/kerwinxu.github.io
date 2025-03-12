@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "WPF/WinForm 如何生成单文件的EXE"
 date: "2024-11-03"
 categories: 

@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "convert，的pdf转jpg"
 date: "2019-09-24"
 categories: 
@@ -30,7 +31,7 @@ convert -density 300 input.pdf -quality 90 output.jpg
 
 執行後，ImageMagick 就會以使用者指定的輸出檔名，再加上自動的編號來產生每一頁的圖檔名稱，把 PDF 的每一頁各儲存成一張圖檔。轉出來的結果會像這樣：
 
-[![](images/linux-convert-pdf-to-image-commands-tutorial-examples-20180207-2.png "ImageMagick 將 PDF 轉 JPG 圖檔")](https://blog.gtwang.org/wp-content/uploads/2018/02/linux-convert-pdf-to-image-commands-tutorial-examples-20180207-2.png)
+[![](/assets/image/default/linux-convert-pdf-to-image-commands-tutorial-examples-20180207-2.png "ImageMagick 將 PDF 轉 JPG 圖檔")](https://blog.gtwang.org/wp-content/uploads/2018/02/linux-convert-pdf-to-image-commands-tutorial-examples-20180207-2.png)
 
 ImageMagick 將 PDF 轉 JPG 圖檔
 
@@ -66,7 +67,7 @@ convert -density 300 input.pdf -quality 90 -trim output.jpg
 
 產生的結果會類似這樣：
 
-[![](images/linux-convert-pdf-to-image-commands-tutorial-examples-20180207-3.png "去除圖片白邊")](https://blog.gtwang.org/wp-content/uploads/2018/02/linux-convert-pdf-to-image-commands-tutorial-examples-20180207-3.png)
+[![](/assets/image/default/linux-convert-pdf-to-image-commands-tutorial-examples-20180207-3.png "去除圖片白邊")](https://blog.gtwang.org/wp-content/uploads/2018/02/linux-convert-pdf-to-image-commands-tutorial-examples-20180207-3.png)
 
 去除圖片白邊
 
@@ -84,7 +85,7 @@ convert -density 300 -extract 960x540+180+220 input.pdf output.jpg
 
 輸出的結果會像這樣：
 
-[![](images/linux-convert-pdf-to-image-commands-tutorial-examples-20180207-7.png "裁切的區域")](https://blog.gtwang.org/wp-content/uploads/2018/02/linux-convert-pdf-to-image-commands-tutorial-examples-20180207-7.png)
+[![](/assets/image/default/linux-convert-pdf-to-image-commands-tutorial-examples-20180207-7.png "裁切的區域")](https://blog.gtwang.org/wp-content/uploads/2018/02/linux-convert-pdf-to-image-commands-tutorial-examples-20180207-7.png)
 
 裁切的區域
 
@@ -92,7 +93,7 @@ convert -density 300 -extract 960x540+180+220 input.pdf output.jpg
 
 有時候使用 `convert` 將 PDF 文件轉為 JPG 圖檔時，會產生黑色的背景，類似這樣：
 
-[![](images/linux-convert-pdf-to-image-commands-tutorial-examples-20180207-1.png "ImageMagick 將 PDF 轉 JPG 產生黑色背景")](https://blog.gtwang.org/wp-content/uploads/2018/02/linux-convert-pdf-to-image-commands-tutorial-examples-20180207-1.png)
+[![](/assets/image/default/linux-convert-pdf-to-image-commands-tutorial-examples-20180207-1.png "ImageMagick 將 PDF 轉 JPG 產生黑色背景")](https://blog.gtwang.org/wp-content/uploads/2018/02/linux-convert-pdf-to-image-commands-tutorial-examples-20180207-1.png)
 
 ImageMagick 將 PDF 轉 JPG 產生黑色背景
 
@@ -121,7 +122,7 @@ pdftoppm -r 300 -jpeg input.pdf output
 
 其中 `-r` 參數可用來指定每英寸點數（dpi），而 `-jpeg` 是指定輸出圖檔格式為 JPG，這裡的輸出檔名不需要寫副檔名，`pdftoppm` 會以使用者指定的輸出檔名，再加上自動的編號與副檔名來產生每一頁的圖檔名稱，把 PDF 的每一頁各儲存成一張圖檔。轉出來的結果會像這樣：
 
-[![](images/linux-convert-pdf-to-image-commands-tutorial-examples-20180207-4.png "<code>pdftoppm</code> 將 PDF 轉 JPG 圖檔")](https://blog.gtwang.org/wp-content/uploads/2018/02/linux-convert-pdf-to-image-commands-tutorial-examples-20180207-4.png)
+[![](/assets/image/default/linux-convert-pdf-to-image-commands-tutorial-examples-20180207-4.png "<code>pdftoppm</code> 將 PDF 轉 JPG 圖檔")](https://blog.gtwang.org/wp-content/uploads/2018/02/linux-convert-pdf-to-image-commands-tutorial-examples-20180207-4.png)
 
 `pdftoppm` 將 PDF 轉 JPG 圖檔
 
@@ -217,7 +218,7 @@ pdfimages -all input.pdf output
 
 轉換出來的結果就會是一張一張個別的圖檔，沒有文字的部份：
 
-[![](images/linux-convert-pdf-to-image-commands-tutorial-examples-20180207-6.png "抽取的圖檔")](https://blog.gtwang.org/wp-content/uploads/2018/02/linux-convert-pdf-to-image-commands-tutorial-examples-20180207-6.png)
+[![](/assets/image/default/linux-convert-pdf-to-image-commands-tutorial-examples-20180207-6.png "抽取的圖檔")](https://blog.gtwang.org/wp-content/uploads/2018/02/linux-convert-pdf-to-image-commands-tutorial-examples-20180207-6.png)
 
 抽取的圖檔
 
@@ -279,4 +280,4 @@ gs -dNOPAUSE -dBATCH -sDEVICE=pngalpha -r300 -sOutputFile='page-%00d.png' input.
 
 在 GNOME 桌面環境中，還有一個 [PdfMod](https://wiki.gnome.org/Apps/PdfMod) 應用程式，也可以將 PDF 檔轉為圖檔，不過他是圖形化介面的程式，有興趣的人可以參考看看。
 
-[![](images/linux-convert-pdf-to-image-commands-tutorial-examples-20180207-5.png "裁切的區域")](https://blog.gtwang.org/wp-content/uploads/2018/02/linux-convert-pdf-to-image-commands-tutorial-examples-20180207-5.png)
+[![](/assets/image/default/linux-convert-pdf-to-image-commands-tutorial-examples-20180207-5.png "裁切的區域")](https://blog.gtwang.org/wp-content/uploads/2018/02/linux-convert-pdf-to-image-commands-tutorial-examples-20180207-5.png)

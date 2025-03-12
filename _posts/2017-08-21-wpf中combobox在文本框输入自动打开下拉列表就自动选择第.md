@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "wpf中Combobox在文本框输入自动打开下拉列表就自动选择第一项问题"
 date: "2017-08-21"
 categories: 

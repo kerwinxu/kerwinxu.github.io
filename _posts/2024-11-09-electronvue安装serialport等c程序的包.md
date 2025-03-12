@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "electron,vue,安装serialport等c++程序的包"
 date: "2024-11-09"
 categories: 

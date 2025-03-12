@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'userinfo."
 date: "2018-11-19"
 categories: 

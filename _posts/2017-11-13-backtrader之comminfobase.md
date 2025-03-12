@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "backtrader之CommInfoBase"
 date: "2017-11-13"
 categories: 

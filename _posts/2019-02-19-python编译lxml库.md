@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "python编译lxml库"
 date: "2019-02-19"
 categories: 

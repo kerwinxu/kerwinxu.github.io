@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "spring基于注解装配Bean"
 date: "2021-10-04"
 categories: 

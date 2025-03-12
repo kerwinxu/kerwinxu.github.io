@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "backtrader学习"
 date: "2017-09-30"
 categories: 

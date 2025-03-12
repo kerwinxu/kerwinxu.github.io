@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "backtrader之Cerebro"
 date: "2017-11-11"
 categories: 

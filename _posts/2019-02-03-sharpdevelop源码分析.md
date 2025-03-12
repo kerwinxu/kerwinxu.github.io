@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "SharpDevelop源码分析"
 date: "2019-02-03"
 categories: 

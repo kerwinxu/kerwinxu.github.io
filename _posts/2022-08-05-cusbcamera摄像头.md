@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "c#UsbCamera摄像头"
 date: "2022-08-05"
 categories: 

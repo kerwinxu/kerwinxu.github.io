@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "Fama-French三因子"
 date: "2018-02-09"
 categories: 

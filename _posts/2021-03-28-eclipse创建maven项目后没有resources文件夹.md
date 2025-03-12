@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "eclipse创建maven项目后没有resources文件夹"
 date: "2021-03-28"
 categories: 

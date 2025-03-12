@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "NLP之gensim库python实现文本相似度/匹配/查重"
 date: "2021-07-20"
 categories: 

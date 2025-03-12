@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "tensorflow维度变换"
 date: "2021-01-31"
 categories: 

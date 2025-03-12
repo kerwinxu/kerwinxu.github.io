@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "vscode  Using git on msys2"
 date: "2019-10-11"
 categories: 

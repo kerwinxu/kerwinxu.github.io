@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "使用conda管理python环境"
 date: "2017-08-26"
 categories: 

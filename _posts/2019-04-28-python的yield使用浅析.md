@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "python2的yield使用浅析"
 date: "2019-04-28"
 categories: 

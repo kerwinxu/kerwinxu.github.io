@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "ImageMagick相关内容"
 date: "2017-05-04"
 categories: 

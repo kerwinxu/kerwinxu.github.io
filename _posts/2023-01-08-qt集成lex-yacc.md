@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "qt集成lex/yacc"
 date: "2023-01-08"
 categories: 

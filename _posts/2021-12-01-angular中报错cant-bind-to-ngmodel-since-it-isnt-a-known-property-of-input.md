@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "Angular中报错Can't bind to 'ngModel' since it isn't a known property of 'input'"
 date: "2021-12-01"
 categories: 

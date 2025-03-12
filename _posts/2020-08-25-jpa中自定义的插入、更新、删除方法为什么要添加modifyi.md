@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "JPA中自定义的插入、更新、删除方法为什么要添加@Modifying注解和@Transactional注解？"
 date: "2020-08-25"
 categories: 

@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "Eclipse更换Maven数据源方法"
 date: "2020-08-23"
 categories: 

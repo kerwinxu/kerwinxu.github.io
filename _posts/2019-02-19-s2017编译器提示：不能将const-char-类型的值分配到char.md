@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "s2017编译器提示：不能将“const char *”类型的值分配到“char *”类型的实体"
 date: "2019-02-19"
 categories: 

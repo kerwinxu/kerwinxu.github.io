@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "python、tkinter中动态显示图片闪烁问题"
 date: "2021-10-17"
 categories: 

@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "Windows 10家庭版如何添加Hyper-V虚拟机？"
 date: "2019-06-21"
 categories: 

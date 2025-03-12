@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "编译原理之First集,Follow集,Select集"
 date: "2020-02-17"
 categories: 

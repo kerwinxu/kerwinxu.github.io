@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "Abstract Factory——抽象工厂模式"
 date: "2019-07-21"
 categories: 
@@ -162,7 +163,7 @@ categories:
 
 抽象工厂允许客户使用抽象的接口来创建一组相关产品，而不需要知道或关心实际生产出的具体产品是什么。这样客户就可以从具体产品中被解耦。下面通过抽象工模式的类图来了解各个类中之间的关系：
 
-[![](images/16125435-c0fb194f19b64d209bbcac340aeeeaec.png)](http://127.0.0.1/?attachment_id=4003)
+[![](/assets/image/default/16125435-c0fb194f19b64d209bbcac340aeeeaec.png)](http://127.0.0.1/?attachment_id=4003)
 
 ## 抽象工厂应对需求变更
 

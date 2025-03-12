@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "wordpress子主题"
 date: "2018-02-26"
 categories: 

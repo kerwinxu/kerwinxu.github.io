@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "python yield from 用法"
 date: "2020-11-18"
 categories: 

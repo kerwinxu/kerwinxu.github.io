@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "C++/VC中ANSI与UNICODE中字符定义和函数对照表"
 date: "2020-01-27"
 categories: 

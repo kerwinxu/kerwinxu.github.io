@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "xpath取得列表的部分What is the XPath to select a range of nodes?"
 date: "2022-11-07"
 categories: 

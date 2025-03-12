@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "Python ctypes 中的指针和数组"
 date: "2018-04-19"
 categories: 

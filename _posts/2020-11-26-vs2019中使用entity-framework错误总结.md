@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "vs2019中使用Entity FrameWork错误总结"
 date: "2020-11-26"
 categories: 

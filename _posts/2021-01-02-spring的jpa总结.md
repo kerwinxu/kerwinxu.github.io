@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "spring的jpa总结"
 date: "2021-01-02"
 categories: 

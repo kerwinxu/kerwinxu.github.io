@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "sqlite3的promise版本"
 date: "2025-02-18"
 categories: 

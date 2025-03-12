@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "wpf中listbox等控件隔行换色"
 date: "2023-11-05"
 categories: 

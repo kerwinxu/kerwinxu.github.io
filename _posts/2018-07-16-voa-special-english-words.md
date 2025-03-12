@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "VOA special English words"
 date: "2018-07-16"
 categories: 

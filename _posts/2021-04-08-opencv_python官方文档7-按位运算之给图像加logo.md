@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "OpenCV_Python官方文档7+——按位运算之给图像加logo"
 date: "2021-04-08"
 categories: 
@@ -212,6 +213,6 @@ cv2.destroyAllWindows()
 
 运行结果： 每步处理后的图片
 
-[![](images/20181020164317264.png)](http://127.0.0.1/?attachment_id=3832)
+[![](/assets/image/default/20181020164317264.png)](http://127.0.0.1/?attachment_id=3832)
 
 可以看到mask掩码，白色的是可以显示的，黑色的是被屏蔽的。

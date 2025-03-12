@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "wpf的ListView的不同行显示不同的颜色"
 date: "2022-07-02"
 categories: 

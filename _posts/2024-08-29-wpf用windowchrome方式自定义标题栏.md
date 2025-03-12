@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "wpf用WindowChrome方式自定义标题栏"
 date: "2024-08-29"
 categories: 

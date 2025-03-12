@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "pandasSeries -> DataFrame 转换方法"
 date: "2020-11-10"
 categories: 

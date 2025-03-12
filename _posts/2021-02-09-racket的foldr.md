@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "racket的Foldr/Foldl"
 date: "2021-02-09"
 categories: 

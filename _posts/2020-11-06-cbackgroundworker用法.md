@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "C#backgroundWorker用法"
 date: "2020-11-06"
 categories: 

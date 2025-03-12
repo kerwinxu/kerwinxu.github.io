@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "WPF DatePicker默认显示当前日期"
 date: "2019-05-18"
 categories: 

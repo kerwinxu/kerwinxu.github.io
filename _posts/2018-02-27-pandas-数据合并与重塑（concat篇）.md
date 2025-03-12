@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "PANDAS 数据合并与重塑（concat篇）"
 date: "2018-02-27"
 categories: 

@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "使用JDBC连接MySql时出现：The server time zone value '�й���׼ʱ��' is unrecognized or represents more than one time zone. You must configure either the server or JDBC driver (via the serverTimezone configuration"
 date: "2021-01-28"
 categories: 

@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "js中serialport本地化编译"
 date: "2024-08-20"
 categories: 

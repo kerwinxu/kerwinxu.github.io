@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "WPF的MVVMLight总结"
 date: "2021-10-22"
 categories: 
@@ -7,7 +8,7 @@ categories:
 
 # 介绍MVVM模式
 
-[![](images/167509-20170114191102681-2116055667.png)](http://127.0.0.1/?attachment_id=4136)
+[![](/assets/image/default/167509-20170114191102681-2116055667.png)](http://127.0.0.1/?attachment_id=4136)
 
 1. View负责前端展示，与ViewModel进行数据和命令的交互。
 2. ViewModel，负责前端视图业务级别的逻辑结构组织，并将其反馈给前端。

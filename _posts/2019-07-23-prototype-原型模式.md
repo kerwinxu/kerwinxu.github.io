@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "Prototype——原型模式"
 date: "2019-07-23"
 categories: 
@@ -75,7 +76,7 @@ categories:
 
 介绍完原型模式的实现代码之后，下面看下原型模式的类图，通过类图来理清原型模式实现中类之间的关系。具体类图如下：
 
-[![](images/230015527645058.png)](http://127.0.0.1/?attachment_id=3980)
+[![](/assets/image/default/230015527645058.png)](http://127.0.0.1/?attachment_id=3980)
 
 # 原型模式的优缺点
 

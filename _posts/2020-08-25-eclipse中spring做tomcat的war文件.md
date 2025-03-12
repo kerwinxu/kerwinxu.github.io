@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "eclipse中spring做Tomcat的war文件"
 date: "2020-08-25"
 categories: 

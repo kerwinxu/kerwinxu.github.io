@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "MySQL 迁移 utf8 到 utf8mb4"
 date: "2019-10-18"
 categories: 

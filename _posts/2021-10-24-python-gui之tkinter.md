@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "Python GUI之tkinter"
 date: "2021-10-24"
 categories: 

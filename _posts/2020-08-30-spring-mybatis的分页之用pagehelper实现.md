@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "spring/mybatis的分页之用pageHelper实现"
 date: "2020-08-30"
 categories: 

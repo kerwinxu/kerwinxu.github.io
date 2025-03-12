@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "backtrader之cash,value"
 date: "2017-12-18"
 categories: 

@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "gitchangelog的format"
 date: "2018-11-30"
 categories: 

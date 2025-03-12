@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "mvvmlight手动添加locator等"
 date: "2025-02-01"
 categories: 

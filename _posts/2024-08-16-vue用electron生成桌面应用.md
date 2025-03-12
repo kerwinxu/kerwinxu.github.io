@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "vue用electron生成桌面应用"
 date: "2024-08-16"
 categories: 

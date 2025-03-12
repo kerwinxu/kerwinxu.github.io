@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "ConEmu之类的msys2上直接用mingw64编译环境"
 date: "2019-03-01"
 categories: 

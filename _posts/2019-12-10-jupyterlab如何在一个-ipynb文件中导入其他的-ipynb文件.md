@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "JupyterLab如何在一个.ipynb文件中导入其他的.ipynb文件"
 date: "2019-12-10"
 categories: 

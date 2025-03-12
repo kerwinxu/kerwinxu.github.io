@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "WPF的Combobox的ItemSource第二次绑定（更新）问题"
 date: "2020-03-24"
 categories: 

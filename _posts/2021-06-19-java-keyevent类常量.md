@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "java KeyEvent类常量"
 date: "2021-06-19"
 categories: 

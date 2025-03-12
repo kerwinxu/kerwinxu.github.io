@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "matplotlib 中文乱码"
 date: "2019-03-04"
 categories: 

@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "when you believe"
 date: "2018-09-24"
 categories: 

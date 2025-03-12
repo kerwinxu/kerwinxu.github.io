@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "lazarus用modbus"
 date: "2024-06-02"
 categories: 

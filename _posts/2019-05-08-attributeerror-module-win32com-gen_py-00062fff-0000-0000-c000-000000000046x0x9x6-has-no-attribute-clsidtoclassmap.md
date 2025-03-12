@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "AttributeError: module 'win32com.gen_py.00062FFF-0000-0000-C000-000000000046x0x9x6' has no attribute 'CLSIDToClassMap'"
 date: "2019-05-08"
 categories: 

@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "YouCompleteMe/third_party/ycmd/third_party/cregex\" does not appear to contain CMakeLists.txt."
 date: "2019-12-21"
 categories: 

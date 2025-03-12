@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "opencv连接摄像头读取MJPEG流"
 date: "2022-07-13"
 categories: 

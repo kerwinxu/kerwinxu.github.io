@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "Ubuntu下Vscode调试出现[无法打开\"libc-start.c\"：无法读取文件...错误解决办法"
 date: "2019-12-30"
 categories: 

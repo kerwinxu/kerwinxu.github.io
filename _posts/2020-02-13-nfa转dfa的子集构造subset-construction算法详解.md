@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "NFA转DFA的子集构造(Subset Construction)算法详解"
 date: "2020-02-13"
 categories: 
@@ -51,7 +52,7 @@ $latex states\[0\] \\leftarrow \\lbrace \\rbrace; \\qquad states\[1\] \\leftarro
 
 给定一个正则表达式 $latex (a|b)^\* abb $的**NFA**，我们使用子集构造法构造**DFA**。
 
-[![](images/20190329030919691.png)](http://127.0.0.1/?attachment_id=2982)
+[![](/assets/image/default/20190329030919691.png)](http://127.0.0.1/?attachment_id=2982)
 
 解法：首先，我们分析得出，NFA的初始状态为0，因而初始状态集
 
@@ -64,15 +65,15 @@ $latex A= \\epsilon - closure(0) = \\{0,1,2,4,7\\}$
 3. 现在只剩D没有加标记，因而给D加上标记，对于输入符号a,b，分别求出: $latex a:B=\\epsilon-closure(move(D,a))=\\lbrace1,2,3,4,6,7,8 \\rbrace \\\\b:E=\\epsilon-closure(move(D,b))=\\lbrace1,2,4,5,6,7,10 \\rbrace$
 4. 还剩一个E没有标记，因而给E加上标记，对于输入符号a,b，分别求出: $latex a:B=\\epsilon-closure(move(E,a))=\\lbrace1,2,3,4,6,7,8 \\rbrace \\\\b:C=\\epsilon-closure(move(E,b))=\\lbrace1,2,4,5,6,7 \\rbrace$
 5. 所有构造出来的集合都已经被标记，构造完成！A,B,C,D,E为五个不同状态： $latex A=\\lbrace0,1,2,4,7 \\rbrace \\\\ B=\\lbrace1,2,3,4,6,7,8 \\rbrace \\\\ C=\\lbrace1,2,4,5,6,7 \\rbrace \\\\ D=\\lbrace1,2,4,5,6,7,9 \\rbrace \\\\ E=\\lbrace1,2,4,5,6,7,10 \\rbrace$
-6. 接着就是根据状态来画图了，最好先画好状态表： [![](images/17004872-d0b1564e61d7a25e.jpg)](http://127.0.0.1/?attachment_id=2985) 由此可知，A通过a，连到B，以此类推。就可以做出DFA图了^
+6. 接着就是根据状态来画图了，最好先画好状态表： [![](/assets/image/default/17004872-d0b1564e61d7a25e.jpg)](http://127.0.0.1/?attachment_id=2985) 由此可知，A通过a，连到B，以此类推。就可以做出DFA图了^
 
-[![](images/20190329034629249.png)](http://127.0.0.1/?attachment_id=2986)
+[![](/assets/image/default/20190329034629249.png)](http://127.0.0.1/?attachment_id=2986)
 
 # 如何最小化DFA的状态数量
 
 很简单，如果开始于s1的机器接收字符串σ，始于s2的和始于与s1接收的串相同，并到达相同状态，且两个状态集同为终态或者非终态，那么s1,s2是等价的。我们可以把指向s2的连线全部指向s1，并删除s2，反之亦然。
 
-- 举个书上的例子： [![](images/20190329034218208.png)](http://127.0.0.1/?attachment_id=2987)
+- 举个书上的例子： [![](/assets/image/default/20190329034218208.png)](http://127.0.0.1/?attachment_id=2987)
     - 图中的{5,6,8,15},{6,7,8}是等价的，还有{10,11,13,15},{11,12,13}也是等价的。
         - 在判断是否等价前，我们要先判断是否为死状态哦(1.不能到达终态 2.从开始没有路径指向这个状态)。
 

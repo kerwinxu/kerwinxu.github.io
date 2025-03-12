@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "WPF ItemContainerGenerator.ContainerFromItem返回Null"
 date: "2019-03-07"
 categories: 

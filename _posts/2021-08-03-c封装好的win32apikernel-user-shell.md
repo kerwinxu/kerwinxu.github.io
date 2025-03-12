@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "C#封装好的Win32API,kernel/user/shell"
 date: "2021-08-03"
 categories: 

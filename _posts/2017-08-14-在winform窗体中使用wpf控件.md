@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "在Winform窗体中使用WPF控件"
 date: "2017-08-14"
 categories: 

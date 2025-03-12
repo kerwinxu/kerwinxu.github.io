@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "mysql的join"
 date: "2019-11-10"
 categories: 
@@ -7,7 +8,7 @@ categories:
 
 JOIN的含义就如英文单词“join”一样，连接两张表，大致分为内连接，外连接，右连接，左连接，自然连接。这里描述先甩出一张用烂了的图，然后插入测试数据。
 
-[![](images/1035967-20170907174926054-907920122.jpg)](http://127.0.0.1/?attachment_id=2788)
+[![](/assets/image/default/1035967-20170907174926054-907920122.jpg)](http://127.0.0.1/?attachment_id=2788)
 
 ```
 CREATE TABLE t_blog(

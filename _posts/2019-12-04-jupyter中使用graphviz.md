@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "jupyter中使用graphviz"
 date: "2019-12-04"
 categories: 

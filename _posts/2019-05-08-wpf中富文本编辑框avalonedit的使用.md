@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "wpf中富文本编辑框AvalonEdit的使用"
 date: "2019-05-08"
 categories: 

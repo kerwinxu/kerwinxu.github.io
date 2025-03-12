@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "SharpDevelop5源码之启动分析"
 date: "2019-02-03"
 categories: 

@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "JavaScript 的promise"
 date: "2021-10-24"
 categories: 

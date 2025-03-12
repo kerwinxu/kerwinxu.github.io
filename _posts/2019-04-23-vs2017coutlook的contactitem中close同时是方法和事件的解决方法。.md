@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "vs2017,c#,outlook的ContactItem中Close同时是方法和事件的解决方法。"
 date: "2019-04-23"
 categories: 

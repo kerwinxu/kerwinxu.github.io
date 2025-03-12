@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "numpy中dot和multiply的区别"
 date: "2018-02-18"
 categories: 

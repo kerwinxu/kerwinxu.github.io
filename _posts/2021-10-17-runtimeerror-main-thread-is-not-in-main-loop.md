@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "\"RuntimeError: main thread is not in main loop\""
 date: "2021-10-17"
 categories: 

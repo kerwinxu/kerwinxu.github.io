@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "c#解析HTML工具 HtmlAgilityPack"
 date: "2017-06-12"
 categories: 

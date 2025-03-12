@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "powershell的谓词和名词"
 date: "2019-09-22"
 categories: 

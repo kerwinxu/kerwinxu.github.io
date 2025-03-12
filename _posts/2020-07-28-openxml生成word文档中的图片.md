@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "openxml生成word文档中的图片"
 date: "2020-07-28"
 categories: 

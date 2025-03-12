@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "spring之xml和config配置"
 date: "2020-12-11"
 categories: 

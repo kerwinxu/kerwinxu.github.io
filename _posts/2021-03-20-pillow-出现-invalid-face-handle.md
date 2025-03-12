@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "pillow 出现 invalid face handle"
 date: "2021-03-20"
 categories: 

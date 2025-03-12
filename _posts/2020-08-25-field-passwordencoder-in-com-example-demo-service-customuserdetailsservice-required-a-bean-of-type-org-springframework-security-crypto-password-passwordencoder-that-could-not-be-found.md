@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "Field passwordEncoder in com.example.demo.Service.CustomUserDetailsService required a bean of type 'org.springframework.security.crypto.password.PasswordEncoder' that could not be found."
 date: "2020-08-25"
 categories: 

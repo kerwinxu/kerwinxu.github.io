@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "jupyter中显示opencv图像"
 date: "2021-04-13"
 categories: 

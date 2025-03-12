@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "c#AvalonEditBehaviour编辑器mvvm方式"
 date: "2023-11-01"
 categories: 

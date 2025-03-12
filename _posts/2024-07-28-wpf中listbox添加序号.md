@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "wpf中listbox添加序号"
 date: "2024-07-28"
 categories: 

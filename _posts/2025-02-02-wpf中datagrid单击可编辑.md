@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "wpf中datagrid单击可编辑"
 date: "2025-02-02"
 categories: 

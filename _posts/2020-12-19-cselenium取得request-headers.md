@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "c#selenium取得request headers"
 date: "2020-12-19"
 categories: 

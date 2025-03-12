@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "pascalSCADA简介"
 date: "2024-12-01"
 categories: 

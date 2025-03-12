@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "lazarus的TChart图表"
 date: "2024-11-28"
 categories: 

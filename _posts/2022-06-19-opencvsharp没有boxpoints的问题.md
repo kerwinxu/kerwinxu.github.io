@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "opencvsharp没有BoxPoints的问题"
 date: "2022-06-19"
 categories: 

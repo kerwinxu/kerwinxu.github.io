@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "Java动态代理InvocationHandler和Proxy学习笔记"
 date: "2022-10-06"
 categories: 

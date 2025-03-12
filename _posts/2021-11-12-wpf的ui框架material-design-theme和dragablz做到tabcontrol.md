@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "wpf的ui框架Material Design theme和Dragablz做到TabControl"
 date: "2021-11-12"
 categories: 

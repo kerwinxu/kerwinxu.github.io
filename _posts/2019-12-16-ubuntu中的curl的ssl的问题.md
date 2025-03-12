@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "ubuntu中的curl的ssl的53问题"
 date: "2019-12-16"
 categories: 

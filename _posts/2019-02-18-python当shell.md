@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "python当shell"
 date: "2019-02-18"
 categories: 

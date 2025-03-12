@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "sqlserver 全库查询关键词"
 date: "2023-08-09"
 categories: 

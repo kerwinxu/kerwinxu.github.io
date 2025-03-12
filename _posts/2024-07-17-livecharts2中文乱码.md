@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "LiveCharts2中文乱码"
 date: "2024-07-17"
 categories: 

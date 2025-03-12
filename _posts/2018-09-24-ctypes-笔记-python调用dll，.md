@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "python和C的交互"
 date: "2018-09-24"
 categories: 

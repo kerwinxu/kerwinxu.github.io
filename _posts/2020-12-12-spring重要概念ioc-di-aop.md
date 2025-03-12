@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "spring重要概念IoC/DI/AOP"
 date: "2020-12-12"
 categories: 

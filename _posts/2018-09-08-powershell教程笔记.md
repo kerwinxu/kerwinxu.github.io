@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "powershell教程笔记"
 date: "2018-09-08"
 categories: 

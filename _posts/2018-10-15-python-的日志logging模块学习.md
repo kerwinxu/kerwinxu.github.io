@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "python 的日志logging模块学习"
 date: "2018-10-15"
 categories: 

@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "python调用win32api实现语音功能。"
 date: "2018-09-05"
 categories: 

@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "wordpress手动升级"
 date: "2017-12-02"
 categories: 

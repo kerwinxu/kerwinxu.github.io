@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "C# MeasureString测量字符串函数的使用方法"
 date: "2020-11-12"
 categories: 

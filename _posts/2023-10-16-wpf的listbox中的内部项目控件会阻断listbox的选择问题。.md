@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "wpf的listbox中的内部项目控件会阻断listbox的选择问题。"
 date: "2023-10-16"
 categories: 

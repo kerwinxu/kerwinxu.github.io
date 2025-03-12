@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "wpf的comboBox的TextChange事件"
 date: "2019-04-04"
 categories: 

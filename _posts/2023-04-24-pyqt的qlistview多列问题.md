@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "pyqt的QListView多列问题"
 date: "2023-04-24"
 categories: 

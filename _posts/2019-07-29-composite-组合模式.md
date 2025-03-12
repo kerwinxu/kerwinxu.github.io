@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "Composite——组合模式"
 date: "2019-07-29"
 categories: 
@@ -284,11 +285,11 @@ categories:
 
 透明式的组合模式类图：
 
-[![](images/21132831-30f99887dec34fadb21282f0158f72b8-1.png)](http://127.0.0.1/?attachment_id=4021)
+[![](/assets/image/default/21132831-30f99887dec34fadb21282f0158f72b8-1.png)](http://127.0.0.1/?attachment_id=4021)
 
 安全式组合模式的类图：
 
-[![](images/21132847-48c4cdf839c84cbeb4ea42d323587e21.png)](http://127.0.0.1/?attachment_id=4022)
+[![](/assets/image/default/21132847-48c4cdf839c84cbeb4ea42d323587e21.png)](http://127.0.0.1/?attachment_id=4022)
 
 组合模式中涉及到三个角色：
 

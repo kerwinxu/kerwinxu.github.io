@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "powershell统计目录大小"
 date: "2020-01-13"
 categories: 

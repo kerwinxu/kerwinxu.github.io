@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "jupyter中logging失效问题"
 date: "2019-10-19"
 categories: 

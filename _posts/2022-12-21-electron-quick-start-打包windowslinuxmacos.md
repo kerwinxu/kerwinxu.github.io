@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "electron-quick-start 打包windows,Linux,MacOS"
 date: "2022-12-21"
 categories: 

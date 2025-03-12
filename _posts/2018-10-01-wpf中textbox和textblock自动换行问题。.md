@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "wpf中TextBox和TextBlock自动换行问题。"
 date: "2018-10-01"
 categories: 

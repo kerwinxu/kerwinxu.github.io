@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "Spring AOP 编程"
 date: "2021-10-04"
 categories: 

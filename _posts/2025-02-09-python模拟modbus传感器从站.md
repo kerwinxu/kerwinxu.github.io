@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "python模拟modbus传感器从站"
 date: "2025-02-09"
 categories: 

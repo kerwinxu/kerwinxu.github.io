@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "vue-router路由"
 date: "2021-02-05"
 categories: 
