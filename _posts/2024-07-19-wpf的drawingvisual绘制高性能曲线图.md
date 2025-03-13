@@ -8,7 +8,7 @@ categories:
 
 1.  写主机容器
     
-    ```
+    ```c#
     using System;
     using System.Collections.Generic;
     using System.Globalization;
@@ -179,7 +179,7 @@ categories:
      
 2. xaml中显示
     
-    ```
+    ```xml
     <Window x:Class="DrawingVisual绘制高性能曲线图.MainWindow"
             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -208,7 +208,7 @@ categories:
      
 3. 代码后台中生成数据
     
-    ```
+    ```c#
     using System;
     using System.Collections.Generic;
     using System.Linq;

@@ -28,7 +28,7 @@ ide的深色配色
 
 然后如example/defaultallowdark中展示的那样修改lpr文件中的代码
 
-```
+```delphi
 //......
 begin
   //BEGIN

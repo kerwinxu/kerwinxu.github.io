@@ -10,7 +10,7 @@ categories:
 
  
 
-```
+```xml
 <Window x:Class="ListViewSort.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -30,7 +30,7 @@ categories:
 
  
 
-```
+```c#
 private void GridViewColumnHeader_Click(object sender, RoutedEventArgs e) {
            ListView view = sender as ListView;
            if (view == null) {

@@ -8,7 +8,7 @@ categories:
 
 1. 创建一个扩展
     
-    ```
+    ```c#
     public sealed class AvalonEditBehaviour : Behavior<TextEditor>
        {
            public static readonly DependencyProperty InputTextProperty =

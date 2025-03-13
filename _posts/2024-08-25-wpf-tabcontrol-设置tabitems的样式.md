@@ -8,7 +8,7 @@ categories:
 
 # 范例1
 
-```
+```xml
 <Window x:Class="WpfTutorialSamples.Misc_controls.StyledTabItemsSample"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -56,7 +56,7 @@ categories:
 
 # 范例2
 
-```
+```xml
 <Window x:Class="WpfTutorialSamples.Misc_controls.StyledTabItemsWithBorderSample"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"

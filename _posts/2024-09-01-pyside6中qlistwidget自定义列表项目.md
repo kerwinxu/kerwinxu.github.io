@@ -6,7 +6,7 @@ categories:
   - "python"
 ---
 
-```
+```python
 # -*- coding: utf-8 -*-
 # 这个脚本是用QListWidget的方式构造列表框，用自定义一个布局的方式来做列表框的项目
 # 而 QListView中的自定义，好像是要自己绘图的。

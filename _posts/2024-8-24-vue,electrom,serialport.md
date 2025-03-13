@@ -21,7 +21,7 @@ yarn add serialport
 ```
 
 Main Thread : src/main
-```
+```js
 // 我在主线程中操作窗口，这里这仅仅是作为一个演示,返回串口的。
 ipcMain.handle('listSerialportNames', async () => await SerialPort.list())
 

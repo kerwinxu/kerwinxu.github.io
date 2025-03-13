@@ -8,7 +8,7 @@ categories:
 
 项目文件夹下创建binding.gyp文件 内容
 
-```
+```json
 {
   "targets": [
     {

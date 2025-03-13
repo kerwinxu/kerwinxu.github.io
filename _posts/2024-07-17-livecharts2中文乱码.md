@@ -6,7 +6,7 @@ categories:
   - "c"
 ---
 
-```
+```c#
 public RectangularSection[] Sections { get; set; } =
 {
 new RectangularSection

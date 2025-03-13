@@ -6,7 +6,7 @@ categories:
   - "python"
 ---
 
-```
+```python
 import modbus_tk.defines
 import serial
 import modbus_tk

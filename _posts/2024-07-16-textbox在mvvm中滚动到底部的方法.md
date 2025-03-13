@@ -12,7 +12,7 @@ categories:
 
  
 
-```
+```xml
 <Window x:Class="textbox在MVVM模式下滚动到底部.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"

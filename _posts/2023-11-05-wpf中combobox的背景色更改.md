@@ -6,7 +6,7 @@ categories:
   - "c"
 ---
 
-```
+```xml
 <!-- 禁用情况下控件的颜色 -->
 <Color x:Key="DisabledControlLightColor">#FFE8EDF9</Color>
 <Color x:Key="DisabledControlDarkColor">#FFC5CBF9</Color> <!-- 背景色 -->

@@ -6,7 +6,7 @@ categories:
   - "python"
 ---
 
-```
+```python
 def calc_crc(string):
     data = bytearray.fromhex(string)
     crc = 0xFFFF

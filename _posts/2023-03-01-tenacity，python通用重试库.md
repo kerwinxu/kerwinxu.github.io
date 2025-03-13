@@ -16,7 +16,7 @@ tenacity是一个 Apache 2.0授权的通用重试库，自动化测试或者爬�
 
 ### **重试3次**
 
-```
+```python
 import tenacity
 from tenacity import stop_after_attempt
 
@@ -30,7 +30,7 @@ retry_test()
 
 ### **重试10秒**
 
-```
+```python
 import tenacity
 from tenacity import stop_after_delay
 
@@ -44,7 +44,7 @@ retry_test()
 
 ### **每隔2秒重试**
 
-```
+```python
 import tenacity
 from tenacity import wait_fixed
 

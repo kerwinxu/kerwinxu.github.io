@@ -14,7 +14,7 @@ sqlite只支持utf8字符编码，然后我们插入的数据，很多都是gbk�
 
 首先自定义函数，这个函数的作用是自己做一个包含判断，
 
-```
+```c#
 [SQLiteFunction(Name = "ContainsCn", FuncType = FunctionType.Scalar)]
 public class FunctionContainsCn:SQLiteFunction
 {

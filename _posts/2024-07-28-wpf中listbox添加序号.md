@@ -8,7 +8,7 @@ categories:
 
 做一个转换器，IList有IndexOf方法。
 
-```
+```c#
 public class IndexConverter : IMultiValueConverter
     {
         public object? Convert(object[] values, Type targetType, object parameter, CultureInfo culture)

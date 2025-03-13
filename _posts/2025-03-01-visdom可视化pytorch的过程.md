@@ -22,7 +22,7 @@ python -m visdom.server
 
 ## 监听单一数据
 
-```
+```python
 from visdom import Visdom
 import numpy as np
 import time
@@ -43,7 +43,7 @@ for global_steps in range(10):
 
 ## 监听多个数据
 
-```
+```python
 from visdom import Visdom
 import numpy as np
 import time
@@ -65,7 +65,7 @@ for global_steps in range(10):
 
 ## 可视化图像
 
-```
+```python
 from visdom import Visdom
 import numpy as np
 import cv2

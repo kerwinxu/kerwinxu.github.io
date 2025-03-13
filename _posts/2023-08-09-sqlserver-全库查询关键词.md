@@ -6,7 +6,7 @@ categories:
   - "数学"
 ---
 
-```
+```sql
 DECLARE @what varchar(800)
 SET @what='电气设备及线路维护费' --要搜索的字符串
 

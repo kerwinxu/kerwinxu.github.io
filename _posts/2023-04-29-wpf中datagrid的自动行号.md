@@ -8,7 +8,7 @@ categories:
 
 做一个转换器
 
-```
+```c#
 public  class RowToIndexConv: IValueConverter
 {
     public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
@@ -28,7 +28,7 @@ public  class RowToIndexConv: IValueConverter
 
 然后在xaml中
 
-```
+```xml
  <DataGrid>
      <DataGrid.Columns>
                 <DataGridTextColumn Header="顺序"

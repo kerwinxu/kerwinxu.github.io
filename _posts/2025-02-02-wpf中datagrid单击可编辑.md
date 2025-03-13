@@ -6,7 +6,7 @@ categories:
   - "c"
 ---
 
-```
+```xml
 <DataGrid.Resources>
     <Style TargetType="DataGridCell" BasedOn="{StaticResource {x:Type DataGridCell}}">
         <Style.Triggers>

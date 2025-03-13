@@ -6,7 +6,7 @@ categories:
   - "javascript"
 ---
 
-```
+```js
 import { Database } from 'sqlite3'
 export var db
 

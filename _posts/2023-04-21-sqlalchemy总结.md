@@ -14,7 +14,7 @@ categories:
 
 # 模型
 
-```
+```python
 # coding=utf-8
 from __future__ import unicode_literals, absolute_import
 from sqlalchemy.ext.declarative import declarative_base
@@ -32,7 +32,7 @@ class User(ModelBase):
 
 创建表
 
-```
+```python
 from sqlalchemy import create_engine
 engine = create_engine('sqlite:///:memory:', echo=True)
 ModelBase.metadata.create_all(engine)
@@ -44,7 +44,7 @@ ModelBase.metadata.create_all(engine)
 如下所有的都要先创建Session
 ```
 
-```
+```python
 from sqlalchemy.orm import sessionmaker
 Session = sessionmaker(bind=engine)
 # 实例化
@@ -60,7 +60,7 @@ session.commit()
 
 # 增加
 
-```
+```python
 ed_user = User(name='ed', fullname='Ed Jones', nickname='edsnickname') # 在内存中创建了一个对象
 session.add(ed_user)  # 添加到会话中，等待添加。
 session.commit()      # 提交，这里才是真正的更新。
@@ -125,7 +125,7 @@ SQL>>> for row in session.query(user_alias, user_alias.name).all():
 
 ## 查询常用筛选器运算符
 
-```
+```python
 # 等于
 query.filter(User.name == 'ed')
 
@@ -182,7 +182,7 @@ fred
 
 # 删除数据
 
-```
+```python
 # ORM 删除一条多条数据
 # 导入 ORM 创建会话
 from my_create_table import User,engine

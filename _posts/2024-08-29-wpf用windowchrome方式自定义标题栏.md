@@ -10,7 +10,7 @@ categories:
 
 代码如下：
 
-```
+```xml
 <Window x:Class="自定义标题栏.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"

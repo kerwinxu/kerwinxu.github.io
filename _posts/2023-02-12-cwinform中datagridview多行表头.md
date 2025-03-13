@@ -6,7 +6,7 @@ categories:
   - "c"
 ---
 
-```
+```c#
 public class BoundGridView : DataGridView
     {
         private int _baseColumnHeadHeight;

@@ -36,7 +36,7 @@ XML文件的隐藏，需要在项目的 .csproj文件中加入元素节点Allowe
 
 比如我这里将debug改成隐藏的
 
-```
+```xml
 <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>

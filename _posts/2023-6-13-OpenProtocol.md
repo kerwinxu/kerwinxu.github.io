@@ -17,7 +17,7 @@ My program is similar to ORM, ORM is object-oriented and relational database mat
 
 # Demo
 
-```
+```c#
 using Io.Github.KerwinXu.OpenProtocol;
 using Io.Github.KerwinXu.OpenProtocol.Attributes;
 using Io.Github.KerwinXu.OpenProtocol.Attributes.Checks;

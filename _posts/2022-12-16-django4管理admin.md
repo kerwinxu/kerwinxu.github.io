@@ -36,7 +36,7 @@ admin.site.register(Book)
 
 两种方式吧
 
-```
+```python
 # Define the admin class
 class AuthorAdmin(admin.ModelAdmin):
     pass
@@ -49,7 +49,7 @@ admin.site.register(Author, AuthorAdmin)
 
 注册器的方式
 
-```
+```python
 # Register the Admin classes for Book using the decorator
 
 @admin.register(Book)
@@ -69,14 +69,14 @@ class BookInstanceAdmin(admin.ModelAdmin):
 
 ## 配置列表视图
 
-```
+```python
 class AuthorAdmin(admin.ModelAdmin):
     list_display = ('last_name', 'first_name', 'date_of_birth', 'date_of_death')
 ```
 
 注意：这个不能指定ManyToManyField 的字段，可以定义一个函数来获取。
 
-```
+```python
 class BookAdmin(admin.ModelAdmin):
     list_display = ('title', 'author', 'display_genre') # 这个display_genre是用函数来获取的。
 
@@ -92,7 +92,7 @@ class BookAdmin(admin.ModelAdmin):
 
 ## 基本设置
 
-```
+```python
 from django.contrib import admin
 from blog.models import Blog
   
@@ -117,7 +117,7 @@ class BlogAdmin(admin.ModelAdmin):
 
 我们可以设置其他字段也可以点击链接进入编辑界面
 
-```
+```python
 from django.contrib import admin
 from blog.models import Blog
   
@@ -136,12 +136,12 @@ class BlogAdmin(admin.ModelAdmin):
 
 列表视图现在将在右侧包含一个过滤器框
 
-```
+```python
 class BookInstanceAdmin(admin.ModelAdmin):
     list_filter = ('status', 'due_back')
 ```
 
-```
+```python
 from django.contrib import admin
 from blog.models import Blog
   
@@ -160,7 +160,7 @@ class BlogAdmin(admin.ModelAdmin):
 
 ## 颜色显示
 
-```
+```python
 from django.db import models
 from django.contrib import admin
 from django.utils.html import format_html
@@ -186,7 +186,7 @@ class PersonAdmin(admin.ModelAdmin):
 
 ## 调整页面头部显示内容和页面标题
 
-```
+```python
 class MyAdminSite(admin.AdminSite):
     site_header = '好医生运维资源管理系统'  # 此处设置页面显示标题
     site_title = '好医生运维'  # 此处设置页面头部标题
@@ -204,7 +204,7 @@ admin_site = MyAdminSite(name='management')
 
 后经网友提示发现也可以这样：
 
-```
+```python
 from django.contrib import admin
 from hys_operation.models import *
  
@@ -229,7 +229,7 @@ admin.site.site_title = '哈哈'
 
 ### 控制哪些字段被显示和布局
 
-```
+```python
 class AuthorAdmin(admin.ModelAdmin):
     list_display = ('last_name', 'first_name', 'date_of_birth', 'date_of_death')
     fields = ['first_name', 'last_name', ('date_of_birth', 'date_of_death')]
@@ -244,7 +244,7 @@ fields默认是垂直展示的，而('date\_of\_birth', 'date\_of\_death')表示
 
 ### 剖切细节视图
 
-```
+```python
 @admin.register(BookInstance)
 class BookInstanceAdmin(admin.ModelAdmin):
     list_filter = ('status', 'due_back')
@@ -263,7 +263,7 @@ fieldsets ，每个部分都有自己的标题，
 
 ## 关联记录的内联编辑
 
-```
+```python
 class BooksInstanceInline(admin.TabularInline):
     # 内联模型
     model = BookInstance

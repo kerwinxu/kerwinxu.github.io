@@ -42,7 +42,7 @@ categories:
         
     2. 预加载进程，src/preload目录，这个是暴露给渲染进程，并且做了隔离
         
-        ```
+        ```js
         // Use `contextBridge` APIs to expose Electron APIs to
         // renderer only if context isolation is enabled, otherwise
         // just add to the DOM global.
@@ -66,7 +66,7 @@ categories:
         
     3.  渲染进程中,src/renderer，是调用预加载中的，
         
-        ```
+        ```js
         <script setup>
         import Versions from './components/Versions.vue'
         

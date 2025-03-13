@@ -8,7 +8,7 @@ categories:
 
 建立一个样式。
 
-```
+```xml
 <Style x:Key="NormalListBoxItemContainerStyle" TargetType="{x:Type ListBoxItem}">
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -39,7 +39,7 @@ categories:
 
 然后应用样式
 
-```
+```xml
 <ListBox x:Name="lst_StocklotProcesses" Grid.Row="1" ItemsSource="{Binding StocklotProcesses}"
                              ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                              ItemContainerStyle="{StaticResource NormalListBoxItemContainerStyle}"

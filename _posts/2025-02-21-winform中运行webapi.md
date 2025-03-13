@@ -14,7 +14,7 @@ categories:
 
 Servers/Startup.cs
 
-```
+```c#
 using System.Web.Http;
 using Owin;
 

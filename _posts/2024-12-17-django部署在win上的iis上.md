@@ -27,7 +27,7 @@ categories:
         
     2. 在static目录下添加web.config
         
-        ```
+        ```xml
         <?xml version="1.0" encoding="UTF-8"?>
             <configuration>
               <system.webServer>

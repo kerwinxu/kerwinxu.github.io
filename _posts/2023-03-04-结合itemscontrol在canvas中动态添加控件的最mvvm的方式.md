@@ -6,7 +6,7 @@ categories:
   - "c"
 ---
 
-```
+```xml
 <Window x:Class="动态控件.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"

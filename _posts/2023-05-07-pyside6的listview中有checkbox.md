@@ -6,7 +6,7 @@ categories:
   - "python"
 ---
 
-```
+```python
 slm = QStandardItemModel()              # 增强的项目模型
 for i in self.all_labels:      
   item = QStandardItem(i.label_text)  # 增强的项目
