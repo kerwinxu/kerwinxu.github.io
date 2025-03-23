@@ -11,6 +11,7 @@
 .github
 .kekyll-cache
 .pytest_cache
+Gemfile.lock
 
 # bundler cache
 _site
