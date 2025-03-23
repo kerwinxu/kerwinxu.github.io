@@ -93,7 +93,7 @@ categories:
 
 实现完模板方法模式之后，让我们看看模板方法的类图结构，以理清该模式中类之间的关系，具体类图如下：
 
-[![](/assets/image/default/28224429-7ac6df4a965c46af8f1e18ef7754357d.png)](http://127.0.0.1/?attachment_id=4036)
+[![]](http://127.0.0.1/?attachment_id=4036)
 
  
 

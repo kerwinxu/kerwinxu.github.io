@@ -68,7 +68,7 @@ static void Main(string[] args)
 
 用nuget
 
-[![](/assets/image/default/下载.png)](http://127.0.0.1/?attachment_id=3919)
+[![]](http://127.0.0.1/?attachment_id=3919)
 
 ## 通过向导来连接MySQL数据库
 
@@ -76,7 +76,7 @@ static void Main(string[] args)
 
 之后选择**ADO.NET实体数据模型**，我取名为DBModel。之后连接数据库。如果出现如下错误
 
-[![](/assets/image/default/下载-1.png)](http://127.0.0.1/?attachment_id=3920)
+[![]](http://127.0.0.1/?attachment_id=3920)
 
 解决方式：
 
@@ -91,11 +91,11 @@ set global optimizer_switch='derived_merge=OFF';
 
 打开DBModel.cs
 
-[![](/assets/image/default/下载-2.png)](http://127.0.0.1/?attachment_id=3921)
+[![]](http://127.0.0.1/?attachment_id=3921)
 
 student数据模型中对数据做了些描述（你不用代码优先CodeFirst这些一般都不用管）
 
-[![](/assets/image/default/下载-3.png)](http://127.0.0.1/?attachment_id=3922)
+[![]](http://127.0.0.1/?attachment_id=3922)
 
 ## 使用EF进行增删改查
 
@@ -146,7 +146,7 @@ class Program
 
 为了演示，我在数据库中建了两张表。class表用于表示班级，class\_id是班级编号，class\_name是班级名称。第二张表是学生表student，student\_id为学生编号，name为姓名，age为年龄，class\_id是学生所属班级，student表中的class\_id与class表中的class\_id存在外联关系
 
-[![](/assets/image/default/下载-4.png)](http://127.0.0.1/?attachment_id=3923)
+[![]](http://127.0.0.1/?attachment_id=3923)
 
  
 
@@ -156,13 +156,13 @@ class Program
 
 先来看看DBModel类，DBModel相当于一个数据库，之后你new一个DBModel就相当于打开了一次数据库，跟数据库建立了一次连接。
 
-[![](/assets/image/default/下载-5.png)](http://127.0.0.1/?attachment_id=3924)
+[![]](http://127.0.0.1/?attachment_id=3924)
 
 再来看看student与\_class类。类中的属性上添加很多特性（Attribute），用于描述数据约束。值得注意的是在student类中，EF将我们的外键class\_id分解成了两个属性，其中\_class前面使用了virtual关键字，使用了virtual关键字描述的属性在查询时并不会马上从数据库中读取数据，而是当你真正需要用到它的值时再单独从数据库中查询出来。
 
-[![](/assets/image/default/下载-6.png)](http://127.0.0.1/?attachment_id=3925)
+[![]](http://127.0.0.1/?attachment_id=3925)
 
-[![](/assets/image/default/下载-7.png)](http://127.0.0.1/?attachment_id=3926)
+[![]](http://127.0.0.1/?attachment_id=3926)
 
 ## 使用EF读取数据
 

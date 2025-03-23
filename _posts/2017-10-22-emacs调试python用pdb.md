@@ -19,11 +19,11 @@ categories:
 
 1\. windows中，找不到pdb.py位置。需自己制定pdb的路径。可以通过下面的方法设置pdb的路径：
 
-![复制代码](/assets/image/default/copycode.gif)
+![复制代码]
 
 ;; pdb setup, note the python version (setq pdb-path 'c:/python25/Lib/pdb.py gud-pdb-command-name (symbol-name pdb-path)) (defadvice pdb (before gud-query-cmdline activate) "Provide a better default command line when called interactively." (interactive (list (gud-query-cmdline pdb-path (file-name-nondirectory buffer-file-name)))))
 
-![复制代码](/assets/image/default/copycode.gif)
+![复制代码]
 
 2\. windows中，调用pdb时，未使用python -i 参数。
 

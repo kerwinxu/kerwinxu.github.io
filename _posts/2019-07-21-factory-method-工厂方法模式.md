@@ -166,7 +166,7 @@ namespace 设计模式之工厂方法模式
 
 # 工厂方法模式的UML图
 
-![](/assets/image/default/09183202-52f92a4d2ab04e23916d997400564be1.png)![](/assets/image/default/09183202-52f92a4d2ab04e23916d997400564be1.png)![](/assets/image/default/09183202-52f92a4d2ab04e23916d997400564be1.png)[![](/assets/image/default/222347477959190.png)](http://127.0.0.1/?attachment_id=3977)
+![]![]![][![]](http://127.0.0.1/?attachment_id=3977)
 
 从UML图可以看出，**在工厂方法模式中，工厂类与具体产品类具有平行的等级结构，它们之间是一一对应的**。针对UML图的解释如下：
 

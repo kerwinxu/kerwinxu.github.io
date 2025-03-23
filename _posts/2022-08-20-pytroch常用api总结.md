@@ -268,7 +268,7 @@ CLASStorch.nn.Linear(in_features, out_features, bias=True, device=None, dtype=No
 
 ## nn.Sigmoid
 
-[![](/assets/image/default/Sigmoid.png)](http://127.0.0.1/?attachment_id=4707)
+[![]](http://127.0.0.1/?attachment_id=4707)
 
 - Input: (\*)(∗), where \*∗ means any number of dimensions.
 - Output: (\*)(∗), same shape as the input.
@@ -283,15 +283,15 @@ output = m(input)
 
  
 
-[![](/assets/image/default/ReLU.png)](http://127.0.0.1/?attachment_id=4706)
+[![]](http://127.0.0.1/?attachment_id=4706)
 
 ## nn.tanh
 
-[![](/assets/image/default/Tanh.png)](http://127.0.0.1/?attachment_id=4708)
+[![]](http://127.0.0.1/?attachment_id=4708)
 
 ## nn.Sigmoid nn.tanh 区别
 
-[![](/assets/image/default/v2-f190fdedc174f080f2e4bdd56ed504a1_720w.jpg)](http://127.0.0.1/?attachment_id=4709)
+[![]](http://127.0.0.1/?attachment_id=4709)
 
  
 

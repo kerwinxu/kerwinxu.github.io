@@ -184,9 +184,9 @@ I tried following the instructions in MathJax’s official Wiki for using a loca
 
 Things seems worked, but undesirably _slow_.
 
-![loading time graph](/assets/image/default/slow1.png)
+![loading time graph]
 
-![loading time graph](/assets/image/default/slow2.png)
+![loading time graph]
 
 It took about _16 seconds_ for loading the math. **How can they load quicker with a local configuration file**, like [http://drz.ac](http://drz.ac/)?
 
@@ -212,7 +212,7 @@ I tried using relative paths in `source/_includes/custom/head.html` , `{{ roo
 
 I typed full paths manually for the above `<script>` tag in the custom head of a page and the local configuration file. To avoid loading “insecure contents”, I used full URLs instead of `{{ site.url }}` since the URL of this site _doesn’t_ start with “https” in `_config.yml`.[3](https://vincenttam.github.io/blog/2014/11/09/mathjax-local-configuration-file/#fn:https)[4](https://vincenttam.github.io/blog/2014/11/09/mathjax-local-configuration-file/#fn:config_yml) Then the equations should load quickly.
 
-![loading time graph](/assets/image/default/ok.png)
+![loading time graph]
 
 ## Lessons learnt
 

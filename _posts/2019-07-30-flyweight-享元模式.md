@@ -142,7 +142,7 @@ return flyweights[key] as Flyweight;
 
 看完享元模式的实现之后，为了帮助大家理清楚享元模式中各类之间的关系，下面给出上面实现代码中的类图，如下所示：
 
-[![](/assets/image/default/Pic86.gif)](http://127.0.0.1/?attachment_id=4032)
+[![]](http://127.0.0.1/?attachment_id=4032)
 
 在上图中，涉及的角色如下几种角色：
 

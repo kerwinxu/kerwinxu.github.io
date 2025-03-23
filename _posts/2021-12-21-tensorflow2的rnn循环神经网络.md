@@ -23,13 +23,13 @@ $latex h\_t = tanh(x\_t w\_{xh} + h\_{t-1}w\_{hh}) $
 
 # 循环核按照时间步展开
 
-[![](/assets/image/default/20200623160243280.png)](http://127.0.0.1/?attachment_id=4286)
+[![]](http://127.0.0.1/?attachment_id=4286)
 
  
 
 # 循环计算层
 
-[![](/assets/image/default/20200623175915240.png)](http://127.0.0.1/?attachment_id=4287)
+[![]](http://127.0.0.1/?attachment_id=4287)
 
  
 
@@ -43,7 +43,7 @@ tf.keras.layers.SimpleRNN(记忆体个数，activation=‘激活函数’ ，ret
 SimpleRNN(3, return_sequences=True)
 ```
 
-[![](/assets/image/default/20200623181657718.png)](http://127.0.0.1/?attachment_id=4288)
+[![]](http://127.0.0.1/?attachment_id=4288)
 
 RNN要求输入数据（x\_train）的维度是三维的\[送入样本数，循环核时间展开步数（也就是循环核中有多少个x），每个时间步输入特征个数\]
 

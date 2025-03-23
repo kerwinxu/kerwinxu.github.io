@@ -52,7 +52,7 @@ categories:
 
 效果如下
 
-[![](/assets/image/default/tabcontrol_styled_tab_simple.png)](http://127.0.0.1/?attachment_id=5329)
+[![]](http://127.0.0.1/?attachment_id=5329)
 
 # 范例2
 
@@ -100,4 +100,4 @@ categories:
 
 效果如下
 
-[![](/assets/image/default/tabcontrol_styled_tab_borders.png)](http://127.0.0.1/?attachment_id=5330)
+[![]](http://127.0.0.1/?attachment_id=5330)

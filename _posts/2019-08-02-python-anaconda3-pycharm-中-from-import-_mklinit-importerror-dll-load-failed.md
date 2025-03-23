@@ -10,4 +10,4 @@ categories:
 
 三个环境变量要齐全
 
-[![](/assets/image/default/EK33_3T040U_J4J@0PA.png)](http://127.0.0.1/?attachment_id=2552)
+[![]](http://127.0.0.1/?attachment_id=2552)
