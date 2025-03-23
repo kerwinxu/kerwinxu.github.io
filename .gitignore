@@ -8,7 +8,6 @@
 !.versionrc.json
 !.stylelintrc.json
 .bundle
-.github
 .kekyll-cache
 .pytest_cache
 Gemfile.lock
