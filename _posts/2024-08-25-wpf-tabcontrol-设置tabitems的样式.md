@@ -52,7 +52,7 @@ categories:
 
 效果如下
 
-[![]](http://127.0.0.1/?attachment_id=5329)
+[![no img]](http://127.0.0.1/?attachment_id=5329)
 
 # 范例2
 
@@ -100,4 +100,4 @@ categories:
 
 效果如下
 
-[![]](http://127.0.0.1/?attachment_id=5330)
+[![no img]](http://127.0.0.1/?attachment_id=5330)

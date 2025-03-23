@@ -213,6 +213,6 @@ cv2.destroyAllWindows()
 
 运行结果： 每步处理后的图片
 
-[![]](http://127.0.0.1/?attachment_id=3832)
+[![no img]](http://127.0.0.1/?attachment_id=3832)
 
 可以看到mask掩码，白色的是可以显示的，黑色的是被屏蔽的。

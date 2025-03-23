@@ -10,7 +10,7 @@ categories:
 
 在使用git命令行查看当前 状态时,
 
-git status 显示中文文件乱码: [![]](http://127.0.0.1/?attachment_id=2755)
+git status 显示中文文件乱码: [![no img]](http://127.0.0.1/?attachment_id=2755)
 
 # 解决
 

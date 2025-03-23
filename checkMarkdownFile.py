@@ -10,6 +10,7 @@ def get_encoding(file):
         return result['encoding']
 # (/assets/image/default/ea4327ee99d7e459665f4eacf4fda6a2.png) ,我检查图片是否存在，不存在就取消吧
 pattern = f'\(/assets/image/default/[^)]*\)'
+pattern2 = f'!\[\]'
 
 flags = re.IGNORECASE | re.MULTILINE
 
@@ -29,7 +30,7 @@ def check_markdown(file_name):
     encoding = get_encoding(file_path)
     with open(file_path, 'r', encoding=encoding) as f:
         content = f.read()
-        # 这里进行解析
+        # 这里进行解析无效的图片
         img_paths = re.findall(pattern, content, flags)
         if len(img_paths) >0:
             # 检查图片是否存在
@@ -39,6 +40,15 @@ def check_markdown(file_name):
                     print(f'不存在:{img_name}')
                     # 然后这里进行删除
                     content = content.replace(img_name, '')
+        # 图片中的alt为空
+        content = content.replace('![]', '![no img]')
+        # img_alt_paths = re.findall(pattern2, content, flags)
+        # if len(img_alt_paths) >0:
+        #     # 检查图片是否存在
+        #     for img_name in img_alt_paths:
+        #         content = content.replace(img_name, '![no img]')
+
+
             # 最后保存文件
     with open(file_path, 'w', encoding=encoding) as f:
             f.write(content)

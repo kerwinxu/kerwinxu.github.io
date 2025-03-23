@@ -16,17 +16,17 @@ categories:
 
 举个例子，现在我们有一个矩阵： $latex x =\\left\[\\begin{array}{c} 0 & 1 \\\\ 2 & 3 \\end{array}\\right\] $；在 Python，或说在 numpy 里面，这个矩阵是这样被表达出来的：_x_ = \[ \[0, 1\], \[2, 3\] \]，然后 axis 的对应方式就是：
 
-[![]](http://127.0.0.1/?attachment_id=3738)
+[![no img]](http://127.0.0.1/?attachment_id=3738)
 
 所以相应的运算就是：
 
-[![]](http://127.0.0.1/?attachment_id=3739)
+[![no img]](http://127.0.0.1/?attachment_id=3739)
 
 下面来看一个更“高维”一点的例子：
 
-[![]](http://127.0.0.1/?attachment_id=3740)
+[![no img]](http://127.0.0.1/?attachment_id=3740)
 
-[![]](http://127.0.0.1/?attachment_id=3741)
+[![no img]](http://127.0.0.1/?attachment_id=3741)
 
 从这张图可以看出，
 

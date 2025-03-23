@@ -16,7 +16,7 @@ categories:
 
 3、使程序更具维护性。
 
-![]
+![no img]
 
 ## 1.json
 

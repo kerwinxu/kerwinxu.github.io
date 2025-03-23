@@ -200,7 +200,7 @@ Emacs Lisp 有内建的哈希表，位向量等数据结构，但是它们并没
 
 还是画个表容易看……
 
-[![]](http://127.0.0.1/?attachment_id=2620)
+[![no img]](http://127.0.0.1/?attachment_id=2620)
 
 # 语句
 
@@ -345,7 +345,7 @@ Lisp 的 `cache/throw` 能够实现控制流的向上级转移，它与 Java �
 
 在 Emacs Lisp 中要 `break` 一个循环，可以将 `(cache 'break ...)` 置于循环外部，然后在循环内部需要中断的地方放置 `(throw 'break value)`，例如：
 
-[![]](http://127.0.0.1/?attachment_id=2621)
+[![no img]](http://127.0.0.1/?attachment_id=2621)
 
 符号 `'break` 不是 Lisp 语法，而是自己取的名字——要取容易理解的名字，譬如对于多重循环，可在 `cache` 表达式中用 `'break-outer` 与 `'break-inner` 之类的名字。
 
@@ -353,11 +353,11 @@ Lisp 的 `cache/throw` 能够实现控制流的向上级转移，它与 Java �
 
 要实现循环中的 `continue`，可将 `cache` 置入循环内部之首。例如，对从 1 到 99 的整数求和，并且在该过程中避开能被 5 整除的数（这是个蹩脚的例子，只是为了演示 `continue` 的用法）:
 
-[![]](http://127.0.0.1/?attachment_id=2622)
+[![no img]](http://127.0.0.1/?attachment_id=2622)
 
 可将这些示例组合起来，在同一个循环内实现 `break` 与 `continue`：
 
-[![]](http://127.0.0.1/?attachment_id=2623)
+[![no img]](http://127.0.0.1/?attachment_id=2623)
 
 上面的循环的计算结果为 4000，即 `total` 的值。要得到这个结果，还有更好的计算方式，不过我需要足够简单的东西来讲述如何在 Lisp 中实现 `break` 与 `continue`。
 
@@ -496,7 +496,7 @@ Emacs Lisp 也没有真正的向函数传递引用的机制，但是它有动态
 
 Lisp 函数默认是返回最后一个被求值的表达式的结果。通过一些构造技巧，也可以让每个可能的返回结果安排在函数的尾部位置。例如：
 
-[![]](http://127.0.0.1/?attachment_id=2624)
+[![no img]](http://127.0.0.1/?attachment_id=2624)
 
 上述 Lisp 函数 `day-name` 的返回值是最后一个表达式的求值结果，因此无论我们怎么嵌套 `if`，都能自动产生一个结果返回，因此这里不需要显式的 `return` 语句。
 
@@ -526,7 +526,7 @@ Emacs 真正的错误处理机制叫做『条件』系统，本文不打算对�
 
 下面是一个一般化的 `condition-case` 结构，而且我也给出了 Java 的等价描述。
 
-[![]](http://127.0.0.1/?attachment_id=2625)
+[![no img]](http://127.0.0.1/?attachment_id=2625)
 
 如果你想让 `cache` 块为空，可使用 `ignore-errorse`：
 
@@ -548,7 +548,7 @@ Emacs 真正的错误处理机制叫做『条件』系统，本文不打算对�
 
 Emacs Lisp 提供了类似 finally 的功能 `unwind-protect`：
 
-[![]](http://127.0.0.1/?attachment_id=2626)
+[![no img]](http://127.0.0.1/?attachment_id=2626)
 
 与 `condition-case` 相似，`unwind-protect` 接受单个体块（body-form，译注：try 部分），后面跟随着一条或多条善后的表达式，因此你需要用 `progn` 将体块内的表达式封装起来。
 
@@ -575,7 +575,7 @@ Emacs Lisp 不是标准意义上的面向对象编程语言，它没有类、继
 
 下面的 Emacs Lisp 代码与 Java 代码本质上是等价的：
 
-[![]](http://127.0.0.1/?attachment_id=2627)
+[![no img]](http://127.0.0.1/?attachment_id=2627)
 
 `defstruct` 宏提供了一个灵活的默认构造器，但是你也可以根据自己的需要来定义相适的构造器。
 
@@ -594,7 +594,7 @@ t
 
 Java 在对象构造器方面可能挺糟糕，不过 Emacs 在域（类成员）的设置方面挺糟糕。要设置类（结构体）的域，必须使用 `setf` 函数，然后将类名作为域名的前缀：
 
-[![]](http://127.0.0.1/?attachment_id=2628)
+[![no img]](http://127.0.0.1/?attachment_id=2628)
 
 这样看上去，Lisp 并不是太糟糕，但是在实践中（因为 Emacs Lisp 不支持命名空间，并且也没有 `with-slots` 宏），你会被卷入很长的类名与域名中的，例如：
 

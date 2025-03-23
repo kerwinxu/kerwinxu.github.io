@@ -200,7 +200,7 @@ admin_site = MyAdminSite(name='management')
 
 注册的时候使用admin\_site.register，而不是默认的admin.site.register。
 
-[![]](http://127.0.0.1/?attachment_id=4896)
+[![no img]](http://127.0.0.1/?attachment_id=4896)
 
 后经网友提示发现也可以这样：
 
@@ -221,7 +221,7 @@ admin.site.site_title = '哈哈'
 
 ## 通过当前登录的用户过滤显示的数据
 
-[![]](http://127.0.0.1/?attachment_id=4897)
+[![no img]](http://127.0.0.1/?attachment_id=4897)
 
  
 

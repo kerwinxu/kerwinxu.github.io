@@ -20,7 +20,7 @@ categories:
 
 注意：只有在叶子节点才会计算评分，在树的中间层，对AI来说暂时不知道哪个节点是最有利的。
 
-[![]](http://127.0.0.1/?attachment_id=4658)
+[![no img]](http://127.0.0.1/?attachment_id=4658)
 
 极大值极小值策略
 
@@ -42,11 +42,11 @@ categories:
 
  
 
-- B节点在MIN层，子节点是5和3，所以$latex \\alpha $取值3,[![]](http://127.0.0.1/?attachment_id=4659)
+- B节点在MIN层，子节点是5和3，所以$latex \\alpha $取值3,[![no img]](http://127.0.0.1/?attachment_id=4659)
     - 节点A的$latex \\alpha $更新为当前最有利的分值为3
-- 开始搜索节点C，C的$latex \\alpha=2 , \\beta=+\\infty $  [![]](http://127.0.0.1/?attachment_id=4660)
+- 开始搜索节点C，C的$latex \\alpha=2 , \\beta=+\\infty $  [![no img]](http://127.0.0.1/?attachment_id=4660)
     - 节点C的$latex \\alpha = 6$,同时节点A的$latex \\alpha = 6$
-- 开始搜索节点D，搜索节点D的第一个子节点为5，这时候节点D符合MIN剪枝 $latex \\alpha \\le \\beta $ ，所以节点D的第二个节点就被裁掉了。[![]](http://127.0.0.1/?attachment_id=4661)
+- 开始搜索节点D，搜索节点D的第一个子节点为5，这时候节点D符合MIN剪枝 $latex \\alpha \\le \\beta $ ，所以节点D的第二个节点就被裁掉了。[![no img]](http://127.0.0.1/?attachment_id=4661)
 
  
 

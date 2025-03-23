@@ -10,4 +10,4 @@ categories:
 
 三个环境变量要齐全
 
-[![]](http://127.0.0.1/?attachment_id=2552)
+[![no img]](http://127.0.0.1/?attachment_id=2552)

@@ -6,7 +6,7 @@ categories:
   - "技术指标"
 ---
 
-[![]](http://127.0.0.1/wp-content/uploads/2018/01/upload-66e71217-1351-4dfd-ba5b-923d3d554a67.jpg)
+[![no img]](http://127.0.0.1/wp-content/uploads/2018/01/upload-66e71217-1351-4dfd-ba5b-923d3d554a67.jpg)
 
 Earning Per Share ： 每股收益。
 

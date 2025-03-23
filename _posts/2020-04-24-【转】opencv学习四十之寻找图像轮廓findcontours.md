@@ -64,7 +64,7 @@ void cv::drawContours   (   InputOutputArray    image,
 
 参数解释 image:输入输出图像，Mat类型即可 contours:使用findContours检测到的轮廓数据，每个轮廓以点向量的形式存储，point类型的vector contourIdx:绘制轮廓的只是变量，如果为负值则绘制所有输入轮廓 color:轮廓颜色 thickness:绘制轮廓所用线条粗细度，如果值为负值，则在轮廓内部绘制 lineTpye:线条类型，有默认值LINE\_8，有如下可选类型
 
-[![]](http://127.0.0.1/?attachment_id=3376)
+[![no img]](http://127.0.0.1/?attachment_id=3376)
 
 hierarchy:可选层次结构信息 maxLevel:用于绘制轮廓的最大等级 offset:可选轮廓便宜参数，用制定偏移量offset=(dx, dy)给出绘制轮廓的偏移量
 

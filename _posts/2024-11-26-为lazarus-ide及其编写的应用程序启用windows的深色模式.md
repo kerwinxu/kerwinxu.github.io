@@ -24,7 +24,7 @@ ide的深色配色
 
 详情请参考metadarkstyle仓库中examples目录下的例子。
 
-首先给项目添加MetaDarkStyle的Requirement。，[![]](http://127.0.0.1/?attachment_id=5422)
+首先给项目添加MetaDarkStyle的Requirement。，[![no img]](http://127.0.0.1/?attachment_id=5422)
 
 然后如example/defaultallowdark中展示的那样修改lpr文件中的代码
 
