@@ -22,14 +22,22 @@ categories:
         - ScaleProcessor :  转换器的
         - TagType : 设置数据类型，可以设置整数或者浮点数等。
         - MemAddress : 寄存器的地址
-        - MemReadFunction : 读的功能号
+        - MemReadFunction : 读的功能号,
         - MemWriteFunction : 写的功能号。
         - PLCStation ： 从机地址。
     - HMILabel ： 这个可以显示只读的数据
         - PLCTag ： 对应上边的PLCTagNumber
         - Prefix ： 前缀
 
- 
+关于功能号的
+|类型|读|写|
+|--|--|--|
+|Digital inputs|2|0|
+|Coils (digital outputs)|1|5(TPLCTagNumber)<br>15(TPLCTagNumber，TPLCBlock，TPLCStruct，TPLCString)|
+|Registers|3|6(TPLCTagNumber)<br>16(TPLCTagNumber，TPLCBlock，TPLCStruct，TPLCString)|
+|Analog registers (analog inputs)|4|0|
+|Device status|7|0|
+
 
  
 
