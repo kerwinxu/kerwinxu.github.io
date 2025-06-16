@@ -2,8 +2,7 @@
 layout: post
 title: "tenacity，python通用重试库"
 date: "2023-03-01"
-categories: 
-  - "python"
+categories: ["计算机语言", "Python"]
 ---
 
 tenacity是一个 Apache 2.0授权的通用重试库，自动化测试或者爬虫中，当网络不稳定导致请求超时或者等待条件满足时操作，我们可以通过tenacity实现代码的重试功能。

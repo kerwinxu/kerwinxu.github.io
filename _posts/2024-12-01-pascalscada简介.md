@@ -2,8 +2,7 @@
 layout: post
 title: "pascalSCADA简介"
 date: "2024-12-01"
-categories: 
-  - "lazarus"
+categories:: ["计算机语言", "lazarus"]
 ---
 
 - HMI： 一堆控件

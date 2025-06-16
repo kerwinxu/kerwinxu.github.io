@@ -2,8 +2,7 @@
 layout: post
 title: "Python Async/Await入门指南"
 date: "2020-11-26"
-categories: 
-  - "python"
+categories: ["计算机语言", "Python"]
 ---
 
 # 常见的几种python函数形式

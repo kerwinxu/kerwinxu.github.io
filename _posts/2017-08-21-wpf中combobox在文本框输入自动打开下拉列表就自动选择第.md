@@ -2,8 +2,7 @@
 layout: post
 title: "wpf中Combobox在文本框输入自动打开下拉列表就自动选择第一项问题"
 date: "2017-08-21"
-categories: 
-  - "c"
+categories: ["计算机语言", "c#"]
 ---
 
 我的智能补全中会出现这个问题，在文本框输入，打开下拉框，会自动选择第一项。解决方法是，设置IsReadOnly为false.

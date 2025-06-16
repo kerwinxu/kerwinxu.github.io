@@ -2,8 +2,7 @@
 layout: post
 title: "Python ctypes 中的指针和数组"
 date: "2018-04-19"
-categories: 
-  - "python"
+categories: ["计算机语言", "Python"]
 ---
 
 ctypes是Python提供的调用C库的模块，C/C++语言的函数中常常会使用数组和指针作为参数或返回值，Python在处理这类库的时候有一些麻烦，但是是可以实现的。

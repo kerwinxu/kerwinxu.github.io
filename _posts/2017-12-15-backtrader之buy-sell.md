@@ -2,8 +2,7 @@
 layout: post
 title: "BackTrader之buy/sell"
 date: "2017-12-15"
-categories: 
-  - "回测交易"
+categories: ["金融", "回测交易"]
 ---
 
 1. 属性：

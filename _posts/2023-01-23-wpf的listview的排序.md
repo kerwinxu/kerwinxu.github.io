@@ -2,8 +2,7 @@
 layout: post
 title: "wpf的ListView的排序"
 date: "2023-01-23"
-categories: 
-  - "c"
+categories: ["计算机语言", "c"]
 ---
 
 两处，第一处xaml中添加事件声明，第二处在窗口代码中定义这个事件。

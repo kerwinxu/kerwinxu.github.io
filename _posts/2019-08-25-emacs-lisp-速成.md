@@ -2,8 +2,7 @@
 layout: post
 title: "Emacs Lisp 速成"
 date: "2019-08-25"
-categories: 
-  - "emacs"
+categories: ["构建"]
 ---
 
 你用着 Emacs 却不懂 Lisp 吧？欢迎阅读这篇 Emacs Lisp 入门教程！它应该能够助你搞定 Emacs Lisp，从而更加自如的驾驭 Emacs。

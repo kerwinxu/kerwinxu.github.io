@@ -2,8 +2,7 @@
 layout: post
 title: "winform中运行webapi"
 date: "2025-02-21"
-categories: 
-  - "c"
+categories: ["计算机语言", "c#"]
 ---
 
 # 安装

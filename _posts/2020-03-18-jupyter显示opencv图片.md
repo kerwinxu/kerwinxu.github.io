@@ -2,8 +2,7 @@
 layout: post
 title: "jupyter显示opencv图片"
 date: "2020-03-18"
-categories: 
-  - "python"
+categories: ["计算机语言", "Python"]
 ---
 
 ```

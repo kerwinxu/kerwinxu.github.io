@@ -2,8 +2,7 @@
 layout: post
 title: "wpf的listbox中的内部项目控件会阻断listbox的选择问题。"
 date: "2023-10-16"
-categories: 
-  - "c"
+categories: ["计算机语言", "c"]
 ---
 
 比如内部的一个文本输入控件，消息传递到文本控件，就不往上层传递了。解决

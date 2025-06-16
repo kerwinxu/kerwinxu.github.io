@@ -2,9 +2,7 @@
 layout: post
 title: "backtrader总览"
 date: "2017-11-11"
-categories: 
-  - "python"
-  - "回测交易"
+categories: ["金融", "回测交易"]
 ---
 
 1. Cerebro ： 大脑，输入数据输出结果的。

@@ -2,8 +2,7 @@
 layout: post
 title: "C# MeasureString测量字符串函数的使用方法"
 date: "2020-11-12"
-categories: 
-  - "c"
+categories: ["计算机语言", "c"]
 ---
 
 （1）在窗体中测量字符串

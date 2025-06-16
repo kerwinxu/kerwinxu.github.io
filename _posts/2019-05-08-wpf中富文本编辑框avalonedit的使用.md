@@ -2,8 +2,7 @@
 layout: post
 title: "wpf中富文本编辑框AvalonEdit的使用"
 date: "2019-05-08"
-categories: 
-  - "c"
+categories: ["计算机语言", "c"]
 ---
 
 1. 下载安装 AvalonEdit ，我用nuget来安装。

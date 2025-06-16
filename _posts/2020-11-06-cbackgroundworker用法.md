@@ -2,8 +2,7 @@
 layout: post
 title: "C#backgroundWorker用法"
 date: "2020-11-06"
-categories: 
-  - "c"
+categories: ["计算机语言", "c"]
 ---
 
 # BackgroundWorker类介绍

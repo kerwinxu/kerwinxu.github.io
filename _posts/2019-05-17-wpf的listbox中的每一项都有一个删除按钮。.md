@@ -2,8 +2,7 @@
 layout: post
 title: "wpf的ListBox中的每一项都有一个删除按钮。"
 date: "2019-05-17"
-categories: 
-  - "c"
+categories: ["计算机语言", "c"]
 ---
 
 ```

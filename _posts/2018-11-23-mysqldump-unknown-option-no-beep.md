@@ -2,8 +2,7 @@
 layout: post
 title: "mysqldump: unknown option '--no-beep'"
 date: "2018-11-23"
-categories: 
-  - "维护"
+categories: ["计算机", "维护"]
 ---
 
 网上找了一下，说查看 **my.ini** 发现\[clien\]下有 **no-beep** 参数，mysql客户端将会读取此参数(该参数作用暂时不知)。

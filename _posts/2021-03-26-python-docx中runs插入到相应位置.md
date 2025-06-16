@@ -2,8 +2,7 @@
 layout: post
 title: "python-docx中runs插入到相应位置"
 date: "2021-03-26"
-categories: 
-  - "python"
+categories: ["计算机语言", "Python"]
 ---
 
 ```

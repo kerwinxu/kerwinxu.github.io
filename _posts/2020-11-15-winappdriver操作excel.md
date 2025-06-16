@@ -2,8 +2,7 @@
 layout: post
 title: "WinAppDriver操作Excel"
 date: "2020-11-15"
-categories: 
-  - "c"
+categories: ["计算机语言", "c"]
 ---
 
 原文 ： [https://github.com/microsoft/WinAppDriver/issues/392](https://github.com/microsoft/WinAppDriver/issues/392)

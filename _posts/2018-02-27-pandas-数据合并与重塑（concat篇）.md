@@ -2,8 +2,7 @@
 layout: post
 title: "PANDAS 数据合并与重塑（concat篇）"
 date: "2018-02-27"
-categories: 
-  - "python"
+categories: ["计算机语言", "Python"]
 ---
 
 pandas作者Wes McKinney 在【PYTHON FOR DATA ANALYSIS】中对pandas的方方面面都有了一个权威简明的入门级的介绍，但在实际使用过程中，我发现书中的内容还只是冰山一角。谈到pandas数据的行更新、表合并等操作，一般用到的方法有concat、join、merge。但这三种方法对于很多新手来说，都不太好分清使用的场合与用途。今天就pandas[官网中](http://pandas.pydata.org/pandas-docs/stable/merging.html)关于数据合并和重述的章节做个使用方法的总结。

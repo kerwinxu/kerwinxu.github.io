@@ -2,7 +2,7 @@
 layout: post
 title:  wpf中SerialPort串口起始代码
 date:   2025-4-9 11:02:00 +0800
-categories: ["c#", "Wpf"]
+categories: ["计算机语言","c#"]
 project: false
 excerpt: wpf中SerialPort串口起始代码
 lang: zh

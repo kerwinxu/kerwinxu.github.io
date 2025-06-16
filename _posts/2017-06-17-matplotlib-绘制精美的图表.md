@@ -2,8 +2,7 @@
 layout: post
 title: "matplotlib-绘制精美的图表"
 date: "2017-06-17"
-categories: 
-  - "python"
+categories: ["计算机语言", "Python"]
 ---
 
  

@@ -2,8 +2,7 @@
 layout: post
 title: "wpf的ui框架Material Design theme和Dragablz做到TabControl"
 date: "2021-11-12"
-categories: 
-  - "c"
+categories: ["计算机语言", "c"]
 ---
 
 # 步骤

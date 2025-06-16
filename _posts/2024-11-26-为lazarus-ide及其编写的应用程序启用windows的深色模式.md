@@ -2,8 +2,7 @@
 layout: post
 title: "为Lazarus IDE及其编写的应用程序启用Windows的深色模式"
 date: "2024-11-26"
-categories: 
-  - "lazarus"
+categories:: ["计算机语言", "lazarus"]
 ---
 
 安装包： metadarkstyle

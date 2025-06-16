@@ -2,8 +2,7 @@
 layout: post
 title: "[VC] cpu检测AVX系列指令集的支持级别（AVX、AVX2、F16C、FMA、FMA4、XOP）"
 date: "2019-02-25"
-categories: 
-  - "c-计算机"
+categories: ["计算机语言", "asm"]
 ---
 
 从2011年的Sandy Bridge微架构处理器开始，现在支持AVX系列指令集的处理器越来越多了。本文探讨如何用VC编写检测AVX系列指令集的程序，并利用了先前的CPUIDFIELD方案。

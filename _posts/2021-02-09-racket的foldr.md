@@ -2,8 +2,7 @@
 layout: post
 title: "racket的Foldr/Foldl"
 date: "2021-02-09"
-categories: 
-  - "lisp"
+categories: ["计算机语言", "lisp"]
 ---
 
 `(foldr + 0 (cons 1 (cons 2 (cons 3 empty))))` would become `(+ 1 (+ 2 (+ 3 0)))`

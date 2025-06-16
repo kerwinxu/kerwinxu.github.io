@@ -2,7 +2,7 @@
 lang: zh
 author: Kerwin
 layout: post
-categories: ["编程", "c#"]
+categories: ["计算机语言","c#"]
 title:  OpenProtocol
 project: true
 image: "/assets/image/openprotocol/openprotocol.png"

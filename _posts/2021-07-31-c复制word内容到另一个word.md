@@ -2,8 +2,7 @@
 layout: post
 title: "C#复制Word内容到另一个Word"
 date: "2021-07-31"
-categories: 
-  - "c"
+categories: ["计算机语言", "c"]
 ---
 
 # 工具

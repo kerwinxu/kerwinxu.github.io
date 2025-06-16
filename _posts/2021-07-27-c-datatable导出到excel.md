@@ -2,8 +2,7 @@
 layout: post
 title: "c# DataTable导出到excel"
 date: "2021-07-27"
-categories: 
-  - "c"
+categories: ["计算机语言", "c"]
 ---
 
 ```

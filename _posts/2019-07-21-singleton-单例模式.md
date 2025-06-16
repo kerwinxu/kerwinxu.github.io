@@ -2,8 +2,7 @@
 layout: post
 title: "Singleton——单例模式"
 date: "2019-07-21"
-categories: 
-  - "设计模式"
+categories:  ["计算机", "设计模式"]
 ---
 
 # 意图

@@ -2,8 +2,7 @@
 layout: post
 title: "TensorFlow 2.0 搭建卷积神经网络 (CNN)"
 date: "2021-12-12"
-categories: 
-  - "python"
+categories: ["计算机语言", "Python"]
 ---
 
 关于 CNN 基础理论可见：[卷积神经网络](https://www.cnblogs.com/sun-a/p/13335980.html)

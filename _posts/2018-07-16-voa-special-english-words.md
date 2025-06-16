@@ -2,8 +2,7 @@
 layout: post
 title: "VOA special English words"
 date: "2018-07-16"
-categories: 
-  - "英语单词"
+categories:  ["英语"]
 ---
 
 <table border="0" width="730" cellspacing="0" cellpadding="3" align="center"><tbody><tr><td width="708"><h1><span class="STYLE4">字母 A - 共 100 个</span></h1></td></tr></tbody></table>

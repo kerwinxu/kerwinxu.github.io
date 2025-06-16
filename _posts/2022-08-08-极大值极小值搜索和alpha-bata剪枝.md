@@ -2,8 +2,7 @@
 layout: post
 title: "极大值极小值搜索和alpha Bata剪枝"
 date: "2022-08-08"
-categories: 
-  - "算法"
+categories: ["计算机", "算法"] 
 ---
 
 # 极大值极小值

@@ -2,8 +2,7 @@
 layout: post
 title: "c#解析HTML工具 HtmlAgilityPack"
 date: "2017-06-12"
-categories: 
-  - "c"
+categories: ["计算机语言", "c"]
 ---
 
 在vs2015里的Nuget中，可以搜索 HtmlAgilityPack并安装。

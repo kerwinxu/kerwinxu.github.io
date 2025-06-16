@@ -2,8 +2,7 @@
 layout: post
 title: "pandas之diff_shift"
 date: "2018-04-11"
-categories: 
-  - "python"
+categories: ["计算机语言", "Python"]
 ---
 
 ```

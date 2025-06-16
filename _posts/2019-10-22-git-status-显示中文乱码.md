@@ -2,8 +2,7 @@
 layout: post
 title: "git status 显示中文乱码"
 date: "2019-10-22"
-categories: 
-  - "git"
+categories: ["构建"]
 ---
 
 # 场景

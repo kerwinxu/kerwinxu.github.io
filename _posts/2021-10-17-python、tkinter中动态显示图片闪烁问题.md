@@ -2,8 +2,7 @@
 layout: post
 title: "python、tkinter中动态显示图片闪烁问题"
 date: "2021-10-17"
-categories: 
-  - "python"
+categories: ["计算机语言", "Python"]
 ---
 
 用双缓冲，重要的部分如下：

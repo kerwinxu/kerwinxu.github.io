@@ -2,8 +2,7 @@
 layout: post
 title: "【转】Python · numpy · axis"
 date: "2020-06-09"
-categories: 
-  - "python"
+categories: ["计算机语言", "Python"]
 ---
 
 观众老爷们大家好！最近实在太忙，回首一看上篇专栏文章已经是 4 个月前的事了，所以今天想着写出一篇来撑撑场子（喂

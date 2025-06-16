@@ -2,8 +2,7 @@
 layout: post
 title: "TextBox在MVVM中滚动到底部的方法"
 date: "2024-07-16"
-categories: 
-  - "c"
+categories: ["计算机语言", "c#"]
 ---
 
 如果是net4.6以上版本，需要安装 ： Microsoft.Xaml.Behaviors.Wpf ，如果是小于这个的版本，需要安装System.Windows.InterActivity.dll 和Microsoft.Expression.InterActions.dll

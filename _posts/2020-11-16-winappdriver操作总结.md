@@ -2,8 +2,7 @@
 layout: post
 title: "WinAppDriver操作总结"
 date: "2020-11-16"
-categories: 
-  - "c"
+categories: ["计算机语言", "c"]
 ---
 
 # 安装

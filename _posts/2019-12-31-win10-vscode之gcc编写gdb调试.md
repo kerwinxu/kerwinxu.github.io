@@ -2,8 +2,7 @@
 layout: post
 title: "win10-vscode之gcc编写gdb调试"
 date: "2019-12-31"
-categories: 
-  - "c-计算机"
+categories:  ["计算机语言", "c"]
 ---
 
 # 需要安装

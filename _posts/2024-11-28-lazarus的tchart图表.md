@@ -2,8 +2,7 @@
 layout: post
 title: "lazarus的TChart图表"
 date: "2024-11-28"
-categories: 
-  - "lazarus"
+categories:: ["计算机语言", "lazarus"]
 ---
 
 TChart控件相当于画布

@@ -2,8 +2,7 @@
 layout: post
 title: "用powershell将excel存为html格式"
 date: "2019-03-20"
-categories: 
-  - "dos_powdershell"
+categories: ["计算机语言", "dos_powdershell"]
 ---
 
 ```

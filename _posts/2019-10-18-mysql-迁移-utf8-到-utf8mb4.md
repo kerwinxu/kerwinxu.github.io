@@ -2,8 +2,7 @@
 layout: post
 title: "MySQL 迁移 utf8 到 utf8mb4"
 date: "2019-10-18"
-categories: 
-  - "mysql"
+categories: ["数据库", "mysql"]
 ---
 
 首先用如下的sql

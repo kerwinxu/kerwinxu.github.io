@@ -2,7 +2,7 @@
 layout: post
 title:  Django转成mysql数据库
 date:   2025-3-22 20:12:00 +0800
-categories: ["python", "django"]
+categories: ["计算机语言","python"]
 project: false
 excerpt: Django转成mysql数据库
 lang: zh

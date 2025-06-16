@@ -2,8 +2,7 @@
 layout: post
 title: "wpf之实时绘图real-time"
 date: "2021-11-26"
-categories: 
-  - "c"
+categories: ["计算机语言", "c"]
 ---
 
 # GLGraph

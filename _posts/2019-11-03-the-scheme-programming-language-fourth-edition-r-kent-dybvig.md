@@ -2,8 +2,7 @@
 layout: post
 title: "The Scheme Programming Language  Fourth Edition  R. Kent Dybvig"
 date: "2019-11-03"
-categories: 
-  - "lisp"
+categories: ["计算机语言", "lisp"]
 ---
 
 # Chapter 1. Introduction

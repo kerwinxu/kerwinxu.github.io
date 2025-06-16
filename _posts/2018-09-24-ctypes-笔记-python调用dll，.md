@@ -2,8 +2,7 @@
 layout: post
 title: "python和C的交互"
 date: "2018-09-24"
-categories: 
-  - "python"
+categories: ["计算机语言", "Python"]
 ---
 
 # 用Ctypes来调用c写的dll

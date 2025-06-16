@@ -2,8 +2,7 @@
 layout: post
 title: "backtrader学习"
 date: "2017-09-30"
-categories: 
-  - "回测交易"
+categories: ["金融", "回测交易"]
 ---
 
 backtrader分成如下几个部分：

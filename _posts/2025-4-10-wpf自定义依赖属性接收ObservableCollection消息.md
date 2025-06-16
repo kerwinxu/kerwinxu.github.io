@@ -2,7 +2,7 @@
 layout: post
 title:  wpf自定义依赖属性接收ObservableCollection消息
 date:   2025-4-10 16:23:00 +0800
-categories: ["c#", "Wpf"]
+categories: ["计算机语言","c#"]
 project: false
 excerpt: wpf自定义依赖属性接收ObservableCollection消息
 lang: zh

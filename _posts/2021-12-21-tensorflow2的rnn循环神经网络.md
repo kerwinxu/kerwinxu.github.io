@@ -2,8 +2,7 @@
 layout: post
 title: "tensorflow2的Rnn循环神经网络"
 date: "2021-12-21"
-categories: 
-  - "python"
+categories: ["计算机语言", "Python"]
 ---
 
 # 循环核

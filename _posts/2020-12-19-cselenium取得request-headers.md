@@ -2,8 +2,7 @@
 layout: post
 title: "c#selenium取得request headers"
 date: "2020-12-19"
-categories: 
-  - "c"
+categories: ["计算机语言", "c"]
 ---
 
 最重要的是：nuget中Selenium.WebDriver的版本要选择4.0.0-alpha05，不是要稳定版。

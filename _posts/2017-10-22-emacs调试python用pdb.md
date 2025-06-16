@@ -2,9 +2,7 @@
 layout: post
 title: "emacs调试python用pdb"
 date: "2017-10-22"
-categories: 
-  - "emacs"
-  - "python"
+categories: ["构建"]
 ---
 
 #### pdb调试

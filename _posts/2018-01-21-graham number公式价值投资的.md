@@ -2,8 +2,7 @@
 layout: post
 title: "Graham Number公式价值投资的"
 date: "2018-01-21"
-categories: 
-  - "技术指标"
+categories: ["金融", "技术指标"]
 ---
 
 [![no img]](http://127.0.0.1/wp-content/uploads/2018/01/upload-66e71217-1351-4dfd-ba5b-923d3d554a67.jpg)

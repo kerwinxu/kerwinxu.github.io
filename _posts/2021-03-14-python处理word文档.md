@@ -2,8 +2,7 @@
 layout: post
 title: "python处理word文档"
 date: "2021-03-14"
-categories: 
-  - "python"
+categories: ["计算机语言", "Python"]
 ---
 
 # **基本使用：自动生成文档**

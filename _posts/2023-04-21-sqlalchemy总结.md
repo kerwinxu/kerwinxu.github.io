@@ -2,8 +2,7 @@
 layout: post
 title: "SQLAlchemy总结"
 date: "2023-04-21"
-categories: 
-  - "python"
+categories: ["计算机语言", "Python"]
 ---
 
 # 重要概念

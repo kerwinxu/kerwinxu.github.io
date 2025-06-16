@@ -2,8 +2,7 @@
 layout: post
 title: "python : anaconda3 pycharm 中 from . import _mklinit ImportError: DLL load failed"
 date: "2019-08-02"
-categories: 
-  - "python"
+categories: ["计算机语言", "Python"]
 ---
 
 可能是环境变量问题。

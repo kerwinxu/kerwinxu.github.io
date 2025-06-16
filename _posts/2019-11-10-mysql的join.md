@@ -2,8 +2,7 @@
 layout: post
 title: "mysql的join"
 date: "2019-11-10"
-categories: 
-  - "sql"
+categories:  ["数据库", "sql"]
 ---
 
 JOIN的含义就如英文单词“join”一样，连接两张表，大致分为内连接，外连接，右连接，左连接，自然连接。这里描述先甩出一张用烂了的图，然后插入测试数据。

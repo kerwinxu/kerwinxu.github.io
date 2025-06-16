@@ -3,8 +3,7 @@ layout: post
 title: "omniparser v2安装"
 date: "2025-03-04"
 project: false
-categories: 
-  - "python"
+categories: ["计算机语言", "Python"]
 tag:
 - python
 ---

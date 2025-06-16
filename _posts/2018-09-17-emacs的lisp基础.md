@@ -2,8 +2,7 @@
 layout: post
 title: "Emacs的lisp基础"
 date: "2018-09-17"
-categories: 
-  - "emacs"
+categories: ["构建"]
 ---
 
 lisp是基于s表达式的语言，代码和数据是用同一种方式来表达的，S表达式，直观上就是括号括起来的一串列表。

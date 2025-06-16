@@ -2,8 +2,7 @@
 layout: post
 title: "PySide6的ListView中有checkbox"
 date: "2023-05-07"
-categories: 
-  - "python"
+categories: ["计算机语言", "Python"]
 ---
 
 ```python

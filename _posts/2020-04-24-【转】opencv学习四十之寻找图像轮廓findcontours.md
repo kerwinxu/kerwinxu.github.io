@@ -2,9 +2,7 @@
 layout: post
 title: "【转】opencv学习(四十)之寻找图像轮廓findContours()"
 date: "2020-04-24"
-categories: 
-  - "c-计算机"
-  - "图像处理"
+categories:  ["图像处理"]
 ---
 
 1.概述 在这篇文章中介绍如何使用findContours()函数寻找图像中物体的轮廓，在OpenCV中没有给出findCountours()函数的原理，如果想了解查找轮廓原理，可以翻\*\*墙出去Google”Topological structural analysis of digitized binary images by border following”,这里就不一一翻译了.

@@ -2,7 +2,7 @@
 layout: post
 title:  markdown的uml画图例子
 date:   2025-3-13 13:49:00 +0800
-categories: markdown
+categories: ["计算机语言", markdown]
 project: false
 excerpt: markdown的uml画图例子
 lang: zh

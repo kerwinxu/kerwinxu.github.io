@@ -2,8 +2,7 @@
 layout: post
 title: "wpf中Combobox自动补全"
 date: "2019-04-05"
-categories: 
-  - "c"
+categories: ["计算机语言", "c"]
 ---
 
 ```

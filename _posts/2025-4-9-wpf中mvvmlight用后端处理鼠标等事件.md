@@ -2,7 +2,7 @@
 layout: post
 title:  wpf中mvvmlight用后端处理鼠标等事件.
 date:   2025-4-9 10:48:00 +0800
-categories: ["c#", "Wpf"]
+categories: ["计算机语言","c#"]
 project: false
 excerpt: wpf中mvvmlight用后端处理鼠标等事件.
 lang: zh

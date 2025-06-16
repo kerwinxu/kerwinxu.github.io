@@ -2,8 +2,7 @@
 layout: post
 title: "tensorflow2总结"
 date: "2021-01-31"
-categories: 
-  - "python"
+categories: ["计算机语言", "Python"]
 ---
 
 # 构造模型

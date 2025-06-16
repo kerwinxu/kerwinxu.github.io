@@ -2,8 +2,7 @@
 layout: post
 title: "vue-router路由"
 date: "2021-02-05"
-categories: 
-  - "javascript"
+categories: ["计算机语言", "JavaScript"]
 ---
 
 # 使用

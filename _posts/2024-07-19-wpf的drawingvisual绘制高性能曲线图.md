@@ -2,8 +2,7 @@
 layout: post
 title: "WPF的DrawingVisual绘制高性能曲线图"
 date: "2024-07-19"
-categories: 
-  - "c"
+categories: ["计算机语言", "c#"]
 ---
 
 1.  写主机容器

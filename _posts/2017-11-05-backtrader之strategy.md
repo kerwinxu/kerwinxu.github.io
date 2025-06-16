@@ -2,9 +2,7 @@
 layout: post
 title: "BackTrader之Strategy"
 date: "2017-11-05"
-categories: 
-  - "python"
-  - "回测交易"
+categories: ["计算机语言", "Python"]
 ---
 
 1. 生存周期

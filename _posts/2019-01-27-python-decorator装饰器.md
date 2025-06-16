@@ -2,8 +2,7 @@
 layout: post
 title: "Python Decorator(装饰器)"
 date: "2019-01-27"
-categories: 
-  - "python"
+categories: ["计算机语言", "Python"]
 ---
 
 今天来说说 Python 里的装饰器 (decorator)。它不难，但却几乎是 “精通” Python 的路上的第一道关卡。让我们来看看它到底是什么东西，为什么我们需要它。

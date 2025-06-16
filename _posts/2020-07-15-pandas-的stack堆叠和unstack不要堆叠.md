@@ -2,8 +2,7 @@
 layout: post
 title: "pandas 的stack堆叠和unstack不要堆叠"
 date: "2020-07-15"
-categories: 
-  - "python"
+categories: ["计算机语言", "Python"]
 ---
 
 # 前言

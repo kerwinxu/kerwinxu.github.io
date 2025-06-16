@@ -2,8 +2,7 @@
 layout: post
 title: "python 的日志logging模块学习"
 date: "2018-10-15"
-categories: 
-  - "python"
+categories: ["计算机语言", "Python"]
 ---
 
 ### 简单的将日志打印到屏幕

@@ -2,7 +2,7 @@
 layout: post
 title:  wpf的Listbox做成网格布局有边框
 date:   2025-4-1 11:02:00 +0800
-categories: ["c#", "Wpf"]
+categories: ["计算机语言","c#"]
 project: false
 excerpt: wpf的ListBox做成网格布局有边框
 lang: zh

@@ -2,8 +2,7 @@
 layout: post
 title: "python调用win32api实现语音功能。"
 date: "2018-09-05"
-categories: 
-  - "python"
+categories: ["计算机语言", "Python"]
 ---
 
 `#!/usr/bin/env python # -*- coding: utf-8 -*- """@File Name: speak_hello.py @Author: kerwin.cn@gmail.com @Created Time:2018-09-05 20:15:34 @Last Change: 2018-09-05 20:15:34 @Description : 这个暂时只是用win32实现语音的。 """`

@@ -2,8 +2,7 @@
 layout: post
 title: "Angular中报错Can't bind to 'ngModel' since it isn't a known property of 'input'"
 date: "2021-12-01"
-categories: 
-  - "javascript"
+categories: ["计算机语言", "JavaScript"]
 ---
 
 在Angular项目中使用\[(ngModel)\]双向数据绑定时提示：

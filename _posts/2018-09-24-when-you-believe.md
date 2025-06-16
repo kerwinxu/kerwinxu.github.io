@@ -2,8 +2,7 @@
 layout: post
 title: "when you believe"
 date: "2018-09-24"
-categories: 
-  - "英语歌曲"
+categories: ["英语"]
 ---
 
 | 

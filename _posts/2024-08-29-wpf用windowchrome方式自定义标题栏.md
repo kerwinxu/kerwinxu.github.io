@@ -2,8 +2,7 @@
 layout: post
 title: "wpf用WindowChrome方式自定义标题栏"
 date: "2024-08-29"
-categories: 
-  - "c"
+categories: ["计算机语言", "c"]
 ---
 
 如果是net4.6以上版本，需要安装 ： Microsoft.Xaml.Behaviors.Wpf ，

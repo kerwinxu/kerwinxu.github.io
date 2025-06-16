@@ -2,8 +2,7 @@
 layout: post
 title: "wpf中listbox等控件隔行换色"
 date: "2023-11-05"
-categories: 
-  - "c"
+categories: ["计算机语言", "c"]
 ---
 
 建立一个样式。

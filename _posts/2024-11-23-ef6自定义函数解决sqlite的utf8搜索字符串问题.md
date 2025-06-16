@@ -2,7 +2,7 @@
 lang: zh
 author: Kerwin
 layout: post
-categories: ["编程", "c#"]
+categories: ["计算机语言","c#"]
 title:  ef6自定义函数解决sqlite的utf8搜索字符串问题
 date:   2024-11-23
 excerpt: ef6自定义函数解决sqlite的utf8搜索字符串问题

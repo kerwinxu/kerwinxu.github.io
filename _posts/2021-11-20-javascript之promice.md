@@ -2,8 +2,7 @@
 layout: post
 title: "javascript之Promice"
 date: "2021-11-20"
-categories: 
-  - "javascript"
+categories: ["计算机语言", "JavaScript"]
 ---
 
 如下是我的理解，先来例子

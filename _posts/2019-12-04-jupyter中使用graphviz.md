@@ -2,8 +2,7 @@
 layout: post
 title: "jupyter中使用graphviz"
 date: "2019-12-04"
-categories: 
-  - "python"
+categories: ["计算机语言", "Python"]
 ---
 
 首先安装 graphviz 这个软件，官网是 [http://graphviz.org/download/](http://graphviz.org/download/)

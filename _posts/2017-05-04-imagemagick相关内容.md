@@ -2,8 +2,7 @@
 layout: post
 title: "ImageMagick相关内容"
 date: "2017-05-04"
-categories: 
-  - "linux"
+categories: ["计算机", "linux"]
 ---
 
 除了安装ImageMagick外，还需要安装如下几个库

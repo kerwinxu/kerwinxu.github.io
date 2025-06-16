@@ -2,8 +2,7 @@
 layout: post
 title: "mysqldump乱码解决"
 date: "2022-07-01"
-categories: 
-  - "mysql"
+categories: ["数据库", "mysql"]
 ---
 
 mysqldump.exe -udrug -pdrug -P3307 --default-character-set=utf8 --hex-blob check\_drug\_machine > E:\\onedrive\\outsourcing\\k356\\demo安装包\\data.sql

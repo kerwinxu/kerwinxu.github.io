@@ -2,8 +2,7 @@
 layout: post
 title: "\"RuntimeError: main thread is not in main loop\""
 date: "2021-10-17"
-categories: 
-  - "python"
+categories: ["计算机语言", "Python"]
 ---
 
 1. 多线程Threading问题，将多线程的代码设置到后台， .setDaemon(True) , 后台线程，关闭程序后会自动关掉。

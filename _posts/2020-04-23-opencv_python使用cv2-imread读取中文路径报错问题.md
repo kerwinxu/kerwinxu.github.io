@@ -2,8 +2,7 @@
 layout: post
 title: "opencv_python使用cv2.imread()读取中文路径报错问题"
 date: "2020-04-23"
-categories: 
-  - "python"
+categories: ["计算机语言", "Python"]
 ---
 
 ```

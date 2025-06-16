@@ -2,8 +2,7 @@
 layout: post
 title: "npm安装electron不了的解决"
 date: "2024-08-16"
-categories: 
-  - "javascript"
+categories: ["计算机语言", "JavaScript"]
 ---
 
 在.npmrc文件中的最后添加

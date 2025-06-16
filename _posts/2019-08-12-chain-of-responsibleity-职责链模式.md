@@ -2,8 +2,7 @@
 layout: post
 title: "Chain Of Responsibleity——职责链模式"
 date: "2019-08-12"
-categories: 
-  - "设计模式"
+categories:  ["计算机", "设计模式"]
 ---
 
 # 引言

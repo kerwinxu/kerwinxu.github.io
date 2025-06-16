@@ -2,8 +2,7 @@
 layout: post
 title: "git添加已存在工程到github远程版本库"
 date: "2017-10-31"
-categories: 
-  - "git"
+categories: ["构建"]
 ---
 
 首先，在github上建立远程版本库https://github.com/mygit/testgit.git

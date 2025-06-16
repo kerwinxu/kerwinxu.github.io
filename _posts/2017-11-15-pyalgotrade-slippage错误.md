@@ -2,9 +2,7 @@
 layout: post
 title: "pyalgotrade在python3上安装"
 date: "2017-11-15"
-categories: 
-  - "python"
-  - "回测交易"
+categories: ["金融", "回测交易"]
 ---
 
 [https://github.com/jingzhaoyang/pyalgotrade](https://github.com/jingzhaoyang/pyalgotrade)

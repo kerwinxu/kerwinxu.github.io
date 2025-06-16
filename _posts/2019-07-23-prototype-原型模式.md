@@ -2,8 +2,7 @@
 layout: post
 title: "Prototype——原型模式"
 date: "2019-07-23"
-categories: 
-  - "设计模式"
+categories:  ["计算机", "设计模式"]
 ---
 
 # 引言

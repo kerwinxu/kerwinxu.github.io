@@ -2,8 +2,7 @@
 layout: post
 title: "powershell中的Cmdlet的参数输入输出"
 date: "2019-08-30"
-categories: 
-  - "dos_powdershell"
+categories: ["计算机语言", "dos_powdershell"]
 ---
 
 我看到简单的代码，我原先以为Cmdlet的输入是一个函数，参数是函数的输入呢，但现在看到他是另一种实现，比如这个参数要如下声明

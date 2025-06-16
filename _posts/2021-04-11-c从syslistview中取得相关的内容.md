@@ -2,8 +2,7 @@
 layout: post
 title: "c#从sysListview中取得相关的内容"
 date: "2021-04-11"
-categories: 
-  - "c"
+categories: ["计算机语言", "c"]
 ---
 
 ```

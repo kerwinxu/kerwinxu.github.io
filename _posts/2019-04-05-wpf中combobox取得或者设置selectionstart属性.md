@@ -2,8 +2,7 @@
 layout: post
 title: "wpf中ComboBox取得或者设置SelectionStart属性"
 date: "2019-04-05"
-categories: 
-  - "c"
+categories: ["计算机语言", "c"]
 ---
 
 ```

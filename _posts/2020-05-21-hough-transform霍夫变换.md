@@ -2,8 +2,7 @@
 layout: post
 title: "Hough transform(霍夫变换)"
 date: "2020-05-21"
-categories: 
-  - "理论知识"
+categories: ["机器学习", "理论支持"]
 ---
 
 # 简介

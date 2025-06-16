@@ -2,8 +2,7 @@
 layout: post
 title: "WPF基础之Application"
 date: "2017-08-10"
-categories: 
-  - "c"
+categories: ["计算机语言", "c#"]
 ---
 
 1. Application介绍。

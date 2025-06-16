@@ -2,8 +2,7 @@
 layout: post
 title: "WPF DatePicker默认显示当前日期"
 date: "2019-05-18"
-categories: 
-  - "c"
+categories: ["计算机语言", "c"]
 ---
 
 WPF的日历选择控件默认为当前日期，共有两种方法，一种静态，一种动态。

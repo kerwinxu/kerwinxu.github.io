@@ -2,8 +2,7 @@
 layout: post
 title: "Abstract Factory——抽象工厂模式"
 date: "2019-07-21"
-categories: 
-  - "设计模式"
+categories:  ["计算机", "设计模式"]
 ---
 
 # 引言

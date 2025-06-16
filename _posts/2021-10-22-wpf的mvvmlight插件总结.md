@@ -2,8 +2,7 @@
 layout: post
 title: "WPF的MVVMLight总结"
 date: "2021-10-22"
-categories: 
-  - "c"
+categories: ["计算机语言", "c"]
 ---
 
 # 介绍MVVM模式

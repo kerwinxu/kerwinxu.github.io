@@ -2,8 +2,7 @@
 layout: post
 title: "Python GUI之tkinter"
 date: "2021-10-24"
-categories: 
-  - "python"
+categories: ["计算机语言", "Python"]
 ---
 
 # 主要模块介绍

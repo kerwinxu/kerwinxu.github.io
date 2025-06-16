@@ -2,7 +2,7 @@
 layout: post
 title:  LiveChart2实时曲线
 date:   2025-3-31 21:51:00 +0800
-categories: ["c#", "LiveChart2"]
+categories: ["计算机语言","c#"]
 project: false
 excerpt: LiveChart2实时曲线
 lang: zh

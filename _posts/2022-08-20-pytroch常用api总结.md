@@ -2,9 +2,7 @@
 layout: post
 title: "PyTroch常用API总结"
 date: "2022-08-20"
-categories: 
-  - "python"
-  - "pytorch"
+categories: ["计算机语言", "Python"]
 ---
 
 # 张量创建

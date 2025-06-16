@@ -2,8 +2,7 @@
 layout: post
 title: "wpf中datagrid单击可编辑"
 date: "2025-02-02"
-categories: 
-  - "c"
+categories: ["计算机语言", "c"]
 ---
 
 ```xml

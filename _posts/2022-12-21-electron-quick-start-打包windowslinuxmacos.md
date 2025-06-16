@@ -2,8 +2,7 @@
 layout: post
 title: "electron-quick-start 打包windows,Linux,MacOS"
 date: "2022-12-21"
-categories: 
-  - "javascript"
+categories: ["计算机语言", "JavaScript"]
 ---
 
 这个是打包成exe文件，刚下载下来的Readme中，只有如下的：

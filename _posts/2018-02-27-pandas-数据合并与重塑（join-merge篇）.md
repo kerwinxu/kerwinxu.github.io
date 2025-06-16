@@ -2,8 +2,7 @@
 layout: post
 title: "PANDAS 数据合并与重塑（join/merge篇）"
 date: "2018-02-27"
-categories: 
-  - "python"
+categories: ["计算机语言", "Python"]
 ---
 
 在[上一篇](http://blog.csdn.net/stevenkwong/article/details/52528616)文章中，我整理了pandas在数据合并和重塑中常用到的concat方法的使用说明。在这里，将接着介绍pandas中也常常用到的join 和merge方法

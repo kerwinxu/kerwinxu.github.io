@@ -2,8 +2,7 @@
 layout: post
 title: "wpf中listbox添加序号"
 date: "2024-07-28"
-categories: 
-  - "c-计算机"
+categories:  ["计算机语言", "c#"]
 ---
 
 做一个转换器，IList有IndexOf方法。

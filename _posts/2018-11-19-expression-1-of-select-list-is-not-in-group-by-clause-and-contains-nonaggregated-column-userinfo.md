@@ -2,8 +2,7 @@
 layout: post
 title: "Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'userinfo."
 date: "2018-11-19"
-categories: 
-  - "mysql"
+categories: ["数据库", "mysql"]
 ---
 
 安装了mysql5.7，用group by 查询时抛出如下异常：

@@ -2,7 +2,7 @@
 lang: zh
 author: Kerwin
 layout: post
-categories: ["编程", "lazarus"]
+categories:: ["计算机语言", "lazarus"]
 title:  DbNavigator中的添加不识别sqlite的自增主键 autoincroment
 date:   2024-11-23
 excerpt: DbNavigator中的添加不识别sqlite的自增主键 autoincroment

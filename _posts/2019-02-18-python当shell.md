@@ -2,8 +2,7 @@
 layout: post
 title: "python当shell"
 date: "2019-02-18"
-categories: 
-  - "python"
+categories: ["计算机语言", "Python"]
 ---
 
 我想用python当shell用，这里记录相关的操作

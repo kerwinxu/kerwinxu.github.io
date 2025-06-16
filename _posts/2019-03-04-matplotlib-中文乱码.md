@@ -2,8 +2,7 @@
 layout: post
 title: "matplotlib 中文乱码"
 date: "2019-03-04"
-categories: 
-  - "python"
+categories: ["计算机语言", "Python"]
 ---
 
 进入目录 D:\\Anaconda3\\Lib\\site-packages\\matplotlib\\mpl-data

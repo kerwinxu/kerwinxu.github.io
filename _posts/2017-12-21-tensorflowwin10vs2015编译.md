@@ -2,8 +2,7 @@
 layout: post
 title: "tensorflow,win10,vs2015编译"
 date: "2017-12-21"
-categories: 
-  - "c-计算机"
+categories: ["构建"]
 ---
 
 # 在 Windows 环境中从源代码构建

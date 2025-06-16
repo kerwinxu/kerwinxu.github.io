@@ -2,8 +2,7 @@
 layout: post
 title: "IronScheme的"
 date: "2019-08-25"
-categories: 
-  - "lisp"
+categories: ["计算机语言", "lisp"]
 ---
 
 ```

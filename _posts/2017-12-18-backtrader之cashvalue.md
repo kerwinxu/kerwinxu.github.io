@@ -2,8 +2,7 @@
 layout: post
 title: "backtrader之cash,value"
 date: "2017-12-18"
-categories: 
-  - "回测交易"
+categories: ["金融", "回测交易"]
 ---
 
 我首笔交易是个卖单，5000元原始资金，15%保证金，结果出现如下结果

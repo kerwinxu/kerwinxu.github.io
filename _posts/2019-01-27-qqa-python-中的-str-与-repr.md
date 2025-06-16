@@ -2,8 +2,7 @@
 layout: post
 title: "QQA: Python 中的 str 与 repr"
 date: "2019-01-27"
-categories: 
-  - "python"
+categories: ["计算机语言", "Python"]
 ---
 
 有时候，你会需要为你的类实现 `__str__` 或 `__repr__` 方法，你知道它们的作用是什么吗？它们有什么区别吗？这个问题的答案一搜就能找到，如果恰巧这是你第一次看到这个问题，不妨看看吧。

@@ -2,9 +2,7 @@
 layout: post
 title: "gvim的jedi-vim插件，当在一个空行输入（，然后会自动打开一个窗口的问题"
 date: "2018-12-26"
-categories: 
-  - "python"
-  - "vim"
+categories:  ["构建"]
 ---
 
 解决方法：

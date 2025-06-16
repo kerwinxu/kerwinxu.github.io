@@ -2,7 +2,7 @@
 lang: zh
 author: Kerwin
 layout: post
-categories: ["js"]
+categories: ["计算机语言", "Javascript"]
 title:  vue3和electron中使用类似serialport的node原生模块
 date:   2024-8-24 11:51:00 +0800
 excerpt: vue3和electron中使用类似serialport的node原生模块

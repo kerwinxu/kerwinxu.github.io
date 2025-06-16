@@ -2,8 +2,7 @@
 layout: post
 title: "plotformio使用stm32cubemx的配置"
 date: "2025-01-24"
-categories: 
-  - "单片机编程"
+categories: ["计算机语言", "单片机编程"]
 ---
 
 ```

@@ -2,8 +2,7 @@
 layout: post
 title: "JupyterLab如何在一个.ipynb文件中导入其他的.ipynb文件"
 date: "2019-12-10"
-categories: 
-  - "python"
+categories: ["计算机语言", "Python"]
 ---
 
 官方的解决方式是 ： [https://nbviewer.jupyter.org/github/jupyter/notebook/blob/master/docs/source/examples/Notebook/Importing%20Notebooks.ipynb](https://nbviewer.jupyter.org/github/jupyter/notebook/blob/master/docs/source/examples/Notebook/Importing%20Notebooks.ipynb)

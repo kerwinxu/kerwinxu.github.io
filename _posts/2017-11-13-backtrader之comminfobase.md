@@ -2,9 +2,7 @@
 layout: post
 title: "backtrader之CommInfoBase"
 date: "2017-11-13"
-categories: 
-  - "python"
-  - "回测交易"
+categories: ["金融", "回测交易"]
 ---
 
 1. 属性：

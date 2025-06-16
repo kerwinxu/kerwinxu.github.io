@@ -2,8 +2,7 @@
 layout: post
 title: "NFA转DFA的子集构造(Subset Construction)算法详解"
 date: "2020-02-13"
-categories: 
-  - "设计模式"
+categories:  ["计算机", "设计模式"]
 ---
 
 # 概念

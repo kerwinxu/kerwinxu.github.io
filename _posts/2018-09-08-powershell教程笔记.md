@@ -2,8 +2,7 @@
 layout: post
 title: "powershell教程笔记"
 date: "2018-09-08"
-categories: 
-  - "dos_powdershell"
+categories: ["计算机语言", "dos_powdershell"]
 ---
 
 # 常用命令分类

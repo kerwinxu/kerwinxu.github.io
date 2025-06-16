@@ -2,8 +2,7 @@
 layout: post
 title: "使用conda管理python环境"
 date: "2017-08-26"
-categories: 
-  - "python"
+categories: ["计算机语言", "Python"]
 ---
 
 1. 查看有多少个运行环境

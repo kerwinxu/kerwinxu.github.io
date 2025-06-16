@@ -2,8 +2,7 @@
 layout: post
 title: "vue用electron生成桌面应用"
 date: "2024-08-16"
-categories: 
-  - "javascript"
+categories: ["计算机语言", "JavaScript"]
 ---
 
 最新方法electron已经提供了vue，所以这里用如下的方式来创建：

@@ -2,8 +2,7 @@
 layout: post
 title: "Fama-French三因子"
 date: "2018-02-09"
-categories: 
-  - "回测交易"
+categories: ["金融", "回测交易"]
 ---
 
 1. 公式：$latex R\_i=a\_i+b\_iR\_m+s\_iE(SMB)+h\_iE(HML)+\\varepsilon\_i$

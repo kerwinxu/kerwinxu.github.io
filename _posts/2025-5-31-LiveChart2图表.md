@@ -2,7 +2,7 @@
 layout: post
 title:  LiveChart2图表
 date:   2025-5-31 10:42:00 +0800
-categories: ["c#", "图表"]
+categories: ["计算机语言", "c#"]
 project: false
 excerpt: TLiveChart2图表
 lang: zh

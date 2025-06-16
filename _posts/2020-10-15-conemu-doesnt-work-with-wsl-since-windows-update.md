@@ -2,8 +2,7 @@
 layout: post
 title: "Conemu doesn't work with wsl since windows update"
 date: "2020-10-15"
-categories: 
-  - "dos_powdershell"
+categories: ["计算机语言", "dos_powdershell"]
 ---
 
 这个是因为wsl2更改了,所以会造成如下的错误提示:

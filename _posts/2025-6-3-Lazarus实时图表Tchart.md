@@ -2,7 +2,7 @@
 layout: post
 title:  Lazarus的实时图表
 date:   2025-6-3 15:17:00 +0800
-categories: ["lazarus", "TChart"]
+categories: ["计算机语言", "lazarus"]
 project: false
 excerpt: Lazarus的实时图表
 lang: zh

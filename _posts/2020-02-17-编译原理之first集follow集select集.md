@@ -2,8 +2,7 @@
 layout: post
 title: "编译原理之First集,Follow集,Select集"
 date: "2020-02-17"
-categories: 
-  - "编译原理"
+categories: ["计算机", "编译原理"]
 ---
 
 # First 集

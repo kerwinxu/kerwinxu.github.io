@@ -2,8 +2,7 @@
 layout: post
 title: "python yield from 用法"
 date: "2020-11-18"
-categories: 
-  - "python"
+categories: ["计算机语言", "Python"]
 ---
 
 # 替代内层for循环

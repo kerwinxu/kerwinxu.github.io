@@ -2,8 +2,7 @@
 layout: post
 title: "electron-vite预加载脚本"
 date: "2025-02-20"
-categories: 
-  - "javascript"
+categories: ["计算机语言", "JavaScript"]
 ---
 
 用于主线程和渲染线程之间的通讯。

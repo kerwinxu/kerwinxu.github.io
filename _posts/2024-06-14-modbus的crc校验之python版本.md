@@ -2,8 +2,7 @@
 layout: post
 title: "modbus的crc校验之python版本"
 date: "2024-06-14"
-categories: 
-  - "python"
+categories: ["计算机语言", "Python"]
 ---
 
 ```python

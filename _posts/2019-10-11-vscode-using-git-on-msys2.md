@@ -2,8 +2,7 @@
 layout: post
 title: "vscode  Using git on msys2"
 date: "2019-10-11"
-categories: 
-  - "git"
+categories: ["构建"]
 ---
 
 As I filed issue ago, vscode can't work with msys2's git. Because git provided on msys2 return `/c/` prefixed-path for rev-parse command.

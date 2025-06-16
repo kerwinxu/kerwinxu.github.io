@@ -2,7 +2,7 @@
 lang: zh
 author: Kerwin
 layout: post
-categories: ["编程", "Qt"]
+categories: ["构建"]
 title:  lex/yacc在Qt中集成，自动编译
 date:   2023-1-9
 excerpt: lex/yacc在Qt中集成，自动编译

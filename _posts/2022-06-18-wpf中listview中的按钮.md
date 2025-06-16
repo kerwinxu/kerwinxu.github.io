@@ -2,8 +2,7 @@
 layout: post
 title: "wpf中ListView中的按钮"
 date: "2022-06-18"
-categories: 
-  - "c"
+categories: ["计算机语言", "c"]
 ---
 
 ```

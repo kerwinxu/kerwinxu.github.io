@@ -2,8 +2,7 @@
 layout: post
 title: "FlyWeight——享元模式"
 date: "2019-07-30"
-categories: 
-  - "设计模式"
+categories:  ["计算机", "设计模式"]
 ---
 
 # 引言

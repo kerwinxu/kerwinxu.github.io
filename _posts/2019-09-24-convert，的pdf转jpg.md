@@ -2,8 +2,7 @@
 layout: post
 title: "convert，的pdf转jpg"
 date: "2019-09-24"
-categories: 
-  - "linux"
+categories:: [计算机", "Linux"]
 ---
 
 原文 ： [https://blog.gtwang.org/linux/linux-convert-pdf-to-image-commands-tutorial-examples/](https://blog.gtwang.org/linux/linux-convert-pdf-to-image-commands-tutorial-examples/)

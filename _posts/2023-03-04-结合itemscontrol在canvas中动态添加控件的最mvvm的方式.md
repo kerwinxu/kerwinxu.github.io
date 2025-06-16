@@ -2,8 +2,7 @@
 layout: post
 title: "结合ItemsControl在Canvas中动态添加控件的最MVVM的方式"
 date: "2023-03-04"
-categories: 
-  - "c"
+categories: ["计算机语言", "c"]
 ---
 
 ```xml

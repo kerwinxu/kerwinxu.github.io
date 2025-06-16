@@ -2,8 +2,7 @@
 layout: post
 title: "WPF的Combobox的ItemSource第二次绑定（更新）问题"
 date: "2020-03-24"
-categories: 
-  - "c"
+categories: ["计算机语言", "c"]
 ---
 
 我定义个 List<Student> stuList = new List<Student>();

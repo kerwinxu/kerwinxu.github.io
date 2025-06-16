@@ -2,9 +2,7 @@
 layout: post
 title: "gitchangelog -> 将git log变成更美观的输出"
 date: "2017-12-06"
-categories: 
-  - "git"
-  - "python"
+categories: ["构建"]
 ---
 
 这个只是用来将git log变成更美观的输出，安装是pip install gitchangelog

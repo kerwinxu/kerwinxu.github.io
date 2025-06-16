@@ -2,8 +2,7 @@
 layout: post
 title: "c# orm之 EntityFramework6"
 date: "2021-07-25"
-categories: 
-  - "c"
+categories: ["计算机语言", "c"]
 ---
 
 # 初识

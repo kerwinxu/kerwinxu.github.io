@@ -2,8 +2,7 @@
 layout: post
 title: "Composite——组合模式"
 date: "2019-07-29"
-categories: 
-  - "设计模式"
+categories:  ["计算机", "设计模式"]
 ---
 
 # 引言

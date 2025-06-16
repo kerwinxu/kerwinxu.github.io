@@ -2,8 +2,7 @@
 layout: post
 title: "汇编子程序proc/proto总结"
 date: "2020-08-13"
-categories: 
-  - "asm"
+categories: ["计算机语言", "asm"]
 ---
 
 ```

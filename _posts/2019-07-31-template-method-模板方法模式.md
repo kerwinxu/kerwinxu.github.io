@@ -2,8 +2,7 @@
 layout: post
 title: "Template Method——模板方法模式"
 date: "2019-07-31"
-categories: 
-  - "设计模式"
+categories:  ["计算机", "设计模式"]
 ---
 
 # 引言

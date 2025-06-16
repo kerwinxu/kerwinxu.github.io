@@ -2,9 +2,10 @@
 layout: post
 title: "backtrader之Cerebro"
 date: "2017-11-11"
-categories: 
-  - "python"
-  - "回测交易"
+categories: ["计算机语言", "Python"]
+tags:
+  - python
+  - backtrader
 ---
 
 3. 总体

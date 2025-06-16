@@ -2,8 +2,7 @@
 layout: post
 title: "c#AvalonEditBehaviour编辑器mvvm方式"
 date: "2023-11-01"
-categories: 
-  - "c"
+categories: ["计算机语言", "c"]
 ---
 
 1. 创建一个扩展

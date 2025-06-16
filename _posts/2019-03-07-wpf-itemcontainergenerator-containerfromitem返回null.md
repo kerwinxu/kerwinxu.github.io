@@ -2,8 +2,7 @@
 layout: post
 title: "WPF ItemContainerGenerator.ContainerFromItem返回Null"
 date: "2019-03-07"
-categories: 
-  - "c"
+categories: ["计算机语言", "c"]
 ---
 
 ItemContainerGenerator.ContainerFromItem有一个问题，就是只能获得已经显示或者说new的item，问题是wpf有虚拟化，有不少控件不显示啊。

@@ -2,7 +2,7 @@
 layout: post
 title:  TorchSocket的记录
 date:   2025-4-19 13:35:00 +0800
-categories: ["c#", "网络"]
+categories: ["计算机语言","c#"]
 project: false
 excerpt: TorchSocket的记录
 lang: zh

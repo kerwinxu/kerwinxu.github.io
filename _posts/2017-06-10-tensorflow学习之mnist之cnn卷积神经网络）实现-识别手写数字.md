@@ -2,8 +2,7 @@
 layout: post
 title: "tensorflow学习之MNIST之CNN卷积神经网络）实现-识别手写数字"
 date: "2017-06-10"
-categories: 
-  - "python"
+categories: ["计算机语言", "Python"]
 ---
 
 全部源代码实现：

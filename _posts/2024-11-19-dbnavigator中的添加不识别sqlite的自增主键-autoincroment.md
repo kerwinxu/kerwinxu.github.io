@@ -2,8 +2,7 @@
 layout: post
 title: "DbNavigator中的添加不识别sqlite的自增主键 autoincroment"
 date: "2024-11-19"
-categories: 
-  - "lazarus"
+categories:: ["计算机语言", "lazarus"]
 ---
 
 我是手动设置这个主键，table1MaxId 是前面取得这个表id的最大值。

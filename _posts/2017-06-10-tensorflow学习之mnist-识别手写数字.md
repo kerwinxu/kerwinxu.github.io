@@ -2,8 +2,7 @@
 layout: post
 title: "tensorflow学习之MNIST-识别手写数字"
 date: "2017-06-10"
-categories: 
-  - "python"
+categories: ["计算机语言", "Python"]
 ---
 
 这个MNIST相当于tensorflow的hello word了。 首先下载数据集：

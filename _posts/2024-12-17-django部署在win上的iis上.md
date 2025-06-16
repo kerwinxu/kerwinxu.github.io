@@ -2,7 +2,7 @@
 layout: post
 title: "django部署在win上的iis上"
 date: "2024-12-17"
-categories: ["python", "Django"]
+categories: ["计算机语言","python"]
 ---
 
 步骤

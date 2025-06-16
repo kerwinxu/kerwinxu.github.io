@@ -2,8 +2,7 @@
 layout: post
 title: "C# Winform 跨线程更新UI控件常用方法汇总"
 date: "2019-04-23"
-categories: 
-  - "c"
+categories: ["计算机语言", "c"]
 ---
 
 C#Winform编程中，跨线程直接更新UI控件的做法是不正确的，会时常出现“线程间操作无效: 从不是创建控件的线程访问它”的异常。处理跨线程更新Winform UI控件常用的方法有4种：

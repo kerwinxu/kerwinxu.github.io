@@ -2,8 +2,7 @@
 layout: post
 title: "Virtualbox的Ubuntu虚拟机访问共享文件夹提示没有权限"
 date: "2020-10-05"
-categories: 
-  - "linux"
+categories:: [计算机", "Linux"]
 ---
 
 sudo usermod -aG vboxsf $(whoami)

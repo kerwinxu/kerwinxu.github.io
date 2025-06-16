@@ -2,8 +2,7 @@
 layout: post
 title: "python科学运算之numpy"
 date: "2017-06-03"
-categories: 
-  - "python"
+categories: ["计算机语言", "Python"]
 ---
 
  

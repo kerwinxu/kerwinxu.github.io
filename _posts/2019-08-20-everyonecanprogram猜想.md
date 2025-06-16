@@ -2,8 +2,7 @@
 layout: post
 title: "EveryoneCanProgram猜想"
 date: "2019-08-20"
-categories: 
-  - "c"
+categories: ["计算机语言", "c"]
 ---
 
 我想用c#做一个可以人人编程的东西。

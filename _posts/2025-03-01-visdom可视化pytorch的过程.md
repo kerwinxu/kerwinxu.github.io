@@ -2,7 +2,7 @@
 layout: post
 title: "visdom可视化pytorch的过程"
 date: "2025-03-01"
-categories: ["python", "pytorch"]
+categories: ["计算机语言", "python"]
 tags:
 - python
 - pytorch

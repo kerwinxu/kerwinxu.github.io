@@ -2,8 +2,7 @@
 layout: post
 title: "Django4管理admin"
 date: "2022-12-16"
-categories: 
-  - "python"
+categories: ["计算机语言", "Python"]
 ---
 
 # 前言

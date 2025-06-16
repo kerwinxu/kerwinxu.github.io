@@ -2,8 +2,7 @@
 layout: post
 title: "net中Obfuscar进行代码混淆"
 date: "2022-12-23"
-categories: 
-  - "c"
+categories: ["计算机语言", "c"]
 ---
 
 # 安装

@@ -3,7 +3,7 @@ layout: post
 title: "python编译lxml库"
 date: "2019-02-19"
 categories: 
-  - "c-计算机"
+  - "构建"
 ---
 
 最新的，我编译的这个还是不能用，用pip uninstall lxml 然后 pip install lxml 解决了。

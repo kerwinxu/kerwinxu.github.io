@@ -2,8 +2,7 @@
 layout: post
 title: "WPF TabControl-设置TabItems的样式"
 date: "2024-08-25"
-categories: 
-  - "c"
+categories: ["计算机语言", "c"]
 ---
 
 # 范例1

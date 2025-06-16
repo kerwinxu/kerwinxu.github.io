@@ -2,8 +2,7 @@
 layout: post
 title: "sqlalchemy笔记"
 date: "2018-04-03"
-categories: 
-  - "python"
+categories: ["计算机语言", "Python"]
 ---
 
 1. 简单介绍。

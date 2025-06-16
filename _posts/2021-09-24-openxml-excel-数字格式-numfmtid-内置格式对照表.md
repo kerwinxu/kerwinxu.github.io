@@ -2,8 +2,7 @@
 layout: post
 title: "openxml Excel 数字格式 numFmtId 内置格式对照表"
 date: "2021-09-24"
-categories: 
-  - "c"
+categories: ["计算机语言", "c"]
 ---
 
 ```

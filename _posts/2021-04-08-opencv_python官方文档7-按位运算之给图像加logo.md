@@ -2,8 +2,7 @@
 layout: post
 title: "OpenCV_Python官方文档7+——按位运算之给图像加logo"
 date: "2021-04-08"
-categories: 
-  - "python"
+categories: ["计算机语言", "Python"]
 ---
 
 ## OpenCV-Python Tutorials

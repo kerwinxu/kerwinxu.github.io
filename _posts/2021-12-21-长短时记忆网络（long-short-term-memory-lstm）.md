@@ -2,8 +2,7 @@
 layout: post
 title: "长短时记忆网络（Long Short-Term Memory, LSTM）"
 date: "2021-12-21"
-categories: 
-  - "python"
+categories: ["计算机语言", "Python"]
 ---
 
 [![no img]](http://127.0.0.1/?attachment_id=4293)

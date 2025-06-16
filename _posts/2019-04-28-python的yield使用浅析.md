@@ -2,8 +2,7 @@
 layout: post
 title: "python2的yield使用浅析"
 date: "2019-04-28"
-categories: 
-  - "python"
+categories: ["计算机语言", "Python"]
 ---
 
 您可能听说过，带有 yield 的函数在 Python 中被称之为 generator（生成器），何谓 generator ？

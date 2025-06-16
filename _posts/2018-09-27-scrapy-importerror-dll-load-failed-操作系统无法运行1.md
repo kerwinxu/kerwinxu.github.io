@@ -2,8 +2,7 @@
 layout: post
 title: "Scrapy ImportError: DLL load failed: 操作系统无法运行1%"
 date: "2018-09-27"
-categories: 
-  - "python"
+categories: ["计算机语言", "Python"]
 ---
 
 from cryptography.hazmat.bindings.\_openssl import ffi, lib

@@ -2,9 +2,7 @@
 layout: post
 title: "lazarus用modbus"
 date: "2024-06-02"
-categories: 
-  - "lazarus"
-  - "计算机语言"
+categories:: ["计算机语言", "lazarus"]
 ---
 
 要点；

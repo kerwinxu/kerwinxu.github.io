@@ -2,8 +2,7 @@
 layout: post
 title: "powershell统计目录大小"
 date: "2020-01-13"
-categories: 
-  - "dos_powdershell"
+categories: ["计算机语言", "dos_powdershell"]
 ---
 
 ```

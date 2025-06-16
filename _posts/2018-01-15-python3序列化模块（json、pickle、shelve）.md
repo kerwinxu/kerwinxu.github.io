@@ -2,8 +2,7 @@
 layout: post
 title: "python3 序列化模块（json、pickle、shelve）"
 date: "2018-01-15"
-categories: 
-  - "python"
+categories: ["计算机语言", "Python"]
 ---
 
 # 序列化模块

@@ -2,8 +2,7 @@
 layout: post
 title: "powershell的谓词和名词"
 date: "2019-09-22"
-categories: 
-  - "dos_powdershell"
+categories: ["计算机语言", "dos_powdershell"]
 ---
 
 # 常用谓词

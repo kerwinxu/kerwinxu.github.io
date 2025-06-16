@@ -2,8 +2,7 @@
 layout: post
 title: "通讯协议ModBus的c#NModbus库"
 date: "2021-10-24"
-categories: 
-  - "c"
+categories: ["计算机语言", "c"]
 ---
 
 官网 ： [https://github.com/NModbus/NModbus](https://github.com/NModbus/NModbus)

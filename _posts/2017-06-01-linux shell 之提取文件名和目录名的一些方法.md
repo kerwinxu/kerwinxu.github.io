@@ -2,8 +2,7 @@
 layout: post
 title: "Linux shell 之 提取文件名和目录名的一些方法"
 date: "2017-06-01"
-categories: 
-  - "linux"
+categories:: [计算机", "Linux"]
 ---
 
 很多时候在使用Linux的shell时，我们都需要对文件名或目录名进行处理，通常的操作是由路径中提取出文件名，从路径中提取出目录名，提取文件后缀名等等。例如，从路径/dir1/dir2/file.txt中提取也文件名file.txt，提取出目录/dir1/dir2，提取出文件后缀txt等。

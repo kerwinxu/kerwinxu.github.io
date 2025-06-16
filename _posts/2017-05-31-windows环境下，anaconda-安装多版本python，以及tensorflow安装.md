@@ -2,8 +2,7 @@
 layout: post
 title: "Windows环境下，Anaconda 安装多版本python，以及TensorFlow安装"
 date: "2017-05-31"
-categories: 
-  - "python"
+categories: ["计算机语言", "Python"]
 ---
 
 Anaconda只支持python3.5，而最新版的anaconda是python3.6，所以要做如下操作

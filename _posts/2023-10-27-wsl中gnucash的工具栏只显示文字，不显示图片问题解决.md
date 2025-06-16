@@ -2,8 +2,7 @@
 layout: post
 title: "wsl中gnucash的工具栏只显示文字，不显示图片问题解决"
 date: "2023-10-27"
-categories: 
-  - "linux"
+categories:: [计算机", "Linux"]
 ---
 
 1. 安装GNOME Tweaks工具：打开WSL终端，运行以下命令来安装GNOME Tweaks工具：

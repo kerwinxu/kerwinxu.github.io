@@ -2,8 +2,7 @@
 layout: post
 title: "qt集成lex/yacc"
 date: "2023-01-08"
-categories: 
-  - "c-计算机"
+categories:  ["计算机语言", "c"]
 ---
 
 上边的文件改一下，下边的不用动。

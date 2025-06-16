@@ -2,8 +2,7 @@
 layout: post
 title: "c# 用OpenXmL读取.xlsx格式的Excel文件 返回DataTable、DataSet"
 date: "2021-07-25"
-categories: 
-  - "c"
+categories: ["计算机语言", "c"]
 ---
 
 # 如下是返回DataSet

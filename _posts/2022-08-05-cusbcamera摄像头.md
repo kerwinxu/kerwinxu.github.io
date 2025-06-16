@@ -2,8 +2,7 @@
 layout: post
 title: "c#UsbCamera摄像头"
 date: "2022-08-05"
-categories: 
-  - "c"
+categories: ["计算机语言", "c"]
 ---
 
 opencv的摄像头打开有些问题，这里用这个打开

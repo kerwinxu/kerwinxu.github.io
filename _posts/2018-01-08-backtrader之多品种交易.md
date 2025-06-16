@@ -2,8 +2,7 @@
 layout: post
 title: "backtrader之多品种交易"
 date: "2018-01-08"
-categories: 
-  - "回测交易"
+categories: ["金融", "回测交易"]
 ---
 
 分如下几个不同
