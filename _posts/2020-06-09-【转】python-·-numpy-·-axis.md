@@ -13,7 +13,7 @@ categories: ["计算机语言", "Python"]
 
 要想学习 axis，首先要知道的就是 axis 的计数方式。我们在使用 numpy 的各种函数——比如说 np.sum——的时候，有一个参数就叫做 axis。那么这个参数的意思是什么呢？最直白地来说的话，就是“**最外面的括号代表着 axis=0，依次往里的括号对应的 axis 的计数就依次加 1**”
 
-举个例子，现在我们有一个矩阵： $latex x =\\left\[\\begin{array}{c} 0 & 1 \\\\ 2 & 3 \\end{array}\\right\] $；在 Python，或说在 numpy 里面，这个矩阵是这样被表达出来的：_x_ = \[ \[0, 1\], \[2, 3\] \]，然后 axis 的对应方式就是：
+举个例子，现在我们有一个矩阵： $ x =\\left\[\\begin{array}{c} 0 & 1 \\\\ 2 & 3 \\end{array}\\right\] $；在 Python，或说在 numpy 里面，这个矩阵是这样被表达出来的：_x_ = \[ \[0, 1\], \[2, 3\] \]，然后 axis 的对应方式就是：
 
 [![no img]](http://127.0.0.1/?attachment_id=3738)
 

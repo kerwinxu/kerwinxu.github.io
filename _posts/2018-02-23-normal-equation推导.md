@@ -18,7 +18,7 @@ Normal Equation说是一种最小二乘法。
             - 矩阵转置运算法则中有
                 - (A+B)’=A’+B’
                 - (AB)’=B’A’ : 注意位置颠倒了
-                    - $latex (X\\Theta)^T$ 展开，用了这个。
-                - $latex \\theta^TX^T\\overrightarrow{y}$ 是标量，与它的转置是相等的。
+                    - $ (X\\Theta)^T$ 展开，用了这个。
+                - $ \\theta^TX^T\\overrightarrow{y}$ 是标量，与它的转置是相等的。
 - 求这个损失函数的导数 $$ \\frac{\\partial J(\\theta)}{\\partial}=\\frac{1}{2m}(2X^TX\\theta-2X^Ty)
 - 设导数为0，我们很容易得到 \\\[2X^TX\\theta=2X^Ty\\\\\\theta=(X^TX)^{-1}X^Ty\\\]

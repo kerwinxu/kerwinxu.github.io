@@ -28,24 +28,24 @@ categories: ["计算机", "算法"]
 
 # alpha beta剪枝策略
 
-- 当一个MIN层的$latex \\alpha \\le \\beta $ ,剪掉该节点的所有未搜索子节点。
-- 当一个MAX层的$latex \\alpha \\ge \\beta$ 剪掉该节点的所有未搜索子节点。
-- 其中$latex \\alpha $ 是该层最有利的评分，$latex \\beta $ 是父节点的当前$latex \\alpha $ 值。
+- 当一个MIN层的$ \\alpha \\le \\beta $ ,剪掉该节点的所有未搜索子节点。
+- 当一个MAX层的$ \\alpha \\ge \\beta$ 剪掉该节点的所有未搜索子节点。
+- 其中$ \\alpha $ 是该层最有利的评分，$ \\beta $ 是父节点的当前$ \\alpha $ 值。
 
-初始化节点的$latex \\alpha $ 值，
+初始化节点的$ \\alpha $ 值，
 
-- 如果是在MAX层，初始化$latex \\alpha $ 的值是负无穷大，这样子节点的值肯定比这个值大。
-- 如果是在MIN层，初始化$latex \\alpha $ 的值是正无穷大，这样子节点的值肯定比这个值小。
+- 如果是在MAX层，初始化$ \\alpha $ 的值是负无穷大，这样子节点的值肯定比这个值大。
+- 如果是在MIN层，初始化$ \\alpha $ 的值是正无穷大，这样子节点的值肯定比这个值小。
 
 ## MIN层剪枝
 
  
 
-- B节点在MIN层，子节点是5和3，所以$latex \\alpha $取值3,[![no img]](http://127.0.0.1/?attachment_id=4659)
-    - 节点A的$latex \\alpha $更新为当前最有利的分值为3
-- 开始搜索节点C，C的$latex \\alpha=2 , \\beta=+\\infty $  [![no img]](http://127.0.0.1/?attachment_id=4660)
-    - 节点C的$latex \\alpha = 6$,同时节点A的$latex \\alpha = 6$
-- 开始搜索节点D，搜索节点D的第一个子节点为5，这时候节点D符合MIN剪枝 $latex \\alpha \\le \\beta $ ，所以节点D的第二个节点就被裁掉了。[![no img]](http://127.0.0.1/?attachment_id=4661)
+- B节点在MIN层，子节点是5和3，所以$ \\alpha $取值3,[![no img]](http://127.0.0.1/?attachment_id=4659)
+    - 节点A的$ \\alpha $更新为当前最有利的分值为3
+- 开始搜索节点C，C的$ \\alpha=2 , \\beta=+\\infty $  [![no img]](http://127.0.0.1/?attachment_id=4660)
+    - 节点C的$ \\alpha = 6$,同时节点A的$ \\alpha = 6$
+- 开始搜索节点D，搜索节点D的第一个子节点为5，这时候节点D符合MIN剪枝 $ \\alpha \\le \\beta $ ，所以节点D的第二个节点就被裁掉了。[![no img]](http://127.0.0.1/?attachment_id=4661)
 
  
 
