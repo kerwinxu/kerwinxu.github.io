@@ -109,7 +109,7 @@ comments:
 # Self-hosted static assets, optional › https://github.com/cotes2020/chirpy-static-assets
 assets:
   self_host:
-    enabled: true     # boolean, keep empty means false
+    # enabled: true     # boolean, keep empty means false
     # specify the Jekyll environment, empty means both
     # only works if `assets.self_host.enabled` is 'true'
     env:  development        # [development|production]
@@ -121,7 +121,10 @@ paginate: 10
 
 # ------------ The following options are not recommended to be modified ------------------
 
+# markdown: kramdown
+
 kramdown:
+  # math_engine: null   # 用mathjax替代
   syntax_highlighter: rouge
   syntax_highlighter_opts:   # Rouge Options › https://github.com/jneen/rouge#full-options
     css_class: highlight
@@ -198,3 +201,8 @@ jekyll-archives:
   permalinks:
     tag: /tags/:name/
     category: /categories/:name/
+
+
+# jekyll-theme-chirpy，默认没有打开latex的支持，需要这里先打开，然后在博文头部添加 "math: true"，不用双引号。
+math: true  # 启用数学公式支持
+math_engine: mathjax  # 使用 MathJax 引擎
