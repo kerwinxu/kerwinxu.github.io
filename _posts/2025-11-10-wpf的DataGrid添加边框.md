@@ -77,63 +77,74 @@ categories: ["C#", "wpf"]
       }
       #endregion
 
-      private static void GridLoaded(object sender, RoutedEventArgs e)
-      {
-          #region 思路
-          /*
-           * 1、覆盖所有单元格都要包围上边框。
-           * 2、边框线不能存在重复。每个单元格绘制【右下】部分，主体绘制右上部分
-           */
-          #endregion
-          var grid = sender as Grid;
-          var rowCount = Math.Max(1, grid.RowDefinitions.Count);
-          var columnCount = Math.Max(1, grid.ColumnDefinitions.Count);
-          #region 初始化标准数组
-          int[,] flagArray = new int[rowCount, columnCount];
-          #endregion
-          var controls = grid.Children;
-          var count = controls.Count;
-          var settingThickness = GetLineThickness(grid);
-          var borderBrush = GetLineBrush(grid);
-          for (int i = 0; i < count; i++)
-          {
-              var item = controls[i] as FrameworkElement;
-              var row = Grid.GetRow((item));
-              var column = Grid.GetColumn(item);
-              var rowSpan = Grid.GetRowSpan(item);
-              var columnSpan = Grid.GetColumnSpan(item);
-              for (int rowTemp = 0; rowTemp < rowSpan; rowTemp++)
-              {
-                  for (int colTemp = 0; colTemp < columnSpan; colTemp++)
-                  {
-                      flagArray[rowTemp + row, colTemp + column] = 1;
-                  }
-              }
+       private static void GridLoaded(object sender, RoutedEventArgs e)
+ {
+     #region 思路
+     /*
+      * 1、覆盖所有单元格都要包围上边框。
+      * 2、边框线不能存在重复。每个单元格绘制【右下】部分，主体绘制右上部分
+      */
+     #endregion
+     var grid = sender as Grid;
+     var rowCount = Math.Max(1, grid.RowDefinitions.Count);
+     var columnCount = Math.Max(1, grid.ColumnDefinitions.Count);
+     #region 初始化标准数组
+     int[,] flagArray = new int[rowCount, columnCount];
+     #endregion
+     var controls = grid.Children;
+     var count = controls.Count;
+     var settingThickness = GetLineThickness(grid);
+     var borderBrush = GetLineBrush(grid);
+     for (int i = 0; i < count; i++)
+     {
+         var item = controls[i] as FrameworkElement;
+         // 这里需要判断是否是Border，
+         if (item is Border)
+         {
+             continue; //如果是Border则跳过
+         }
+         else
+         {
+             var row = Grid.GetRow(item);
+             var column = Grid.GetColumn(item);
+             var rowSpan = Grid.GetRowSpan(item);
+             var columnSpan = Grid.GetColumnSpan(item);
+             for (int rowTemp = 0; rowTemp < rowSpan; rowTemp++)
+             {
+                 for (int colTemp = 0; colTemp < columnSpan; colTemp++)
+                 {
+                     flagArray[rowTemp + row, colTemp + column] = 1;
+                 }
+             }
 
-              var border = CreateBorder(row, column, rowSpan, columnSpan, settingThickness);
-              border.BorderBrush = borderBrush;
-              border.Padding = new Thickness(0);
+             var border = CreateBorder(row, column, rowSpan, columnSpan, settingThickness);
+             border.BorderBrush = borderBrush;
+             border.Padding = new Thickness(0);
 
-              grid.Children.RemoveAt(i);
-              border.Child = item;
-              grid.Children.Insert(i, border);
-          }
+             grid.Children.RemoveAt(i);
+             border.Child = item;
+             grid.Children.Insert(i, border);
 
-          #region 整理为填充单元格
-          for (int i = 0; i < rowCount; i++)
-          {
-              for (int k = 0; k < columnCount; k++)
-              {
-                  if (flagArray[i, k] == 0)
-                  {
-                      var border = CreateBorder(i, k, 1, 1, settingThickness);
-                      border.BorderBrush = borderBrush;
-                      grid.Children.Add(border);
-                  }
-              }
-          }
-          #endregion
-      }
+         }
+
+
+     }
+
+     #region 整理为填充单元格，暂时不需要，会造成重复叠加
+     //for (int i = 0; i < rowCount; i++)
+     //{
+     //    for (int k = 0; k < columnCount; k++)
+     //    {
+     //        if (flagArray[i, k] == 0)
+     //        {
+     //            var border = CreateBorder(i, k, 1, 1, settingThickness);
+     //            border.BorderBrush = borderBrush;
+     //            grid.Children.Add(border);
+     //        }
+     //    }
+     //}
+     #endregion
+ }
 
       private static Border CreateBorder(int row, int column, int rowSpan, int columnSpan, double thickness)
       {
