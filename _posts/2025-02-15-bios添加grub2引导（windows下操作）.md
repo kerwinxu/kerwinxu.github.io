@@ -15,7 +15,7 @@ grub-install.exe --directory=D:\\grub-2.02-for-windows\\i386-pc --fonts=unicode 
 
 \--recheck --target=i386-pc （默认项可不写） \\\\.\\PHYSICALDRIVE0 (安装设备)
 
- 
+
 
 grub.cfg文件生成
 
@@ -104,8 +104,8 @@ initrd (loop)/casper/initrd
 menuentry 'win pe' --class windows --id winpe{
 insmod exfat
 search --file  --no-floppy --set=root /iso/winpe.iso
-set iso_path="/iso/winpe.iso"    
-loopback loop ($root)$iso_path     
+set iso_path="/iso/winpe.iso"
+loopback loop ($root)$iso_path
 linux16 ($root)/grub/memdisk iso
 initrd16 ($root)/iso/winpe.iso
 }

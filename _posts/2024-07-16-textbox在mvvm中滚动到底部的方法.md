@@ -2,14 +2,14 @@
 layout: post
 title: "TextBox在MVVM中滚动到底部的方法"
 date: "2024-07-16"
-categories: ["计算机语言", "c#"]
+categories: ["计算机语言", "csharp"]
 ---
 
 如果是net4.6以上版本，需要安装 ： Microsoft.Xaml.Behaviors.Wpf ，如果是小于这个的版本，需要安装System.Windows.InterActivity.dll 和Microsoft.Expression.InterActions.dll
 
- 
 
- 
+
+
 
 ```xml
 <Window x:Class="textbox在MVVM模式下滚动到底部.MainWindow"
@@ -30,7 +30,7 @@ categories: ["计算机语言", "c#"]
         <TextBox Grid.Row="1" Text="{Binding Message,Mode=TwoWay}" VerticalScrollBarVisibility="Auto">
             <behaviors:Interaction.Triggers> <!--触发器-->
                 <!--下边是一个事件触发器，源是这个TextBox对象，，事件是文本更改事件 -->
-                <behaviors:EventTrigger SourceObject="{Binding RelativeSource={RelativeSource AncestorType=TextBox}}" EventName="TextChanged"> 
+                <behaviors:EventTrigger SourceObject="{Binding RelativeSource={RelativeSource AncestorType=TextBox}}" EventName="TextChanged">
                     <behaviors:CallMethodAction MethodName="ScrollToEnd" /> <!--调用方法-->
                 </behaviors:EventTrigger>
             </behaviors:Interaction.Triggers>

@@ -2,7 +2,7 @@
 layout: post
 title: "jupyter修改kernel"
 date: "2022-07-16"
-categories: ["计算机语言", "Python"]
+categories: ["计算机语言", "python"]
 ---
 
 比如我新建了一个名称为opencv的环境，

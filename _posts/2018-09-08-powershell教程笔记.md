@@ -151,7 +151,7 @@ format-table name, status –autosize
 
 ## Format类
 
-### Format-List 
+### Format-List
 
 - 将对象输出格式化为属性列表
 
@@ -162,7 +162,7 @@ format-table name, status –autosize
 ### Format-Table
 
 - 将输出格式化为一张表格。这是默认的输出格式，也就是说即使不指定Format-Table，powershell对对象的输出也为表格形式，此输出格式有一个缺点，就是当列宽不够时，文字会被截断（truncated）
-- \-AutoSize 
+- \-AutoSize
 - \-GroupBy指定的属性即为分组依据
 
 ### Format-Custom
@@ -174,7 +174,7 @@ format-table name, status –autosize
 - ```
     ls | Group-Object Extension 根据扩展名分组
     ```
-    
+
 - 用自定义表达式分组
     - ls | Group-Object {$\_.Length -gt 1kb} 文件是否大于1kb
     - Get-Process | Group-Object Company -NoElement ，根据当前应用程序的发布者。
@@ -280,68 +280,68 @@ or ：
 
 ### switch
 
-$a = 3  
-switch($a)  
-{  
-1  
-{"It's one";break}   #break:表示若匹配跳出swith语句  
-2  
-{"It's two";break}  
-3  
-{"It's three";break}  
-4  
-{"It's four";break}  
-5  
-{"It's five";break}  
-default  
-{"It's unknown";break}  
+$a = 3
+switch($a)
+{
+1
+{"It's one";break}   #break:表示若匹配跳出swith语句
+2
+{"It's two";break}
+3
+{"It's three";break}
+4
+{"It's four";break}
+5
+{"It's five";break}
+default
+{"It's unknown";break}
 }
 
 用法二如下:switch -casesensitive (表达式)表示区分大小写
 
 用法三如下:switch -regex(表达式)表示正则表达式匹配
 
-$day = "day5"  
-switch -regex ($day)  
-{  
-^\[a-z\]+$  
-{"字母,匹配为:" +$\_ ;break}  
-^\[/d\]+$  
-{"数字,匹配为:" +$\_ ;break}  
-^/w+$  
-{"字母+数字,匹配为:" +$\_ ;break}  
-default  
-{"什么都不是" +$\_;break}  
+$day = "day5"
+switch -regex ($day)
+{
+^\[a-z\]+$
+{"字母,匹配为:" +$\_ ;break}
+^\[/d\]+$
+{"数字,匹配为:" +$\_ ;break}
+^/w+$
+{"字母+数字,匹配为:" +$\_ ;break}
+default
+{"什么都不是" +$\_;break}
 }
 
 用法四如下:switch -regex(表达式)表示正则表达式匹配 表达式可为数组
 
-$day = "day5","day6"  
-switch -regex ($day)  
-{  
-^\[a-z\]+$  
-{"字母,匹配为:" +$\_ ;}  
-^\[/d\]+$  
-{"数字,匹配为:" +$\_ ;}  
-^/w+$  
-{"字母+数字,匹配为:" +$\_ ;}  
-default  
-{"什么都不是" +$\_;}  
+$day = "day5","day6"
+switch -regex ($day)
+{
+^\[a-z\]+$
+{"字母,匹配为:" +$\_ ;}
+^\[/d\]+$
+{"数字,匹配为:" +$\_ ;}
+^/w+$
+{"字母+数字,匹配为:" +$\_ ;}
+default
+{"什么都不是" +$\_;}
 }
 
 用法五如下:switch -wildcard (表达式)表示通配符匹配
 
-$day = "day2"  
-switch -wildcard ($day)  
-{  
-day2  
-{"day2,匹配为:" + $\_;break}  
-day3  
-{"day3,匹配为:" + $\_;break}  
-day\*  
-{"通配符,匹配为:" + $\_;break}  
-default  
-{"什么都不是:" +$\_;break}  
+$day = "day2"
+switch -wildcard ($day)
+{
+day2
+{"day2,匹配为:" + $\_;break}
+day3
+{"day3,匹配为:" + $\_;break}
+day\*
+{"通配符,匹配为:" + $\_;break}
+default
+{"什么都不是:" +$\_;break}
 }
 
 ## 跳转类

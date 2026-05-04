@@ -28,7 +28,7 @@ import numpy as np
 import time
 
 # 将窗口类实例化
-viz = Visdom() 
+viz = Visdom()
 
 # 创建窗口并初始化
 viz.line([0.], [0], win='train_loss', opts=dict(title='train_loss'))
@@ -49,7 +49,7 @@ import numpy as np
 import time
 
 # 将窗口类实例化
-viz = Visdom() 
+viz = Visdom()
 
 # 创建窗口并初始化
 viz.line([[0.,0.]], [0], win='train', opts=dict(title='loss&acc', legend=['loss', 'acc']))

@@ -2,7 +2,7 @@
 layout: post
 title: "js中serialport本地化编译"
 date: "2024-08-20"
-categories: ["计算机语言", "JavaScript"]
+categories: ["计算机语言", "javascript"]
 ---
 
 项目文件夹下创建binding.gyp文件 内容

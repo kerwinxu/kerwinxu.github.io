@@ -58,7 +58,7 @@ C#Winform编程中，跨线程直接更新UI控件的做法是不正确的，会
        }
 ```
 
- 
+
 
 该方法的主要原理是：在线程执行过程中，需要更新到UI控件上的数据不再直接更新，而是通过UI线程上下文的Post/Send方法，将数据以异步/同步消息的形式发送到UI线程的消息队列；UI线程收到该消息后，根据消息是异步消息还是同步消息来决定通过异步/同步的方式调用SetTextSafePost方法直接更新自己的控件了。
 
@@ -95,9 +95,9 @@ C#Winform编程中，跨线程直接更新UI控件的做法是不正确的，会
         /// <param name="text"></param>
         private void SetText(string text)
         {
-            // InvokeRequired required compares the thread ID of the 
-            // calling thread to the thread ID of the creating thread. 
-            // If these threads are different, it returns true. 
+            // InvokeRequired required compares the thread ID of the
+            // calling thread to the thread ID of the creating thread.
+            // If these threads are different, it returns true.
             if (this.textBox1.InvokeRequired)//如果调用控件的线程和创建创建控件的线程不是同一个则为True
             {
                 while (!this.textBox1.IsHandleCreated)
@@ -132,7 +132,7 @@ C#Winform编程中，跨线程直接更新UI控件的做法是不正确的，会
 
 ```
 
- 
+
 
 说明：这个方法是目前跨线程更新UI使用的主流方法，使用控件的Invoke/BeginInvoke方法，将委托转到UI线程上调用，实现线程安全的更新。原理与方法1类似，本质上还是把线程中要提交的消息，通过控件句柄调用委托交到UI线程中去处理。
 
@@ -147,7 +147,7 @@ C#Winform编程中，跨线程直接更新UI控件的做法是不正确的，会
         {
             InitializeComponent();
 
-           
+
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             //设置报告进度更新
             backgroundWorker1.WorkerReportsProgress = true;
@@ -183,7 +183,7 @@ C#Winform编程中，跨线程直接更新UI控件的做法是不正确的，会
         }
 ```
 
- 
+
 
 说明：C# Winform中执行异步任务时，BackgroundWorker是个不错的选择。它是EAP（Event based Asynchronous Pattern）思想的产物，DoWork用来执行异步任务，在任务执行过程中/执行完成后，我们可以通过ProgressChanged，ProgressCompleteded事件进行线程安全的UI更新。 需要注意的是：//设置报告进度更新 backgroundWorker1.WorkerReportsProgress = true; 默认情况下BackgroundWorker是不报告进度的，需要显示设置报告进度属性。
 
@@ -197,9 +197,9 @@ C#Winform编程中，跨线程直接更新UI控件的做法是不正确的，会
 delegate void SetTextCallback(TextBox textBox, string text);
 private void SetText(TextBox textBox, string text)
 {
-    // InvokeRequired required compares the thread ID of the 
-    // calling thread to the thread ID of the creating thread. 
-    // If these threads are different, it returns true. 
+    // InvokeRequired required compares the thread ID of the
+    // calling thread to the thread ID of the creating thread.
+    // If these threads are different, it returns true.
     if (textBox.InvokeRequired)//如果调用控件的线程和创建创建控件的线程不是同一个则为True
     {
         while (!textBox.IsHandleCreated)

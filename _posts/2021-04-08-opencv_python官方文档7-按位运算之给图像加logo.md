@@ -2,7 +2,7 @@
 layout: post
 title: "OpenCV_Python官方文档7+——按位运算之给图像加logo"
 date: "2021-04-08"
-categories: ["计算机语言", "Python"]
+categories: ["计算机语言", "python"]
 ---
 
 ## OpenCV-Python Tutorials
@@ -34,7 +34,7 @@ ret, dst = cv2.threshold(src, thresh, maxval,type)：阈值（二值化操作）
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
-import os 
+import os
 os.chdir('C:/Users/lenovo/Pictures/')
 
 img1 = cv2.imread('desert.jpg')　＃沙漠图片
@@ -124,7 +124,7 @@ cv2.destroyAllWindows()
 
 ```
 
- 
+
 
 # 所有源代码
 
@@ -132,7 +132,7 @@ cv2.destroyAllWindows()
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
-import os 
+import os
 os.chdir('C:/Users/lenovo/Pictures/')
 
 # 1. 读取图片

@@ -2,7 +2,7 @@
 layout: post
 title: "No module named pip.req"
 date: "2019-02-28"
-categories: ["计算机语言", "Python"]
+categories: ["计算机语言", "python"]
 ---
 
 This is happening lately because of a change in pip 10.

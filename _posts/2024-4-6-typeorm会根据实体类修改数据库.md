@@ -2,7 +2,7 @@
 lang: zh
 author: Kerwin
 layout: post
-categories: ["计算机语言", "Javascript"]
+categories: ["计算机语言", "javascript"]
 title:  typeorm会根据实体类修改数据库
 date:   2024-4-6 15:43:00 +0800
 excerpt: 模typeorm会根据实体类修改数据库

@@ -13,7 +13,7 @@ tag:
 - mysql
 ---
 
-Django默认是sqlite数据库，我这里转成mysql数据库，原先的sqlite已经有大量的数据。  
+Django默认是sqlite数据库，我这里转成mysql数据库，原先的sqlite已经有大量的数据。
 
 # 安装依赖
 ```

@@ -2,7 +2,7 @@
 layout: post
 title: "sqlalchemy笔记"
 date: "2018-04-03"
-categories: ["计算机语言", "Python"]
+categories: ["计算机语言", "python"]
 ---
 
 1. 简单介绍。
@@ -25,7 +25,7 @@ categories: ["计算机语言", "Python"]
                     "mysql_charset" : "utf8"
             }  <.pre>/li>
             ```
-            
+
     2. 将ORM对象转化成pandas的DataFrame
         1. df = pd.read\_sql(query.statement, query.session.bind)
     3. 批量删除问题
@@ -34,5 +34,5 @@ categories: ["计算机语言", "Python"]
             session.query(User).filter(User.id.in_((1, 2, 3))).delete(synchronize_session=False)
             session.commit() # or session.expire_all()
             ```
-            
+
         3. 搜了下找到[《Sqlalchemy delete subquery》](http://stackoverflow.com/questions/7892618/sqlalchemy-delete-subquery)这个问题，提到了 delete 的一个注意点：删除记录时，默认会尝试删除 session 中符合条件的对象，而 in 操作估计还不支持，于是就出错了。解决办法就是删除时不进行同步，然后再让 session 里的所有实体都过期：

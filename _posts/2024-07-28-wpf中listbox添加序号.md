@@ -2,7 +2,7 @@
 layout: post
 title: "wpf中listbox添加序号"
 date: "2024-07-28"
-categories:  ["计算机语言", "c#"]
+categories:  ["计算机语言", "csharp"]
 ---
 
 做一个转换器，IList有IndexOf方法。
@@ -16,7 +16,7 @@ public class IndexConverter : IMultiValueConverter
             IList list = (IList)values[1];
             if (list != null) { return list.IndexOf(item) + 1; }
             else return null;
-           
+
         }
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)

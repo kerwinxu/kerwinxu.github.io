@@ -34,7 +34,7 @@ categories: ["计算机语言", "c"]
                             <ColumnDefinition />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                        <StackPanel Orientation="Horizontal" 
+                        <StackPanel Orientation="Horizontal"
                                     Grid.Column="0"
                                     Background="LightGray"
                                 >
@@ -45,22 +45,22 @@ categories: ["计算机语言", "c"]
                         <!-- 操作按钮-->
                         <StackPanel Orientation="Horizontal"
                                 HorizontalAlignment="Right"
-                                    Grid.Column="1"       
+                                    Grid.Column="1"
                                 >
 
                             <!--最小化按钮-->
                             <Button  WindowChrome.IsHitTestVisibleInChrome="True">
                                 <behaviors:Interaction.Triggers>
                                     <behaviors:EventTrigger SourceObject="{Binding RelativeSource={RelativeSource AncestorType=Button}}" EventName="Click">
-                                        <behaviors:ChangePropertyAction 
-                                            TargetObject="{Binding RelativeSource={RelativeSource AncestorType=Window}}" 
+                                        <behaviors:ChangePropertyAction
+                                            TargetObject="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
                                             PropertyName="WindowState"
                                             Value="1"
                                             />
                                         <!--调用方法-->
                                     </behaviors:EventTrigger>
                                 </behaviors:Interaction.Triggers>
-                                
+
                                 <Path
                                     Width="32"
                                     Height="10"
@@ -73,8 +73,8 @@ categories: ["计算机语言", "c"]
                             <Button WindowChrome.IsHitTestVisibleInChrome="True">
                                 <behaviors:Interaction.Triggers>
                                     <behaviors:EventTrigger SourceObject="{Binding RelativeSource={RelativeSource AncestorType=Button}}" EventName="Click">
-                                        <behaviors:ChangePropertyAction 
-                                            TargetObject="{Binding RelativeSource={RelativeSource AncestorType=Window}}" 
+                                        <behaviors:ChangePropertyAction
+                                            TargetObject="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
                                             PropertyName="WindowState"
                                             Value="2"
                                             />
@@ -107,9 +107,9 @@ categories: ["计算机语言", "c"]
                             </Button>
                         </StackPanel>
                     </Grid>
-                    
 
-                  
+
+
                     <!-- 客户区  -->
                     <AdornerDecorator Grid.Row="1">
                         <ContentPresenter ClipToBounds="True" />
@@ -120,7 +120,7 @@ categories: ["计算机语言", "c"]
     </Window.Template>
     <WindowChrome.WindowChrome>
         <!--用这个代替原始的window-->
-        <WindowChrome 
+        <WindowChrome
             CaptionHeight="32"
             GlassFrameThickness="-1"
             UseAeroCaptionButtons="False"
@@ -134,7 +134,7 @@ categories: ["计算机语言", "c"]
             FontWeight="Bold"
             Foreground="White"
             Text="丑萌气质狗" />
-        
+
     </Grid>
 </Window>
 

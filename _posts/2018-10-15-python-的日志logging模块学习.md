@@ -2,12 +2,12 @@
 layout: post
 title: "python 的日志logging模块学习"
 date: "2018-10-15"
-categories: ["计算机语言", "Python"]
+categories: ["计算机语言", "python"]
 ---
 
 ### 简单的将日志打印到屏幕
 
- 
+
 
 <table border="1" cellspacing="0" cellpadding="0" bgcolor="#f1f1f1"><tbody><tr><td><code>import&nbsp;logging</code><div></div>logging.debug('This is debug message') logging.info('This is info message') logging.warning('This is warning message')<div></div><wbr><div></div><code><code></code></code><strong>屏幕上打印:</strong><code> WARNING:root:This is warning message</code></td></tr></tbody></table>
 
@@ -42,7 +42,7 @@ logger.warning("Something maybe fail.")
 logger.info("Finish")
 ```
 
- 
+
 
 ### logging之日志回滚
 
@@ -68,7 +68,7 @@ logger.info("Finish")
 
 ### logging是线程安全的
 
- 
+
 
 ### 多模块使用logging
 
@@ -102,7 +102,7 @@ subModule.som_function()
 logger.info("done with subModule.some_function")
 ```
 
- 
+
 
 子模块subModule.py，
 

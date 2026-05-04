@@ -2,7 +2,7 @@
 layout: post
 title: "PySide6中QListWidget自定义列表项目"
 date: "2024-09-01"
-categories: ["计算机语言", "Python"]
+categories: ["计算机语言", "python"]
 ---
 
 ```python
@@ -20,7 +20,7 @@ class QCustomQWidget (QWidget):
     Args:
         QWidget (_type_): _description_
     """
-       
+
     def __init__ (self, parent = None):
         # 首先调用父类的构造函数
         super(QCustomQWidget, self).__init__(parent)
@@ -74,8 +74,8 @@ class exampleQMainWindow (QMainWindow):
             # Create QCustomQWidget
             myQCustomQWidget = QCustomQWidget()     # 创建一个自定义项目
             myQCustomQWidget.setTextUp(index)       # 设置内容
-            myQCustomQWidget.setTextDown(name)      # 
-            myQCustomQWidget.setIcon(icon)          # 
+            myQCustomQWidget.setTextDown(name)      #
+            myQCustomQWidget.setIcon(icon)          #
             # Create QListWidgetItem
             myQListWidgetItem = QListWidgetItem(self.myQListWidget)   # 创建一个列表框
             # Set size hint

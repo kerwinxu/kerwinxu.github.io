@@ -2,13 +2,13 @@
 layout: post
 title: "mybatis-spring引入失败"
 date: "2020-08-26"
-categories: 
+categories:
   - "java"
 ---
 
 引入这两个就好了
 
- 
+
 
 ```
 <dependency>

@@ -2,7 +2,7 @@
 layout: post
 title: "wpf的DateTime选择器"
 date: "2025-11-10"
-categories: ["C#", "wpf"]
+categories: ["计算机语言", "csharp"]
 ---
 
 ```xml

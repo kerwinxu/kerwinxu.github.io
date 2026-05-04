@@ -2,13 +2,13 @@
 layout: post
 title:  LiveChart2实时曲线
 date:   2025-3-31 21:51:00 +0800
-categories: ["计算机语言","c#"]
+categories: ["计算机语言","csharp"]
 project: false
 excerpt: LiveChart2实时曲线
 lang: zh
 published: true
 tag:
-- c#
+- csharp
 - Live2Chart2
 - 实时曲线
 - wpf
@@ -26,7 +26,7 @@ xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCor
     Grid.Row="0"
     Grid.Column="1"
     Grid.RowSpan="2"
-    Series="{Binding Series}" 
+    Series="{Binding Series}"
     XAxes="{Binding XAxes}"
     YAxes="{Binding YAxes}"
 	LegendPosition="Right"
@@ -51,7 +51,7 @@ xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCor
         // 设置X轴的最小值为当前时间减去60秒的Ticks，最大值为当前时间加上60秒的Ticks
         //MinLimit = DateTime.Now.AddDays(-1).Ticks,
         //MaxLimit = DateTime.Now.AddDays(1).Ticks,
-        
+
         // 设置标签格式化器，以便每个刻度都显示为时间,注意，得是DateTime.FromBinary生成时间，不然会报错
         Labeler = value => DateTime.FromBinary((long)value).ToString("HH:mm:ss") ,
         LabelsRotation = 15,
@@ -111,7 +111,7 @@ xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCor
         }
     }
 
-    
+
 
     private ObservableCollection<DateTimePoint>[] values;
     /// <summary>

@@ -2,7 +2,7 @@
 layout: post
 title: "AttributeError: module 'win32com.gen_py.00062FFF-0000-0000-C000-000000000046x0x9x6' has no attribute 'CLSIDToClassMap'"
 date: "2019-05-08"
-categories: ["计算机语言", "Python"]
+categories: ["计算机语言", "python"]
 ---
 
 发生这个错误的原因并不是很清楚, 大概是升级了一下系统, 但是我并不清楚内部原因.

@@ -2,14 +2,14 @@
 lang: zh
 author: Kerwin
 layout: post
-categories: ["计算机语言", "Javascript"]
+categories: ["计算机语言", "javascript"]
 title:  vue3和electron中使用类似serialport的node原生模块
 date:   2024-8-24 11:51:00 +0800
 excerpt: vue3和electron中使用类似serialport的node原生模块
 tag: [JS,vue3,electron,serialport]
 ---
 
-我看了很多资料，但没有一篇是让我这个新手看懂的，我这里的步骤很简洁，  
+我看了很多资料，但没有一篇是让我这个新手看懂的，我这里的步骤很简洁，
 
 ```
 yarn create @quick-start/electron
@@ -49,7 +49,7 @@ if (process.contextIsolated) {
 //   window.serialport = SerialPort.SerialPort
 }
 ```
-Renderer Thread : 
+Renderer Thread :
 ```
 <script setup>
 import Versions from './components/Versions.vue'

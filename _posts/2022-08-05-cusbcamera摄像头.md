@@ -52,7 +52,7 @@ namespace GitHub.secile.Video
     // {
     //     prop.SetValue(DirectShow.CameraControlFlags.Manual, prop.Default);
     // }
-    // 
+    //
     // prop = camera.Properties[DirectShow.VideoProcAmpProperty.WhiteBalance];
     // if (prop.Available && prop.CanAuto)
     // {
@@ -236,7 +236,7 @@ namespace GitHub.secile.Video
                 var y = (clientSize.Height - h) / 2;
 
                 // set window owner.
-                const int WS_CHILD = 0x40000000; // cannot have a menu bar. 
+                const int WS_CHILD = 0x40000000; // cannot have a menu bar.
                 const int WS_CLIPSIBLINGS = 0x04000000; // clips child windows relative to each other when receives a WM_PAINT.
                 vw.put_WindowStyle(WS_CHILD | WS_CLIPSIBLINGS);
                 vw.SetWindowPosition((int)x, (int)y, (int)w, (int)h);
@@ -471,7 +471,7 @@ namespace GitHub.secile.Video
 
             // 画像を作成
             var result = BufferToBitmap(data, width, height, stride);
-            
+
             Marshal.FreeCoTaskMem(ptr);
 
             return result;
@@ -507,7 +507,7 @@ namespace GitHub.secile.Video
         {
             var result = new Bitmap(width, height, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
             var bmp_data = result.LockBits(new Rectangle(Point.Empty, result.Size), System.Drawing.Imaging.ImageLockMode.WriteOnly, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
-            
+
             // copy from last row.
             for (int y = 0; y < height; y++)
             {
@@ -1668,7 +1668,7 @@ namespace GitHub.secile.Video
 
 ```
 
- 
+
 
 例子
 
@@ -1677,7 +1677,7 @@ namespace GitHub.secile.Video
 // check USB camera is available.
 string[] devices = UsbCamera.FindDevices();
 if (devices.Length == 0) return; // no camera.
-            
+
 // get video format.
 var cameraIndex = 0;
 var formats = UsbCamera.GetVideoFormat(cameraIndex);
@@ -1690,7 +1690,7 @@ foreach (var item in formats) Console.WriteLine(item);
 // 2:[Video], [MJPG], {Width=320, Height=240}, 333333, [VideoInfo], ...
 // ...
 var format = formats[0];
-            
+
 // create instance.
 var camera = new UsbCamera(cameraIndex, format);
 // this closing event handler make sure that the instance is not subject to garbage collection.
@@ -1702,15 +1702,15 @@ pictureBox1.Resize += (s, ev) => camera.SetPreviewSize(pictureBox1.ClientSize); 
 
 // start.
 camera.Start();
-            
+
 // get image.
 // Immediately after starting the USB camera,
 // GetBitmap() fails because image buffer is not prepared yet.
 var bmp = camera.GetBitmap();
 ```
 
- 
 
- 
+
+
 
 官网： [https://github.com/secile/UsbCamera](https://github.com/secile/UsbCamera)

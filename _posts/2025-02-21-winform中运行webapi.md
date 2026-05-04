@@ -2,7 +2,7 @@
 layout: post
 title: "winform中运行webapi"
 date: "2025-02-21"
-categories: ["计算机语言", "c#"]
+categories: ["计算机语言", "csharp"]
 ---
 
 # 安装
@@ -117,7 +117,7 @@ http://localhost:2000/api/home/ReadKeepReg?address=0
 - api/home/ReadKeepReg 路径
 - address=0 参数
 
- 
+
 
 # 引用
 

@@ -16,8 +16,8 @@ categories: ["计算机语言", "c"]
         /// <summary>
         /// Combobox的自动补全，在combobox的xaml定义中添加 TextBoxBase.TextChanged="Combobox1_TextChanged" ，触发自动补全。
         /// 注意，combobox的如下3个属性要这样设置。
-        /// IsTextSearchEnabled="False" 
-        /// IsReadOnly="False" 
+        /// IsTextSearchEnabled="False"
+        /// IsReadOnly="False"
         /// IsEditable="True"
         /// </summary>
         /// <param name="cb">ComboBox控件</param>
@@ -52,7 +52,7 @@ categories: ["计算机语言", "c"]
                     if (lst_Filter == null)
                     {
                         lst_tmp = lst.FindAll( n => n.IndexOf(str_text, StringComparison.CurrentCultureIgnoreCase) >= 0);
-                        
+
                     }
                     else
                     {
@@ -63,7 +63,7 @@ categories: ["计算机语言", "c"]
                     //更新下拉框。
                     //因为经常出现太多的项目，所以这里只显示最多Max_Combobox_items个项目吧。
                     lst_tmp = lst_tmp.Take(Max_Combobox_items).ToList();
-       
+
                     //更新到combobox
                     cb.ItemsSource = lst_tmp;
                     //这里有个判断，就是当压根没有选项的时候，不打开下拉框啦

@@ -2,7 +2,7 @@
 layout: post
 title: "vue-router路由"
 date: "2021-02-05"
-categories: ["计算机语言", "JavaScript"]
+categories: ["计算机语言", "javascript"]
 ---
 
 # 使用
@@ -44,7 +44,7 @@ const router = new VueRouter({
 const app = new Vue({　　el:'#app',　　router})</script>
 ```
 
- 
+
 
 # 重定向和别名
 
@@ -160,7 +160,7 @@ const routes = [
 </div>
 ```
 
- 
+
 
 ```
 const Home = { template: '<div>home</div>' }
@@ -169,7 +169,7 @@ const Foo = { template: `
     <p>
       <router-link to="/foo/foo1">to Foo1</router-link>
       <router-link to="/foo/foo2">to Foo2</router-link>
-      <router-link to="/foo/foo3">to Foo3</router-link>  
+      <router-link to="/foo/foo3">to Foo3</router-link>
     </p>
     <router-view></router-view>
   </div>
@@ -204,7 +204,7 @@ const Foo = { template: `
     <p>
       <router-link to="/foo" exact>to Foo1</router-link>
       <router-link to="/foo/foo2">to Foo2</router-link>
-      <router-link to="/foo/foo3">to Foo3</router-link>  
+      <router-link to="/foo/foo3">to Foo3</router-link>
     </p>
     <router-view></router-view>
   </div>
@@ -226,7 +226,7 @@ const routes = [
 
 有时，通过一个名称来标识一个路由显得更方便，特别是在链接一个路由，或者是执行一些跳转时。可以在创建Router实例时，在routes配置中给某个路由设置名称
 
- 
+
 
 ```
 const router = new VueRouter({
@@ -266,7 +266,7 @@ router.push({ name: 'user', params: { userId: 123 }})
 </div>
 ```
 
- 
+
 
 ```
 const Home = { template: '<div>home</div>' }
@@ -275,7 +275,7 @@ const Foo = { template: `
     <p>
       <router-link :to="{ name: 'foo1' }" exact>to Foo1</router-link>
       <router-link :to="{ name: 'foo2' }" >to Foo2</router-link>
-      <router-link :to="{ name: 'foo3' }" >to Foo3</router-link>  
+      <router-link :to="{ name: 'foo3' }" >to Foo3</router-link>
     </p>
     <router-view></router-view>
   </div>
@@ -286,7 +286,7 @@ const Foo2 = { template: '<div>Foo2</div>' }
 const Foo3 = { template: '<div>Foo3</div>' }
 ```
 
- 
+
 
 ```
 const routes = [
@@ -300,9 +300,9 @@ const routes = [
 ]
 ```
 
- 
 
- 
+
+
 
 # 引用
 

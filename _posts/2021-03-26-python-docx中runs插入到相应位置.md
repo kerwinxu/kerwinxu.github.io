@@ -2,7 +2,7 @@
 layout: post
 title: "python-docx中runs插入到相应位置"
 date: "2021-03-26"
-categories: ["计算机语言", "Python"]
+categories: ["计算机语言", "python"]
 ---
 
 ```
@@ -21,7 +21,7 @@ for run in p.runs:
 
 If you want to insert the new run prior to the existing run, use `run._element.addprevious(new_run_element)`. These two are methods on the `lxml.etree._Element` class which all `python-docx` elements subclass. [https://lxml.de/api/lxml.etree.\_Element-class.html](https://lxml.de/api/lxml.etree._Element-class.html)
 
- 
+
 
 引用：
 

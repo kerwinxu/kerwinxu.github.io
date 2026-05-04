@@ -98,7 +98,7 @@ private void ReadExecute()
                else if(VariableType == "string")
                {
                    ushort[] buff = modbus.ReadHoldingRegisters(SlaveID, ReadAddress, 10);
-                   ReadValue = MODBUS.GetString(buff, 0, 10); 
+                   ReadValue = MODBUS.GetString(buff, 0, 10);
                }
                else if(VariableType == "Int16")
                {
@@ -293,7 +293,7 @@ public class MODBUS
                    dest[i] = (ushort)(srcPlus[i * 2] & 0xff | srcPlus[2 * i + 1] << 8 );
                }
            }
-        
+
            return dest;
        }
 
@@ -358,7 +358,7 @@ private void WriteExecute()
         }
 ```
 
- 
+
 
 # 示例2
 
@@ -374,11 +374,11 @@ private static void Main(string[] args)
             {
                 Console.WriteLine(e.Message);
             }
- 
+
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
         }
- 
+
         /// <summary>
         /// Simple Modbus serial RTU master write holding registers example.
         /// </summary>
@@ -392,19 +392,19 @@ private static void Main(string[] args)
                 port.Parity = Parity.None;
                 port.StopBits = StopBits.One;
                 port.Open();
- 
+
                 var factory = new ModbusFactory();
                 IModbusMaster master = factory.CreateRtuMaster(port);
- 
+
                 byte slaveId = 1;
                 ushort startAddress = 100;
                 ushort[] registers = new ushort[] { 1, 2, 3 };
- 
+
                 // write three registers
                 master.WriteMultipleRegisters(slaveId, startAddress, registers);
             }
         }
- 
+
         /// <summary>
         ///     Simple Modbus TCP master read inputs example.
         /// </summary>
@@ -414,18 +414,18 @@ private static void Main(string[] args)
             {
                 var factory = new ModbusFactory();
                 IModbusMaster master = factory.CreateMaster(client);
- 
+
                 // read five input values
                 ushort startAddress = 100;
                 ushort numInputs = 5;
                 bool[] inputs = master.ReadInputs(0, startAddress, numInputs);
- 
+
                 for (int i = 0; i < numInputs; i++)
                 {
                     Console.WriteLine($"Input {(startAddress + i)}={(inputs[i] ? 1 : 0)}");
                 }
             }
- 
+
             // output:
             // Input 100=0
             // Input 101=0

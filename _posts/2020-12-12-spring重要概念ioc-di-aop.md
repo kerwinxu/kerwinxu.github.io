@@ -2,7 +2,7 @@
 layout: post
 title: "spring重要概念IoC/DI/AOP"
 date: "2020-12-12"
-categories: 
+categories:
   - "java"
 ---
 
@@ -20,10 +20,10 @@ categories:
 ```
 package pojo;
 
-public class Source {  
+public class Source {
     private String fruit;   // 类型
     private String sugar;   // 糖分描述
-    private String size;    // 大小杯    
+    private String size;    // 大小杯
     /* setter and getter */
 }
 
@@ -71,7 +71,7 @@ public class TestSpring {
 }
 ```
 
- 
+
 
 # DI：Dependency Injection（依赖注入）
 
@@ -97,7 +97,7 @@ public class JuiceMaker {
 
 ```
 
- 
+
 
 然后xml文档中使用 ref 来**注入**另一个对象
 
@@ -148,9 +148,9 @@ public class TestSpring {
 }
 ```
 
- 
 
- 
+
+
 
 # AOP 即 Aspect Oriented Program 面向切面编程
 
@@ -202,7 +202,7 @@ package aspect;
 import org.aspectj.lang.ProceedingJoinPoint;
 
 public class LoggerAspect {
-    
+
     public Object log(ProceedingJoinPoint joinPoint) throws Throwable {
         System.out.println("start log:" + joinPoint.getSignature().getName());
         Object object = joinPoint.proceed();
@@ -243,7 +243,7 @@ xml配置
         <!-- what:做什么增强 -->
         <aop:aspect id="logAspect" ref="loggerAspect"> <!-- 这个指向的是切入类 -->
             <!-- when:在什么时机（方法前/后/前后） -->
-            <aop:around pointcut-ref="loggerCutpoint" method="log"/>  
+            <aop:around pointcut-ref="loggerCutpoint" method="log"/>
         </aop:aspect>
     </aop:config>
 </beans>
@@ -253,7 +253,7 @@ xml配置
 
 我认为这个AOP可以在不修改代码的基础上更改代码。
 
- 
+
 
 # 总结
 

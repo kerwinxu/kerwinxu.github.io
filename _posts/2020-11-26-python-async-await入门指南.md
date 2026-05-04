@@ -2,40 +2,40 @@
 layout: post
 title: "Python Async/Await入门指南"
 date: "2020-11-26"
-categories: ["计算机语言", "Python"]
+categories: ["计算机语言", "python"]
 ---
 
 # 常见的几种python函数形式
 
 1. 普通函数
-    
+
     ```
     def function():
         return 1
     ```
-    
+
 2. 生成器函数
-    
+
     ```
     def generator():
         yield 1
     ```
-    
+
 3. 异步函数（协程）
-    
+
     ```
     async def async_function():
         return 1
     ```
-    
+
 4. 异步生成器
-    
+
     ```
     async def async_generator():
         yield 1
     ```
-    
-     
+
+
 
 通过类型判断可以验证函数的类型
 
@@ -47,7 +47,7 @@ print(type(async_function()) is types.CoroutineType)
 print(type(async_generator()) is types.AsyncGeneratorType)
 ```
 
- 
+
 
 直接调用异步函数不会返回结果，而是返回一个coroutine对象：
 
@@ -99,7 +99,7 @@ async def async_function():
 async def await_coroutine():
     result = await async_function()
     print(result)
-    
+
 run(await_coroutine())
 # 1
 ```
@@ -230,7 +230,7 @@ Got tomato 4429347360...
 ...
 ```
 
- 
+
 
 # **await和yield from**
 
@@ -253,7 +253,7 @@ def main():
 # 3
 ```
 
- 
+
 
 利用这一特性，使用yield from能够编写出类似协程效果的函数调用，在3.5之前，asyncio正是使用@asyncio.coroutine和yield from语法来创建协程：
 
@@ -284,7 +284,7 @@ loop.close()
 ```
 async with lock:
     ...
-    
+
 with (yield from lock):
     ...
 ######################
@@ -334,7 +334,7 @@ async def coro2():
 
 loop = asyncio.get_event_loop()
 loop.run_until_complete(asyncio.wait([
-    coro1(), 
+    coro1(),
     coro2()
 ]))
 loop.close()
@@ -342,9 +342,9 @@ loop.close()
 
 两个协程在在事件循环中，协程coro1在执行第一句后挂起自身切到asyncio.sleep，而协程coro2一直等待future的结果，让出事件循环，计时器结束后coro1执行了第二句设置了future的值，被挂起的coro2恢复执行，打印出future的结果'data'。
 
- 
 
- 
+
+
 
 引用
 

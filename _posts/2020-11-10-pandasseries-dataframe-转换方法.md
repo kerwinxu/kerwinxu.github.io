@@ -2,7 +2,7 @@
 layout: post
 title: "pandasSeries -> DataFrame 转换方法"
 date: "2020-11-10"
-categories: ["计算机语言", "Python"]
+categories: ["计算机语言", "python"]
 ---
 
 ### 写在前面

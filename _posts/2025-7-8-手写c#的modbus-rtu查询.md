@@ -2,7 +2,7 @@
 layout: post
 title: "手写c#的modbus-rtu查询"
 date: "2025-07-08"
-categories: ["计算机语言", "c#"]
+categories: ["计算机语言", "csharp"]
 math: true
 ---
 
@@ -46,7 +46,7 @@ math: true
       send_buf.Add(4);       // 输入寄存器
       send_buf.AddRange(modbus_short_to_bytes(address));
       send_buf.AddRange(modbus_short_to_bytes(length));
-      var _crc = CRCCalc(send_buf.ToArray()); 
+      var _crc = CRCCalc(send_buf.ToArray());
       send_buf.AddRange(_crc);
       // 这里进行发送
       serialPort.Write(send_buf.ToArray(), 0, send_buf.Count);
@@ -57,7 +57,7 @@ math: true
       List<byte>recv_buf = new List<byte>();
       while (expect_count > recv_buf.Count && (DateTime.Now - now).TotalMilliseconds < time_out) {
           // 这里进行读取
-          if (serialPort.BytesToRead > 0) { 
+          if (serialPort.BytesToRead > 0) {
               byte[] tmp =new byte[serialPort.BytesToRead];
               serialPort.Read(tmp, 0, tmp.Length);
               recv_buf.AddRange(tmp);
@@ -76,7 +76,7 @@ math: true
           }
 
       }
-      
+
       return result;
 
   }

@@ -2,7 +2,7 @@
 layout: post
 title: "tensorflow2的Rnn循环神经网络"
 date: "2021-12-21"
-categories: ["计算机语言", "Python"]
+categories: ["计算机语言", "python"]
 ---
 
 # 循环核
@@ -24,13 +24,13 @@ $ h\_t = tanh(x\_t w\_{xh} + h\_{t-1}w\_{hh}) $
 
 [![no img]](http://127.0.0.1/?attachment_id=4286)
 
- 
+
 
 # 循环计算层
 
 [![no img]](http://127.0.0.1/?attachment_id=4287)
 
- 
+
 
 ```
 tf.keras.layers.SimpleRNN(记忆体个数，activation=‘激活函数’ ，return_sequences=是否每个时刻输出ht到下一层)
@@ -46,7 +46,7 @@ SimpleRNN(3, return_sequences=True)
 
 RNN要求输入数据（x\_train）的维度是三维的\[送入样本数，循环核时间展开步数（也就是循环核中有多少个x），每个时间步输入特征个数\]
 
- 
+
 
 # 例子
 

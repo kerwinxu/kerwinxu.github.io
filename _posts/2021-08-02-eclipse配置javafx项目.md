@@ -2,7 +2,7 @@
 layout: post
 title: "eclipse配置javafx项目"
 date: "2021-08-02"
-categories: 
+categories:
   - "java"
 ---
 
@@ -10,7 +10,7 @@ categories:
 
 [http://download.eclipse.org/efxclipse/updates-nightly/site](http://download.eclipse.org/efxclipse/updates-nightly/site)
 
- 
+
 
 # 配置
 

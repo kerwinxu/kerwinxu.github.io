@@ -2,7 +2,7 @@
 layout: post
 title: "eclipse/spring坑总结"
 date: "2020-08-25"
-categories: 
+categories:
   - "java"
 ---
 
@@ -13,11 +13,11 @@ categories:
                 @SpringBootApplication
                 @EnableJpaRepositories
                 public class SpringdemoApplication {
-                
+
                   public static void main(String[] args) {
                     SpringApplication.run(SpringdemoApplication.class, args);
                   }
-                
+
                 }
-                
+
                 ```

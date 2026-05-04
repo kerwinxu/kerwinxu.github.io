@@ -7,7 +7,7 @@ categories: ["计算机语言", "c"]
 
 两处，第一处xaml中添加事件声明，第二处在窗口代码中定义这个事件。
 
- 
+
 
 ```xml
 <Window x:Class="ListViewSort.MainWindow"
@@ -27,7 +27,7 @@ categories: ["计算机语言", "c"]
 </Window>
 ```
 
- 
+
 
 ```c#
 private void GridViewColumnHeader_Click(object sender, RoutedEventArgs e) {

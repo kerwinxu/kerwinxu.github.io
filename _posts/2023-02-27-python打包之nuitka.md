@@ -2,7 +2,7 @@
 layout: post
 title: "python打包之Nuitka"
 date: "2023-02-27"
-categories: ["计算机语言", "Python"]
+categories: ["计算机语言", "python"]
 ---
 
 核心是两种，一种是需要编译成c代码的，而另一种是用python.dll调用就可以了，我估计他们是自建了一个python。
@@ -19,7 +19,7 @@ nuitka --standalone --windows-disable-console --mingw64 --nofollow-imports --sho
 
 ```
 
- 
+
 
 我用的是PySide6，所以这里--plugin-enable=qt-plugins，我的是--plugin-enable=pyside6
 
@@ -79,9 +79,9 @@ nuitka --standalone --windows-disable-console --mingw64 --nofollow-imports --sho
 
 **\--recurse-all 递归所有**
 
- 
 
- 
+
+
 
 # 引用
 

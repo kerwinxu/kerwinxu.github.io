@@ -2,7 +2,7 @@
 layout: post
 title: "python当shell"
 date: "2019-02-18"
-categories: ["计算机语言", "Python"]
+categories: ["计算机语言", "python"]
 ---
 
 我想用python当shell用，这里记录相关的操作
@@ -139,13 +139,13 @@ os.name( oldfileName, newFilename)
 
 (2) newFilename 新文件已经存在时，此时，您需要先删除 newFilename 文件。
 
- 
+
 
 # subprocess
 
 ## subprocess.call()
 
- 
+
 
 父进程等待子进程完成 返回退出信息(returncode，相当于Linux exit code)
 
@@ -161,22 +161,22 @@ os.name( oldfileName, newFilename)
 
 subprocess模块定义了一个类： Popen
 
- 
+
 
 ```
-class subprocess.Popen( args, 
-      bufsize=0, 
+class subprocess.Popen( args,
+      bufsize=0,
       executable=None,
       stdin=None,
-      stdout=None, 
-      stderr=None, 
-      preexec_fn=None, 
-      close_fds=False, 
-      shell=False, 
-      cwd=None, 
-      env=None, 
-      universal_newlines=False, 
-      startupinfo=None, 
+      stdout=None,
+      stderr=None,
+      preexec_fn=None,
+      close_fds=False,
+      shell=False,
+      cwd=None,
+      env=None,
+      universal_newlines=False,
+      startupinfo=None,
       creationflags=0)
 
 ```

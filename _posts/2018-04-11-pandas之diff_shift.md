@@ -2,7 +2,7 @@
 layout: post
 title: "pandas之diff_shift"
 date: "2018-04-11"
-categories: ["计算机语言", "Python"]
+categories: ["计算机语言", "python"]
 ---
 
 ```
@@ -14,7 +14,7 @@ import numpy as np
 In \[2\]:
 
 ```
-df = pd.DataFrame(np.arange(24).reshape(6,4),index=pd.date_range(start='20170101',periods=6),columns=['A','B','C','D'])  
+df = pd.DataFrame(np.arange(24).reshape(6,4),index=pd.date_range(start='20170101',periods=6),columns=['A','B','C','D'])
 
 ```
 
@@ -115,7 +115,7 @@ Out\[7\]:
 In \[8\]:
 
 ```
-df.diff(periods=2,axis=0)  
+df.diff(periods=2,axis=0)
 
 ```
 

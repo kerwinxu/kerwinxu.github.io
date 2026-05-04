@@ -2,7 +2,7 @@
 layout: post
 title: "No Identifier specified for entity的解决办法"
 date: "2021-01-28"
-categories: 
+categories:
   - "java"
 ---
 

@@ -6,20 +6,20 @@ categories: ["计算机语言", "c"]
 ---
 
 1. 创建一个扩展
-    
+
     ```c#
     public sealed class AvalonEditBehaviour : Behavior<TextEditor>
        {
            public static readonly DependencyProperty InputTextProperty =
                DependencyProperty.Register("InputText", typeof(string), typeof(AvalonEditBehaviour),
                new FrameworkPropertyMetadata(default(string), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, PropertyChangedCallback));
-    
+
            public string InputText
            {
                get { return (string)GetValue(InputTextProperty); }
                set { SetValue(InputTextProperty, value); }
            }
-    
+
            protected override void OnAttached()
            {
                base.OnAttached();
@@ -28,7 +28,7 @@ categories: ["计算机语言", "c"]
                    AssociatedObject.TextChanged += AssociatedObjectOnTextChanged;
                }
            }
-    
+
            protected override void OnDetaching()
            {
                base.OnDetaching();
@@ -37,7 +37,7 @@ categories: ["计算机语言", "c"]
                    AssociatedObject.TextChanged -= AssociatedObjectOnTextChanged;
                }
            }
-    
+
            private void AssociatedObjectOnTextChanged(object sender, EventArgs eventArgs)
            {
                var textEditor = sender as TextEditor;
@@ -49,7 +49,7 @@ categories: ["计算机语言", "c"]
                    }
                }
            }
-    
+
            private static void PropertyChangedCallback(
            DependencyObject dependencyObject,
            DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
@@ -66,14 +66,14 @@ categories: ["计算机语言", "c"]
                    }
                }
            }
-    
-    
+
+
        }
     ```
-    
-     
+
+
 2. 使用这个扩展，
-    
+
     ```
     <avalonEdit:TextEditor x:Name="sqlTextEditor" SyntaxHighlighting="SQL"
                                                ShowLineNumbers="True"
@@ -83,9 +83,9 @@ categories: ["计算机语言", "c"]
                             </i:Interaction.Behaviors>
     </avalonEdit:TextEditor>
     ```
-    
+
     头部加上
-    
+
     ```
     xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit"
     ```

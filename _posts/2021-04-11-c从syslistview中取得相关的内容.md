@@ -52,18 +52,18 @@ namespace 自动打印
         [DllImport("user32", EntryPoint = "GetDlgCtrlID")]
         public static extern int GetDlgCtrlID(IntPtr hwnd);
 
-        [DllImport("user32.dll", SetLastError = true)] 
+        [DllImport("user32.dll", SetLastError = true)]
         static extern IntPtr GetWindow(IntPtr hWnd, GetWindowCmd uCmd);
         ///
 
-       
+
 
         /// 窗口与要获得句柄的窗口之间的关系。
         ///
 
         enum GetWindowCmd : uint
 
-        {           
+        {
             ///
             /// 返回的句柄标识了在Z序最高端的相同类型的窗口。
             /// 如果指定窗口是最高端窗口，则该句柄标识了在Z序最高端的最高端窗口；
@@ -114,8 +114,8 @@ namespace 自动打印
             ///
             GW_ENABLEDPOPUP = 6
 
-        }     
-        
+        }
+
         /*GetWindowCmd指定结果窗口与源窗口的关系，它们建立在下述常数基础上：
 
               GW_CHILD
@@ -177,15 +177,15 @@ namespace 自动打印
             SendMessage(GetChildHWnd(maindHwnd, 0x000004D4), WM_GETTEXT, buffer_size, buffer_count);
             //这里快件列表:共1122件 格式是这个，
             //
-            int i_start = buffer_count.ToString().IndexOf("共"); 
+            int i_start = buffer_count.ToString().IndexOf("共");
             int i_end = buffer_count.ToString().LastIndexOf("件");
             int i_count = Convert.ToInt32(buffer_count.ToString().Substring(i_start+1,i_end-i_start-1));
             Trace.WriteLine("快件数量：" + i_count.ToString());
 
             //然后如下是取得 sysListview 中的内容
             //然后这里要遍历这个里边所有的项目，直到最后一项。
-            
-            
+
+
             //其实，我这个只是读取两项就可以了，一个是起始的第一个，一个是最后一个
 
             var lstview_data = GetListViewItmeValue(maindHwnd, 0x0000043D);
@@ -312,7 +312,7 @@ namespace 自动打印
             return SendMessage2(handle, LVM_GETITEMCOUNT, 0, 0);
         }
 
-        /// <summary>  
+        /// <summary>
         /// LV列表总列数
         /// </summary>
         private int ListView_GetItemCols(IntPtr handle)
@@ -377,7 +377,7 @@ namespace 自动打印
 
             return tempStr;
 
-            
+
         }
 
     }

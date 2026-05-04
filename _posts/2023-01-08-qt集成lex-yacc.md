@@ -7,7 +7,7 @@ categories:  ["计算机语言", "c"]
 
 上边的文件改一下，下边的不用动。
 
- 
+
 
 ```
 #flex/bison sources
@@ -36,7 +36,7 @@ QMAKE_EXTRA_COMPILERS += flex
 
 ```
 
- 
+
 
 重点，这个支持多个lex和yacc，他们之间不冲突是通过设置-P ${QMAKE\_FILE\_BASE} 实现的，在编写代码的时候，要注意将所有的yy改成{QMAKE\_FILE\_BASE}所代表的名字，例子如下
 

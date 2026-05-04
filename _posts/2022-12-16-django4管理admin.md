@@ -2,14 +2,14 @@
 layout: post
 title: "Django4管理admin"
 date: "2022-12-16"
-categories: ["计算机语言", "Python"]
+categories: ["计算机语言", "python"]
 ---
 
 # 前言
 
 这个管理真的太好用了，这里单独用一个文章。
 
- 
+
 
 # 打开步骤
 
@@ -44,7 +44,7 @@ class AuthorAdmin(admin.ModelAdmin):
 admin.site.register(Author, AuthorAdmin)
 ```
 
- 
+
 
 注册器的方式
 
@@ -62,7 +62,7 @@ class BookInstanceAdmin(admin.ModelAdmin):
     pass
 ```
 
- 
+
 
 # 高级配置
 
@@ -87,29 +87,29 @@ class BookAdmin(admin.ModelAdmin):
     display_genre.short_description = 'Genre'
 ```
 
- 
+
 
 ## 基本设置
 
 ```python
 from django.contrib import admin
 from blog.models import Blog
-  
+
 #Blog模型的管理器
 @admin.register(Blog)
 class BlogAdmin(admin.ModelAdmin):
     #listdisplay设置要显示在列表中的字段（id字段是Django模型的默认主键）
     list_display = ('id', 'caption', 'author', 'publish_time')
-    
+
     #list_per_page设置每页显示多少条记录，默认是100条
     list_per_page = 50
-    
+
     #ordering设置默认排序字段，负号表示降序排序
     ordering = ('-publish_time',)
-  
+
     #list_editable 设置默认可编辑字段
     list_editable = ['machine_room_id', 'temperature']
-  
+
     #fk_fields 设置显示外键字段
      fk_fields = ('machine_room_id',)
 ```
@@ -119,17 +119,17 @@ class BlogAdmin(admin.ModelAdmin):
 ```python
 from django.contrib import admin
 from blog.models import Blog
-  
+
 #Blog模型的管理器
 @admin.register(Blog)
-class BlogAdmin(admin.ModelAdmin):   
+class BlogAdmin(admin.ModelAdmin):
     #设置哪些字段可以点击进入编辑界面
     list_display_links = ('id', 'caption')
 ```
 
- 
 
- 
+
+
 
 ## 创建列表过滤器
 
@@ -143,19 +143,19 @@ class BookInstanceAdmin(admin.ModelAdmin):
 ```python
 from django.contrib import admin
 from blog.models import Blog
-  
+
 #Blog模型的管理器
 @admin.register(Blog)
 class BlogAdmin(admin.ModelAdmin):
     list_display = ('id', 'caption', 'author', 'publish_time')
-     
+
     #筛选器
     list_filter =('trouble', 'go_time', 'act_man__user_name', 'machine_room_id__machine_room_name') #过滤器
     search_fields =('server', 'net', 'mark') #搜索字段
     date_hierarchy = 'go_time'    # 详细时间分层筛选
 ```
 
- 
+
 
 ## 颜色显示
 
@@ -163,12 +163,12 @@ class BlogAdmin(admin.ModelAdmin):
 from django.db import models
 from django.contrib import admin
 from django.utils.html import format_html
- 
+
 class Person(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     color_code = models.CharField(max_length=6)
- 
+
     def colored_name(self):
         return format_html(
             '<span style="color: #{};">{} {}</span>',
@@ -176,7 +176,7 @@ class Person(models.Model):
             self.first_name,
             self.last_name,
         )
- 
+
 class PersonAdmin(admin.ModelAdmin):
     list_display = ('first_name', 'last_name', 'colored_name')
 ```
@@ -189,11 +189,11 @@ class PersonAdmin(admin.ModelAdmin):
 class MyAdminSite(admin.AdminSite):
     site_header = '好医生运维资源管理系统'  # 此处设置页面显示标题
     site_title = '好医生运维'  # 此处设置页面头部标题
- 
+
 admin_site = MyAdminSite(name='management')
 ```
 
- 
+
 
 需要注意的是： admin\_site = MyAdminSite(name='management') 此处括号内name值必须设置，否则将无法使用admin设置权限，至于设置什么值，经本人测试，没有影响。
 
@@ -206,8 +206,8 @@ admin_site = MyAdminSite(name='management')
 ```python
 from django.contrib import admin
 from hys_operation.models import *
- 
- 
+
+
 # class MyAdminSite(admin.AdminSite):
 #     site_header = '好医生运维资源管理系统'  # 此处设置页面显示标题
 #     site_title = '好医生运维'
@@ -222,7 +222,7 @@ admin.site.site_title = '哈哈'
 
 [![no img]](http://127.0.0.1/?attachment_id=4897)
 
- 
+
 
 ## 细节布局
 

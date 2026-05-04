@@ -7,7 +7,7 @@ categories: ["计算机语言", "c"]
 
 我定义个 List<Student> stuList = new List<Student>();
 
- 
+
 
 我想第二次更新了stuList后，让Combobox也更新。
 

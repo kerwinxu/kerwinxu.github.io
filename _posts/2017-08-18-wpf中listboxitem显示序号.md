@@ -2,7 +2,7 @@
 layout: post
 title: "wpf中listboxItem显示序号"
 date: "2017-08-18"
-categories: ["计算机语言", "c#"]
+categories: ["计算机语言", "csharp"]
 ---
 
 原网址：http://blog.csdn.net/sanyuni/article/details/45575145

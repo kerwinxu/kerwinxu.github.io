@@ -2,13 +2,13 @@
 layout: post
 title:  wpf自定义依赖属性接收ObservableCollection消息
 date:   2025-4-10 16:23:00 +0800
-categories: ["计算机语言","c#"]
+categories: ["计算机语言","csharp"]
 project: false
 excerpt: wpf自定义依赖属性接收ObservableCollection消息
 lang: zh
 published: true
 tag:
-- c#
+- csharp
 - wpf
 - 依赖属性
 - ObservableCollection
@@ -44,7 +44,7 @@ public class MyControl : Control
 
         if (oldCollection != null)
             oldCollection.CollectionChanged -= control.OnCollectionChanged;
-        
+
         if (newCollection != null)
             newCollection.CollectionChanged += control.OnCollectionChanged;
     }

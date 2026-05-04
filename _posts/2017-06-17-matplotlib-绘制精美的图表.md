@@ -2,10 +2,10 @@
 layout: post
 title: "matplotlib-绘制精美的图表"
 date: "2017-06-17"
-categories: ["计算机语言", "Python"]
+categories: ["计算机语言", "python"]
 ---
 
- 
+
 
 1. 快速绘图：matplotlib的pyplot子库提供了快速绘制2D图表
     1. 载入用：  import matplotlib.pyplot as plt
@@ -73,7 +73,7 @@ categories: ["计算机语言", "Python"]
             10. yaxis : YAxis对象
         2. 方法：
             1. <table class="docutils" border="1"><colgroup><col width="30%"> <col width="39%"> <col width="32%"></colgroup><tbody valign="top"><tr><td style="width: 147px;">Axes的方法</td><td style="width: 191px;">所创建的对象</td><td style="width: 153px;">添加进的列表</td></tr><tr><td style="width: 147px;">annotate （标注）</td><td style="width: 191px;">Annotate</td><td style="width: 153px;">texts</td></tr><tr><td style="width: 147px;">bars</td><td style="width: 191px;">Rectangle</td><td style="width: 153px;">patches</td></tr><tr><td style="width: 147px;">errorbar</td><td style="width: 191px;">Line2D, Rectangle</td><td style="width: 153px;">lines,patches</td></tr><tr><td style="width: 147px;">fill</td><td style="width: 191px;">Polygon</td><td style="width: 153px;">patches</td></tr><tr><td style="width: 147px;">hist （条状图）</td><td style="width: 191px;">Rectangle</td><td style="width: 153px;">patches</td></tr><tr><td style="width: 147px;">imshow</td><td style="width: 191px;">AxesImage</td><td style="width: 153px;">images</td></tr><tr><td style="width: 147px;">legend</td><td style="width: 191px;">Legend</td><td style="width: 153px;">legends</td></tr><tr><td style="width: 147px;">plot</td><td style="width: 191px;">Line2D</td><td style="width: 153px;">lines</td></tr><tr><td style="width: 147px;">scatter</td><td style="width: 191px;">PolygonCollection</td><td style="width: 153px;">Collections</td></tr><tr><td style="width: 147px;">text</td><td style="width: 191px;">Text</td><td style="width: 153px;">texts</td></tr></tbody></table>
-                
+
             2. 方法：
     5. Axis容器
         1. Axis容器包括坐标轴上的刻度线、刻度文本、坐标网格以及坐标轴标题等内容。

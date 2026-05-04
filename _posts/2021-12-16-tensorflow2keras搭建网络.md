@@ -2,7 +2,7 @@
 layout: post
 title: "tensorflow2keras搭建网络"
 date: "2021-12-16"
-categories: ["计算机语言", "Python"]
+categories: ["计算机语言", "python"]
 ---
 
 六步：

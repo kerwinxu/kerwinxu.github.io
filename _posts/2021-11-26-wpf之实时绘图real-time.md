@@ -11,7 +11,7 @@ categories: ["计算机语言", "c"]
 
 网址 ： [https://github.com/varon/GLGraph](https://github.com/varon/GLGraph)
 
- 
+
 
 # WPF-Graph
 
@@ -23,7 +23,7 @@ categories: ["计算机语言", "c"]
 
 [https://github.com/kerwinxu/WPF-Graph2.git](https://github.com/kerwinxu/WPF-Graph2.git)
 
- 
+
 
 # ScottPlot
 
@@ -31,13 +31,13 @@ categories: ["计算机语言", "c"]
 
 [https://scottplot.net/demo/](https://scottplot.net/demo/)
 
- 
+
 
 # LiveCharts
 
 [https://v0.lvcharts.com/](https://v0.lvcharts.com/)
 
- 
+
 
 # OxyPlot
 

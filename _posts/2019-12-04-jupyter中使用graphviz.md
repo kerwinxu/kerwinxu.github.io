@@ -2,14 +2,14 @@
 layout: post
 title: "jupyter中使用graphviz"
 date: "2019-12-04"
-categories: ["计算机语言", "Python"]
+categories: ["计算机语言", "python"]
 ---
 
 首先安装 graphviz 这个软件，官网是 [http://graphviz.org/download/](http://graphviz.org/download/)
 
 然后运行 pip install graphviz
 
- 
+
 
 在jupyter中，需要这样做，如下是一个例子，是二叉树的
 
@@ -31,7 +31,7 @@ def show_BinTree(root_node):
             g.node(name=tree.right.data, )
             g.edge(tree.data, tree.right.data)
             recurve_tree(tree.right, g)
-        
+
     # 首先初始化这个吧。
     g = Digraph('二叉树')
     recurve_tree(root_node, g)

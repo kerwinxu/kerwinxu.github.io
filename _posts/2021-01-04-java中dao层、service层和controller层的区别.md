@@ -2,7 +2,7 @@
 layout: post
 title: "Java中DAO层、Service层和Controller层的区别"
 date: "2021-01-04"
-categories: 
+categories:
   - "java"
 ---
 
@@ -14,7 +14,7 @@ categories:
 
 **总结：** 个人理解DAO面向表，Service面向业务。后端开发时先数据库设计出所有表，然后对每一张表设计出DAO层，然后根据具体的业务逻辑进一步封装DAO层成一个Service层，对外提供成一个服务
 
- 
+
 
 **引用**
 

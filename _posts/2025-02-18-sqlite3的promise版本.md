@@ -2,7 +2,7 @@
 layout: post
 title: "sqlite3的promise版本"
 date: "2025-02-18"
-categories: ["计算机语言", "JavaScript"]
+categories: ["计算机语言", "javascript"]
 ---
 
 ```js

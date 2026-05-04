@@ -2,7 +2,7 @@
 layout: post
 title: "spring Security  登录角色权限授权"
 date: "2021-10-08"
-categories: 
+categories:
   - "java"
 ---
 
@@ -22,10 +22,10 @@ categories:
 
 ## WebSecurityConfigurerAdapter接口自定义Security策略
 
- 
+
 
 ## AuthenticationManagerBuilder：自定义认证策略
 
- 
+
 
 ## @EnableWebSecurity：开启WebSecurity模式

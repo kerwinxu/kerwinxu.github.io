@@ -2,7 +2,7 @@
 layout: post
 title: "Cause: dl.google.com:443 failed to respond"
 date: "2021-10-27"
-categories: 
+categories:
   - "java"
 ---
 

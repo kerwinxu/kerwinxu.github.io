@@ -11,14 +11,14 @@ categories: ["计算机语言", "c"]
 3. 在xaml文件中添加如下代码就可以
     1. ```
                     <avalonEdit:TextEditor
-                        xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit"  
+                        xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit"
                         Name="MyAvalonEdit"
                         FontFamily="Consolas"
-                        FontSize="10pt" 
-                        ShowLineNumbers="True" 
+                        FontSize="10pt"
+                        ShowLineNumbers="True"
                         LineNumbersForeground="#FF2B91AF" />
         ```
-        
+
 4. 如果需要语法高亮，就建立一个.xshd文件，比如sql.xshd ，然后将这个文件的生成操作设置成，内嵌的资源。
 5. 然后在代码中
     1. ```
@@ -28,8 +28,8 @@ categories: ["计算机语言", "c"]
             {
                 using (var reader = new System.Xml.XmlTextReader(stream))
                 {
-                    MyAvalonEdit.SyntaxHighlighting = 
-                        ICSharpCode.AvalonEdit.Highlighting.Xshd.HighlightingLoader.Load(reader, 
+                    MyAvalonEdit.SyntaxHighlighting =
+                        ICSharpCode.AvalonEdit.Highlighting.Xshd.HighlightingLoader.Load(reader,
                         ICSharpCode.AvalonEdit.Highlighting.HighlightingManager.Instance);
                 }
             }

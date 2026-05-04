@@ -9,37 +9,37 @@ categories: ["计算机语言", "c"]
 
 ```
 const string outputFilename = @"c:\temp\linked.docx";
-                         
+
 using (var wordDocument = WordprocessingDocument.Create(outputFilename, WordprocessingDocumentType.Document)) {
     var mainPart = wordDocument.AddMainDocumentPart();
- 
+
     // Create the document structure and add some text.
     var doc = mainPart.Document = new Document();
     var body = doc.AppendChild(new Body());
- 
+
     // Start a paragraph with some text
     var para = body.AppendChild(new Paragraph());
     var run = para.AppendChild(new Run());
     run.AppendChild(new Text("This is a formatted hyperlink: ") {
         Space = SpaceProcessingModeValues.Preserve // Need this so the trailing space is preserved.
     });
- 
+
     // Create a hyperlink relationship. Pass the relationship id to the hyperlink below.
     var rel = wordDocument.MainDocumentPart.AddHyperlinkRelationship(new Uri("http://www.example.com/"), true);
-                 
+
     // Append the hyperlink with formatting.
     para.AppendChild(
         new Hyperlink(
             new Run(
                 new RunProperties(
                     // This should be enough if starting with a template
-                    new RunStyle { Val = "Hyperlink", }, 
+                    new RunStyle { Val = "Hyperlink", },
                     // Add these settings to style the link yourself
                     new Underline { Val = UnderlineValues.Single },
                     new Color { ThemeColor = ThemeColorValues.Hyperlink }),
                 new Text { Text = "Click Here"}
             )) { History = OnOffValue.FromBoolean(true), Id = rel.Id });
- 
+
     doc.Save();
 }
 ```

@@ -147,7 +147,7 @@ class Program
 
 [![no img]](http://127.0.0.1/?attachment_id=3923)
 
- 
+
 
 数据库建好后，按照上一节介绍的步骤我们直接通过向导来生成EF代码。
 
@@ -284,7 +284,7 @@ class Program
 
 ```
 
- 
+
 
 ```
 class Program

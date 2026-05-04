@@ -2,13 +2,13 @@
 layout: post
 title: "使用MyBatis Generator逆向工程报错：元素类型为 \"context\" 的内容必须匹配"
 date: "2020-08-27"
-categories: 
+categories:
   - "java"
 ---
 
 配置文件 generatorConfig.xml 里面的context的子元素必须按照它给出的顺序，如下是我找的一个正确的顺序
 
- 
+
 
 ```
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -21,7 +21,7 @@ categories:
     <context id="context" targetRuntime="MyBatis3">
     <!--定义生成的java类的编码格式-->
         <property name="javaFileEncoding" value="UTF-8"/>
-        
+
         <!--suppressAllComments 设置为true 则不再生成注释-->
         <commentGenerator>
             <property name="suppressAllComments" value="true" />

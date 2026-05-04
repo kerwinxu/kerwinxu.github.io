@@ -2,7 +2,7 @@
 layout: post
 title: "backtrader之Cerebro"
 date: "2017-11-11"
-categories: ["计算机语言", "Python"]
+categories: ["计算机语言", "python"]
 tags:
   - python
   - backtrader

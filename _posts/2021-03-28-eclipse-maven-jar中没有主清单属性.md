@@ -2,14 +2,14 @@
 layout: post
 title: "eclipse maven jar中没有主清单属性"
 date: "2021-03-28"
-categories: 
+categories:
   - "java"
 ---
 
 打开pom.xml，添加如下内容
 
 1.  添加打包的依赖，这里用shade
-    
+
     ```
     <dependency>
       <groupId>org.apache.maven.plugins</groupId>
@@ -17,9 +17,9 @@ categories:
       <version>3.2.1</version>
     </dependency>
     ```
-    
+
 2. 添加build ，里边需要修改 <mainClass>com.xuhengxiao.shirosample.App</mainClass> ，起始的Main类。
-    
+
     ```
     <build>
         <plugins>

@@ -2,7 +2,7 @@
 layout: post
 title: "spring/mybatis的分页之用pageHelper实现"
 date: "2020-08-30"
-categories: 
+categories:
   - "java"
 ---
 
@@ -41,7 +41,7 @@ public PageInfo<StockDetail> getStockDetails(Integer pageNum, Integer pageSize)
 {
   Logger logger=Logger.getLogger(StockDetailController.class);
   logger.info(String.format("pageNum:%d,pageSize:%d", pageNum,pageSize));
-  
+
   PageHelper.startPage(pageNum,pageSize);
   List<StockDetail> stockDetails=stockDetailsMapper.getStockDetails();
   return new PageInfo<StockDetail>(stockDetails);

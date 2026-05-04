@@ -2,12 +2,12 @@
 layout: post
 title: "Eclipse更换Maven数据源方法"
 date: "2020-08-23"
-categories: 
+categories:
   - "java"
 ---
 
 1. 建立一个xml文件
-    
+
     ```
     <?xml version="1.0" encoding="UTF-8"?>
     <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
@@ -23,6 +23,6 @@ categories:
         </mirrors>
     </settings>
     ```
-    
-     
+
+
 2. Eclipse中Maven更换指定配置文件，具体是window/preference/maven/user setting ，我在global setting导入上边的文件了。

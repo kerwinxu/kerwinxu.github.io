@@ -2,14 +2,14 @@
 layout: post
 title: "SQLAlchemy总结"
 date: "2023-04-21"
-categories: ["计算机语言", "Python"]
+categories: ["计算机语言", "python"]
 ---
 
 # 重要概念
 
 <table style="border-collapse: collapse; width: 100%;"><tbody><tr><td style="width: 14.5454%;">概念</td><td style="width: 15.5151%;">对应数据库</td><td style="width: 69.9394%;">说明</td></tr><tr><td style="width: 14.5454%;">Engine</td><td style="width: 15.5151%;">连接</td><td style="width: 69.9394%;"></td></tr><tr><td style="width: 14.5454%;">Session</td><td style="width: 15.5151%;">连接池、事务</td><td style="width: 69.9394%;">由此开始查询</td></tr><tr><td style="width: 14.5454%;">Model</td><td style="width: 15.5151%;">表</td><td style="width: 69.9394%;">类定义和表定义类似，类定义本质上是其中一行</td></tr><tr><td style="width: 14.5454%;">Column</td><td style="width: 15.5151%;">列</td><td style="width: 69.9394%;">在各个地方支持运算符运算</td></tr><tr><td style="width: 14.5454%;">Query</td><td style="width: 15.5151%;">若干行</td><td style="width: 69.9394%;">可以链式操作添加条件，1，select，2，delete， 3，update</td></tr></tbody></table>
 
- 
+
 
 # 模型
 
@@ -141,7 +141,7 @@ query.filter(User.name.in_(
     session.query(User.name).filter(User.name.like('%ed%'))
 ))
 # not in
-query.filter(~User.name.in_(['ed', 'wendy', 'jack'])) 
+query.filter(~User.name.in_(['ed', 'wendy', 'jack']))
 
 # is
 query.filter(User.name == None)
@@ -198,7 +198,7 @@ db_session.close()
 #关闭会话
 ```
 
- 
+
 
 # 增改删查
 
@@ -210,9 +210,9 @@ db_session.close()
 
 ```
 
- 
 
- 
+
+
 
 # 关联关系
 
@@ -292,7 +292,7 @@ db_session.close()
 ...         self.keyword = keyword
 ```
 
- 
+
 
 # flush和commit的区别
 

@@ -2,7 +2,7 @@
 layout: post
 title: "pyqt的QListView多列问题"
 date: "2023-04-24"
-categories: ["计算机语言", "Python"]
+categories: ["计算机语言", "python"]
 ---
 
 关键的三个调用：
@@ -13,7 +13,7 @@ categories: ["计算机语言", "Python"]
 
 3\. setResizeMode(QListView::Adjust)//重要的不要不要的
 
- 
+
 
 另外该属性可以通过方法isWrapping()、setWrapping(bool enable)来进行访问或设置。
 

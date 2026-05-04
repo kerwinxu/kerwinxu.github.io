@@ -2,10 +2,10 @@
 layout: post
 title: "python科学运算之numpy"
 date: "2017-06-03"
-categories: ["计算机语言", "Python"]
+categories: ["计算机语言", "python"]
 ---
 
- 
+
 
 1. numpy提供了2中简单的对象
     1. ndarray : 存储单一数据类型的多维数组。

@@ -2,12 +2,12 @@
 layout: post
 title: "tensorflow学习之MNIST之CNN卷积神经网络）实现-识别手写数字"
 date: "2017-06-10"
-categories: ["计算机语言", "Python"]
+categories: ["计算机语言", "python"]
 ---
 
 全部源代码实现：
 
- 
+
 
 ```
 # -*- coding: utf-8 -*-
@@ -47,7 +47,7 @@ def weight_variable(shape):
 def bias_variable(shape):
   initial = tf.constant(0.1, shape=shape)
   return tf.Variable(initial)
-  
+
 #定义一个函数，用于构建卷积层
 def conv2d(x, W):
   return tf.nn.conv2d(x, W, strides=[1, 1, 1, 1], padding='SAME')
@@ -59,8 +59,8 @@ def max_pool(x):
 
 # 构建网络
 x_image = tf.reshape(x, [-1,28,28,1])         #转换输入数据shape,以便于用于网络中
-W_conv1 = weight_variable([5, 5, 1, 32])      
-b_conv1 = bias_variable([32])       
+W_conv1 = weight_variable([5, 5, 1, 32])
+b_conv1 = bias_variable([32])
 h_conv1 = tf.nn.relu(conv2d(x_image, W_conv1) + b_conv1)     #第一个卷积层
 h_pool1 = max_pool(h_conv1)                                  #第一个池化层
 
@@ -74,7 +74,7 @@ b_fc1 = bias_variable([1024])
 h_pool2_flat = tf.reshape(h_pool2, [-1, 7*7*64])              #reshape成向量
 h_fc1 = tf.nn.relu(tf.matmul(h_pool2_flat, W_fc1) + b_fc1)    #第一个全连接层
 
-keep_prob = tf.placeholder("float") 
+keep_prob = tf.placeholder("float")
 h_fc1_drop = tf.nn.dropout(h_fc1, keep_prob)                  #dropout层
 
 W_fc2 = weight_variable([1024, 10])

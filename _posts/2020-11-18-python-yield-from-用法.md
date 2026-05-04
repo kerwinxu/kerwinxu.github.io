@@ -2,7 +2,7 @@
 layout: post
 title: "python yield from 用法"
 date: "2020-11-18"
-categories: ["计算机语言", "Python"]
+categories: ["计算机语言", "python"]
 ---
 
 # 替代内层for循环
@@ -23,7 +23,7 @@ def chain(*iterables):
 - yield from x 表达式对 x 对象所做的第一件事是，调用 iter(x)，从中获取迭代器。因 此，x 可以是任何可迭代的对象。
 - 在这个示例中使用 yield from代码读起来更顺畅，不过感觉更像是语法糖。
 
- 
+
 
 例子:我们有一个嵌套型的序列，想将它扁平化处理为一列单独的值。
 
@@ -58,7 +58,7 @@ Lewis
 - 代码中额外的参数ignore types和检测语句isinstance(x, ignore types)用来将字符 串和字节排除在可迭代对象外，防止将它们再展开成单个的字符。
 - 如果这里不用yield from的话，那么就需要另外一个for来嵌套，并不是一种优雅的操作
 
- 
+
 
 例子2,一个利用一个Node类来表示树结构
 

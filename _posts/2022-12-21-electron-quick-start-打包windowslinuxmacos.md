@@ -2,7 +2,7 @@
 layout: post
 title: "electron-quick-start 打包windows,Linux,MacOS"
 date: "2022-12-21"
-categories: ["计算机语言", "JavaScript"]
+categories: ["计算机语言", "javascript"]
 ---
 
 这个是打包成exe文件，刚下载下来的Readme中，只有如下的：
@@ -25,7 +25,7 @@ npm start
 3. npm run make
 4. 完成后会生成out文件包，在里边有可执行文件。只是打包的exe文件实在是太大了。
 
- 
+
 
 # 引用
 

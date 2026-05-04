@@ -7,7 +7,7 @@ categories: ["计算机语言","python"]
 
 步骤
 
-1. 安装 pip install wfastcgi  
+1. 安装 pip install wfastcgi
 2. 在管理员权限cmd下启动wfastcgi-enable，得到类似这样的信息
 3. 新建一个网站，添加网站名称，路径以及端口。
 4. 网站里选择应用程序设置
@@ -19,9 +19,9 @@ categories: ["计算机语言","python"]
 7. static文件设置,
     1. 将setting.py中修改
         ```python
-		STATIC_URL = '/static/'   # 每个app下的资源文件夹都是这个名称  
+		STATIC_URL = '/static/'   # 每个app下的资源文件夹都是这个名称
 		STATIC_ROOT= os.path.join(BASE_DIR, 'static') # 会将所有的app下的目录都汇总到这个文件夹下
-		# 如下的是要追加 
+		# 如下的是要追加
 		TEMPLATES = [
 			{
 				"BACKEND": "django.template.backends.django.DjangoTemplates",

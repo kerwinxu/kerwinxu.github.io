@@ -2,7 +2,7 @@
 layout: post
 title: "wpf的DataGrid添加边框"
 date: "2025-11-10"
-categories: ["C#", "wpf"]
+categories: ["计算机语言", "csharp"]
 ---
 
 ```c#

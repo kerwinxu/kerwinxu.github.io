@@ -2,13 +2,13 @@
 layout: post
 title:  wpf中mvvmlight用后端处理鼠标等事件.
 date:   2025-4-9 10:48:00 +0800
-categories: ["计算机语言","c#"]
+categories: ["计算机语言","csharp"]
 project: false
 excerpt: wpf中mvvmlight用后端处理鼠标等事件.
 lang: zh
 published: true
 tag:
-- c#
+- csharp
 - wpf
 - mvvmlight
 - 鼠标事件
@@ -42,7 +42,7 @@ private void _show_portnames(EventArgs args)
 
 private RelayCommand<EventArgs> showPortNames;
 /// <summary>
-/// 
+///
 /// </summary>
 public RelayCommand<EventArgs> ShowPortNames
 {

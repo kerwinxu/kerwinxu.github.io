@@ -2,13 +2,13 @@
 layout: post
 title:  wpf中的TextBox在为空的时候提示文字
 date:   2025-4-8 10:57:00 +0800
-categories: ["计算机语言","c#"]
+categories: ["计算机语言","csharp"]
 project: false
 excerpt: wpf的TextBox在为空的时候提示文字
 lang: zh
 published: true
 tag:
-- c#
+- csharp
 - wpf
 - TextBox
 ---

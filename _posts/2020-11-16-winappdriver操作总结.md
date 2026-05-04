@@ -49,7 +49,7 @@ namespace 用WinAppDriver来自动化GUI
 
             AppiumOptions appiumOptions = new AppiumOptions();
 
-            
+
 
             appiumOptions.AddAdditionalCapability("app", @"C:\Windows\System32\notepad.exe");
 
@@ -94,7 +94,7 @@ namespace 用WinAppDriver来自动化GUI
 }
 ```
 
- 
+
 
 解释一下：
 
@@ -110,7 +110,7 @@ namespace 用WinAppDriver来自动化GUI
 
 <table style="border-collapse: collapse; width: 100%; height: 192px;"><tbody><tr style="height: 24px;"><td style="width: 25%; height: 24px;">函数名</td><td style="width: 25%; height: 24px;"></td><td style="width: 25%; height: 24px;">字段</td><td style="width: 25%; height: 24px;">例子</td></tr><tr style="height: 24px;"><td style="width: 25%; height: 24px;">FindElementByXPath</td><td style="width: 25%; height: 24px;"></td><td style="width: 25%; height: 24px;"></td><td style="width: 25%; height: 24px;">//Button</td></tr><tr style="height: 24px;"><td style="width: 25%; height: 24px;">FindElementByName</td><td style="width: 25%; height: 24px;"></td><td style="width: 25%; height: 24px;">Name</td><td style="width: 25%; height: 24px;">Calculator</td></tr><tr style="height: 24px;"><td style="width: 25%; height: 24px;">FindElementByClassName</td><td style="width: 25%; height: 24px;"></td><td style="width: 25%; height: 24px;">ClassName</td><td style="width: 25%; height: 24px;">TextBlock</td></tr><tr style="height: 24px;"><td style="width: 25%; height: 24px;">FindElementById</td><td style="width: 25%; height: 24px;"></td><td style="width: 25%; height: 24px;">RuntimeId</td><td style="width: 25%; height: 24px;"></td></tr><tr style="height: 24px;"><td style="width: 25%; height: 24px;">FindElementAccessibilityId</td><td style="width: 25%; height: 24px;"></td><td style="width: 25%; height: 24px;">AutomationId</td><td style="width: 25%; height: 24px;"></td></tr><tr style="height: 24px;"><td style="width: 25%; height: 24px;"></td><td style="width: 25%; height: 24px;"></td><td style="width: 25%; height: 24px;"></td><td style="width: 25%; height: 24px;"></td></tr><tr style="height: 24px;"><td style="width: 25%; height: 24px;"></td><td style="width: 25%; height: 24px;"></td><td style="width: 25%; height: 24px;"></td><td style="width: 25%; height: 24px;"></td></tr></tbody></table>
 
- 
+
 
 # 按键
 
@@ -136,7 +136,7 @@ mouseOverTextBox3.moveToElement(textBox3, 50, 50);
 mouseOverTextBox3.perform();
 ```
 
- 
+
 
 # 参考：
 

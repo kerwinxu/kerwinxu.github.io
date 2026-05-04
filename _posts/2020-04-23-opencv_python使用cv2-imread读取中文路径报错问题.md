@@ -2,14 +2,14 @@
 layout: post
 title: "opencv_python使用cv2.imread()读取中文路径报错问题"
 date: "2020-04-23"
-categories: ["计算机语言", "Python"]
+categories: ["计算机语言", "python"]
 ---
 
 ```
 # -*- coding: utf-8 -*-
 import cv2
 import numpy as np
- 
+
 ## 读取图像，解决imread不能读取中文路径的问题
 def cv_imread(filePath):
     cv_img=cv2.imdecode(np.fromfile(filePath,dtype=np.uint8),-1)

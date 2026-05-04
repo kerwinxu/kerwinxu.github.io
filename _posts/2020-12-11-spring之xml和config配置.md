@@ -2,7 +2,7 @@
 layout: post
 title: "spring之xml和config配置"
 date: "2020-12-11"
-categories: 
+categories:
   - "java"
 ---
 
@@ -19,7 +19,7 @@ package com.yiibai.core;
 
 /**
  * Spring bean
- * 
+ *
  */
 public class HelloWorld {
   private String name;
@@ -31,7 +31,7 @@ public class HelloWorld {
   public void printHello() {
     System.out.println("Spring 3 : Hello ! " + name);
   }
-} 
+}
 
 ```
 
@@ -65,13 +65,13 @@ public class App {
         "applicationContext.xml"); HelloWorld obj = (HelloWorld) context.getBean("helloBean");
     obj.printHello();
   }
-} 
+}
 
 ```
 
 简单点，如果要修改成其他的类或者属性，只要再xml配置中修改一下就可以了，松耦合。
 
- 
+
 
 # config配置方式
 
@@ -81,11 +81,11 @@ public class App {
 
 ```
 package com.yiibai.hello;
- 
+
 public interface HelloWorld {
-  
+
   void printHelloWorld(String msg);
- 
+
 }
 ```
 
@@ -117,12 +117,12 @@ import com.yiibai.hello.impl.HelloWorldImpl;
 
 @Configuration
 public class AppConfig {
-  
+
     @Bean(name="helloBean")
     public HelloWorld helloWorld() {
         return new HelloWorldImpl();
     }
-  
+
 }
 ```
 
@@ -130,18 +130,18 @@ public class AppConfig {
 
 ```
 package com.yiibai.core;
- 
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import com.yiibai.config.AppConfig;
 import com.yiibai.hello.HelloWorld;
- 
+
 public class App {
   public static void main(String[] args) {
-      
+
             ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
       HelloWorld obj = (HelloWorld) context.getBean("helloBean");
-      
+
       obj.printHelloWorld("Spring Java Config");
 
   }

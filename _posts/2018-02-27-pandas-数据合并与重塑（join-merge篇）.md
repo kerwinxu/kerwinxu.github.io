@@ -2,7 +2,7 @@
 layout: post
 title: "PANDAS 数据合并与重塑（join/merge篇）"
 date: "2018-02-27"
-categories: ["计算机语言", "Python"]
+categories: ["计算机语言", "python"]
 ---
 
 在[上一篇](http://blog.csdn.net/stevenkwong/article/details/52528616)文章中，我整理了pandas在数据合并和重塑中常用到的concat方法的使用说明。在这里，将接着介绍pandas中也常常用到的join 和merge方法
@@ -52,13 +52,13 @@ In [41]: left = pd.DataFrame({'key1': ['K0', 'K0', 'K1', 'K2'],
    ....:                      'key2': ['K0', 'K1', 'K0', 'K1'],
    ....:                      'A': ['A0', 'A1', 'A2', 'A3'],
    ....:                      'B': ['B0', 'B1', 'B2', 'B3']})
-   ....: 
+   ....:
 
 In [42]: right = pd.DataFrame({'key1': ['K0', 'K1', 'K1', 'K2'],
    ....:                       'key2': ['K0', 'K0', 'K0', 'K0'],
    ....:                       'C': ['C0', 'C1', 'C2', 'C3'],
    ....:                       'D': ['D0', 'D1', 'D2', 'D3']})
-   ....: 
+   ....:
 
 In [43]: result = pd.merge(left, right, on=['key1', 'key2'])
 ```
@@ -157,12 +157,12 @@ ex 1
 In [59]: left = pd.DataFrame({'A': ['A0', 'A1', 'A2', 'A3'],
    ....:                      'B': ['B0', 'B1', 'B2', 'B3'],
    ....:                      'key': ['K0', 'K1', 'K0', 'K1']})
-   ....: 
+   ....:
 
 In [60]: right = pd.DataFrame({'C': ['C0', 'C1'],
    ....:                       'D': ['D0', 'D1']},
    ....:                       index=['K0', 'K1'])
-   ....: 
+   ....:
 
 In [61]: result = left.join(right, on='key')
 ```

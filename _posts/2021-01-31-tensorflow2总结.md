@@ -2,7 +2,7 @@
 layout: post
 title: "tensorflow2总结"
 date: "2021-01-31"
-categories: ["计算机语言", "Python"]
+categories: ["计算机语言", "python"]
 ---
 
 # 构造模型
@@ -60,7 +60,7 @@ model.compile(optimizer=tf.keras.optimizers.RMSprop(0.001),
 model.fit(train_x, train_y, batch_size=16, epochs=5)
 ```
 
- 
+
 
 # 网络配置
 

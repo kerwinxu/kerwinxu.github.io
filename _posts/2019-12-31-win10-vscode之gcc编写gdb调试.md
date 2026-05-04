@@ -36,12 +36,12 @@ categories:  ["计算机语言", "c"]
             ],
           // 所以以上部分，就是在shell中执行（假设文件名为filename.cpp）
           // g++ filename.cpp -o filename.exe
-            "group": { 
+            "group": {
                 "kind": "build",
-                "isDefault": true   
+                "isDefault": true
                 // 任务分组，因为是tasks而不是task，意味着可以连着执行很多任务
                 // 在build组的任务们，可以通过在Command Palette(F1) 输入run build task来运行
-                // 当然，如果任务分组是test，你就可以用run test task来运行 
+                // 当然，如果任务分组是test，你就可以用run test task来运行
             },
             "problemMatcher": [
                 "$gcc" // 使用gcc捕获错误

@@ -66,7 +66,7 @@ categories: ["计算机语言", "c"]
     public static class Extension
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="element"></param>

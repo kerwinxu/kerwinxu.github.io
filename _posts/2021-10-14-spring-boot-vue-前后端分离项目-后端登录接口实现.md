@@ -2,7 +2,7 @@
 layout: post
 title: "Spring Boot + Vue 前后端分离项目 -- 后端登录接口实现"
 date: "2021-10-14"
-categories: 
+categories:
   - "java"
 ---
 
@@ -57,35 +57,35 @@ import com.bocsh.mer.security.MyUserDetailsService;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    
+
     @Autowired
     MyUserDetailsService myDetailService;
-    
+
     @Autowired
     private AuthenticationDetailsSource<HttpServletRequest, WebAuthenticationDetails> authenticationDetailsSource;
-    
+
     protected Log log = LogFactory.getLog(this.getClass());
-    
+
     @Autowired
-    private AuthenticationProvider authenticationProvider; 
+    private AuthenticationProvider authenticationProvider;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        
+
         auth.authenticationProvider(authenticationProvider);
     }
-    
+
     //定义登陆成功返回信息
     private class AjaxAuthSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
         @Override
         public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-            
+
             //User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             log.info("商户[" + SecurityContextHolder.getContext().getAuthentication().getPrincipal() +"]登陆成功！");
             //登陆成功后移除session中验证码信息
             request.getSession().removeAttribute("codeValue");
             request.getSession().removeAttribute("codeTime");
-            
+
             response.setContentType("application/json;charset=utf-8");
             PrintWriter out = response.getWriter();
             out.write("{\"status\":\"ok\",\"msg\":\"登录成功\"}");
@@ -93,7 +93,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             out.close();
         }
     }
-    
+
     //定义登陆失败返回信息
     private class AjaxAuthFailHandler extends SimpleUrlAuthenticationFailureHandler {
         @Override
@@ -101,7 +101,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             //登陆失败后移除session中验证码信息
             request.getSession().removeAttribute("codeValue");
             request.getSession().removeAttribute("codeTime");
-            
+
             response.setContentType("application/json;charset=utf-8");
             response.setStatus(HttpStatus.UNAUTHORIZED.value());
             PrintWriter out = response.getWriter();
@@ -110,7 +110,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             out.close();
         }
     }
-    
+
     //定义异常返回信息
     public class UnauthorizedEntryPoint implements AuthenticationEntryPoint {
         @Override
@@ -119,7 +119,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         }
 
     }
-    
+
     //定义登出成功返回信息
     private class AjaxLogoutSuccessHandler extends SimpleUrlLogoutSuccessHandler  {
 
@@ -132,14 +132,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             out.close();
         }
     }
-    
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
         .exceptionHandling().authenticationEntryPoint(new UnauthorizedEntryPoint())
         .and()
         .csrf().disable()
-        .authorizeRequests()                   
+        .authorizeRequests()
             .antMatchers("/users/login_page","/users/captcha").permitAll()
             .anyRequest().authenticated()
             .and().formLogin().loginPage("/users/login_page")
@@ -180,7 +180,7 @@ instance.interceptors.response.use(res => {
 
 这里面我们定义了一个响应拦截器，在error情况下，判断若返回码为401（就是我们在spring security中自定义的handler的错误状态码），则自动跳转至登陆页面。这样实现了在会话失效的情况下，点击前端任意需要访问后端api的按钮，均会触发跳转登录首页的效果，符合我们的预期。实际情况中一般前端框架都会自己带一套基于cookies的认证机制，这里我们把cookies的失效时间可以设置的长一点（一般可以设为一天），以保障还是以后端会话的失效时间为准。
 
- 
+
 
 # 引用
 

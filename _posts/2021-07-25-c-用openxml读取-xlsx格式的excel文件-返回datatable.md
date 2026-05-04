@@ -112,7 +112,7 @@ public static class ExcelHelper
                   int rowCount = sheetData.Elements<Row>().Count();
                   if (rowCount > 0) // 如果有内容。
                   {
-                      
+
                       IEnumerable<Row> rows = sheetData.Elements<Row>();
                       int columnIndex = 0;  // 当前列的下标。
                       var charcolumn = 1; // 这个表示用数字表示的列名，从1开始吧。
@@ -218,9 +218,9 @@ public static class ExcelHelper
   }
 ```
 
- 
 
- 
+
+
 
 # 如下是返回DataTable
 
@@ -340,7 +340,7 @@ public static class Excel2DataSet
 
                 formatid = cf.NumberFormatId;
 
-      
+
 
                 if (cell != null && cell.InnerText.Length > 0)
                 {

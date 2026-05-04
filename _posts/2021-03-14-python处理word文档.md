@@ -2,7 +2,7 @@
 layout: post
 title: "python处理word文档"
 date: "2021-03-14"
-categories: ["计算机语言", "Python"]
+categories: ["计算机语言", "python"]
 ---
 
 # **基本使用：自动生成文档**
@@ -156,7 +156,7 @@ for s in styles:
         heading_cells[1].text = '第二列内容'
         heading_cells[2].text = '第三列内容'
         document.add_paragraph('\n')
- 
+
 document.save(path.joinpath('003word_table_template.docx'))
 ```
 

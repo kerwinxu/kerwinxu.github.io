@@ -113,15 +113,15 @@ namespace MVVMLightDemo.ViewModel
 
 1. 更改App.xaml中的StartupUri="xxx.xaml" 为Startup="Application\_Startup"
 2. 在App.xaml.cs中添加Application\_Startup方法
-    
+
     ```
     private void Application_Startup(object sender, StartupEventArgs e)
        {
            Application.Current.StartupUri = new Uri("View/UserInfoWindow.xaml", UriKind.Relative);//View目录下
        }
     ```
-    
-     
+
+
 
 ### 修改构造器文件ViewModelLocator.cs
 
@@ -134,7 +134,7 @@ namespace MVVMLightDemo.ViewModel
       <vm:ViewModelLocator xmlns:vm="clr-namespace:WpfApp1"
                            x:Key="Locator" />
   </Application.Resources>
-  
+
   In the View:
   DataContext="{Binding Source={StaticResource Locator}, Path=ViewModelName}"
 
@@ -192,7 +192,7 @@ namespace WpfApp1.ViewModel
                 return ServiceLocator.Current.GetInstance<WelcomeViewModel>();
             }
         }
-        
+
         public static void Cleanup()
         {
             // TODO Clear the ViewModels
@@ -204,10 +204,10 @@ namespace WpfApp1.ViewModel
 这样每个ViewModel就有一个实例在构造器中，构造器本身是在 App.xaml 中启动的，另外关于这个文件的StartupUri是启动窗口。
 
 ```
-<Application x:Class="WpfApp1.App" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
-             xmlns:local="clr-namespace:WpfApp1" 
-             StartupUri="WelcomeView.xaml" 
+<Application x:Class="WpfApp1.App" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:WpfApp1"
+             StartupUri="WelcomeView.xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" d1p1:Ignorable="d" xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006">
     <Application.Resources>
         <ResourceDictionary>
@@ -239,7 +239,7 @@ namespace WpfApp1.ViewModel
 </Window>
 ```
 
- 
+
 
 ## 小总结
 
@@ -257,7 +257,7 @@ namespace WpfApp1.ViewModel
     - RaisePropertyChanged(()=>属性) ; 属性改变后会通知其他的。
 - Model ， 模型继承自 ObservableObject  ，实现 INotifyPropertyChanged 接口，数据改变后会通知其他的。
 
- 
+
 
 # 命令
 
@@ -269,7 +269,7 @@ View <-> ViewModel <-> Model ,
 
 View <-> 命令 <-> ViewModel <-> Model
 
- 
+
 
 ## ICommand 接口
 
@@ -286,7 +286,7 @@ ICommand 公开了两个方法（Execute 及 CanExecute）和一个事件（CanE
 
 怎么说呢，这些参数全部可以在后台的ViewModel的，我直接从后台读取就是了。
 
- 
+
 
 # 多线程
 
@@ -297,7 +297,7 @@ wpf的多线程跟winform的不一样，ViewModel 不从 DispatcherObject 继承
 1. DispatcherHelper.Initialize(); 这个是初始化
 2. DispatcherHelper.CheckBeginInvokeOnUI(() => 在多线程中是这样访问界面的。
 
- 
+
 
 # Messenger
 

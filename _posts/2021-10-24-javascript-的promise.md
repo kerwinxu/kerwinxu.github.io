@@ -2,7 +2,7 @@
 layout: post
 title: "JavaScript 的promise"
 date: "2021-10-24"
-categories: ["计算机语言", "JavaScript"]
+categories: ["计算机语言", "javascript"]
 ---
 
 ```
@@ -29,7 +29,7 @@ getFile('/etc/passwd')
 
 最终下标的调用，成功的话会调用then，而失败的话会调用catch。
 
- 
+
 
 关于promise链式例子如下：
 

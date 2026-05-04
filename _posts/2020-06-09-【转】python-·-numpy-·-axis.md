@@ -2,7 +2,7 @@
 layout: post
 title: "【转】Python · numpy · axis"
 date: "2020-06-09"
-categories: ["计算机语言", "Python"]
+categories: ["计算机语言", "python"]
 ---
 
 观众老爷们大家好！最近实在太忙，回首一看上篇专栏文章已经是 4 个月前的事了，所以今天想着写出一篇来撑撑场子（喂
@@ -36,10 +36,10 @@ categories: ["计算机语言", "Python"]
 
 pandas和numpy对于axis参数的使用是一致的，从[numpy官方术语表](https://link.jianshu.com?t=https%3A%2F%2Fdocs.scipy.org%2Fdoc%2Fnumpy%2Fglossary.html)对于axis的释义可知一二。 Axes are defined for arrays with more than one dimension. A 2-dimensional array has two corresponding axes: the first running **vertically downwards across rows (axis 0)**, and the second running **horizontally across columns (axis 1)**.
 
- 
+
 
 # 引用
 
- 
+
 
 - [Python · numpy · axis](https://zhuanlan.zhihu.com/p/30960190)

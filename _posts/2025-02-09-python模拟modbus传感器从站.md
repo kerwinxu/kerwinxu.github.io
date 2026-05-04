@@ -2,7 +2,7 @@
 layout: post
 title: "python模拟modbus传感器从站"
 date: "2025-02-09"
-categories: ["计算机语言", "Python"]
+categories: ["计算机语言", "python"]
 ---
 
 ```python
@@ -35,10 +35,10 @@ while True:
 
 
 
-  
 
 
-  
-  
+
+
+
 
 ```

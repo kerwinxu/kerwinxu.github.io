@@ -4862,24 +4862,24 @@ using HANDLE = System.IntPtr;
 
 namespace Win32
 {
-    public struct DRAGINFO 
+    public struct DRAGINFO
     {
-        public int uSize; 
+        public int uSize;
         public POINT pt;
         public int fNC;
         public string lpFileList;
         public int grfKeyState;
     }
-    public struct APPBARDATA 
+    public struct APPBARDATA
     {
         public int cbSize;
         public HWND hwnd;
         public int uCallbackMessage;
         public int uEdge;
         public RECT rc;
-        public int lParam; 
+        public int lParam;
     }
-    public struct SHFILEOPSTRUCT 
+    public struct SHFILEOPSTRUCT
     {
         public HWND hwnd;
         public int wFunc;
@@ -4888,16 +4888,16 @@ namespace Win32
         public short fFlags;
         public int fAnyOperationsAborted;
         public HANDLE hNameMappings;
-        public string lpszProgressTitle; 
+        public string lpszProgressTitle;
     }
-    public struct SHNAMEMAPPING 
+    public struct SHNAMEMAPPING
     {
         public string pszOldPath;
         public string pszNewPath;
         public int cchOldPath;
         public int cchNewPath;
     }
-    public struct SHELLEXECUTEINFO 
+    public struct SHELLEXECUTEINFO
     {
         public int cbSize;
         public int fMask;
@@ -4915,7 +4915,7 @@ namespace Win32
         public HANDLE hIcon;
         public HANDLE hProcess;
     }
-    public struct NOTIFYICONDATA 
+    public struct NOTIFYICONDATA
     {
         public int cbSize;
         public HWND hwnd;
@@ -4925,13 +4925,13 @@ namespace Win32
         public HANDLE hIcon;
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst=64)] public string szTip;
     }
-    public struct SHFILEINFO 
+    public struct SHFILEINFO
     {
-        public HANDLE hIcon; 
-        public int iIcon; 
-        public int dwAttributes; 
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst=Kernel.MAX_PATH)]public string szDisplayName; 
-        [MarshalAs(UnmanagedType.ByValTStr, SizeConst=80)] public string szTypeName; 
+        public HANDLE hIcon;
+        public int iIcon;
+        public int dwAttributes;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst=Kernel.MAX_PATH)]public string szDisplayName;
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst=80)] public string szTypeName;
     }
 
     public abstract class Shell
@@ -4963,33 +4963,33 @@ namespace Win32
         public const int ABE_LEFT = 0;
         public const int ABE_RIGHT = 2;
         public const int ABE_TOP = 1;
-        public const int ABM_ACTIVATE = 0x6; 
+        public const int ABM_ACTIVATE = 0x6;
         public const int ABM_GETAUTOHIDEBAR = 0x7;
         public const int ABM_GETSTATE = 0x4;
         public const int ABM_GETTASKBARPOS = 0x5;
         public const int ABM_NEW = 0x0;
         public const int ABM_QUERYPOS = 0x2;
         public const int ABM_REMOVE = 0x1;
-        public const int ABM_SETAUTOHIDEBAR = 0x8; 
+        public const int ABM_SETAUTOHIDEBAR = 0x8;
         public const int ABM_SETPOS = 0x3;
         public const int ABM_WINDOWPOSCHANGED = 0x9;
         public const int ABN_FULLSCREENAPP = 0x2;
         public const int ABN_POSCHANGED = 0x1;
         public const int ABN_STATECHANGE = 0x0;
-        public const int ABN_WINDOWARRANGE = 0x3; 
+        public const int ABN_WINDOWARRANGE = 0x3;
         public const int ABS_ALWAYSONTOP = 0x2;
         public const int ABS_AUTOHIDE = 0x1;
         public const int EIRESID = -1;
         public const int FOF_ALLOWUNDO = 0x40;
         public const int FOF_CONFIRMMOUSE = 0x2;
-        public const int FOF_FILESONLY = 0x80; 
+        public const int FOF_FILESONLY = 0x80;
         public const int FOF_MULTIDESTFILES = 0x1;
-        public const int FOF_NOCONFIRMATION = 0x10; 
-        public const int FOF_NOCONFIRMMKDIR = 0x200; 
+        public const int FOF_NOCONFIRMATION = 0x10;
+        public const int FOF_NOCONFIRMMKDIR = 0x200;
         public const int FOF_RENAMEONCOLLISION = 0x8;
-        public const int FOF_SILENT = 0x4; 
-        public const int FOF_SIMPLEPROGRESS = 0x100; 
-        public const int FOF_WANTMAPPINGHANDLE = 0x20; 
+        public const int FOF_SILENT = 0x4;
+        public const int FOF_SIMPLEPROGRESS = 0x100;
+        public const int FOF_WANTMAPPINGHANDLE = 0x20;
         public const int FO_COPY = 0x2;
         public const int FO_DELETE = 0x3;
         public const int FO_MOVE = 0x1;
@@ -5000,10 +5000,10 @@ namespace Win32
         public const int NIM_ADD = 0x0;
         public const int NIM_DELETE = 0x2;
         public const int NIM_MODIFY = 0x1;
-        public const int PO_DELETE = 0x13; 
-        public const int PO_PORTCHANGE = 0x20; 
-        public const int PO_RENAME = 0x14; 
-        public const int PO_REN_PORT = 0x34; 
+        public const int PO_DELETE = 0x13;
+        public const int PO_PORTCHANGE = 0x20;
+        public const int PO_RENAME = 0x14;
+        public const int PO_REN_PORT = 0x34;
         public const int SEE_MASK_CLASSKEY = 0x3;
         public const int SEE_MASK_CLASSNAME = 0x1;
         public const int SEE_MASK_CONNECTNETDRV = 0x80;
@@ -5015,34 +5015,34 @@ namespace Win32
         public const int SEE_MASK_IDLIST = 0x4;
         public const int SEE_MASK_INVOKEIDLIST = 0xC;
         public const int SEE_MASK_NOCLOSEPROCESS = 0x40;
-        public const int SE_ERR_ACCESSDENIED = 5; 
+        public const int SE_ERR_ACCESSDENIED = 5;
         public const int SE_ERR_ASSOCINCOMPLETE = 27;
         public const int SE_ERR_DDEBUSY = 30;
         public const int SE_ERR_DDEFAIL = 29;
         public const int SE_ERR_DDETIMEOUT = 28;
         public const int SE_ERR_DLLNOTFOUND = 32;
-        public const int SE_ERR_FNF = 2; 
+        public const int SE_ERR_FNF = 2;
         public const int SE_ERR_NOASSOC = 31;
-        public const int SE_ERR_OOM = 8; 
-        public const int SE_ERR_PNF = 3; 
+        public const int SE_ERR_OOM = 8;
+        public const int SE_ERR_PNF = 3;
         public const int SE_ERR_SHARE = 26;
-        public const int SHGFI_ATTRIBUTES = 0x800; 
-        public const int SHGFI_DISPLAYNAME = 0x200; 
-        public const int SHGFI_EXETYPE = 0x2000; 
-        public const int SHGFI_ICON = 0x100; 
-        public const int SHGFI_ICONLOCATION = 0x1000; 
-        public const int SHGFI_LARGEICON = 0x0; 
-        public const int SHGFI_LINKOVERLAY = 0x8000; 
-        public const int SHGFI_OPENICON = 0x2; 
-        public const int SHGFI_PIDL = 0x8; 
-        public const int SHGFI_SELECTED = 0x10000; 
-        public const int SHGFI_SHELLICONSIZE = 0x4; 
-        public const int SHGFI_SMALLICON = 0x1; 
-        public const int SHGFI_SYSICONINDEX = 0x4000; 
-        public const int SHGFI_TYPENAME = 0x400; 
-        public const int SHGFI_USEFILEATTRIBUTES = 0x10; 
-        public const int SHGNLI_PIDL = 0x1; 
-        public const int SHGNLI_PREFIXNAME = 0x2; 
+        public const int SHGFI_ATTRIBUTES = 0x800;
+        public const int SHGFI_DISPLAYNAME = 0x200;
+        public const int SHGFI_EXETYPE = 0x2000;
+        public const int SHGFI_ICON = 0x100;
+        public const int SHGFI_ICONLOCATION = 0x1000;
+        public const int SHGFI_LARGEICON = 0x0;
+        public const int SHGFI_LINKOVERLAY = 0x8000;
+        public const int SHGFI_OPENICON = 0x2;
+        public const int SHGFI_PIDL = 0x8;
+        public const int SHGFI_SELECTED = 0x10000;
+        public const int SHGFI_SHELLICONSIZE = 0x4;
+        public const int SHGFI_SMALLICON = 0x1;
+        public const int SHGFI_SYSICONINDEX = 0x4000;
+        public const int SHGFI_TYPENAME = 0x400;
+        public const int SHGFI_USEFILEATTRIBUTES = 0x10;
+        public const int SHGNLI_PIDL = 0x1;
+        public const int SHGNLI_PREFIXNAME = 0x2;
     }
 }
 ```

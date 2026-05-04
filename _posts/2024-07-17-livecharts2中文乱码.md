@@ -2,7 +2,7 @@
 layout: post
 title: "LiveCharts2中文乱码"
 date: "2024-07-17"
-categories: ["计算机语言", "c#"]
+categories: ["计算机语言", "csharp"]
 ---
 
 ```c#

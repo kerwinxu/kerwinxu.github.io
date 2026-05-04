@@ -2,7 +2,7 @@
 layout: post
 title: "spring基于注解装配Bean"
 date: "2021-10-04"
-categories: 
+categories:
   - "java"
 ---
 
@@ -20,7 +20,7 @@ Spring 将 name 属性解析为 Bean 的实例名称，type 属性解析为 Bean
 
 而@Autowired和@Resource是自动装配，比如@Resource(name\="userDao")是装配id为userDao的对象。
 
- 
+
 
 # 示例
 
@@ -74,10 +74,10 @@ import org.springframework.stereotype.Service;
 
 @Service("userService")
 public class UserServiceImpl implements UserService{
-   
+
     @Resource(name="userDao")
     private UserDao userDao;
-   
+
 
     public UserDao getUserDao() {
         return userDao;
@@ -159,7 +159,7 @@ public class MainApp {
 }
 ```
 
- 
+
 
 运行结果：
 

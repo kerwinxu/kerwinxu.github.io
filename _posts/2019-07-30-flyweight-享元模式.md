@@ -51,7 +51,7 @@ categories:  ["计算机", "设计模式"]
                 fb.Operation(--externalstate);
             }
             // 判断是否已经创建了字母C
-            Flyweight fc = factory.GetFlyweight("C");
+            Flyweight fc = factory.GetFlyweight("c");
             if (fc != null)
             {
                 fc.Operation(--externalstate);
@@ -87,7 +87,7 @@ categories:  ["计算机", "设计模式"]
         {
             flyweights.Add("A", new ConcreteFlyweight("A"));
             flyweights.Add("B", new ConcreteFlyweight("B"));
-            flyweights.Add("C", new ConcreteFlyweight("C"));
+            flyweights.Add("c", new ConcreteFlyweight("c"));
         }
 
         public Flyweight GetFlyweight(string key)

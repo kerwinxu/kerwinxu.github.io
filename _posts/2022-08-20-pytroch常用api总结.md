@@ -2,12 +2,12 @@
 layout: post
 title: "PyTroch常用API总结"
 date: "2022-08-20"
-categories: ["计算机语言", "Python"]
+categories: ["计算机语言", "python"]
 ---
 
 # 张量创建
 
- 
+
 
 <table style="border-collapse: collapse; width: 100%; height: 240px;"><tbody><tr style="height: 24px;"><td style="width: 18.9091%; height: 24px;">torch.tensor()</td><td style="width: 68.3636%; height: 24px;"></td></tr><tr style="height: 24px;"><td style="width: 18.9091%; height: 24px;">torch.zeros()</td><td style="width: 68.3636%; height: 24px;">&nbsp;数据为0的</td></tr><tr style="height: 24px;"><td style="width: 18.9091%; height: 24px;">torch.zeros_like()</td><td style="width: 68.3636%; height: 24px;">大小与inpurt的张量，但数据为0</td></tr><tr style="height: 24px;"><td style="width: 18.9091%; height: 24px;">torch.ones()</td><td style="width: 68.3636%; height: 24px;">数据为1</td></tr><tr style="height: 24px;"><td style="width: 18.9091%; height: 24px;">torch.ones_like()</td><td style="width: 68.3636%; height: 24px;">大小与inpurt的张量，但数据为1</td></tr><tr style="height: 24px;"><td style="width: 18.9091%; height: 24px;">torch.full()</td><td style="width: 68.3636%; height: 24px;">torch.full(size, full_value) #</td></tr><tr style="height: 24px;"><td style="width: 18.9091%; height: 24px;">torch.full_like()</td><td style="width: 68.3636%; height: 24px;">torch.full_like(input, full_value)</td></tr><tr style="height: 24px;"><td style="width: 18.9091%; height: 24px;">torch.arange()</td><td style="width: 68.3636%; height: 24px;">torch.arange(start=0,end,step=1)</td></tr><tr style="height: 24px;"><td style="width: 18.9091%; height: 24px;">torch.linspace()</td><td style="width: 68.3636%; height: 24px;">torch.linspace(start, end, steps=100, out=None) → Tensor ,steps (int) - 在start和end间生成的样本数</td></tr><tr style="height: 24px;"><td style="width: 18.9091%; height: 24px;">torch.eye()</td><td style="width: 68.3636%; height: 24px;">对角线位置全是1</td></tr><tr><td style="width: 18.9091%;">torch.normal()</td><td style="width: 68.3636%;">torch.normal (means, std, out=None)</td></tr><tr><td style="width: 18.9091%;">torch.randn()</td><td style="width: 68.3636%;"></td></tr><tr><td style="width: 18.9091%;">torch.randn_like()</td><td style="width: 68.3636%;"></td></tr><tr><td style="width: 18.9091%;">torch.rand()</td><td style="width: 68.3636%;"></td></tr><tr><td style="width: 18.9091%;">torch.rand_like()</td><td style="width: 68.3636%;"></td></tr><tr><td style="width: 18.9091%;">torch.randint()</td><td style="width: 68.3636%;"></td></tr><tr><td style="width: 18.9091%;">torch.randint_like()</td><td style="width: 68.3636%;"></td></tr><tr><td style="width: 18.9091%;">torch.randperm()</td><td style="width: 68.3636%;"></td></tr><tr><td style="width: 18.9091%;">torch.bernoulli()</td><td style="width: 68.3636%;"></td></tr></tbody></table>
 
@@ -15,11 +15,11 @@ categories: ["计算机语言", "Python"]
 
 <table style="border-collapse: collapse; width: 100%; height: 288px;"><tbody><tr style="height: 24px;"><td style="width: 58.6667%; height: 24px;"><a href="https://pytorch.org/docs/stable/generated/torch.topk.html?highlight=torch%20topk#torch.topk">torch.topk(input, k, dim=None, largest=True, sorted=True, *, out=None)</a></td><td style="width: 32.3635%; height: 24px;">取得最大的k个元素</td></tr><tr style="height: 24px;"><td style="width: 58.6667%; height: 24px;"><a href="https://pytorch.org/docs/stable/generated/torch.cat.html?highlight=torch%20cat#torch.cat">torch.cat(tensors, dim=0, *, out=None) → Tensor</a></td><td style="width: 32.3635%; height: 24px;">拼接多个张量</td></tr><tr style="height: 24px;"><td style="width: 58.6667%; height: 24px;"><a href="https://pytorch.org/docs/stable/generated/torch.stack.html?highlight=torch%20stack#torch.stack">torch.stack(tensors, dim=0, *, out=None) → Tensor</a></td><td style="width: 32.3635%; height: 24px;">沿着一个新的维度对张量进行连接</td></tr><tr style="height: 24px;"><td style="width: 58.6667%; height: 24px;"><a href="https://pytorch.org/docs/stable/generated/torch.chunk.html?highlight=torch%20chunk#torch.chunk">torch.chunk(input, chunks, dim=0) → List of Tensors</a></td><td style="width: 32.3635%; height: 24px;">将一个张量分成指定数量的块</td></tr><tr style="height: 24px;"><td style="width: 58.6667%; height: 24px;"><a href="https://pytorch.org/docs/stable/generated/torch.split.html?highlight=torch%20split#torch.split">torch.split(tensor, split_size_or_sections, dim=0)</a></td><td style="width: 32.3635%; height: 24px;">将张量分成几块。</td></tr><tr style="height: 24px;"><td style="width: 58.6667%; height: 24px;"><a href="https://pytorch.org/docs/stable/generated/torch.index_select.html?highlight=torch%20index_selec">torch.index_select(input, dim, index, *, out=None) → Tensor</a></td><td style="width: 32.3635%; height: 24px;">使用索引中的维度和张量选择</td></tr><tr style="height: 24px;"><td style="width: 58.6667%; height: 24px;"><a href="https://pytorch.org/docs/stable/generated/torch.masked_select.html?highlight=torch%20masked_select#torch.masked_select">torch.masked_select(input, mask, *, out=None) → Tensor</a></td><td style="width: 32.3635%; height: 24px;">得到一个布尔张量</td></tr><tr style="height: 24px;"><td style="width: 58.6667%; height: 24px;"><a href="https://pytorch.org/docs/stable/generated/torch.reshape.html?highlight=torch%20reshape#torch.reshape">torch.reshape(input, shape) → Tensor</a></td><td style="width: 32.3635%; height: 24px;"></td></tr><tr style="height: 24px;"><td style="width: 58.6667%; height: 24px;"><a href="https://pytorch.org/docs/stable/generated/torch.transpose.html?highlight=torch%20transpose#torch.transpose">torch.transpose(input, dim0, dim1) → Tensor</a></td><td style="width: 32.3635%; height: 24px;">转置版本</td></tr><tr style="height: 24px;"><td style="width: 58.6667%; height: 24px;"><a href="https://pytorch.org/docs/stable/generated/torch.t.html#torch.t">torch.t(input) → Tensor</a></td><td style="width: 32.3635%; height: 24px;">上边的特殊版本，torch.transpose(input,0,1)</td></tr><tr style="height: 24px;"><td style="width: 58.6667%; height: 24px;"><a href="https://pytorch.org/docs/stable/generated/torch.squeeze.html?highlight=torch%20squeeze#torch.squeeze">torch.squeeze(input, dim=None, *, out=None) → Tensor</a></td><td style="width: 32.3635%; height: 24px;">去掉所有大小为1的输入维度。</td></tr><tr style="height: 24px;"><td style="width: 58.6667%; height: 24px;"><a href="https://pytorch.org/docs/stable/generated/torch.unsqueeze.html?highlight=torch%20unsqueeze#torch.unsqueeze">torch.unsqueeze(input, dim) → Tensor</a></td><td style="width: 32.3635%; height: 24px;">在指定的维度上插入一个维数为1的维度</td></tr></tbody></table>
 
- 
+
 
 # 张量运算
 
- 
+
 
 # 自动求导
 
@@ -48,7 +48,7 @@ print(x.grad)
 >>> tensor([1., 1.])
 ```
 
- 
+
 
 ## torch.autograd.grad
 
@@ -56,12 +56,12 @@ print(x.grad)
 
 ```
 torch.autograd.grad(
-    outputs, 
-    inputs, 
-    grad_outputs=None, 
-    retain_graph=None, 
-    create_graph=False, 
-    only_inputs=True, 
+    outputs,
+    inputs,
+    grad_outputs=None,
+    retain_graph=None,
+    create_graph=False,
+    only_inputs=True,
     allow_unused=False)
 ```
 
@@ -73,13 +73,13 @@ torch.autograd.grad(
 - only\_inputs: 默认为True, 如果为True, 则只会返回指定input的梯度值。 若为False，则会计算所有叶子节点的梯度，并且将计算得到的梯度累加到各自的.grad属性上去。
 - allow\_unused: 默认为False, 即必须要指定input,如果没有指定的话则报错。
 
- 
+
 
 # 数据预处理
 
 transforms.Normalize 裁剪 transforms.CenterCrop transforms.RandomCrop transforms.RandomResizedCrop FiveCrop and TenCrop 旋转和翻转 图像变换 transform的操作
 
- 
+
 
 # 模型容器
 
@@ -105,7 +105,7 @@ model = nn.Sequential(OrderedDict([
        ]))
 ```
 
- 
+
 
 ## nn.ModuleList
 
@@ -183,7 +183,7 @@ class MyModule(nn.Module):
         return x
 ```
 
- 
+
 
 # 模型构建
 
@@ -203,7 +203,7 @@ CLASStorch.nn.Conv2d(in_channels, out_channels, kernel_size, stride=1, padding=0
 - groups (int, optional) – Number of blocked connections from input channels to output channels. Default: 1
 - bias (bool, optional) – If True, adds a learnable bias to the output. Default: True
 
- 
+
 
 ## nn.Conv3d
 
@@ -224,8 +224,8 @@ class torch.nn.Conv3d(in_channels, out_channels, kernel_size, stride=1, padding=
 
 三维卷积层, 输入的尺度是(N, C\_in,D,H,W)，输出尺度（N,C\_out,D\_out,H\_out,W\_out）
 
-**shape:**  
-`input`: (N,C\_in,D\_in,H\_in,W\_in)  
+**shape:**
+`input`: (N,C\_in,D\_in,H\_in,W\_in)
 `output`: (N,C\_out,D\_out,H\_out,W\_out)
 
 注意：3D卷积的输入是**5维的tensor**
@@ -240,13 +240,13 @@ nn.ConvTranspose2d
 torch.nn.MaxPool2d(kernel_size, stride=None, padding=0, dilation=1, return_indices=False, ceil_mode=False)
 ```
 
- 
+
 
 ## nn.AvgPool2d
 
 平均池化层
 
- 
+
 
 ## nn.MaxUnpool2d
 
@@ -262,7 +262,7 @@ CLASStorch.nn.Linear(in_features, out_features, bias=True, device=None, dtype=No
 - out\_features – size of each output sample
 - bias – If set to False, the layer will not learn an additive bias. Default: True
 
- 
+
 
 ## nn.Sigmoid
 
@@ -279,7 +279,7 @@ output = m(input)
 
 ## nn.ReLU
 
- 
+
 
 [![no img]](http://127.0.0.1/?attachment_id=4706)
 
@@ -291,29 +291,29 @@ output = m(input)
 
 [![no img]](http://127.0.0.1/?attachment_id=4709)
 
- 
+
 
 从数学上看，这两个函数可以通过线性变化等价，唯一的区别在于值域是 (0,1) 和 (-1, 1)。作为激活函数，都存在两端梯度弥散、计算量大的问题，sigmoid函数因为和生物上的神经元信号刺激的 firing rate 长得像，一度比较流行。。。但是，作为非中心对称的激活函数，sigmoid有个问题：输出总是正数！！！
 
- 
+
 
 # 损失函数
 
 <table style="border-collapse: collapse; width: 100%; height: 536px;"><tbody><tr style="height: 24px;"><td style="width: 23.9393%; height: 24px;">nn.CrossEntropyLoss()</td><td style="width: 76.0607%; height: 24px;">交叉熵损失函数</td><td style="width: 0.848485%; height: 24px;"></td></tr><tr style="height: 24px;"><td style="width: 23.9393%; height: 24px;">nn.NLLLoss</td><td style="width: 76.0607%; height: 24px;">softmax(x)+log(x)+nn.NLLLoss====&gt;nn.CrossEntropyLoss</td><td style="width: 0.848485%; height: 24px;"></td></tr><tr style="height: 80px;"><td style="width: 23.9393%; height: 80px;">nn.BCELoss</td><td style="width: 76.0607%; height: 80px;">用于计算预测值和真实值之间的二元交叉熵损失(Binary Cross Entropy) 主要用于多标记任务（一个样本对应多个类别）</td><td style="width: 0.848485%; height: 80px;"></td></tr><tr style="height: 24px;"><td style="width: 23.9393%; height: 24px;">nn.BCEWithLogitsLoss</td><td style="width: 76.0607%; height: 24px;">只是在BCELoss上加了个logits函数(也就是sigmoid函数)</td><td style="width: 0.848485%; height: 24px;"></td></tr><tr style="height: 24px;"><td style="width: 23.9393%; height: 24px;">nn.L1Loss</td><td style="width: 76.0607%; height: 24px;">计算网络输出与标签之差的绝对值</td><td style="width: 0.848485%; height: 24px;"></td></tr><tr style="height: 24px;"><td style="width: 23.9393%; height: 24px;">nn.MSELoss</td><td style="width: 76.0607%; height: 24px;">均方误差</td><td style="width: 0.848485%; height: 24px;"></td></tr><tr style="height: 24px;"><td style="width: 23.9393%; height: 24px;">nn.SmoothL1Loss</td><td style="width: 76.0607%; height: 24px;">如果绝对元素误差低于 beta，则创建使用平方项的标准，否则使用 L1 项</td><td style="width: 0.848485%; height: 24px;"></td></tr><tr style="height: 48px;"><td style="width: 23.9393%; height: 48px;">nn.PoissonNLLLoss</td><td style="width: 76.0607%; height: 48px;">真实标签服从泊松分布的负对数似然损失，神经网络的输出作为泊松分布的参数$ \lambda $</td><td style="width: 0.848485%; height: 48px;"></td></tr><tr style="height: 24px;"><td style="width: 23.9393%; height: 24px;">nn.KLDivLoss</td><td style="width: 76.0607%; height: 24px;">用于连续分布的距离度量；并且对离散采用的连续输出空间分布进行回归通常很有用</td><td style="width: 0.848485%; height: 24px;"></td></tr><tr style="height: 24px;"><td style="width: 23.9393%; height: 24px;">nn.MarginRankingLoss</td><td style="width: 76.0607%; height: 24px;"></td><td style="width: 0.848485%; height: 24px;"></td></tr><tr style="height: 24px;"><td style="width: 23.9393%; height: 24px;">nn.MultiLabelMarginLoss</td><td style="width: 76.0607%; height: 24px;"></td><td style="width: 0.848485%; height: 24px;"></td></tr><tr style="height: 24px;"><td style="width: 23.9393%; height: 24px;">nn.SoftMarginLoss</td><td style="width: 76.0607%; height: 24px;">针对二分类问题</td><td style="width: 0.848485%; height: 24px;"></td></tr><tr style="height: 24px;"><td style="width: 23.9393%; height: 24px;">nn.MultiLabelSoftMarginLoss</td><td style="width: 76.0607%; height: 24px;">多标签交叉熵损失函数</td><td style="width: 0.848485%; height: 24px;"></td></tr><tr style="height: 24px;"><td style="width: 23.9393%; height: 24px;">nn.MultiMarginLoss</td><td style="width: 76.0607%; height: 24px;"></td><td style="width: 0.848485%; height: 24px;"></td></tr><tr style="height: 24px;"><td style="width: 23.9393%; height: 24px;">nn.TripletMarginLoss</td><td style="width: 76.0607%; height: 24px;"></td><td style="width: 0.848485%; height: 24px;"></td></tr><tr style="height: 24px;"><td style="width: 23.9393%; height: 24px;">nn.HingeEmbeddingLoss</td><td style="width: 76.0607%; height: 24px;"></td><td style="width: 0.848485%; height: 24px;"></td></tr><tr style="height: 24px;"><td style="width: 23.9393%; height: 24px;">nn.CosineEmbeddingLoss</td><td style="width: 76.0607%; height: 24px;"></td><td style="width: 0.848485%; height: 24px;"></td></tr><tr style="height: 24px;"><td style="width: 23.9393%; height: 24px;">nn.CTCLoss</td><td style="width: 76.0607%; height: 24px;"></td><td style="width: 0.848485%; height: 24px;"></td></tr><tr style="height: 24px;"><td style="width: 23.9393%; height: 24px;"></td><td style="width: 76.0607%; height: 24px;"></td><td style="width: 0.848485%; height: 24px;"></td></tr></tbody></table>
 
- 
+
 
 # 优化器
 
 Optimizer .zero\_grad() .step() .add\_param\_group() .state\_dick() or .load\_state\_dick optim.SGD
 
- 
+
 
 # 模型加载和保存
 
 torch.save torch.load
 
- 
+
 
 # 引用
 

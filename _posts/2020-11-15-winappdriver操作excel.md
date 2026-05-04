@@ -13,11 +13,11 @@ Microsoft Outlook application in general displays a splash screen on the startup
 
 What you can do at that point is simply switch your session to the main application window. For example:
 
- 
+
 
 大意是，当outlook打开的时候，前面有一个闪屏，WinAppDriver会根据那个闪屏的窗体操作，但实际上，这个闪屏在打开outlook后关闭了啊。所以要更新窗口
 
- 
+
 
 ```
 private void button2_Click(object sender, EventArgs e)

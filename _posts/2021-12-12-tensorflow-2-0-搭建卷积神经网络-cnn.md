@@ -2,18 +2,18 @@
 layout: post
 title: "TensorFlow 2.0 搭建卷积神经网络 (CNN)"
 date: "2021-12-12"
-categories: ["计算机语言", "Python"]
+categories: ["计算机语言", "python"]
 ---
 
 关于 CNN 基础理论可见：[卷积神经网络](https://www.cnblogs.com/sun-a/p/13335980.html)
 
-TensorFlow2.0 快速搭建神经网络：[tf.keras](https://www.cnblogs.com/sun-a/p/13382713.html) 
+TensorFlow2.0 快速搭建神经网络：[tf.keras](https://www.cnblogs.com/sun-a/p/13382713.html)
 
 下面主要介绍：1.搭建卷积神经网络的主要模块：卷积、批标准化、激活、池化、全连接；
 
 2.经典卷积网络的搭建：LeNet、AlexNet、VGGNet、InceptionNet、ResNet。
 
- 
+
 
 # 卷积神经网络主要模块
 
@@ -21,7 +21,7 @@ TensorFlow2.0 快速搭建神经网络：[tf.keras](https://www.cnblogs.com/sun-
 
 ```
 tf.keras.layers.Conv2D (
-　　filters = 卷积核个数, 
+　　filters = 卷积核个数,
 　　kernel_size = 卷积核尺寸, #正方形写核长整数，或（核高h，核宽w）
 　　strides = 滑动步长, #横纵向相同写步长整数，或(纵向步长h，横向步长w)，默认1
 　　padding = “same” or “valid”, #使用全零填充是“same”，不使用是“valid”（默认）
@@ -51,7 +51,7 @@ model = tf.keras.models.Sequential([
 
 [![no img]](http://127.0.0.1/?attachment_id=4263)
 
- 
+
 
 [![no img]](http://127.0.0.1/?attachment_id=4264)
 
@@ -59,7 +59,7 @@ model = tf.keras.models.Sequential([
 
 [![no img]](http://127.0.0.1/?attachment_id=4265)
 
- 
+
 
 ## 池化 (Pooling)
 
@@ -76,7 +76,7 @@ tf.keras.layers.AveragePooling2D(
 )
 ```
 
- 
+
 
 ## 舍弃 (Dropout)
 
@@ -94,7 +94,7 @@ model = tf.keras.models.Sequential([
 
 [![no img]](http://127.0.0.1/?attachment_id=4266)
 
- 
+
 
 ## 卷积神经网络搭建示例
 
@@ -163,7 +163,7 @@ plt.legend()
 plt.show()
 ```
 
- 
+
 
 # 经典卷积网络
 
@@ -198,7 +198,7 @@ class LeNet5(tf.keras.Model):
         return y
 ```
 
- 
+
 
 ## AlexNet
 
@@ -257,7 +257,7 @@ class AlexNet8(tf.keras.Model):
         return y
 ```
 
- 
+
 
 ## VGGNet
 
@@ -339,7 +339,7 @@ class VGG16(tf.keras.Model):
         self.f3 = tf.keras.layers.Dense(10, activation='softmax')
 ```
 
- 
+
 
 ## InceptionNet
 

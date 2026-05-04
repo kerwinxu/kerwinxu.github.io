@@ -2,7 +2,7 @@
 layout: post
 title: "SharpDevelop5源码之启动分析"
 date: "2019-02-03"
-categories: ["计算机语言", "c#"]
+categories: ["计算机语言", "csharp"]
 ---
 
 # 启动函数

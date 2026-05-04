@@ -220,7 +220,7 @@ categories: ["计算机语言", "c"]
                     Grid.Column="2"
                     Focusable="false"
                     ClickMode="Press"
-                    IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, 
+                    IsChecked="{Binding IsDropDownOpen, Mode=TwoWay,
           RelativeSource={RelativeSource TemplatedParent}}"/>
                     <ContentPresenter x:Name="ContentSite"
                         IsHitTestVisible="False"

@@ -2,15 +2,15 @@
 layout: post
 title:  wpf中SerialPort串口起始代码
 date:   2025-4-9 11:02:00 +0800
-categories: ["计算机语言","c#"]
+categories: ["计算机语言","csharp"]
 project: false
 excerpt: wpf中SerialPort串口起始代码
 lang: zh
 published: true
 tag:
-- c#
+- csharp
 - wpf
-- SerialPort
+- serialport
 - 串口
 ---
 
@@ -26,7 +26,7 @@ tag:
         DataContext="{Binding Source={StaticResource locator},Path=Main}"
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         xmlns:cmd="http://www.galasoft.ch/mvvmlight"
-        
+
         Title="THUIC心电系统软件" Height="450" Width="800">
     <Window.Resources>
         <Style TargetType="TextBlock" BasedOn="{StaticResource MaterialDesignBody1TextBlock}">
@@ -68,7 +68,7 @@ tag:
             <ComboBox Width="60" ItemsSource="{Binding StopBitss}" SelectedItem="{Binding StopBits}"/>
             <Button Content="{Binding ConnectText}" Command="{Binding Connect}" />
         </StackPanel>
-        
+
     </Grid>
 </Window>
 ```
@@ -120,7 +120,7 @@ public class MainViewModel : ViewModelBase
 
     private RelayCommand<EventArgs> showPortNames;
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public RelayCommand<EventArgs> ShowPortNames
     {
@@ -147,7 +147,7 @@ public class MainViewModel : ViewModelBase
         get { return baudrate; }
         set { baudrate = value; RaisePropertyChanged(() => BaudRate); }
     }
-    
+
     public int[] Databitss
     {
         get
@@ -236,7 +236,7 @@ public class MainViewModel : ViewModelBase
 
     private RelayCommand connect;
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public RelayCommand Connect
     {

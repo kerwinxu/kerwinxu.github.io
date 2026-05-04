@@ -2,7 +2,7 @@
 layout: post
 title: "pipenv，pip的版本管理系统"
 date: "2023-03-01"
-categories: ["计算机语言", "Python"]
+categories: ["计算机语言", "python"]
 ---
 
 pipenv命令具有以下选项

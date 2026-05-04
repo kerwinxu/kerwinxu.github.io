@@ -19,7 +19,7 @@ categories: ["计算机语言", "c"]
 
 (1) `Graphics`对象由打印机创建`pDoc.PrinterSettings.CreateMeasurementGraphics();` (2) 由于帐票的控件`Size`均以`inch`(英寸)或者厘米为单位，所以获得`Graphics`实例后把`PageUnit`属性设置为`GraphicsUnit.Inch;`
 
- 
+
 
 可以使用`TextRenderer.MeasureText`以更精确的测量,代码参考如下: 代码如下
 

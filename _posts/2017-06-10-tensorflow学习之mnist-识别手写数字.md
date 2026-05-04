@@ -2,7 +2,7 @@
 layout: post
 title: "tensorflow学习之MNIST-识别手写数字"
 date: "2017-06-10"
-categories: ["计算机语言", "Python"]
+categories: ["计算机语言", "python"]
 ---
 
 这个MNIST相当于tensorflow的hello word了。 首先下载数据集：
@@ -68,7 +68,7 @@ cross_entropy = tf.reduce_mean(-tf.reduce_sum(y * tf.log(a), reduction_indices=[
 
 代码如下：
 
- 
+
 
 ```
 optimizer = tf.train.GradientDescentOptimizer(0.5) # 梯度下降法，学习速率为0.5
@@ -129,7 +129,7 @@ print(sess.run(tf.argmax(y1, 1)))
 
 全部代码：
 
- 
+
 
 ```
 # -*- coding: utf-8 -*-

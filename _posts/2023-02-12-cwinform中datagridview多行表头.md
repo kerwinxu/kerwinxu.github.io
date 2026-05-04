@@ -16,9 +16,9 @@ public class BoundGridView : DataGridView
               _baseColumnHeadHeight = this.ColumnHeadersHeight;
               this.Headers = new HeaderCollection(this.Columns);
          }
- 
+
          public HeaderCollection Headers { get; private set; }
- 
+
          protected override void OnCellPainting(DataGridViewCellPaintingEventArgs e)
          {
              if (e.ColumnIndex == -1 || e.RowIndex != -1)
@@ -272,7 +272,7 @@ public class BoundGridView : DataGridView
     }
 ```
 
- 
+
 
 使用是这样子的
 
@@ -299,7 +299,7 @@ HeaderItem item= this.boundGridView1.Headers.GetHeaderByLocation(0, 0);  //获�
 
 效果图
 
- 
+
 
 引用
 

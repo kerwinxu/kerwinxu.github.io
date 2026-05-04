@@ -206,3 +206,7 @@ jekyll-archives:
 # jekyll-theme-chirpy，默认没有打开latex的支持，需要这里先打开，然后在博文头部添加 "math: true"，不用双引号。
 math: true  # 启用数学公式支持
 math_engine: mathjax  # 使用 MathJax 引擎
+
+plugins:
+  - jekyll-paginate
+  - jekyll-archives

@@ -2,7 +2,7 @@
 layout: post
 title: "wpf中TextBox和TextBlock自动换行问题。"
 date: "2018-10-01"
-categories: ["计算机语言", "c#"]
+categories: ["计算机语言", "csharp"]
 ---
 
 简单，设置属性

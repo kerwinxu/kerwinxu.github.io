@@ -2,25 +2,25 @@
 layout: post
 title: "eclipse中spring做Tomcat的war文件"
 date: "2020-08-25"
-categories: 
+categories:
   - "java"
 ---
 
 步骤如下：
 
- 
+
 
 1. 在pom.xml里设置
-    
+
     ```
     packaging>war</packaging>
     ```
-    
-     
+
+
 2. 除嵌入式tomcat插件
-    
+
     在pom.xml里找到spring-boot-starter-web依赖节点，注释掉
-    
+
     ```
     <!-- 		<dependency> -->
     <!-- 			<groupId>org.springframework.boot</groupId> -->
@@ -38,11 +38,11 @@ categories:
             <scope>provided</scope>
         </dependency>
     ```
-    
-     
+
+
 3. 然后添加 org.apache.tomcat 依赖，如上。
 4. 若想要定义项目打包的名字，加如下配置
-    
+
     ```
     <build>
         <finalName>project name</finalName>
@@ -54,20 +54,20 @@ categories:
         </plugins>
       </build>
     ```
-    
-     
+
+
 5. 修改启动类，修改启动类，并重写初始化方法
-    
+
     我们法需要类似于web.xml的配置方式来启动spring上下文了，在Application类的同级添加一个SpringBootStartApplication类，其代码如下:
-    
+
     ```
     /**
      * 修改启动类，继承 SpringBootServletInitializer 并重写 configure 方法
      */
-    
-    
+
+
     public class SpringBootStartApplication extends SpringBootServletInitializer {
-     
+
           public static void main( String[] args ){
         	SpringApplication.run(SpringBootStartApplication .class, args);
     }
@@ -81,8 +81,8 @@ categories:
         }
     }
     ```
-    
-     
+
+
 6. 打包，就是点击项目右键—> run as—>maven build：
 7. 部署，把target目录下的war包放到tomcat的webapps目录下，启动tomcat，即可自动解压部署：（tomcat/bi目录下，双击startup.bat即可启动tomcat，成功启动，自动解压部署运行）
 8. 访问 ： http://localhost:\[端口号\]/\[项目名\]/  ，比如要有这个项目名（war的文件名），因为会生成这个目录。

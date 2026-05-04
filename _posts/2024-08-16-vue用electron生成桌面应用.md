@@ -2,7 +2,7 @@
 layout: post
 title: "vue用electron生成桌面应用"
 date: "2024-08-16"
-categories: ["计算机语言", "JavaScript"]
+categories: ["计算机语言", "javascript"]
 ---
 
 最新方法electron已经提供了vue，所以这里用如下的方式来创建：
@@ -17,18 +17,18 @@ yarn create @quick-start/electron
 yarn add --dev @electron/rebuild
 ```
 
- 
+
 
 引用：
 
 - [https://cn.electron-vite.org/guide/](https://cn.electron-vite.org/guide/)
 - [https://classic.yarnpkg.com/en/package/@electron/rebuild](https://classic.yarnpkg.com/en/package/@electron/rebuild)
 
- 
 
- 
 
- 
+
+
+
 
 ```
 rem 1. 开发环境，我这里vue设置成npm的，而不是yarn的
@@ -55,7 +55,7 @@ yarn config set ignore-engines true
 ```
 // 全局安装
 npm install -g yarn
-// 
+//
 
 // 全局安装vue和electron
 yarn global add @vue/cli electron

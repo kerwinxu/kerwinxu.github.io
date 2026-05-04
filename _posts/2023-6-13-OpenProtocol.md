@@ -2,7 +2,7 @@
 lang: zh
 author: Kerwin
 layout: post
-categories: ["计算机语言","c#"]
+categories: ["计算机语言","csharp"]
 title:  OpenProtocol
 project: true
 image: "/assets/image/openprotocol/openprotocol.png"
@@ -11,9 +11,9 @@ excerpt: 协议数据跟对象之间转换的
 tags: [c#]
 ---
 ﻿# 摘要
-我这个程序是类似ORM，ORM是面向对象与关系数据库之间的匹配的，而这个OpenProtocol是面向对象与通讯的字节流之间的匹配的，是一种序列化技术。  
-# Summary 
-My program is similar to ORM, ORM is object-oriented and relational database matching, and OpenProtocol is object-oriented matching between communicating byte streams, which is a serialization technology.  
+我这个程序是类似ORM，ORM是面向对象与关系数据库之间的匹配的，而这个OpenProtocol是面向对象与通讯的字节流之间的匹配的，是一种序列化技术。
+# Summary
+My program is similar to ORM, ORM is object-oriented and relational database matching, and OpenProtocol is object-oriented matching between communicating byte streams, which is a serialization technology.
 
 # Demo
 
@@ -27,10 +27,10 @@ namespace Demo
 {
     class TestClass
     {
-        
+
         // DataItem表示数据项目，0表示这个是字节流的第一项。
         // DataItem represents the data item, and 0 indicates that this is the first item in the byte stream.
-        [DataItem(0)]  
+        [DataItem(0)]
         public readonly byte Start = 0xff;
 
         [DataItem(1)]
@@ -68,7 +68,7 @@ namespace Demo
     {
         static void Main(string[] args)
         {
-            // 
+            //
             byte[] datas = { 0xff,0x01, 0x01, 0x01, 0x02, 0xfb, 0x0f, 0xff };
             TestClass testClass = (new BytesSerializer<TestClass>()).Deserialize(datas);
             Console.WriteLine($"funcode:{testClass.FunCode}, DataLength:{testClass.DataLength}, CheckSum:{testClass.CheckSum}");
@@ -83,7 +83,7 @@ namespace Demo
 
 # 下载
 
-[https://www.nuget.org/packages/Io.Github.KerwinXu.OpenProtocol](https://www.nuget.org/packages/Io.Github.KerwinXu.OpenProtocol)  
+[https://www.nuget.org/packages/Io.Github.KerwinXu.OpenProtocol](https://www.nuget.org/packages/Io.Github.KerwinXu.OpenProtocol)
 
 [https://github.com/kerwinxu/OpenProtocol.git](https://github.com/kerwinxu/OpenProtocol.git)
 

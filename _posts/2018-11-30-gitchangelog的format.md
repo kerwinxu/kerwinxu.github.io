@@ -2,7 +2,7 @@
 layout: post
 title: "gitchangelog的format"
 date: "2018-11-30"
-categories: ["计算机语言", "Python"]
+categories: ["计算机语言", "python"]
 ---
 
 ```

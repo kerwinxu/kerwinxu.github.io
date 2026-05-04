@@ -2,7 +2,7 @@
 layout: post
 title:  LiveChart2图表
 date:   2025-5-31 10:42:00 +0800
-categories: ["计算机语言", "c#"]
+categories: ["计算机语言", "csharp"]
 project: false
 excerpt: TLiveChart2图表
 lang: zh
@@ -125,16 +125,16 @@ namespace LiveCharts.ViewModel
 
         private async Task ReadData()
         {
-            // to keep this sample simple, we run the next infinite loop 
-            // in a real application you should stop the loop/task when the view is disposed 
+            // to keep this sample simple, we run the next infinite loop
+            // in a real application you should stop the loop/task when the view is disposed
             // 只要还在运行
             while (IsReading)
             {
                 await Task.Delay(100);
 
-                // Because we are updating the chart from a different thread 
-                // we need to use a lock to access the chart data. 
-                // this is not necessary if your changes are made on the UI thread. 
+                // Because we are updating the chart from a different thread
+                // we need to use a lock to access the chart data.
+                // this is not necessary if your changes are made on the UI thread.
                lock (Sync)
                 {
                     _values.Add(new DateTimePoint(DateTime.Now, _random.Next(0, 10)));
@@ -142,7 +142,7 @@ namespace LiveCharts.ViewModel
                     // 有了如下的MaxLimit和MinLimit，不需要手动删除了，当然也可以删除。
                     //if (_values.Count > 250) _values.RemoveAt(0);
 
-                    // we need to update the separators every time we add a new point 
+                    // we need to update the separators every time we add a new point
                     _customAxis.CustomSeparators = GetSeparators();
 
 
@@ -310,16 +310,16 @@ namespace LiveCharts.ViewModel
 
         private async Task ReadData()
         {
-            // to keep this sample simple, we run the next infinite loop 
-            // in a real application you should stop the loop/task when the view is disposed 
+            // to keep this sample simple, we run the next infinite loop
+            // in a real application you should stop the loop/task when the view is disposed
             // 只要还在运行
             while (IsReading)
             {
                 await Task.Delay(100);
 
-                // Because we are updating the chart from a different thread 
-                // we need to use a lock to access the chart data. 
-                // this is not necessary if your changes are made on the UI thread. 
+                // Because we are updating the chart from a different thread
+                // we need to use a lock to access the chart data.
+                // this is not necessary if your changes are made on the UI thread.
                 lock (Sync)
                 {
                     _values.Add(new DateTimePoint(DateTime.Now, _random.Next(0, 10)));
@@ -327,7 +327,7 @@ namespace LiveCharts.ViewModel
                     // 有了如下的MaxLimit和MinLimit，不需要手动删除了，当然也可以删除。
                     //if (_values.Count > 250) _values.RemoveAt(0);
 
-                    // we need to update the separators every time we add a new point 
+                    // we need to update the separators every time we add a new point
                     //_customAxis.CustomSeparators = GetSeparators();
 
 
@@ -357,7 +357,7 @@ namespace LiveCharts.ViewModel
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LiveCharts"
         mc:Ignorable="d"
-        
+
         xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
 
         DataContext="{Binding Source={StaticResource Locator},Path=Main }"
@@ -399,7 +399,7 @@ public class ViewModel
                 new ObservablePoint(20, 12)
             ]
         }
-  
+
 }
 ```
 
@@ -408,7 +408,7 @@ public class ViewModel
 ```xml
 <UserControl x:Class="WPFSample.Lines.XY.View"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
              xmlns:vms="clr-namespace:ViewModelsSamples.Lines.XY;assembly=ViewModelsSamples">
     <UserControl.DataContext>

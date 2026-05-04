@@ -2,19 +2,19 @@
 layout: post
 title:  TorchSocket的记录
 date:   2025-4-19 13:35:00 +0800
-categories: ["计算机语言","c#"]
+categories: ["计算机语言","csharp"]
 project: false
 excerpt: TorchSocket的记录
 lang: zh
 published: true
 tag:
-- c#
+- csharp
 - 网络
 ---
 
 用TorchSocket可以将数据收取，数据解析分离
 
-# 服务器  
+# 服务器
 ```c#
 var service = new TcpService();
 service.Connecting = (client, e) => { return EasyTask.CompletedTask; };//有客户端正在连接

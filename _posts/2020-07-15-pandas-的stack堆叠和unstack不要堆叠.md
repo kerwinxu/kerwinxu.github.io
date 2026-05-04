@@ -2,7 +2,7 @@
 layout: post
 title: "pandas 的stack堆叠和unstack不要堆叠"
 date: "2020-07-15"
-categories: ["计算机语言", "Python"]
+categories: ["计算机语言", "python"]
 ---
 
 # 前言
@@ -15,7 +15,7 @@ categories: ["计算机语言", "Python"]
 
 <table style="border-collapse: collapse; width: 36.2217%; height: 69px;"><tbody><tr style="height: 23px;"><td style="width: 25%; height: 23px;"></td><td style="width: 25%; height: 23px;">store1</td><td style="width: 25%; height: 23px;">store2</td><td style="width: 25%; height: 23px;">store3</td></tr><tr style="height: 23px;"><td style="width: 25%; height: 23px;">street1</td><td style="width: 25%; height: 23px;">1</td><td style="width: 25%; height: 23px;">2</td><td style="width: 25%; height: 23px;">3</td></tr><tr style="height: 23px;"><td style="width: 25%; height: 23px;">street2</td><td style="width: 25%; height: 23px;">4</td><td style="width: 25%; height: 23px;">5</td><td style="width: 25%; height: 23px;">6</td></tr></tbody></table>
 
- 
+
 
 表格在行列方向上均有索引（类似于DataFrame），花括号结构只有“列方向”上的索引（类似于层次化的Series），结构更加偏向于堆叠（Series-stack，方便记忆）。stack函数会将数据从”表格结构“变成”花括号结构“，即将其行索引变成列索引，反之，unstack函数将数据从”花括号结构“变成”表格结构“，即要将其中一层的列索引变成行索引。例：
 

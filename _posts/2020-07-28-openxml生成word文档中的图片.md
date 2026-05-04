@@ -82,7 +82,7 @@ private static void AddImageToBody(WordprocessingDocument wordDoc, string relati
 }
 ```
 
- 
+
 
 - 图片在文档中有两种布局方式：**内嵌**和**浮动**。示例 [如何：在字处理文档中插入图片](https://docs.microsoft.com/zh-cn/office/open-xml/how-to-insert-a-picture-into-a-word-processing-document) 使用的是内嵌布局，而本文使用的是浮动布局。内嵌布局用 `Inline` 表示，浮动布局用 `Anchor` 表示。
 - 图片显示的大小由 `ShapeProperties.Transform2D.Extents` 设置，`Extents.Cx` 和 `Extents.Cy` 分别表示宽和高。`Extents.Cx` 和 `Extents.Cy` 的单位是 EMU (English Metric Units，英语公制单位)。EMU 与厘米的换算关系如下：

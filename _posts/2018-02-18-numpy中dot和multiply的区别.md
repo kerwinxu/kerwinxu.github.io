@@ -2,7 +2,7 @@
 layout: post
 title: "numpy中dot和multiply的区别"
 date: "2018-02-18"
-categories: ["计算机语言", "Python"]
+categories: ["计算机语言", "python"]
 ---
 
 两个都是乘法，不过：
