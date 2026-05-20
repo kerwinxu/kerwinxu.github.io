@@ -8,7 +8,7 @@ excerpt: TLiveChart2图表
 lang: zh
 published: true
 tag:
-- c#
+- csharp
 - 图表
 - wpf
 ---

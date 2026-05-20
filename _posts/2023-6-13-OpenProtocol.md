@@ -8,7 +8,7 @@ project: true
 image: "/assets/image/openprotocol/openprotocol.png"
 date:   2023-6-13
 excerpt: 协议数据跟对象之间转换的
-tags: [c#]
+tags: [csharp]
 ---
 ﻿# 摘要
 我这个程序是类似ORM，ORM是面向对象与关系数据库之间的匹配的，而这个OpenProtocol是面向对象与通讯的字节流之间的匹配的，是一种序列化技术。

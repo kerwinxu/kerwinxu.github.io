@@ -6,7 +6,7 @@ categories: ["计算机语言","csharp"]
 title:  ef6自定义函数解决sqlite的utf8搜索字符串问题
 date:   2024-11-23
 excerpt: ef6自定义函数解决sqlite的utf8搜索字符串问题
-tags: [c#, ef6, sqlite, utf8]
+tags: [csharp, ef6, sqlite, utf8]
 ---
 
 sqlite只支持utf8字符编码，然后我们插入的数据，很多都是gbk编码，这样会造成搜索字符串的时候，压根不能得到期望的预期，两种解决方式，一种是一开始插入数据的时候，全部转成UTF8编码，而另一种是自定义函数。
